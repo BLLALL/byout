@@ -12,8 +12,20 @@ class UserReviewCollection extends ResourceCollection
      *
      * @return array<int|string, mixed>
      */
+
+    protected $user_id;
+    public function __construct($user_reviews, $user_id)
+    {
+        $this->user_id = $user_id;
+        parent::__construct($user_reviews);
+    }
+
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'type' => 'user_reviews',
+            'user_id' => $this->user_id,
+            'attribute' => $this->collection
+        ];
     }
 }

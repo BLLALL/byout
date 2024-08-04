@@ -12,8 +12,21 @@ class HomeReviewCollection extends ResourceCollection
      *
      * @return array<int|string, mixed>
      */
+
+    protected $home_id;
+
+    public function __construct($home_reviews, $home_id)
+    {
+        $this->home_id = $home_id;
+        parent::__construct($home_reviews);
+    }
+
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'type' => 'home_review',
+            'home_id' => $this->home_id,
+            'attributes' => $this->collection,
+        ];
     }
 }
