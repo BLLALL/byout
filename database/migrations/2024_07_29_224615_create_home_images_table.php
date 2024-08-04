@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('home_images', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('home_id')->constrained()->onDelete('cascade');
+            $table->string('image_path');
+//            $table->string('caption')->nullable();
+            $table->enum('type', ['exterior', 'interior', 'floor_plan', 'other'])->default('other');
             $table->timestamps();
         });
     }

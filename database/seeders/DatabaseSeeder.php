@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Home;
+use App\Models\HomeImage;
+use App\Models\Review;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,9 +18,12 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $user = User::factory(5)->create();
+
+        $homes = Home::factory(10)->recycle($user)->create();
+
+        Review::factory(10)->recycle($user)->recycle($homes)->create();
+
+        HomeImage::factory(10)->recycle($homes)->create();
     }
 }

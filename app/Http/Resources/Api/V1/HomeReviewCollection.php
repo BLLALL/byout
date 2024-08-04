@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Api\V1;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -24,7 +24,7 @@ class HomeReviewCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            'type' => 'home_review',
+            'type' => 'home_specific_review',
             'home_id' => $this->home_id,
             'attributes' => $this->collection,
         ];

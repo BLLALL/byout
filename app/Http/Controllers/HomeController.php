@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\filters\HomeFilter;
+use App\Http\Resources\Api\V1\HomeResource;
 use App\Models\Home;
 use Illuminate\Http\Request;
 
@@ -10,18 +12,11 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(HomeFilter $filter)
     {
-        //
+        return HomeResource::collection(Home::filter($filter)->get());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +31,7 @@ class HomeController extends Controller
      */
     public function show(Home $home)
     {
-        //
+        return new HomeResource($home);
     }
 
     /**

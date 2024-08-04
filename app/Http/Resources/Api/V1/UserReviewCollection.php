@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Api\V1;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -25,7 +25,7 @@ class UserReviewCollection extends ResourceCollection
         return [
             'type' => 'user_reviews',
             'user_id' => $this->user_id,
-            'attribute' => $this->collection
+            'attributes' => $this->collection
         ];
     }
 }

@@ -10,6 +10,7 @@ use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -36,6 +37,20 @@ class AuthController extends Controller
                 ]
             );
 
+    }
+
+    public function google()
+    {
+        //send the user's request to google
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleRedirect()
+    {
+        // get oauth request back from google to authenticate user
+        $user = Socialite::driver('google')->user();
+
+        dd($user);
     }
     public function login(LoginUserRequest $request)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -11,7 +11,7 @@ class StoreHomeReviewRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -19,10 +19,12 @@ class StoreHomeReviewRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules() : array
     {
         return [
-            //
+            'data.attributes.rating' => ['required', 'integer', 'in:1,2,3,4,5'],
+//            'data.attributes.user_id' => ['required', 'integer', 'exists:users,id'],
+            'data.attributes.home_id' => ['required', 'integer', 'exists:homes,id'],
         ];
     }
 }

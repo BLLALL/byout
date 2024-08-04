@@ -21,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 // users
 
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('login/google', [AuthController::class, 'google']);
+Route::post('login/google/redirect', [AuthController::class, 'googleRedirect']);
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 
