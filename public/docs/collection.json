@@ -1,0 +1,738 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/real-estate.test"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "3648b692-8093-4165-b8f3-089e9476ad8e",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "POST api\/login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"ykutch@example.net\",\"password\":\"k*M)#1HE\\\\&G>fW\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/login\/google",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login\/google",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login\/google"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/login\/google\/redirect",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login\/google\/redirect",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login\/google\/redirect"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/register",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"name\":\"aovjdrw\",\"email\":\"dicki.clementina@example.com\",\"password\":\"u:1#_ffdz]\"}}}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/logout",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/user"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/homes",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/homes"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"type\":\"Home\",\"id\":1,\"attributes\":{\"title\":\"explicabo perferendis qui\",\"description\":\"Enim accusamus voluptatum necessitatibus.\",\"bathrooms_no\":3,\"bedrooms_no\":10,\"price\":2028504,\"location\":\"Cairo\",\"area\":468,\"avg_rating\":4.5,\"rating_count\":2,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":5},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/5\"]}}},{\"type\":\"Home\",\"id\":2,\"attributes\":{\"title\":\"eos nisi vitae\",\"description\":\"Quidem harum saepe maxime voluptas omnis repudiandae.\",\"bathrooms_no\":9,\"bedrooms_no\":10,\"price\":4991088,\"location\":\"Dahab\",\"area\":566,\"avg_rating\":3.75,\"rating_count\":8,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":3},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/3\"]}}},{\"type\":\"Home\",\"id\":3,\"attributes\":{\"title\":\"voluptatem fugiat mollitia\",\"description\":\"Enim velit consequatur qui.\",\"bathrooms_no\":7,\"bedrooms_no\":1,\"price\":5521880,\"location\":\"Benha\",\"area\":439,\"avg_rating\":3.43,\"rating_count\":7,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:45.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":5},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/5\"]}}},{\"type\":\"Home\",\"id\":4,\"attributes\":{\"title\":\"occaecati et dolorem\",\"description\":\"Reiciendis et possimus enim eius rem et sed temporibus.\",\"bathrooms_no\":5,\"bedrooms_no\":10,\"price\":4147898,\"location\":\"Dahab\",\"area\":708,\"avg_rating\":3.5,\"rating_count\":2,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":2},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/2\"]}}},{\"type\":\"Home\",\"id\":5,\"attributes\":{\"title\":\"saepe ullam nesciunt\",\"description\":\"Dignissimos rem aliquam voluptatem.\",\"bathrooms_no\":10,\"bedrooms_no\":6,\"price\":6481693,\"location\":\"6 October\",\"area\":321,\"avg_rating\":3.2,\"rating_count\":5,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":4},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/4\"]}}},{\"type\":\"Home\",\"id\":6,\"attributes\":{\"title\":\"voluptates quis consequatur\",\"description\":\"Amet repellendus doloribus molestiae enim repellendus.\",\"bathrooms_no\":3,\"bedrooms_no\":8,\"price\":1456190,\"location\":\"6 October\",\"area\":569,\"avg_rating\":3.27,\"rating_count\":11,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":4},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/4\"]}}},{\"type\":\"Home\",\"id\":7,\"attributes\":{\"title\":\"perspiciatis officiis autem\",\"description\":\"Cumque fugit rerum veritatis repellendus occaecati.\",\"bathrooms_no\":8,\"bedrooms_no\":10,\"price\":8583550,\"location\":\"Dahab\",\"area\":589,\"avg_rating\":3.56,\"rating_count\":9,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":3},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/3\"]}}},{\"type\":\"Home\",\"id\":8,\"attributes\":{\"title\":\"est ut corrupti\",\"description\":\"Numquam et voluptatum necessitatibus et.\",\"bathrooms_no\":10,\"bedrooms_no\":5,\"price\":6837632,\"location\":\"Dahab\",\"area\":269,\"avg_rating\":3.18,\"rating_count\":11,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":5},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/5\"]}}},{\"type\":\"Home\",\"id\":9,\"attributes\":{\"title\":\"corrupti quia laboriosam\",\"description\":\"Quibusdam et perspiciatis et aperiam adipisci eos.\",\"bathrooms_no\":4,\"bedrooms_no\":8,\"price\":2075383,\"location\":\"Alexandria\",\"area\":634,\"avg_rating\":3,\"rating_count\":3,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":3},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/3\"]}}},{\"type\":\"Home\",\"id\":10,\"attributes\":{\"title\":\"nemo modi fugit\",\"description\":\"Perspiciatis modi officia temporibus repellat vel illo.\",\"bathrooms_no\":3,\"bedrooms_no\":2,\"price\":5748709,\"location\":\"Alexandria\",\"area\":197,\"avg_rating\":2.86,\"rating_count\":7,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-07T12:58:13.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":3},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/3\"]}}}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/homes",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/homes"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"title\":\"nobis\",\"description\":\"Aliquam nam labore aut consequuntur quo dolores.\",\"price\":5,\"area\":5,\"bathrooms_no\":17,\"bedrooms_no\":9,\"location\":\"praesentium\",\"user_id\":3}}}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/homes\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/homes\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the home."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"Home\",\"id\":1,\"attributes\":{\"title\":\"explicabo perferendis qui\",\"description\":\"Enim accusamus voluptatum necessitatibus.\",\"bathrooms_no\":3,\"bedrooms_no\":10,\"price\":2028504,\"location\":\"Cairo\",\"area\":468,\"avg_rating\":4.5,\"rating_count\":2,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":5},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/5\"]}}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/homes\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/homes\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the home."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/homes\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/homes\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the home."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/v1\/reviews\/users\/{user_id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/reviews\/users\/:user_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/reviews\/users\/:user_id",
+                            "variable": [
+                                {
+                                    "id": "user_id",
+                                    "key": "user_id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"user_reviews\",\"user_id\":1,\"attributes\":[{\"id\":55,\"rating\":5,\"home_id\":6},{\"id\":63,\"rating\":2,\"home_id\":4},{\"id\":65,\"rating\":4,\"home_id\":10}],\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":1},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/1\"]}}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/v1\/reviews\/homes\/{home_id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/reviews\/homes\/:home_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/reviews\/homes\/:home_id",
+                            "variable": [
+                                {
+                                    "id": "home_id",
+                                    "key": "home_id",
+                                    "value": "1",
+                                    "description": "The ID of the home."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"home_specific_review\",\"home_id\":1,\"attributes\":[{\"id\":1,\"rating\":4,\"user_id\":6},{\"id\":58,\"rating\":5,\"user_id\":4}],\"relationships\":{\"home\":{\"data\":{\"id\":1},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/homes\\\/1\"]}}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/v1\/reviews",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/reviews",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/reviews"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"rating\":\"2\",\"home_id\":12}}}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/v1\/tours",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/tours",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/tours"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"type\":\"Tour\",\"id\":1,\"attributes\":{\"price\":440,\"source\":\"harum\",\"destination\":\"velit\",\"from_date\":null,\"to_date\":null,\"company\":\"beatae\",\"seat_position\":\"c1\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":2,\"attributes\":{\"price\":622,\"source\":\"nam\",\"destination\":\"quae\",\"from_date\":null,\"to_date\":null,\"company\":\"doloremque\",\"seat_position\":\"e3\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":3,\"attributes\":{\"price\":312,\"source\":\"ea\",\"destination\":\"est\",\"from_date\":null,\"to_date\":null,\"company\":\"et\",\"seat_position\":\"c2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":4,\"attributes\":{\"price\":756,\"source\":\"ipsam\",\"destination\":\"corporis\",\"from_date\":null,\"to_date\":null,\"company\":\"minima\",\"seat_position\":\"h3\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":5,\"attributes\":{\"price\":732,\"source\":\"id\",\"destination\":\"ea\",\"from_date\":null,\"to_date\":null,\"company\":\"totam\",\"seat_position\":\"c2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":6,\"attributes\":{\"price\":140,\"source\":\"quidem\",\"destination\":\"architecto\",\"from_date\":null,\"to_date\":null,\"company\":\"quos\",\"seat_position\":\"b2\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":7,\"attributes\":{\"price\":594,\"source\":\"iusto\",\"destination\":\"distinctio\",\"from_date\":null,\"to_date\":null,\"company\":\"quo\",\"seat_position\":\"c1\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":8,\"attributes\":{\"price\":119,\"source\":\"est\",\"destination\":\"recusandae\",\"from_date\":null,\"to_date\":null,\"company\":\"iusto\",\"seat_position\":\"c3\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":9,\"attributes\":{\"price\":113,\"source\":\"qui\",\"destination\":\"et\",\"from_date\":null,\"to_date\":null,\"company\":\"cumque\",\"seat_position\":\"a2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":10,\"attributes\":{\"price\":501,\"source\":\"voluptate\",\"destination\":\"ut\",\"from_date\":null,\"to_date\":null,\"company\":\"consectetur\",\"seat_position\":\"e3\",\"traveller_gender\":\"female\"}}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/v1\/tours\/{tour_id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/tours\/:tour_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/tours\/:tour_id",
+                            "variable": [
+                                {
+                                    "id": "tour_id",
+                                    "key": "tour_id",
+                                    "value": "1",
+                                    "description": "The ID of the tour."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"Tour\",\"id\":1,\"attributes\":{\"price\":440,\"source\":\"harum\",\"destination\":\"velit\",\"from_date\":null,\"to_date\":null,\"company\":\"beatae\",\"seat_position\":\"c1\",\"traveller_gender\":\"male\"}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/v1\/users\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "Authorization",
+                "type": "string"
+            }
+        ]
+    }
+}

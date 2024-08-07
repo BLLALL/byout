@@ -1,0 +1,1534 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://real-estate.test'
+paths:
+  /api/login:
+    post:
+      summary: ''
+      operationId: postApiLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: ykutch@example.net
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: 'k*M)#1HE\&G>fW'
+              required:
+                - email
+                - password
+      security: []
+  /api/login/google:
+    post:
+      summary: ''
+      operationId: postApiLoginGoogle
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/login/google/redirect:
+    post:
+      summary: ''
+      operationId: postApiLoginGoogleRedirect
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/register:
+    post:
+      summary: ''
+      operationId: postApiRegister
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    attributes:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        name:
+                          type: string
+                          description: 'Must not be greater than 50 characters.'
+                          example: aovjdrw
+                        email:
+                          type: string
+                          description: 'Must be a valid email address.'
+                          example: dicki.clementina@example.com
+                        password:
+                          type: string
+                          description: 'Must be at least 8 characters.'
+                          example: 'u:1#_ffdz]'
+      security: []
+  /api/logout:
+    post:
+      summary: ''
+      operationId: postApiLogout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/homes:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      type: Home
+                      id: 1
+                      attributes:
+                        title: 'explicabo perferendis qui'
+                        description: 'Enim accusamus voluptatum necessitatibus.'
+                        bathrooms_no: 3
+                        bedrooms_no: 10
+                        price: 2028504
+                        location: Cairo
+                        area: 468
+                        avg_rating: 4.5
+                        rating_count: 2
+                        created_at: '2024-08-06T16:02:45.000000Z'
+                        updated_at: '2024-08-06T16:02:46.000000Z'
+                      relationships:
+                        author:
+                          data:
+                            type: user
+                            id: 5
+                          links:
+                            - self
+                            - 'http://real-estate.test/api/v1/users/5'
+                    -
+                      type: Home
+                      id: 2
+                      attributes:
+                        title: 'eos nisi vitae'
+                        description: 'Quidem harum saepe maxime voluptas omnis repudiandae.'
+                        bathrooms_no: 9
+                        bedrooms_no: 10
+                        price: 4991088
+                        location: Dahab
+                        area: 566
+                        avg_rating: 3.75
+                        rating_count: 8
+                        created_at: '2024-08-06T16:02:45.000000Z'
+                        updated_at: '2024-08-06T16:02:46.000000Z'
+                      relationships:
+                        author:
+                          data:
+                            type: user
+                            id: 3
+                          links:
+                            - self
+                            - 'http://real-estate.test/api/v1/users/3'
+                    -
+                      type: Home
+                      id: 3
+                      attributes:
+                        title: 'voluptatem fugiat mollitia'
+                        description: 'Enim velit consequatur qui.'
+                        bathrooms_no: 7
+                        bedrooms_no: 1
+                        price: 5521880
+                        location: Benha
+                        area: 439
+                        avg_rating: 3.43
+                        rating_count: 7
+                        created_at: '2024-08-06T16:02:45.000000Z'
+                        updated_at: '2024-08-06T16:02:45.000000Z'
+                      relationships:
+                        author:
+                          data:
+                            type: user
+                            id: 5
+                          links:
+                            - self
+                            - 'http://real-estate.test/api/v1/users/5'
+                    -
+                      type: Home
+                      id: 4
+                      attributes:
+                        title: 'occaecati et dolorem'
+                        description: 'Reiciendis et possimus enim eius rem et sed temporibus.'
+                        bathrooms_no: 5
+                        bedrooms_no: 10
+                        price: 4147898
+                        location: Dahab
+                        area: 708
+                        avg_rating: 3.5
+                        rating_count: 2
+                        created_at: '2024-08-06T16:02:45.000000Z'
+                        updated_at: '2024-08-06T16:02:46.000000Z'
+                      relationships:
+                        author:
+                          data:
+                            type: user
+                            id: 2
+                          links:
+                            - self
+                            - 'http://real-estate.test/api/v1/users/2'
+                    -
+                      type: Home
+                      id: 5
+                      attributes:
+                        title: 'saepe ullam nesciunt'
+                        description: 'Dignissimos rem aliquam voluptatem.'
+                        bathrooms_no: 10
+                        bedrooms_no: 6
+                        price: 6481693
+                        location: '6 October'
+                        area: 321
+                        avg_rating: 3.2
+                        rating_count: 5
+                        created_at: '2024-08-06T16:02:45.000000Z'
+                        updated_at: '2024-08-06T16:02:46.000000Z'
+                      relationships:
+                        author:
+                          data:
+                            type: user
+                            id: 4
+                          links:
+                            - self
+                            - 'http://real-estate.test/api/v1/users/4'
+                    -
+                      type: Home
+                      id: 6
+                      attributes:
+                        title: 'voluptates quis consequatur'
+                        description: 'Amet repellendus doloribus molestiae enim repellendus.'
+                        bathrooms_no: 3
+                        bedrooms_no: 8
+                        price: 1456190
+                        location: '6 October'
+                        area: 569
+                        avg_rating: 3.27
+                        rating_count: 11
+                        created_at: '2024-08-06T16:02:45.000000Z'
+                        updated_at: '2024-08-06T16:02:46.000000Z'
+                      relationships:
+                        author:
+                          data:
+                            type: user
+                            id: 4
+                          links:
+                            - self
+                            - 'http://real-estate.test/api/v1/users/4'
+                    -
+                      type: Home
+                      id: 7
+                      attributes:
+                        title: 'perspiciatis officiis autem'
+                        description: 'Cumque fugit rerum veritatis repellendus occaecati.'
+                        bathrooms_no: 8
+                        bedrooms_no: 10
+                        price: 8583550
+                        location: Dahab
+                        area: 589
+                        avg_rating: 3.56
+                        rating_count: 9
+                        created_at: '2024-08-06T16:02:45.000000Z'
+                        updated_at: '2024-08-06T16:02:46.000000Z'
+                      relationships:
+                        author:
+                          data:
+                            type: user
+                            id: 3
+                          links:
+                            - self
+                            - 'http://real-estate.test/api/v1/users/3'
+                    -
+                      type: Home
+                      id: 8
+                      attributes:
+                        title: 'est ut corrupti'
+                        description: 'Numquam et voluptatum necessitatibus et.'
+                        bathrooms_no: 10
+                        bedrooms_no: 5
+                        price: 6837632
+                        location: Dahab
+                        area: 269
+                        avg_rating: 3.18
+                        rating_count: 11
+                        created_at: '2024-08-06T16:02:45.000000Z'
+                        updated_at: '2024-08-06T16:02:46.000000Z'
+                      relationships:
+                        author:
+                          data:
+                            type: user
+                            id: 5
+                          links:
+                            - self
+                            - 'http://real-estate.test/api/v1/users/5'
+                    -
+                      type: Home
+                      id: 9
+                      attributes:
+                        title: 'corrupti quia laboriosam'
+                        description: 'Quibusdam et perspiciatis et aperiam adipisci eos.'
+                        bathrooms_no: 4
+                        bedrooms_no: 8
+                        price: 2075383
+                        location: Alexandria
+                        area: 634
+                        avg_rating: 3
+                        rating_count: 3
+                        created_at: '2024-08-06T16:02:45.000000Z'
+                        updated_at: '2024-08-06T16:02:46.000000Z'
+                      relationships:
+                        author:
+                          data:
+                            type: user
+                            id: 3
+                          links:
+                            - self
+                            - 'http://real-estate.test/api/v1/users/3'
+                    -
+                      type: Home
+                      id: 10
+                      attributes:
+                        title: 'nemo modi fugit'
+                        description: 'Perspiciatis modi officia temporibus repellat vel illo.'
+                        bathrooms_no: 3
+                        bedrooms_no: 2
+                        price: 5748709
+                        location: Alexandria
+                        area: 197
+                        avg_rating: 2.86
+                        rating_count: 7
+                        created_at: '2024-08-06T16:02:45.000000Z'
+                        updated_at: '2024-08-07T12:58:13.000000Z'
+                      relationships:
+                        author:
+                          data:
+                            type: user
+                            id: 3
+                          links:
+                            - self
+                            - 'http://real-estate.test/api/v1/users/3'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        type: Home
+                        id: 1
+                        attributes:
+                          title: 'explicabo perferendis qui'
+                          description: 'Enim accusamus voluptatum necessitatibus.'
+                          bathrooms_no: 3
+                          bedrooms_no: 10
+                          price: 2028504
+                          location: Cairo
+                          area: 468
+                          avg_rating: 4.5
+                          rating_count: 2
+                          created_at: '2024-08-06T16:02:45.000000Z'
+                          updated_at: '2024-08-06T16:02:46.000000Z'
+                        relationships:
+                          author:
+                            data:
+                              type: user
+                              id: 5
+                            links:
+                              - self
+                              - 'http://real-estate.test/api/v1/users/5'
+                      -
+                        type: Home
+                        id: 2
+                        attributes:
+                          title: 'eos nisi vitae'
+                          description: 'Quidem harum saepe maxime voluptas omnis repudiandae.'
+                          bathrooms_no: 9
+                          bedrooms_no: 10
+                          price: 4991088
+                          location: Dahab
+                          area: 566
+                          avg_rating: 3.75
+                          rating_count: 8
+                          created_at: '2024-08-06T16:02:45.000000Z'
+                          updated_at: '2024-08-06T16:02:46.000000Z'
+                        relationships:
+                          author:
+                            data:
+                              type: user
+                              id: 3
+                            links:
+                              - self
+                              - 'http://real-estate.test/api/v1/users/3'
+                      -
+                        type: Home
+                        id: 3
+                        attributes:
+                          title: 'voluptatem fugiat mollitia'
+                          description: 'Enim velit consequatur qui.'
+                          bathrooms_no: 7
+                          bedrooms_no: 1
+                          price: 5521880
+                          location: Benha
+                          area: 439
+                          avg_rating: 3.43
+                          rating_count: 7
+                          created_at: '2024-08-06T16:02:45.000000Z'
+                          updated_at: '2024-08-06T16:02:45.000000Z'
+                        relationships:
+                          author:
+                            data:
+                              type: user
+                              id: 5
+                            links:
+                              - self
+                              - 'http://real-estate.test/api/v1/users/5'
+                      -
+                        type: Home
+                        id: 4
+                        attributes:
+                          title: 'occaecati et dolorem'
+                          description: 'Reiciendis et possimus enim eius rem et sed temporibus.'
+                          bathrooms_no: 5
+                          bedrooms_no: 10
+                          price: 4147898
+                          location: Dahab
+                          area: 708
+                          avg_rating: 3.5
+                          rating_count: 2
+                          created_at: '2024-08-06T16:02:45.000000Z'
+                          updated_at: '2024-08-06T16:02:46.000000Z'
+                        relationships:
+                          author:
+                            data:
+                              type: user
+                              id: 2
+                            links:
+                              - self
+                              - 'http://real-estate.test/api/v1/users/2'
+                      -
+                        type: Home
+                        id: 5
+                        attributes:
+                          title: 'saepe ullam nesciunt'
+                          description: 'Dignissimos rem aliquam voluptatem.'
+                          bathrooms_no: 10
+                          bedrooms_no: 6
+                          price: 6481693
+                          location: '6 October'
+                          area: 321
+                          avg_rating: 3.2
+                          rating_count: 5
+                          created_at: '2024-08-06T16:02:45.000000Z'
+                          updated_at: '2024-08-06T16:02:46.000000Z'
+                        relationships:
+                          author:
+                            data:
+                              type: user
+                              id: 4
+                            links:
+                              - self
+                              - 'http://real-estate.test/api/v1/users/4'
+                      -
+                        type: Home
+                        id: 6
+                        attributes:
+                          title: 'voluptates quis consequatur'
+                          description: 'Amet repellendus doloribus molestiae enim repellendus.'
+                          bathrooms_no: 3
+                          bedrooms_no: 8
+                          price: 1456190
+                          location: '6 October'
+                          area: 569
+                          avg_rating: 3.27
+                          rating_count: 11
+                          created_at: '2024-08-06T16:02:45.000000Z'
+                          updated_at: '2024-08-06T16:02:46.000000Z'
+                        relationships:
+                          author:
+                            data:
+                              type: user
+                              id: 4
+                            links:
+                              - self
+                              - 'http://real-estate.test/api/v1/users/4'
+                      -
+                        type: Home
+                        id: 7
+                        attributes:
+                          title: 'perspiciatis officiis autem'
+                          description: 'Cumque fugit rerum veritatis repellendus occaecati.'
+                          bathrooms_no: 8
+                          bedrooms_no: 10
+                          price: 8583550
+                          location: Dahab
+                          area: 589
+                          avg_rating: 3.56
+                          rating_count: 9
+                          created_at: '2024-08-06T16:02:45.000000Z'
+                          updated_at: '2024-08-06T16:02:46.000000Z'
+                        relationships:
+                          author:
+                            data:
+                              type: user
+                              id: 3
+                            links:
+                              - self
+                              - 'http://real-estate.test/api/v1/users/3'
+                      -
+                        type: Home
+                        id: 8
+                        attributes:
+                          title: 'est ut corrupti'
+                          description: 'Numquam et voluptatum necessitatibus et.'
+                          bathrooms_no: 10
+                          bedrooms_no: 5
+                          price: 6837632
+                          location: Dahab
+                          area: 269
+                          avg_rating: 3.18
+                          rating_count: 11
+                          created_at: '2024-08-06T16:02:45.000000Z'
+                          updated_at: '2024-08-06T16:02:46.000000Z'
+                        relationships:
+                          author:
+                            data:
+                              type: user
+                              id: 5
+                            links:
+                              - self
+                              - 'http://real-estate.test/api/v1/users/5'
+                      -
+                        type: Home
+                        id: 9
+                        attributes:
+                          title: 'corrupti quia laboriosam'
+                          description: 'Quibusdam et perspiciatis et aperiam adipisci eos.'
+                          bathrooms_no: 4
+                          bedrooms_no: 8
+                          price: 2075383
+                          location: Alexandria
+                          area: 634
+                          avg_rating: 3
+                          rating_count: 3
+                          created_at: '2024-08-06T16:02:45.000000Z'
+                          updated_at: '2024-08-06T16:02:46.000000Z'
+                        relationships:
+                          author:
+                            data:
+                              type: user
+                              id: 3
+                            links:
+                              - self
+                              - 'http://real-estate.test/api/v1/users/3'
+                      -
+                        type: Home
+                        id: 10
+                        attributes:
+                          title: 'nemo modi fugit'
+                          description: 'Perspiciatis modi officia temporibus repellat vel illo.'
+                          bathrooms_no: 3
+                          bedrooms_no: 2
+                          price: 5748709
+                          location: Alexandria
+                          area: 197
+                          avg_rating: 2.86
+                          rating_count: 7
+                          created_at: '2024-08-06T16:02:45.000000Z'
+                          updated_at: '2024-08-07T12:58:13.000000Z'
+                        relationships:
+                          author:
+                            data:
+                              type: user
+                              id: 3
+                            links:
+                              - self
+                              - 'http://real-estate.test/api/v1/users/3'
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: Home
+                        id:
+                          type: integer
+                          example: 1
+                        attributes:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                              example: 'explicabo perferendis qui'
+                            description:
+                              type: string
+                              example: 'Enim accusamus voluptatum necessitatibus.'
+                            bathrooms_no:
+                              type: integer
+                              example: 3
+                            bedrooms_no:
+                              type: integer
+                              example: 10
+                            price:
+                              type: integer
+                              example: 2028504
+                            location:
+                              type: string
+                              example: Cairo
+                            area:
+                              type: integer
+                              example: 468
+                            avg_rating:
+                              type: number
+                              example: 4.5
+                            rating_count:
+                              type: integer
+                              example: 2
+                            created_at:
+                              type: string
+                              example: '2024-08-06T16:02:45.000000Z'
+                            updated_at:
+                              type: string
+                              example: '2024-08-06T16:02:46.000000Z'
+                        relationships:
+                          type: object
+                          properties:
+                            author:
+                              type: object
+                              properties:
+                                data:
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      example: user
+                                    id:
+                                      type: integer
+                                      example: 5
+                                links:
+                                  type: array
+                                  example:
+                                    - self
+                                    - 'http://real-estate.test/api/v1/users/5'
+                                  items:
+                                    type: string
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    attributes:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        title:
+                          type: string
+                          description: ''
+                          example: nobis
+                        description:
+                          type: string
+                          description: ''
+                          example: 'Aliquam nam labore aut consequuntur quo dolores.'
+                        price:
+                          type: integer
+                          description: ''
+                          example: 5
+                        area:
+                          type: integer
+                          description: ''
+                          example: 5
+                        bathrooms_no:
+                          type: integer
+                          description: ''
+                          example: 17
+                        bedrooms_no:
+                          type: integer
+                          description: ''
+                          example: 9
+                        location:
+                          type: string
+                          description: ''
+                          example: praesentium
+                        user_id:
+                          type: integer
+                          description: ''
+                          example: 3
+      security: []
+  '/api/v1/homes/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    type: Home
+                    id: 1
+                    attributes:
+                      title: 'explicabo perferendis qui'
+                      description: 'Enim accusamus voluptatum necessitatibus.'
+                      bathrooms_no: 3
+                      bedrooms_no: 10
+                      price: 2028504
+                      location: Cairo
+                      area: 468
+                      avg_rating: 4.5
+                      rating_count: 2
+                      created_at: '2024-08-06T16:02:45.000000Z'
+                      updated_at: '2024-08-06T16:02:46.000000Z'
+                    relationships:
+                      author:
+                        data:
+                          type: user
+                          id: 5
+                        links:
+                          - self
+                          - 'http://real-estate.test/api/v1/users/5'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: Home
+                      id:
+                        type: integer
+                        example: 1
+                      attributes:
+                        type: object
+                        properties:
+                          title:
+                            type: string
+                            example: 'explicabo perferendis qui'
+                          description:
+                            type: string
+                            example: 'Enim accusamus voluptatum necessitatibus.'
+                          bathrooms_no:
+                            type: integer
+                            example: 3
+                          bedrooms_no:
+                            type: integer
+                            example: 10
+                          price:
+                            type: integer
+                            example: 2028504
+                          location:
+                            type: string
+                            example: Cairo
+                          area:
+                            type: integer
+                            example: 468
+                          avg_rating:
+                            type: number
+                            example: 4.5
+                          rating_count:
+                            type: integer
+                            example: 2
+                          created_at:
+                            type: string
+                            example: '2024-08-06T16:02:45.000000Z'
+                          updated_at:
+                            type: string
+                            example: '2024-08-06T16:02:46.000000Z'
+                      relationships:
+                        type: object
+                        properties:
+                          author:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    example: user
+                                  id:
+                                    type: integer
+                                    example: 5
+                              links:
+                                type: array
+                                example:
+                                  - self
+                                  - 'http://real-estate.test/api/v1/users/5'
+                                items:
+                                  type: string
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the home.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/v1/reviews/users/{user_id}':
+    get:
+      summary: ''
+      operationId: getApiV1ReviewsUsersUser_id
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    type: user_reviews
+                    user_id: 1
+                    attributes:
+                      -
+                        id: 55
+                        rating: 5
+                        home_id: 6
+                      -
+                        id: 63
+                        rating: 2
+                        home_id: 4
+                      -
+                        id: 65
+                        rating: 4
+                        home_id: 10
+                    relationships:
+                      author:
+                        data:
+                          type: user
+                          id: 1
+                        links:
+                          - self
+                          - 'http://real-estate.test/api/v1/users/1'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: user_reviews
+                      user_id:
+                        type: integer
+                        example: 1
+                      attributes:
+                        type: array
+                        example:
+                          -
+                            id: 55
+                            rating: 5
+                            home_id: 6
+                          -
+                            id: 63
+                            rating: 2
+                            home_id: 4
+                          -
+                            id: 65
+                            rating: 4
+                            home_id: 10
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 55
+                            rating:
+                              type: integer
+                              example: 5
+                            home_id:
+                              type: integer
+                              example: 6
+                      relationships:
+                        type: object
+                        properties:
+                          author:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    example: user
+                                  id:
+                                    type: integer
+                                    example: 1
+                              links:
+                                type: array
+                                example:
+                                  - self
+                                  - 'http://real-estate.test/api/v1/users/1'
+                                items:
+                                  type: string
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: user_id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/v1/reviews/homes/{home_id}':
+    get:
+      summary: ''
+      operationId: getApiV1ReviewsHomesHome_id
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    type: home_specific_review
+                    home_id: 1
+                    attributes:
+                      -
+                        id: 1
+                        rating: 4
+                        user_id: 6
+                      -
+                        id: 58
+                        rating: 5
+                        user_id: 4
+                    relationships:
+                      home:
+                        data:
+                          id: 1
+                        links:
+                          - self
+                          - 'http://real-estate.test/api/v1/homes/1'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: home_specific_review
+                      home_id:
+                        type: integer
+                        example: 1
+                      attributes:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            rating: 4
+                            user_id: 6
+                          -
+                            id: 58
+                            rating: 5
+                            user_id: 4
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            rating:
+                              type: integer
+                              example: 4
+                            user_id:
+                              type: integer
+                              example: 6
+                      relationships:
+                        type: object
+                        properties:
+                          home:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                    example: 1
+                              links:
+                                type: array
+                                example:
+                                  - self
+                                  - 'http://real-estate.test/api/v1/homes/1'
+                                items:
+                                  type: string
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: home_id
+        description: 'The ID of the home.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/reviews:
+    post:
+      summary: ''
+      operationId: postApiV1Reviews
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    attributes:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        rating:
+                          type: integer
+                          description: ''
+                          example: '2'
+                          enum:
+                            - '1'
+                            - '2'
+                            - '3'
+                            - '4'
+                            - '5'
+                        home_id:
+                          type: integer
+                          description: ''
+                          example: 12
+      security: []
+  /api/v1/tours:
+    get:
+      summary: ''
+      operationId: getApiV1Tours
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      type: Tour
+                      id: 1
+                      attributes:
+                        price: 440
+                        source: harum
+                        destination: velit
+                        from_date: null
+                        to_date: null
+                        company: beatae
+                        seat_position: c1
+                        traveller_gender: male
+                    -
+                      type: Tour
+                      id: 2
+                      attributes:
+                        price: 622
+                        source: nam
+                        destination: quae
+                        from_date: null
+                        to_date: null
+                        company: doloremque
+                        seat_position: e3
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 3
+                      attributes:
+                        price: 312
+                        source: ea
+                        destination: est
+                        from_date: null
+                        to_date: null
+                        company: et
+                        seat_position: c2
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 4
+                      attributes:
+                        price: 756
+                        source: ipsam
+                        destination: corporis
+                        from_date: null
+                        to_date: null
+                        company: minima
+                        seat_position: h3
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 5
+                      attributes:
+                        price: 732
+                        source: id
+                        destination: ea
+                        from_date: null
+                        to_date: null
+                        company: totam
+                        seat_position: c2
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 6
+                      attributes:
+                        price: 140
+                        source: quidem
+                        destination: architecto
+                        from_date: null
+                        to_date: null
+                        company: quos
+                        seat_position: b2
+                        traveller_gender: male
+                    -
+                      type: Tour
+                      id: 7
+                      attributes:
+                        price: 594
+                        source: iusto
+                        destination: distinctio
+                        from_date: null
+                        to_date: null
+                        company: quo
+                        seat_position: c1
+                        traveller_gender: male
+                    -
+                      type: Tour
+                      id: 8
+                      attributes:
+                        price: 119
+                        source: est
+                        destination: recusandae
+                        from_date: null
+                        to_date: null
+                        company: iusto
+                        seat_position: c3
+                        traveller_gender: male
+                    -
+                      type: Tour
+                      id: 9
+                      attributes:
+                        price: 113
+                        source: qui
+                        destination: et
+                        from_date: null
+                        to_date: null
+                        company: cumque
+                        seat_position: a2
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 10
+                      attributes:
+                        price: 501
+                        source: voluptate
+                        destination: ut
+                        from_date: null
+                        to_date: null
+                        company: consectetur
+                        seat_position: e3
+                        traveller_gender: female
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        type: Tour
+                        id: 1
+                        attributes:
+                          price: 440
+                          source: harum
+                          destination: velit
+                          from_date: null
+                          to_date: null
+                          company: beatae
+                          seat_position: c1
+                          traveller_gender: male
+                      -
+                        type: Tour
+                        id: 2
+                        attributes:
+                          price: 622
+                          source: nam
+                          destination: quae
+                          from_date: null
+                          to_date: null
+                          company: doloremque
+                          seat_position: e3
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 3
+                        attributes:
+                          price: 312
+                          source: ea
+                          destination: est
+                          from_date: null
+                          to_date: null
+                          company: et
+                          seat_position: c2
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 4
+                        attributes:
+                          price: 756
+                          source: ipsam
+                          destination: corporis
+                          from_date: null
+                          to_date: null
+                          company: minima
+                          seat_position: h3
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 5
+                        attributes:
+                          price: 732
+                          source: id
+                          destination: ea
+                          from_date: null
+                          to_date: null
+                          company: totam
+                          seat_position: c2
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 6
+                        attributes:
+                          price: 140
+                          source: quidem
+                          destination: architecto
+                          from_date: null
+                          to_date: null
+                          company: quos
+                          seat_position: b2
+                          traveller_gender: male
+                      -
+                        type: Tour
+                        id: 7
+                        attributes:
+                          price: 594
+                          source: iusto
+                          destination: distinctio
+                          from_date: null
+                          to_date: null
+                          company: quo
+                          seat_position: c1
+                          traveller_gender: male
+                      -
+                        type: Tour
+                        id: 8
+                        attributes:
+                          price: 119
+                          source: est
+                          destination: recusandae
+                          from_date: null
+                          to_date: null
+                          company: iusto
+                          seat_position: c3
+                          traveller_gender: male
+                      -
+                        type: Tour
+                        id: 9
+                        attributes:
+                          price: 113
+                          source: qui
+                          destination: et
+                          from_date: null
+                          to_date: null
+                          company: cumque
+                          seat_position: a2
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 10
+                        attributes:
+                          price: 501
+                          source: voluptate
+                          destination: ut
+                          from_date: null
+                          to_date: null
+                          company: consectetur
+                          seat_position: e3
+                          traveller_gender: female
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: Tour
+                        id:
+                          type: integer
+                          example: 1
+                        attributes:
+                          type: object
+                          properties:
+                            price:
+                              type: integer
+                              example: 440
+                            source:
+                              type: string
+                              example: harum
+                            destination:
+                              type: string
+                              example: velit
+                            from_date:
+                              type: string
+                              example: null
+                            to_date:
+                              type: string
+                              example: null
+                            company:
+                              type: string
+                              example: beatae
+                            seat_position:
+                              type: string
+                              example: c1
+                            traveller_gender:
+                              type: string
+                              example: male
+      tags:
+        - Endpoints
+      security: []
+  '/api/v1/tours/{tour_id}':
+    get:
+      summary: ''
+      operationId: getApiV1ToursTour_id
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    type: Tour
+                    id: 1
+                    attributes:
+                      price: 440
+                      source: harum
+                      destination: velit
+                      from_date: null
+                      to_date: null
+                      company: beatae
+                      seat_position: c1
+                      traveller_gender: male
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: Tour
+                      id:
+                        type: integer
+                        example: 1
+                      attributes:
+                        type: object
+                        properties:
+                          price:
+                            type: integer
+                            example: 440
+                          source:
+                            type: string
+                            example: harum
+                          destination:
+                            type: string
+                            example: velit
+                          from_date:
+                            type: string
+                            example: null
+                          to_date:
+                            type: string
+                            example: null
+                          company:
+                            type: string
+                            example: beatae
+                          seat_position:
+                            type: string
+                            example: c1
+                          traveller_gender:
+                            type: string
+                            example: male
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: tour_id
+        description: 'The ID of the tour.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/v1/users/{id}':
+    get:
+      summary: ''
+      operationId: getApiV1UsersId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
+security:
+  -
+    default: []

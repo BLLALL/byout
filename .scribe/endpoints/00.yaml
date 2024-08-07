@@ -1,0 +1,871 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: ykutch@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 8 characters.'
+        required: true
+        example: 'k*M)#1HE\&G>fW'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      email: ykutch@example.net
+      password: 'k*M)#1HE\&G>fW'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/login/google
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/login/google/redirect
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/register
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data.attributes:
+        name: data.attributes
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data:
+        name: data
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.name:
+        name: data.attributes.name
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: aovjdrw
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.email:
+        name: data.attributes.email
+        description: 'Must be a valid email address.'
+        required: true
+        example: dicki.clementina@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.password:
+        name: data.attributes.password
+        description: 'Must be at least 8 characters.'
+        required: true
+        example: 'u:1#_ffdz]'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          name: aovjdrw
+          email: dicki.clementina@example.com
+          password: 'u:1#_ffdz]'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/user
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/homes
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"type":"Home","id":1,"attributes":{"title":"explicabo perferendis qui","description":"Enim accusamus voluptatum necessitatibus.","bathrooms_no":3,"bedrooms_no":10,"price":2028504,"location":"Cairo","area":468,"avg_rating":4.5,"rating_count":2,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-06T16:02:46.000000Z"},"relationships":{"author":{"data":{"type":"user","id":5},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/5"]}}},{"type":"Home","id":2,"attributes":{"title":"eos nisi vitae","description":"Quidem harum saepe maxime voluptas omnis repudiandae.","bathrooms_no":9,"bedrooms_no":10,"price":4991088,"location":"Dahab","area":566,"avg_rating":3.75,"rating_count":8,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-06T16:02:46.000000Z"},"relationships":{"author":{"data":{"type":"user","id":3},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/3"]}}},{"type":"Home","id":3,"attributes":{"title":"voluptatem fugiat mollitia","description":"Enim velit consequatur qui.","bathrooms_no":7,"bedrooms_no":1,"price":5521880,"location":"Benha","area":439,"avg_rating":3.43,"rating_count":7,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-06T16:02:45.000000Z"},"relationships":{"author":{"data":{"type":"user","id":5},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/5"]}}},{"type":"Home","id":4,"attributes":{"title":"occaecati et dolorem","description":"Reiciendis et possimus enim eius rem et sed temporibus.","bathrooms_no":5,"bedrooms_no":10,"price":4147898,"location":"Dahab","area":708,"avg_rating":3.5,"rating_count":2,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-06T16:02:46.000000Z"},"relationships":{"author":{"data":{"type":"user","id":2},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/2"]}}},{"type":"Home","id":5,"attributes":{"title":"saepe ullam nesciunt","description":"Dignissimos rem aliquam voluptatem.","bathrooms_no":10,"bedrooms_no":6,"price":6481693,"location":"6 October","area":321,"avg_rating":3.2,"rating_count":5,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-06T16:02:46.000000Z"},"relationships":{"author":{"data":{"type":"user","id":4},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/4"]}}},{"type":"Home","id":6,"attributes":{"title":"voluptates quis consequatur","description":"Amet repellendus doloribus molestiae enim repellendus.","bathrooms_no":3,"bedrooms_no":8,"price":1456190,"location":"6 October","area":569,"avg_rating":3.27,"rating_count":11,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-06T16:02:46.000000Z"},"relationships":{"author":{"data":{"type":"user","id":4},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/4"]}}},{"type":"Home","id":7,"attributes":{"title":"perspiciatis officiis autem","description":"Cumque fugit rerum veritatis repellendus occaecati.","bathrooms_no":8,"bedrooms_no":10,"price":8583550,"location":"Dahab","area":589,"avg_rating":3.56,"rating_count":9,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-06T16:02:46.000000Z"},"relationships":{"author":{"data":{"type":"user","id":3},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/3"]}}},{"type":"Home","id":8,"attributes":{"title":"est ut corrupti","description":"Numquam et voluptatum necessitatibus et.","bathrooms_no":10,"bedrooms_no":5,"price":6837632,"location":"Dahab","area":269,"avg_rating":3.18,"rating_count":11,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-06T16:02:46.000000Z"},"relationships":{"author":{"data":{"type":"user","id":5},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/5"]}}},{"type":"Home","id":9,"attributes":{"title":"corrupti quia laboriosam","description":"Quibusdam et perspiciatis et aperiam adipisci eos.","bathrooms_no":4,"bedrooms_no":8,"price":2075383,"location":"Alexandria","area":634,"avg_rating":3,"rating_count":3,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-06T16:02:46.000000Z"},"relationships":{"author":{"data":{"type":"user","id":3},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/3"]}}},{"type":"Home","id":10,"attributes":{"title":"nemo modi fugit","description":"Perspiciatis modi officia temporibus repellat vel illo.","bathrooms_no":3,"bedrooms_no":2,"price":5748709,"location":"Alexandria","area":197,"avg_rating":2.86,"rating_count":7,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-07T12:58:13.000000Z"},"relationships":{"author":{"data":{"type":"user","id":3},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/3"]}}}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/homes
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data.attributes:
+        name: data.attributes
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data:
+        name: data
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.title:
+        name: data.attributes.title
+        description: ''
+        required: true
+        example: nobis
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.description:
+        name: data.attributes.description
+        description: ''
+        required: true
+        example: 'Aliquam nam labore aut consequuntur quo dolores.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.price:
+        name: data.attributes.price
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.area:
+        name: data.attributes.area
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.bathrooms_no:
+        name: data.attributes.bathrooms_no
+        description: ''
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.bedrooms_no:
+        name: data.attributes.bedrooms_no
+        description: ''
+        required: true
+        example: 9
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.location:
+        name: data.attributes.location
+        description: ''
+        required: true
+        example: praesentium
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.user_id:
+        name: data.attributes.user_id
+        description: ''
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          title: nobis
+          description: 'Aliquam nam labore aut consequuntur quo dolores.'
+          price: 5
+          area: 5
+          bathrooms_no: 17
+          bedrooms_no: 9
+          location: praesentium
+          user_id: 3
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/homes/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the home.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"type":"Home","id":1,"attributes":{"title":"explicabo perferendis qui","description":"Enim accusamus voluptatum necessitatibus.","bathrooms_no":3,"bedrooms_no":10,"price":2028504,"location":"Cairo","area":468,"avg_rating":4.5,"rating_count":2,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-06T16:02:46.000000Z"},"relationships":{"author":{"data":{"type":"user","id":5},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/5"]}}}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/v1/homes/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the home.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/homes/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the home.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/reviews/users/{user_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      user_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"type":"user_reviews","user_id":1,"attributes":[{"id":55,"rating":5,"home_id":6},{"id":63,"rating":2,"home_id":4},{"id":65,"rating":4,"home_id":10}],"relationships":{"author":{"data":{"type":"user","id":1},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/1"]}}}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/reviews/homes/{home_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      home_id:
+        name: home_id
+        description: 'The ID of the home.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      home_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"type":"home_specific_review","home_id":1,"attributes":[{"id":1,"rating":4,"user_id":6},{"id":58,"rating":5,"user_id":4}],"relationships":{"home":{"data":{"id":1},"links":["self","http:\/\/real-estate.test\/api\/v1\/homes\/1"]}}}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/reviews
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data.attributes:
+        name: data.attributes
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data:
+        name: data
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.rating:
+        name: data.attributes.rating
+        description: ''
+        required: true
+        example: '2'
+        type: integer
+        enumValues:
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+          - '5'
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.home_id:
+        name: data.attributes.home_id
+        description: ''
+        required: true
+        example: 12
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          rating: '2'
+          home_id: 12
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/tours
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"type":"Tour","id":1,"attributes":{"price":440,"source":"harum","destination":"velit","from_date":null,"to_date":null,"company":"beatae","seat_position":"c1","traveller_gender":"male"}},{"type":"Tour","id":2,"attributes":{"price":622,"source":"nam","destination":"quae","from_date":null,"to_date":null,"company":"doloremque","seat_position":"e3","traveller_gender":"female"}},{"type":"Tour","id":3,"attributes":{"price":312,"source":"ea","destination":"est","from_date":null,"to_date":null,"company":"et","seat_position":"c2","traveller_gender":"female"}},{"type":"Tour","id":4,"attributes":{"price":756,"source":"ipsam","destination":"corporis","from_date":null,"to_date":null,"company":"minima","seat_position":"h3","traveller_gender":"female"}},{"type":"Tour","id":5,"attributes":{"price":732,"source":"id","destination":"ea","from_date":null,"to_date":null,"company":"totam","seat_position":"c2","traveller_gender":"female"}},{"type":"Tour","id":6,"attributes":{"price":140,"source":"quidem","destination":"architecto","from_date":null,"to_date":null,"company":"quos","seat_position":"b2","traveller_gender":"male"}},{"type":"Tour","id":7,"attributes":{"price":594,"source":"iusto","destination":"distinctio","from_date":null,"to_date":null,"company":"quo","seat_position":"c1","traveller_gender":"male"}},{"type":"Tour","id":8,"attributes":{"price":119,"source":"est","destination":"recusandae","from_date":null,"to_date":null,"company":"iusto","seat_position":"c3","traveller_gender":"male"}},{"type":"Tour","id":9,"attributes":{"price":113,"source":"qui","destination":"et","from_date":null,"to_date":null,"company":"cumque","seat_position":"a2","traveller_gender":"female"}},{"type":"Tour","id":10,"attributes":{"price":501,"source":"voluptate","destination":"ut","from_date":null,"to_date":null,"company":"consectetur","seat_position":"e3","traveller_gender":"female"}}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/tours/{tour_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      tour_id:
+        name: tour_id
+        description: 'The ID of the tour.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      tour_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"type":"Tour","id":1,"attributes":{"price":440,"source":"harum","destination":"velit","from_date":null,"to_date":null,"company":"beatae","seat_position":"c1","traveller_gender":"male"}}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/users/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

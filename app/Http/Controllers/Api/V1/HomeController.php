@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\filters\HomeFilter;
+use App\Http\Requests\Api\V1\storeHomeRequest;
 use App\Http\Resources\Api\V1\HomeResource;
 use App\Models\Home;
 use Illuminate\Http\Request;
@@ -21,9 +22,9 @@ class HomeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(storeHomeRequest $request)
     {
-        //
+        return new HomeResource(Home::create($request->mappedAttributes()));
     }
 
     /**

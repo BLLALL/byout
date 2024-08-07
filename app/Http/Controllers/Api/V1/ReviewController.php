@@ -31,13 +31,9 @@ class ReviewController extends Controller
     {
         $user = $request->user();
 
-        if (!$user) {
-            return response()->json(['error' => 'User not authenticated'], 401);
-        }
-
         return new ReviewResource(Review::create([
             'rating' => $request->input('data.attributes.rating'),
-            'user_id' => $request->user()->id,
+            'user_id' => $user->id,
             'home_id' => $request->input('data.attributes.home_id'),
         ]));
     }
