@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "3648b692-8093-4165-b8f3-089e9476ad8e",
+        "_postman_id": "79258c05-1880-42c3-9805-03b1bcddc25f",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -41,7 +41,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"ykutch@example.net\",\"password\":\"k*M)#1HE\\\\&G>fW\"}"
+                            "raw": "{\"email\":\"rasheed.kunde@example.com\",\"password\":\"V@Ui2In7rt#1p-~B~\"}"
                         },
                         "description": "",
                         "auth": {
@@ -128,7 +128,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"data\":{\"attributes\":{\"name\":\"aovjdrw\",\"email\":\"dicki.clementina@example.com\",\"password\":\"u:1#_ffdz]\"}}}"
+                            "raw": "{\"data\":{\"attributes\":{\"name\":\"dgrsbhgjzg\",\"email\":\"qherzog@example.net\",\"password\":\"uCBV{f[8aMv)\"}}}"
                         },
                         "description": "",
                         "auth": {
@@ -209,141 +209,6 @@
                             ],
                             "code": 401,
                             "body": "{\"message\":\"Unauthenticated.\"}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "Display a listing of the resource.",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/homes",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/homes"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"data\":[{\"type\":\"Home\",\"id\":1,\"attributes\":{\"title\":\"explicabo perferendis qui\",\"description\":\"Enim accusamus voluptatum necessitatibus.\",\"bathrooms_no\":3,\"bedrooms_no\":10,\"price\":2028504,\"location\":\"Cairo\",\"area\":468,\"avg_rating\":4.5,\"rating_count\":2,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":5},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/5\"]}}},{\"type\":\"Home\",\"id\":2,\"attributes\":{\"title\":\"eos nisi vitae\",\"description\":\"Quidem harum saepe maxime voluptas omnis repudiandae.\",\"bathrooms_no\":9,\"bedrooms_no\":10,\"price\":4991088,\"location\":\"Dahab\",\"area\":566,\"avg_rating\":3.75,\"rating_count\":8,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":3},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/3\"]}}},{\"type\":\"Home\",\"id\":3,\"attributes\":{\"title\":\"voluptatem fugiat mollitia\",\"description\":\"Enim velit consequatur qui.\",\"bathrooms_no\":7,\"bedrooms_no\":1,\"price\":5521880,\"location\":\"Benha\",\"area\":439,\"avg_rating\":3.43,\"rating_count\":7,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:45.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":5},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/5\"]}}},{\"type\":\"Home\",\"id\":4,\"attributes\":{\"title\":\"occaecati et dolorem\",\"description\":\"Reiciendis et possimus enim eius rem et sed temporibus.\",\"bathrooms_no\":5,\"bedrooms_no\":10,\"price\":4147898,\"location\":\"Dahab\",\"area\":708,\"avg_rating\":3.5,\"rating_count\":2,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":2},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/2\"]}}},{\"type\":\"Home\",\"id\":5,\"attributes\":{\"title\":\"saepe ullam nesciunt\",\"description\":\"Dignissimos rem aliquam voluptatem.\",\"bathrooms_no\":10,\"bedrooms_no\":6,\"price\":6481693,\"location\":\"6 October\",\"area\":321,\"avg_rating\":3.2,\"rating_count\":5,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":4},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/4\"]}}},{\"type\":\"Home\",\"id\":6,\"attributes\":{\"title\":\"voluptates quis consequatur\",\"description\":\"Amet repellendus doloribus molestiae enim repellendus.\",\"bathrooms_no\":3,\"bedrooms_no\":8,\"price\":1456190,\"location\":\"6 October\",\"area\":569,\"avg_rating\":3.27,\"rating_count\":11,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":4},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/4\"]}}},{\"type\":\"Home\",\"id\":7,\"attributes\":{\"title\":\"perspiciatis officiis autem\",\"description\":\"Cumque fugit rerum veritatis repellendus occaecati.\",\"bathrooms_no\":8,\"bedrooms_no\":10,\"price\":8583550,\"location\":\"Dahab\",\"area\":589,\"avg_rating\":3.56,\"rating_count\":9,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":3},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/3\"]}}},{\"type\":\"Home\",\"id\":8,\"attributes\":{\"title\":\"est ut corrupti\",\"description\":\"Numquam et voluptatum necessitatibus et.\",\"bathrooms_no\":10,\"bedrooms_no\":5,\"price\":6837632,\"location\":\"Dahab\",\"area\":269,\"avg_rating\":3.18,\"rating_count\":11,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":5},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/5\"]}}},{\"type\":\"Home\",\"id\":9,\"attributes\":{\"title\":\"corrupti quia laboriosam\",\"description\":\"Quibusdam et perspiciatis et aperiam adipisci eos.\",\"bathrooms_no\":4,\"bedrooms_no\":8,\"price\":2075383,\"location\":\"Alexandria\",\"area\":634,\"avg_rating\":3,\"rating_count\":3,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":3},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/3\"]}}},{\"type\":\"Home\",\"id\":10,\"attributes\":{\"title\":\"nemo modi fugit\",\"description\":\"Perspiciatis modi officia temporibus repellat vel illo.\",\"bathrooms_no\":3,\"bedrooms_no\":2,\"price\":5748709,\"location\":\"Alexandria\",\"area\":197,\"avg_rating\":2.86,\"rating_count\":7,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-07T12:58:13.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":3},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/3\"]}}}]}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "Store a newly created resource in storage.",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/homes",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/homes"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"data\":{\"attributes\":{\"title\":\"nobis\",\"description\":\"Aliquam nam labore aut consequuntur quo dolores.\",\"price\":5,\"area\":5,\"bathrooms_no\":17,\"bedrooms_no\":9,\"location\":\"praesentium\",\"user_id\":3}}}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Display the specified resource.",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/homes\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/homes\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the home."
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"data\":{\"type\":\"Home\",\"id\":1,\"attributes\":{\"title\":\"explicabo perferendis qui\",\"description\":\"Enim accusamus voluptatum necessitatibus.\",\"bathrooms_no\":3,\"bedrooms_no\":10,\"price\":2028504,\"location\":\"Cairo\",\"area\":468,\"avg_rating\":4.5,\"rating_count\":2,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":5},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/5\"]}}}}",
                             "name": ""
                         }
                     ]
@@ -554,7 +419,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"data\":{\"attributes\":{\"rating\":\"2\",\"home_id\":12}}}"
+                            "raw": "{\"data\":{\"attributes\":{\"rating\":\"2\",\"home_id\":20}}}"
                         },
                         "description": "",
                         "auth": {
@@ -562,110 +427,6 @@
                         }
                     },
                     "response": []
-                },
-                {
-                    "name": "GET api\/v1\/tours",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/tours",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/tours"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"data\":[{\"type\":\"Tour\",\"id\":1,\"attributes\":{\"price\":440,\"source\":\"harum\",\"destination\":\"velit\",\"from_date\":null,\"to_date\":null,\"company\":\"beatae\",\"seat_position\":\"c1\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":2,\"attributes\":{\"price\":622,\"source\":\"nam\",\"destination\":\"quae\",\"from_date\":null,\"to_date\":null,\"company\":\"doloremque\",\"seat_position\":\"e3\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":3,\"attributes\":{\"price\":312,\"source\":\"ea\",\"destination\":\"est\",\"from_date\":null,\"to_date\":null,\"company\":\"et\",\"seat_position\":\"c2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":4,\"attributes\":{\"price\":756,\"source\":\"ipsam\",\"destination\":\"corporis\",\"from_date\":null,\"to_date\":null,\"company\":\"minima\",\"seat_position\":\"h3\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":5,\"attributes\":{\"price\":732,\"source\":\"id\",\"destination\":\"ea\",\"from_date\":null,\"to_date\":null,\"company\":\"totam\",\"seat_position\":\"c2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":6,\"attributes\":{\"price\":140,\"source\":\"quidem\",\"destination\":\"architecto\",\"from_date\":null,\"to_date\":null,\"company\":\"quos\",\"seat_position\":\"b2\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":7,\"attributes\":{\"price\":594,\"source\":\"iusto\",\"destination\":\"distinctio\",\"from_date\":null,\"to_date\":null,\"company\":\"quo\",\"seat_position\":\"c1\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":8,\"attributes\":{\"price\":119,\"source\":\"est\",\"destination\":\"recusandae\",\"from_date\":null,\"to_date\":null,\"company\":\"iusto\",\"seat_position\":\"c3\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":9,\"attributes\":{\"price\":113,\"source\":\"qui\",\"destination\":\"et\",\"from_date\":null,\"to_date\":null,\"company\":\"cumque\",\"seat_position\":\"a2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":10,\"attributes\":{\"price\":501,\"source\":\"voluptate\",\"destination\":\"ut\",\"from_date\":null,\"to_date\":null,\"company\":\"consectetur\",\"seat_position\":\"e3\",\"traveller_gender\":\"female\"}}]}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "GET api\/v1\/tours\/{tour_id}",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/tours\/:tour_id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/tours\/:tour_id",
-                            "variable": [
-                                {
-                                    "id": "tour_id",
-                                    "key": "tour_id",
-                                    "value": "1",
-                                    "description": "The ID of the tour."
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"data\":{\"type\":\"Tour\",\"id\":1,\"attributes\":{\"price\":440,\"source\":\"harum\",\"destination\":\"velit\",\"from_date\":null,\"to_date\":null,\"company\":\"beatae\",\"seat_position\":\"c1\",\"traveller_gender\":\"male\"}}}",
-                            "name": ""
-                        }
-                    ]
                 },
                 {
                     "name": "GET api\/v1\/users\/{id}",
@@ -719,6 +480,295 @@
                             ],
                             "code": 401,
                             "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Managing Homes",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get Homes",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/homes",
+                            "query": [
+                                {
+                                    "key": "sort",
+                                    "value": "title%2C+-created_at",
+                                    "description": "Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "2000",
+                                    "description": "Data field to filter homes by their price u can use comma to filter by range.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "title",
+                                    "value": "Lorem",
+                                    "description": "Data field to search for homes by their title.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "Lorem+Ipsum",
+                                    "description": "Data field to search for homes by their description.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/homes?sort=title%2C+-created_at&price=2000&title=Lorem&description=Lorem+Ipsum"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create a Home",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/homes",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/homes"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"title\":\"quibusdam\",\"description\":\"Et sunt est a impedit eaque nulla.\",\"price\":3,\"area\":7,\"bathrooms_no\":11,\"bedrooms_no\":14,\"location\":\"itaque\",\"user_id\":5}}}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "show a specific Home",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/homes\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/homes\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the home."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display an individual home",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"Home\",\"id\":1,\"attributes\":{\"title\":\"explicabo perferendis qui\",\"description\":\"Enim accusamus voluptatum necessitatibus.\",\"bathrooms_no\":3,\"bedrooms_no\":10,\"price\":2028504,\"location\":\"Cairo\",\"area\":468,\"avg_rating\":4.5,\"rating_count\":2,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":5},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/5\"]}}}}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Managing Tours",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get Tours",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/tours",
+                            "query": [
+                                {
+                                    "key": "sort",
+                                    "value": "departure_time%2C+-created_at",
+                                    "description": "Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "2000",
+                                    "description": "Data field to filter tours by their price u can use comma to filter by range.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/tours?sort=departure_time%2C+-created_at&price=2000"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"type\":\"Tour\",\"id\":1,\"attributes\":{\"price\":440,\"source\":\"harum\",\"destination\":\"velit\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"beatae\",\"seat_position\":\"c1\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":2,\"attributes\":{\"price\":622,\"source\":\"nam\",\"destination\":\"quae\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"doloremque\",\"seat_position\":\"e3\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":3,\"attributes\":{\"price\":312,\"source\":\"ea\",\"destination\":\"est\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"et\",\"seat_position\":\"c2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":4,\"attributes\":{\"price\":756,\"source\":\"ipsam\",\"destination\":\"corporis\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"minima\",\"seat_position\":\"h3\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":5,\"attributes\":{\"price\":732,\"source\":\"id\",\"destination\":\"ea\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"totam\",\"seat_position\":\"c2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":6,\"attributes\":{\"price\":140,\"source\":\"quidem\",\"destination\":\"architecto\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"quos\",\"seat_position\":\"b2\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":7,\"attributes\":{\"price\":594,\"source\":\"iusto\",\"destination\":\"distinctio\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"quo\",\"seat_position\":\"c1\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":8,\"attributes\":{\"price\":119,\"source\":\"est\",\"destination\":\"recusandae\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"iusto\",\"seat_position\":\"c3\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":9,\"attributes\":{\"price\":113,\"source\":\"qui\",\"destination\":\"et\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"cumque\",\"seat_position\":\"a2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":10,\"attributes\":{\"price\":501,\"source\":\"voluptate\",\"destination\":\"ut\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"consectetur\",\"seat_position\":\"e3\",\"traveller_gender\":\"female\"}}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "show a specific Tour",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/tours\/:tour_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/tours\/:tour_id",
+                            "variable": [
+                                {
+                                    "id": "tour_id",
+                                    "key": "tour_id",
+                                    "value": "1",
+                                    "description": "The ID of the tour."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display an individual tour",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"Tour\",\"id\":1,\"attributes\":{\"price\":440,\"source\":\"harum\",\"destination\":\"velit\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"beatae\",\"seat_position\":\"c1\",\"traveller_gender\":\"male\"}}}",
                             "name": ""
                         }
                     ]

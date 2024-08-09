@@ -27,6 +27,14 @@ class HomeReviewCollection extends ResourceCollection
             'type' => 'home_specific_review',
             'home_id' => $this->home_id,
             'attributes' => $this->collection,
+            'relationships' => [
+                'home' => [
+                    'data' => [
+                        'id' => $this->home_id
+                    ],
+                    'links' =>  ['self', route('homes.show', ['home' => $this->home_id])],
+                ]
+            ]
         ];
     }
 }

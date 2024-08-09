@@ -13,4 +13,16 @@ class HomeFilter extends QueryFilter
         }
         return $this->builder->where('price', $prices);
     }
+
+    public function title($value)
+    {
+
+        return $this->builder->where('title', 'LIKE', '%' . $value . '%');
+    }
+
+    public function description($value)
+    {
+        return $this->builder->where('description', 'LIKE', '%' . $value . '%');
+
+    }
 }

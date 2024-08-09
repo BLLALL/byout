@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\StoreHomeReviewRequest;
 use App\Http\Resources\Api\V1\HomeReviewCollection;
 use App\Http\Resources\Api\V1\ReviewResource;
@@ -9,9 +10,6 @@ use App\Http\Resources\Api\V1\UserReviewCollection;
 use App\Models\Home;
 use App\Models\Review;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use PHPUnit\Framework\Attributes\Ticket;
 
 class ReviewController extends Controller
 {

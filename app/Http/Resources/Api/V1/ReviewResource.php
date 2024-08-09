@@ -19,9 +19,16 @@ class ReviewResource extends JsonResource
             'id' => $this->id,
             'attributes' => [
                 'rating' => $this->rating,
-                'user_id' => $this->user_id,
-                'home_id' => $this->home_id,
+
             ],
+            'relationships' => [
+                'author' => [
+                    'data' => [
+                        'type' => 'user',
+                        'id' => $this->user_id
+                    ]
+                ]
+            ]
         ];
     }
 }

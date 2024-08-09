@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('bedrooms_no');
             $table->string('location');
             $table->integer('avg_rating')->nullable();
-            $table->unsignedInteger('rating_count')->default(0);
+            $table->unsignedInteger('rating_count')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

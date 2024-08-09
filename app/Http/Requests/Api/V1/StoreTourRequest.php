@@ -1,17 +1,21 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api\V1;
 
+use App\Rules\ArrivalAfterDeparture;
+use App\Rules\validSeatPosition;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreTourRequest extends FormRequest
+class StoreTourRequest extends BaseTourRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +26,15 @@ class StoreTourRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'data.attributes.price' => ['required', 'integer'],
+            'data.attributes.source' => ['required', 'string'],
+            'data.attributes.destination' => ['required', 'string'],
+            'data.attributes.departure_time' => ['required',  'date_format:h:i A'],
+            'data.attributes.arrival_time' => ['required', 'date_format:h:i A',
+                new ArrivalAfterDeparture($this->input('data.attributes.departure_time'))],
+            'data.attributes.tour_company_id' => ['required', 'integer', 'exists:tour_companies,id'],
+            'data.attributes.seat_position' => ['required', new validSeatPosition],
+            'data.attributes.traveller_gender' => ['required', Rule::in(['male', 'female'])]
         ];
     }
 }

@@ -6,23 +6,28 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class BaseTourRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return false;
-    }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
-    {
-        return [
-            //
-        ];
+
+    public function mappedAttributes(array $otherAttributes = []) {
+        $attributeMap = array_merge([
+            'data.attributes.price' => 'price',
+            'data.attributes.source' => 'source',
+            'data.attributes.destination' => 'destination',
+            'data.attributes.departure_time' => 'departure_time',
+            'data.attributes.arrival_time' => 'arrival_time',
+            'data.attributes.tour_company_id' => 'tour_company_id',
+            'data.attributes.seat_position' => 'seat_position',
+            'data.attributes.traveller_gender' => 'traveller_gender',
+
+            ], $otherAttributes);
+
+        $attributesToUpdate = [];
+        foreach ($attributeMap as $key => $attribute) {
+            if ($this->has($key)) {
+                $attributesToUpdate[$attribute] = $this->input($key);
+            }
+        }
+
+        return $attributesToUpdate;
     }
 }

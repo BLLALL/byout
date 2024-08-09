@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Home;
 use App\Models\HomeImage;
 use App\Models\Review;
+use App\Models\tour;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,5 +26,7 @@ class DatabaseSeeder extends Seeder
         Review::factory(10)->recycle($user)->recycle($homes)->create();
 
         HomeImage::factory(10)->recycle($homes)->create();
+
+        Tour::factory(10)->create();
     }
 }

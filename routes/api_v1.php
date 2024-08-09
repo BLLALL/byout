@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ReviewController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\V1\HomeController;
+use App\Http\Controllers\Api\V1\ReviewController;
+use App\Http\Controllers\Api\V1\TourController;
+use App\Http\Controllers\Api\V1\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,13 +22,14 @@ use Illuminate\Support\Facades\Route;
 // houses...
 // users
 
-Route::apiResource('homes', HomeController::class);
 
 Route::get('reviews/users/{user}', [ReviewController::class, 'UserReviews']);
 Route::get('reviews/homes/{home}', [ReviewController::class, 'BookReviews']);
-
 Route::middleware('auth:sanctum')->post('reviews', [ReviewController::class, 'store']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:sanctum')->post('homes', [HomeController::class, 'store']);
+
+Route::apiResource('tours', TourController::class);
+
+
+Route::middleware('auth:sanctum')->get('users/{user}', [UserController::class, 'show'])->name('users.show');

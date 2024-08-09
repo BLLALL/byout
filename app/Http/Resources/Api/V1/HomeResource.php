@@ -24,11 +24,11 @@ class HomeResource extends JsonResource
                 'bedrooms_no' => $this->bedrooms_no,
                 'price' => $this->price,
                 'location' => $this->location,
-                'area' =>  $this->area,
+                'area' => $this->area,
                 'avg_rating' => $this->avg_rating,
-                'rating_count' =>  $this->rating_count,
+                'rating_count' => $this->rating_count,
                 'created_at' => $this->created_at,
-                'updated_at' =>  $this->updated_at
+                'updated_at' => $this->updated_at
             ],
             'relationships' => [
                 'author' => [
@@ -36,9 +36,9 @@ class HomeResource extends JsonResource
                         'type' => 'user',
                         'id' => $this->user_id
                     ],
-//                    'links' =>
-//                        ['self', route('users.show', ['author' => $this->user_id])],
-                    ]
+                    'links' =>
+                        ['self', route('users.show', ['user' => $this->user_id])],
+                ]
             ],
         ];
     }

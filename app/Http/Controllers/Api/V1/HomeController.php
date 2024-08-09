@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Http\filters\HomeFilter;
 use App\Http\Requests\Api\V1\storeHomeRequest;
 use App\Http\Resources\Api\V1\HomeResource;
@@ -11,7 +12,15 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Get Homes
+     *
+     * @group Managing Homes
+     * @queryParam sort string Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.
+     * Example: title, -created_at
+     * @queryParam price integer Data field to filter homes by their price u can use comma to filter by range. Example: 2000,100000
+     * @queryParam title string Data field to search for homes by their title. Example:Lorem
+     * @queryParam description string Data field to search for homes by their description. Example:Lorem Ipsum
+     *
      */
     public function index(HomeFilter $filter)
     {
@@ -20,7 +29,11 @@ class HomeController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
+     * Create a Home
+     *
+     * @group Managing Homes
+     *
+     *
      */
     public function store(storeHomeRequest $request)
     {
@@ -28,7 +41,11 @@ class HomeController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * show a specific Home
+     *
+     *Display an individual home
+     *
+     * @group Managing Homes
      */
     public function show(Home $home)
     {

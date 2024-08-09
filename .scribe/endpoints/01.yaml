@@ -24,33 +24,229 @@ endpoints:
         name: sort
         description: 'Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.'
         required: false
-        example: 'sort=title, sort=-created_at'
+        example: 'title, -created_at'
         type: string
         enumValues: []
         exampleWasSpecified: true
         custom: []
       price:
         name: price
-        description: 'field to filter homes by their price.'
+        description: 'Data field to filter homes by their price u can use comma to filter by range.'
         required: false
-        example: 20
+        example: 2000
         type: integer
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
+        custom: []
+      title:
+        name: title
+        description: 'Data field to search for homes by their title.'
+        required: false
+        example: Lorem
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      description:
+        name: description
+        description: 'Data field to search for homes by their description.'
+        required: false
+        example: 'Lorem Ipsum'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
         custom: []
     cleanQueryParameters:
-      sort: 'sort=title, sort=-created_at'
-      price: 20
+      sort: 'title, -created_at'
+      price: 2000
+      title: Lorem
+      description: 'Lorem Ipsum'
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 200
+        content: '{"data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/homes
+    metadata:
+      groupName: 'Managing Homes'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a Home'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data:
+        name: data
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes:
+        name: data.attributes
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.title:
+        name: data.attributes.title
+        description: ''
+        required: true
+        example: quibusdam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.description:
+        name: data.attributes.description
+        description: ''
+        required: true
+        example: 'Et sunt est a impedit eaque nulla.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.price:
+        name: data.attributes.price
+        description: ''
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.area:
+        name: data.attributes.area
+        description: ''
+        required: true
+        example: 7
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.bathrooms_no:
+        name: data.attributes.bathrooms_no
+        description: ''
+        required: true
+        example: 11
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.bedrooms_no:
+        name: data.attributes.bedrooms_no
+        description: ''
+        required: true
+        example: 14
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.location:
+        name: data.attributes.location
+        description: ''
+        required: true
+        example: itaque
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.user_id:
+        name: data.attributes.user_id
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          title: quibusdam
+          description: 'Et sunt est a impedit eaque nulla.'
+          price: 3
+          area: 7
+          bathrooms_no: 11
+          bedrooms_no: 14
+          location: itaque
+          user_id: 5
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/homes/{id}'
+    metadata:
+      groupName: 'Managing Homes'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'show a specific Home'
+      description: 'Display an individual home'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the home.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"type":"Home","id":1,"attributes":{"title":"explicabo perferendis qui","description":"Enim accusamus voluptatum necessitatibus.","bathrooms_no":3,"bedrooms_no":10,"price":2028504,"location":"Cairo","area":468,"avg_rating":4.5,"rating_count":2,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-06T16:02:46.000000Z"},"relationships":{"author":{"data":{"type":"user","id":5},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/5"]}}}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json

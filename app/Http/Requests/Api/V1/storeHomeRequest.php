@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api\V1;
 
-use Illuminate\Foundation\Http\FormRequest;
 
-class storeHomeRequest extends FormRequest
+class storeHomeRequest extends BaseHomeRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +21,16 @@ class storeHomeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'data' => 'required|array',
+            'data.attributes' => 'required|array',
+            'data.attributes.title' => 'required|string',
+            'data.attributes.description' => 'required|string',
+            'data.attributes.price' => 'required|integer',
+            'data.attributes.area' => 'required|integer',
+            'data.attributes.bathrooms_no' => 'required|integer',
+            'data.attributes.bedrooms_no' => 'required|integer',
+            'data.attributes.location' => 'required|string',
+            'data.attributes.user_id' => 'required|integer|exists:users,id'
         ];
     }
 }

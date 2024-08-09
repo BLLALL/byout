@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginUserRequest;
@@ -33,7 +33,7 @@ class AuthController extends Controller
                     'token' => $user->createToken(
                         'API token for ' . $user->email,
                         ['*'],
-                        now()->addMonth())->plainTextToken
+                        now()->addHours(2))->plainTextToken
                 ]
             );
 
