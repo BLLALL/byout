@@ -1,0 +1,245 @@
+name: 'Managing Tours'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/tours
+    metadata:
+      groupName: 'Managing Tours'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Get Tours
+        Show all Tours
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      sort:
+        name: sort
+        description: 'Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.'
+        required: false
+        example: 'departure_time, -created_at'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      price:
+        name: price
+        description: 'Data field to filter tours by their price u can use comma to filter by range.'
+        required: false
+        example: 2000
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanQueryParameters:
+      sort: 'departure_time, -created_at'
+      price: 2000
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"type":"Tour","id":1,"attributes":{"price":605,"source":"natus","destination":"amet","departure_time":"02:12 PM","arrival_time":"09:26 AM","tour_company_id":1,"seat_position":"f1","traveller_gender":"female"}},{"type":"Tour","id":2,"attributes":{"price":689,"source":"ut","destination":"fugit","departure_time":"05:23 AM","arrival_time":"07:33 AM","tour_company_id":2,"seat_position":"d1","traveller_gender":"female"}},{"type":"Tour","id":3,"attributes":{"price":120,"source":"et","destination":"quia","departure_time":"12:01 AM","arrival_time":"06:28 AM","tour_company_id":3,"seat_position":"f1","traveller_gender":"male"}},{"type":"Tour","id":4,"attributes":{"price":793,"source":"eveniet","destination":"dolorum","departure_time":"11:38 PM","arrival_time":"06:38 AM","tour_company_id":4,"seat_position":"e4","traveller_gender":"female"}},{"type":"Tour","id":5,"attributes":{"price":513,"source":"culpa","destination":"iste","departure_time":"09:20 AM","arrival_time":"02:09 AM","tour_company_id":5,"seat_position":"e1","traveller_gender":"female"}},{"type":"Tour","id":6,"attributes":{"price":615,"source":"voluptatem","destination":"voluptas","departure_time":"10:06 AM","arrival_time":"07:26 AM","tour_company_id":6,"seat_position":"g4","traveller_gender":"male"}},{"type":"Tour","id":7,"attributes":{"price":276,"source":"totam","destination":"voluptates","departure_time":"03:46 PM","arrival_time":"01:06 AM","tour_company_id":7,"seat_position":"h2","traveller_gender":"female"}},{"type":"Tour","id":8,"attributes":{"price":799,"source":"voluptatem","destination":"illo","departure_time":"05:39 PM","arrival_time":"08:50 AM","tour_company_id":8,"seat_position":"h1","traveller_gender":"female"}},{"type":"Tour","id":9,"attributes":{"price":278,"source":"quisquam","destination":"impedit","departure_time":"08:59 PM","arrival_time":"09:17 PM","tour_company_id":9,"seat_position":"c2","traveller_gender":"male"}},{"type":"Tour","id":10,"attributes":{"price":516,"source":"minus","destination":"corrupti","departure_time":"11:32 AM","arrival_time":"07:03 AM","tour_company_id":10,"seat_position":"f2","traveller_gender":"female"}},{"type":"Tour","id":11,"attributes":{"price":1000,"source":"New York","destination":"Los Angeles","departure_time":"09:00 PM","arrival_time":"01:00 AM","tour_company_id":1,"seat_position":"a1","traveller_gender":"female"}}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/tours
+    metadata:
+      groupName: 'Managing Tours'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a Tour'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data.attributes:
+        name: data.attributes
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data:
+        name: data
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.price:
+        name: data.attributes.price
+        description: ''
+        required: true
+        example: 11
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.source:
+        name: data.attributes.source
+        description: ''
+        required: true
+        example: beatae
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.destination:
+        name: data.attributes.destination
+        description: ''
+        required: true
+        example: placeat
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.departure_time:
+        name: data.attributes.departure_time
+        description: 'Must be a valid date in the format <code>h:i A</code>.'
+        required: true
+        example: '01:20 PM'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.arrival_time:
+        name: data.attributes.arrival_time
+        description: 'Must be a valid date in the format <code>h:i A</code>.'
+        required: true
+        example: '01:20 PM'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.tour_company_id:
+        name: data.attributes.tour_company_id
+        description: ''
+        required: true
+        example: 19
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.seat_position:
+        name: data.attributes.seat_position
+        description: ''
+        required: true
+        example: dolorem
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.traveller_gender:
+        name: data.attributes.traveller_gender
+        description: ''
+        required: true
+        example: male
+        type: string
+        enumValues:
+          - male
+          - female
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          price: 11
+          source: beatae
+          destination: placeat
+          departure_time: '01:20 PM'
+          arrival_time: '01:20 PM'
+          tour_company_id: 19
+          seat_position: dolorem
+          traveller_gender: male
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/tours/{id}'
+    metadata:
+      groupName: 'Managing Tours'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'show a specific Tour'
+      description: 'Display an individual tour'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the tour.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"type":"Tour","id":1,"attributes":{"price":605,"source":"natus","destination":"amet","departure_time":"02:12 PM","arrival_time":"09:26 AM","tour_company_id":1,"seat_position":"f1","traveller_gender":"female"}}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
