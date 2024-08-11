@@ -22,9 +22,9 @@ class StoreHomeReviewRequest extends FormRequest
     public function rules() : array
     {
         return [
-            'data.attributes.rating' => ['required', 'integer', 'in:1,2,3,4,5'],
-//            'data.attributes.user_id' => ['required', 'integer', 'exists:users,id'],
-            'data.attributes.home_id' => ['required', 'integer', 'exists:homes,id'],
+            'data.rating' => ['required', 'integer', 'in:1,2,3,4,5'],
+            'data.user_id' => ['required', 'integer', 'exists:users,id', 'unique:reviews,user_id'],
+            'data.home_id' => ['required', 'integer', 'exists:homes,id'],
         ];
     }
 }

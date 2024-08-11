@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Facade;
+
 return [
 
     /*
@@ -122,5 +124,13 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+//    'providers' => [
+//      Ichtrojan\Otp\OtpServiceProvider::class,
+//    ],
+    'aliases' => Facade::defaultAliases()->merge([
+        'Otp' => Ichtrojan\Otp\Otp::class,
+    ])->toArray(),
+
 
 ];

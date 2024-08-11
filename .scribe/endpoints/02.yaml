@@ -1,16 +1,16 @@
-name: 'Managing Tours'
+name: 'Managing Homes'
 description: ''
 endpoints:
   -
     httpMethods:
-      - GET
-    uri: api/v1/tours
+      - POST
+    uri: api/homes
     metadata:
-      groupName: 'Managing Tours'
+      groupName: 'Managing Homes'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get Tours'
+      title: 'Create a Home'
       description: ''
       authenticated: false
       custom: []
@@ -19,41 +19,112 @@ endpoints:
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
-    queryParameters:
-      sort:
-        name: sort
-        description: 'Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.'
-        required: false
-        example: 'departure_time, -created_at'
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data:
+        name: data
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes:
+        name: data.attributes
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.title:
+        name: data.attributes.title
+        description: ''
+        required: true
+        example: praesentium
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         custom: []
-      price:
-        name: price
-        description: 'Data field to filter tours by their price u can use comma to filter by range.'
-        required: false
-        example: 2000
+      data.attributes.description:
+        name: data.attributes.description
+        description: ''
+        required: true
+        example: 'Sed harum sequi minima quam eaque sed.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.price:
+        name: data.attributes.price
+        description: ''
+        required: true
+        example: 17
         type: integer
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         custom: []
-    cleanQueryParameters:
-      sort: 'departure_time, -created_at'
-      price: 2000
-    bodyParameters: []
-    cleanBodyParameters: []
+      data.attributes.area:
+        name: data.attributes.area
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.bathrooms_no:
+        name: data.attributes.bathrooms_no
+        description: ''
+        required: true
+        example: 11
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.bedrooms_no:
+        name: data.attributes.bedrooms_no
+        description: ''
+        required: true
+        example: 7
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.location:
+        name: data.attributes.location
+        description: ''
+        required: true
+        example: aut
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.user_id:
+        name: data.attributes.user_id
+        description: ''
+        required: true
+        example: 14
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          title: praesentium
+          description: 'Sed harum sequi minima quam eaque sed.'
+          price: 17
+          area: 5
+          bathrooms_no: 11
+          bedrooms_no: 7
+          location: aut
+          user_id: 14
     fileParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"data":[{"type":"Tour","id":1,"attributes":{"price":440,"source":"harum","destination":"velit","departure_time":null,"arrival_time":null,"company":"beatae","seat_position":"c1","traveller_gender":"male"}},{"type":"Tour","id":2,"attributes":{"price":622,"source":"nam","destination":"quae","departure_time":null,"arrival_time":null,"company":"doloremque","seat_position":"e3","traveller_gender":"female"}},{"type":"Tour","id":3,"attributes":{"price":312,"source":"ea","destination":"est","departure_time":null,"arrival_time":null,"company":"et","seat_position":"c2","traveller_gender":"female"}},{"type":"Tour","id":4,"attributes":{"price":756,"source":"ipsam","destination":"corporis","departure_time":null,"arrival_time":null,"company":"minima","seat_position":"h3","traveller_gender":"female"}},{"type":"Tour","id":5,"attributes":{"price":732,"source":"id","destination":"ea","departure_time":null,"arrival_time":null,"company":"totam","seat_position":"c2","traveller_gender":"female"}},{"type":"Tour","id":6,"attributes":{"price":140,"source":"quidem","destination":"architecto","departure_time":null,"arrival_time":null,"company":"quos","seat_position":"b2","traveller_gender":"male"}},{"type":"Tour","id":7,"attributes":{"price":594,"source":"iusto","destination":"distinctio","departure_time":null,"arrival_time":null,"company":"quo","seat_position":"c1","traveller_gender":"male"}},{"type":"Tour","id":8,"attributes":{"price":119,"source":"est","destination":"recusandae","departure_time":null,"arrival_time":null,"company":"iusto","seat_position":"c3","traveller_gender":"male"}},{"type":"Tour","id":9,"attributes":{"price":113,"source":"qui","destination":"et","departure_time":null,"arrival_time":null,"company":"cumque","seat_position":"a2","traveller_gender":"female"}},{"type":"Tour","id":10,"attributes":{"price":501,"source":"voluptate","destination":"ut","departure_time":null,"arrival_time":null,"company":"consectetur","seat_position":"e3","traveller_gender":"female"}}]}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -62,47 +133,128 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - GET
-    uri: 'api/v1/tours/{tour_id}'
+      - POST
+    uri: api/v1/homes
     metadata:
-      groupName: 'Managing Tours'
+      groupName: 'Managing Homes'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'show a specific Tour'
-      description: 'Display an individual tour'
+      title: 'Create a Home'
+      description: ''
       authenticated: false
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
-    urlParameters:
-      tour_id:
-        name: tour_id
-        description: 'The ID of the tour.'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data:
+        name: data
+        description: ''
         required: true
-        example: 1
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes:
+        name: data.attributes
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.title:
+        name: data.attributes.title
+        description: ''
+        required: true
+        example: quisquam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.description:
+        name: data.attributes.description
+        description: ''
+        required: true
+        example: 'Est veritatis eaque assumenda quam eveniet repellendus beatae.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.price:
+        name: data.attributes.price
+        description: ''
+        required: true
+        example: 19
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
-    cleanUrlParameters:
-      tour_id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"data":{"type":"Tour","id":1,"attributes":{"price":440,"source":"harum","destination":"velit","departure_time":null,"arrival_time":null,"company":"beatae","seat_position":"c1","traveller_gender":"male"}}}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+      data.attributes.area:
+        name: data.attributes.area
+        description: ''
+        required: true
+        example: 7
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
         custom: []
+      data.attributes.bathrooms_no:
+        name: data.attributes.bathrooms_no
+        description: ''
+        required: true
+        example: 12
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.bedrooms_no:
+        name: data.attributes.bedrooms_no
+        description: ''
+        required: true
+        example: 13
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.location:
+        name: data.attributes.location
+        description: ''
+        required: true
+        example: in
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.user_id:
+        name: data.attributes.user_id
+        description: ''
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          title: quisquam
+          description: 'Est veritatis eaque assumenda quam eveniet repellendus beatae.'
+          price: 19
+          area: 7
+          bathrooms_no: 12
+          bedrooms_no: 13
+          location: in
+          user_id: 16
+    fileParameters: []
+    responses: []
     responseFields: []
     auth: []
     controller: null

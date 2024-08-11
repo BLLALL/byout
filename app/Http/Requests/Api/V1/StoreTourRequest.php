@@ -26,12 +26,13 @@ class StoreTourRequest extends BaseTourRequest
     public function rules(): array
     {
         return [
+            'data' => ['required', 'array'],
+            'data.attributes' => ['required', 'array'],
             'data.attributes.price' => ['required', 'integer'],
             'data.attributes.source' => ['required', 'string'],
             'data.attributes.destination' => ['required', 'string'],
             'data.attributes.departure_time' => ['required',  'date_format:h:i A'],
-            'data.attributes.arrival_time' => ['required', 'date_format:h:i A',
-                new ArrivalAfterDeparture($this->input('data.attributes.departure_time'))],
+            'data.attributes.arrival_time' => ['required', 'date_format:h:i A'],
             'data.attributes.tour_company_id' => ['required', 'integer', 'exists:tour_companies,id'],
             'data.attributes.seat_position' => ['required', new validSeatPosition],
             'data.attributes.traveller_gender' => ['required', Rule::in(['male', 'female'])]

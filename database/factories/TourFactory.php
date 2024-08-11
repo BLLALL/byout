@@ -21,8 +21,8 @@ class TourFactory extends Factory
             'price' => $this->faker->numberBetween(100, 800),
             'source' => $this->faker->word(),
             'destination' => $this->faker->word(),
-            'departure_time' => $this->faker->time('h:i'),
-            'arrival_time' => $this->faker->time('h:i'),
+            'departure_time' => $this->faker->time('h:i A'),
+            'arrival_time' => $this->faker->time('h:i A'),
             'tour_company_id' => TourCompany::factory(),
             'seat_position' =>
                 $this->faker->randomElement(['a1', 'a2', 'a3', 'a4',

@@ -13,7 +13,7 @@ class TourController extends Controller
 {
     /**
      * Get Tours
-     *
+     * Show all Tours
      * @group Managing Tours
      * @queryParam sort string Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.
      * Example: departure_time, -created_at
@@ -37,11 +37,15 @@ class TourController extends Controller
         return new TourResource($tour);
     }
 
-    
+    /**
+     * Create a Tour
+     *
+     * @group Managing Tours
+     *
+     *
+     */
     public function store(StoreTourRequest $request)
     {
-
-
         return new TourResource(Tour::create($request->mappedAttributes()));
     }
 }

@@ -10,6 +10,12 @@ use \Illuminate\Database\Eloquent\Builder;
 class Home extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'coordinates' => 'array',
+        'home_images' => 'array',
+    ];
+
     protected $guarded = [];
 
     public function reviews()
@@ -18,12 +24,17 @@ class Home extends Model
     }
 
 
-    public function HomeImages()
+    public function HomeImage()
     {
         return $this->hasMany(HomeImage::class);
     }
 
-    public function scopeFilter(Builder $builder, QueryFilter $filter) {
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function scopeFilter(Builder $builder, QueryFilter $filter)
+    {
         return $filter->apply($builder);
     }
 
@@ -34,7 +45,8 @@ class Home extends Model
         $this->save();
     }
 
-    public function getAvgRatingAttribute($value) {
+    public function getAvgRatingAttribute($value)
+    {
         return round($value / 100, 2);
     }
 

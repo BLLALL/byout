@@ -1,16 +1,16 @@
-name: 'Managing Homes'
+name: Endpoints
 description: ''
 endpoints:
   -
     httpMethods:
-      - GET
-    uri: api/v1/homes
+      - POST
+    uri: api/login/google
     metadata:
-      groupName: 'Managing Homes'
+      groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get Homes'
+      title: ''
       description: ''
       authenticated: false
       custom: []
@@ -19,55 +19,195 @@ endpoints:
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
-    queryParameters:
-      sort:
-        name: sort
-        description: 'Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.'
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/login/google/redirect
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/register
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data.attributes:
+        name: data.attributes
+        description: ''
         required: false
-        example: 'title, -created_at'
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data:
+        name: data
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.name:
+        name: data.attributes.name
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: afttboesjqdwqlbl
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         custom: []
-      price:
-        name: price
-        description: 'Data field to filter homes by their price u can use comma to filter by range.'
-        required: false
-        example: 2000
+      data.attributes.email:
+        name: data.attributes.email
+        description: 'Must be a valid email address.'
+        required: true
+        example: simone31@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.password:
+        name: data.attributes.password
+        description: 'Must be at least 8 characters.'
+        required: true
+        example: qQntie
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          name: afttboesjqdwqlbl
+          email: simone31@example.net
+          password: qQntie
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/reviews/users/{user_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
         type: integer
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         custom: []
-      title:
-        name: title
-        description: 'Data field to search for homes by their title.'
-        required: false
-        example: Lorem
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        custom: []
-      description:
-        name: description
-        description: 'Data field to search for homes by their description.'
-        required: false
-        example: 'Lorem Ipsum'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        custom: []
-    cleanQueryParameters:
-      sort: 'title, -created_at'
-      price: 2000
-      title: Lorem
-      description: 'Lorem Ipsum'
+    cleanUrlParameters:
+      user_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
-        content: '{"data":[]}'
+        content: '{"data":{"type":"user_reviews","user_id":1,"attributes":[{"id":52,"rating":5,"home_id":6},{"id":53,"rating":3,"home_id":1},{"id":56,"rating":4,"home_id":10}],"relationships":{"author":{"data":{"type":"user","id":1},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/1"]}}}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -83,13 +223,13 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/v1/homes
+    uri: api/reviews
     metadata:
-      groupName: 'Managing Homes'
+      groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Create a Home'
+      title: ''
       description: ''
       authenticated: false
       custom: []
@@ -101,92 +241,43 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      data:
-        name: data
-        description: ''
-        required: true
-        example: []
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
       data.attributes:
         name: data.attributes
         description: ''
-        required: true
+        required: false
         example: []
         type: object
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      data.attributes.title:
-        name: data.attributes.title
+      data:
+        name: data
         description: ''
-        required: true
-        example: quibusdam
-        type: string
+        required: false
+        example: []
+        type: object
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      data.attributes.description:
-        name: data.attributes.description
+      data.attributes.rating:
+        name: data.attributes.rating
         description: ''
         required: true
-        example: 'Et sunt est a impedit eaque nulla.'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      data.attributes.price:
-        name: data.attributes.price
-        description: ''
-        required: true
-        example: 3
+        example: '3'
         type: integer
-        enumValues: []
+        enumValues:
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+          - '5'
         exampleWasSpecified: false
         custom: []
-      data.attributes.area:
-        name: data.attributes.area
+      data.attributes.home_id:
+        name: data.attributes.home_id
         description: ''
         required: true
-        example: 7
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      data.attributes.bathrooms_no:
-        name: data.attributes.bathrooms_no
-        description: ''
-        required: true
-        example: 11
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      data.attributes.bedrooms_no:
-        name: data.attributes.bedrooms_no
-        description: ''
-        required: true
-        example: 14
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      data.attributes.location:
-        name: data.attributes.location
-        description: ''
-        required: true
-        example: itaque
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      data.attributes.user_id:
-        name: data.attributes.user_id
-        description: ''
-        required: true
-        example: 5
+        example: 2
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -194,14 +285,8 @@ endpoints:
     cleanBodyParameters:
       data:
         attributes:
-          title: quibusdam
-          description: 'Et sunt est a impedit eaque nulla.'
-          price: 3
-          area: 7
-          bathrooms_no: 11
-          bedrooms_no: 14
-          location: itaque
-          user_id: 5
+          rating: '3'
+          home_id: 2
     fileParameters: []
     responses: []
     responseFields: []
@@ -213,14 +298,229 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/v1/homes/{id}'
+    uri: api/user
     metadata:
-      groupName: 'Managing Homes'
+      groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'show a specific Home'
-      description: 'Display an individual home'
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/reviews/users/{user_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      user_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"type":"user_reviews","user_id":1,"attributes":[{"id":52,"rating":5,"home_id":6},{"id":53,"rating":3,"home_id":1},{"id":56,"rating":4,"home_id":10}],"relationships":{"author":{"data":{"type":"user","id":1},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/1"]}}}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/reviews/homes/{home_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      home_id:
+        name: home_id
+        description: 'The ID of the home.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      home_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/reviews
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data.attributes:
+        name: data.attributes
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data:
+        name: data
+        description: ''
+        required: false
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.rating:
+        name: data.attributes.rating
+        description: ''
+        required: true
+        example: '5'
+        type: integer
+        enumValues:
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+          - '5'
+        exampleWasSpecified: false
+        custom: []
+      data.attributes.home_id:
+        name: data.attributes.home_id
+        description: ''
+        required: true
+        example: 13
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        attributes:
+          rating: '5'
+          home_id: 13
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/users/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
       authenticated: false
       custom: []
     headers:
@@ -229,7 +529,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the home.'
+        description: 'The ID of the user.'
         required: true
         example: 1
         type: integer
@@ -246,7 +546,46 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"type":"Home","id":1,"attributes":{"title":"explicabo perferendis qui","description":"Enim accusamus voluptatum necessitatibus.","bathrooms_no":3,"bedrooms_no":10,"price":2028504,"location":"Cairo","area":468,"avg_rating":4.5,"rating_count":2,"created_at":"2024-08-06T16:02:45.000000Z","updated_at":"2024-08-06T16:02:46.000000Z"},"relationships":{"author":{"data":{"type":"user","id":5},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/5"]}}}}'
+        content: '{"id":1,"name":"Esta Beer","email":"rose49@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/users
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '[{"id":1,"name":"Esta Beer","email":"rose49@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":2,"name":"Ramiro Green DVM","email":"edd.steuber@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":3,"name":"Davin D''Amore","email":"klein.addie@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":4,"name":"Clay Waelchi","email":"fzemlak@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":5,"name":"Monserrate Stiedemann","email":"eldora18@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":6,"name":"Marion Kunze","email":"toy.hollie@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":7,"name":"Prof. Guy Brakus Jr.","email":"jbartell@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":8,"name":"Jada Harris","email":"stevie72@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":9,"name":"Prof. Wanda Wunsch","email":"corkery.christophe@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":10,"name":"Miss Heath Torp","email":"rmraz@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":11,"name":"Lorena White","email":"misty00@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":12,"name":"Mr. Enrique Funk IV","email":"jeff.hodkiewicz@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":13,"name":"Dr. Lenna Medhurst","email":"atremblay@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":14,"name":"Alysson Bartell","email":"ywaelchi@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":15,"name":"Dr. D''angelo Kozey","email":"qthompson@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":16,"name":"River Bayer PhD","email":"kacie45@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":17,"name":"Brad Watsica","email":"mireille.jones@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":18,"name":"Dr. Jackie Kautzer II","email":"dillan.von@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":19,"name":"Mr. Eli Hermann PhD","email":"hermann.erling@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":20,"name":"Fritz Kulas","email":"pcummerata@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":21,"name":"Suzanne Treutel","email":"bradtke.jany@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":22,"name":"Telly Gislason","email":"katelyn.windler@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":23,"name":"Trisha Kilback","email":"vergie00@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":24,"name":"Brandon Bergnaum","email":"mabelle.kutch@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":25,"name":"Mrs. Amalia Mertz DDS","email":"kristy80@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":26,"name":"Prof. Gino Walker V","email":"hortense.breitenberg@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":27,"name":"Xander Langworth","email":"laron07@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":28,"name":"Dr. Cecil Boyle","email":"german67@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":29,"name":"Dr. Frieda Schowalter","email":"ctromp@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":30,"name":"Mr. Lula Kunde","email":"korey.schinner@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":31,"name":"Madyson Yost","email":"laury12@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":32,"name":"Orrin Weber","email":"towne.audrey@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":33,"name":"Cornell Kozey","email":"rabbott@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":34,"name":"Troy O''Kon","email":"fgerhold@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":35,"name":"Jillian Bechtelar II","email":"rwyman@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":36,"name":"Lysanne Nikolaus","email":"ziemann.ruby@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":37,"name":"Prof. Ramiro Klocko","email":"rowe.cora@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":38,"name":"Abdul Christiansen","email":"abelardo58@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":39,"name":"Sandy Grady","email":"viva.beahan@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":40,"name":"Elwin Osinski","email":"bianka83@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":41,"name":"Sonya Donnelly","email":"ena.rodriguez@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":42,"name":"Breanne Mertz","email":"flatley.marielle@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":43,"name":"Alba Beahan","email":"loren25@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":44,"name":"Marjory Bogan","email":"jtoy@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":45,"name":"Savannah Kirlin","email":"lueilwitz.ferne@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":46,"name":"Brendon Ortiz","email":"jacobs.issac@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":47,"name":"Reta Hayes PhD","email":"abigayle.waelchi@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":48,"name":"Terrell Crooks","email":"rashad.bahringer@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":49,"name":"Mr. Maxime Satterfield Sr.","email":"hkassulke@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":50,"name":"Price Becker V","email":"jeremy76@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":51,"name":"Prof. Gordon Wisozk II","email":"sonya49@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":52,"name":"Mrs. Kamille Roberts V","email":"omacejkovic@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":53,"name":"Dr. Emil Harvey V","email":"skye.veum@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":54,"name":"Dejah Schuster","email":"kohler.loy@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":55,"name":"Miss Audreanne Kovacek III","email":"shane.konopelski@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":56,"name":"Alphonso Beer","email":"block.marilou@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"}]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json

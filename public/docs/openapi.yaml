@@ -9,13 +9,37 @@ servers:
 paths:
   /api/login:
     post:
-      summary: ''
-      operationId: postApiLogin
-      description: ''
+      summary: Login
+      operationId: login
+      description: "Authenticates the user and returns the user's API token."
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    token: '{YOUR_AUTH_KEY}'
+                  message: Authenticated
+                  status: 200
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        example: '{YOUR_AUTH_KEY}'
+                  message:
+                    type: string
+                    example: Authenticated
+                  status:
+                    type: integer
+                    example: 200
       tags:
-        - Endpoints
+        - Authentication
       requestBody:
         required: true
         content:
@@ -26,11 +50,11 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: rasheed.kunde@example.com
+                  example: homenick.mckayla@example.com
                 password:
                   type: string
                   description: 'Must be at least 8 characters.'
-                  example: 'V@Ui2In7rt#1p-~B~'
+                  example: 'NlDAukkOeS{P*V7W=1J\'
               required:
                 - email
                 - password
@@ -84,15 +108,15 @@ paths:
                         name:
                           type: string
                           description: 'Must not be greater than 50 characters.'
-                          example: dgrsbhgjzg
+                          example: afttboesjqdwqlbl
                         email:
                           type: string
                           description: 'Must be a valid email address.'
-                          example: qherzog@example.net
+                          example: simone31@example.net
                         password:
                           type: string
                           description: 'Must be at least 8 characters.'
-                          example: 'uCBV{f[8aMv)'
+                          example: qQntie
       security: []
   /api/logout:
     post:
@@ -104,167 +128,10 @@ paths:
       tags:
         - Endpoints
       security: []
-  /api/user:
+  '/api/reviews/users/{user_id}':
     get:
       summary: ''
-      operationId: getApiUser
-      description: ''
-      parameters: []
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
-      tags:
-        - Endpoints
-      security: []
-  '/api/v1/homes/{id}':
-    put:
-      summary: 'Update the specified resource in storage.'
-      operationId: updateTheSpecifiedResourceInStorage
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Endpoints
-      security: []
-    delete:
-      summary: 'Remove the specified resource from storage.'
-      operationId: removeTheSpecifiedResourceFromStorage
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Endpoints
-      security: []
-    get:
-      summary: 'show a specific Home'
-      operationId: showASpecificHome
-      description: 'Display an individual home'
-      parameters: []
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    type: Home
-                    id: 1
-                    attributes:
-                      title: 'explicabo perferendis qui'
-                      description: 'Enim accusamus voluptatum necessitatibus.'
-                      bathrooms_no: 3
-                      bedrooms_no: 10
-                      price: 2028504
-                      location: Cairo
-                      area: 468
-                      avg_rating: 4.5
-                      rating_count: 2
-                      created_at: '2024-08-06T16:02:45.000000Z'
-                      updated_at: '2024-08-06T16:02:46.000000Z'
-                    relationships:
-                      author:
-                        data:
-                          type: user
-                          id: 5
-                        links:
-                          - self
-                          - 'http://real-estate.test/api/v1/users/5'
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      type:
-                        type: string
-                        example: Home
-                      id:
-                        type: integer
-                        example: 1
-                      attributes:
-                        type: object
-                        properties:
-                          title:
-                            type: string
-                            example: 'explicabo perferendis qui'
-                          description:
-                            type: string
-                            example: 'Enim accusamus voluptatum necessitatibus.'
-                          bathrooms_no:
-                            type: integer
-                            example: 3
-                          bedrooms_no:
-                            type: integer
-                            example: 10
-                          price:
-                            type: integer
-                            example: 2028504
-                          location:
-                            type: string
-                            example: Cairo
-                          area:
-                            type: integer
-                            example: 468
-                          avg_rating:
-                            type: number
-                            example: 4.5
-                          rating_count:
-                            type: integer
-                            example: 2
-                          created_at:
-                            type: string
-                            example: '2024-08-06T16:02:45.000000Z'
-                          updated_at:
-                            type: string
-                            example: '2024-08-06T16:02:46.000000Z'
-                      relationships:
-                        type: object
-                        properties:
-                          author:
-                            type: object
-                            properties:
-                              data:
-                                type: object
-                                properties:
-                                  type:
-                                    type: string
-                                    example: user
-                                  id:
-                                    type: integer
-                                    example: 5
-                              links:
-                                type: array
-                                example:
-                                  - self
-                                  - 'http://real-estate.test/api/v1/users/5'
-                                items:
-                                  type: string
-      tags:
-        - 'Managing Homes'
-      security: []
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the home.'
-        example: 1
-        required: true
-        schema:
-          type: integer
-  '/api/v1/reviews/users/{user_id}':
-    get:
-      summary: ''
-      operationId: getApiV1ReviewsUsersUser_id
+      operationId: getApiReviewsUsersUser_id
       description: ''
       parameters: []
       responses:
@@ -280,15 +147,15 @@ paths:
                     user_id: 1
                     attributes:
                       -
-                        id: 55
+                        id: 52
                         rating: 5
                         home_id: 6
                       -
-                        id: 63
-                        rating: 2
-                        home_id: 4
+                        id: 53
+                        rating: 3
+                        home_id: 1
                       -
-                        id: 65
+                        id: 56
                         rating: 4
                         home_id: 10
                     relationships:
@@ -313,15 +180,15 @@ paths:
                         type: array
                         example:
                           -
-                            id: 55
+                            id: 52
                             rating: 5
                             home_id: 6
                           -
-                            id: 63
-                            rating: 2
-                            home_id: 4
+                            id: 53
+                            rating: 3
+                            home_id: 1
                           -
-                            id: 65
+                            id: 56
                             rating: 4
                             home_id: 10
                         items:
@@ -329,7 +196,179 @@ paths:
                           properties:
                             id:
                               type: integer
-                              example: 55
+                              example: 52
+                            rating:
+                              type: integer
+                              example: 5
+                            home_id:
+                              type: integer
+                              example: 6
+                      relationships:
+                        type: object
+                        properties:
+                          author:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    example: user
+                                  id:
+                                    type: integer
+                                    example: 1
+                              links:
+                                type: array
+                                example:
+                                  - self
+                                  - 'http://real-estate.test/api/v1/users/1'
+                                items:
+                                  type: string
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: user_id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/reviews:
+    post:
+      summary: ''
+      operationId: postApiReviews
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    attributes:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        rating:
+                          type: integer
+                          description: ''
+                          example: '3'
+                          enum:
+                            - '1'
+                            - '2'
+                            - '3'
+                            - '4'
+                            - '5'
+                        home_id:
+                          type: integer
+                          description: ''
+                          example: 2
+      security: []
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  '/api/v1/reviews/users/{user_id}':
+    get:
+      summary: ''
+      operationId: getApiV1ReviewsUsersUser_id
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    type: user_reviews
+                    user_id: 1
+                    attributes:
+                      -
+                        id: 52
+                        rating: 5
+                        home_id: 6
+                      -
+                        id: 53
+                        rating: 3
+                        home_id: 1
+                      -
+                        id: 56
+                        rating: 4
+                        home_id: 10
+                    relationships:
+                      author:
+                        data:
+                          type: user
+                          id: 1
+                        links:
+                          - self
+                          - 'http://real-estate.test/api/v1/users/1'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: user_reviews
+                      user_id:
+                        type: integer
+                        example: 1
+                      attributes:
+                        type: array
+                        example:
+                          -
+                            id: 52
+                            rating: 5
+                            home_id: 6
+                          -
+                            id: 53
+                            rating: 3
+                            home_id: 1
+                          -
+                            id: 56
+                            rating: 4
+                            home_id: 10
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 52
                             rating:
                               type: integer
                               example: 5
@@ -377,84 +416,18 @@ paths:
       description: ''
       parameters: []
       responses:
-        200:
+        500:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  data:
-                    type: home_specific_review
-                    home_id: 1
-                    attributes:
-                      -
-                        id: 1
-                        rating: 4
-                        user_id: 6
-                      -
-                        id: 58
-                        rating: 5
-                        user_id: 4
-                    relationships:
-                      home:
-                        data:
-                          id: 1
-                        links:
-                          - self
-                          - 'http://real-estate.test/api/v1/homes/1'
+                  message: 'Server Error'
                 properties:
-                  data:
-                    type: object
-                    properties:
-                      type:
-                        type: string
-                        example: home_specific_review
-                      home_id:
-                        type: integer
-                        example: 1
-                      attributes:
-                        type: array
-                        example:
-                          -
-                            id: 1
-                            rating: 4
-                            user_id: 6
-                          -
-                            id: 58
-                            rating: 5
-                            user_id: 4
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: integer
-                              example: 1
-                            rating:
-                              type: integer
-                              example: 4
-                            user_id:
-                              type: integer
-                              example: 6
-                      relationships:
-                        type: object
-                        properties:
-                          home:
-                            type: object
-                            properties:
-                              data:
-                                type: object
-                                properties:
-                                  id:
-                                    type: integer
-                                    example: 1
-                              links:
-                                type: array
-                                example:
-                                  - self
-                                  - 'http://real-estate.test/api/v1/homes/1'
-                                items:
-                                  type: string
+                  message:
+                    type: string
+                    example: 'Server Error'
       tags:
         - Endpoints
       security: []
@@ -496,7 +469,7 @@ paths:
                         rating:
                           type: integer
                           description: ''
-                          example: '2'
+                          example: '5'
                           enum:
                             - '1'
                             - '2'
@@ -506,7 +479,7 @@ paths:
                         home_id:
                           type: integer
                           description: ''
-                          example: 20
+                          example: 13
       security: []
   '/api/v1/users/{id}':
     get:
@@ -515,18 +488,38 @@ paths:
       description: ''
       parameters: []
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  id: 1
+                  name: 'Esta Beer'
+                  email: rose49@example.org
+                  email_verified_at: '2024-08-09T12:16:19.000000Z'
+                  created_at: '2024-08-09T12:16:19.000000Z'
+                  updated_at: '2024-08-09T12:16:19.000000Z'
                 properties:
-                  message:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Esta Beer'
+                  email:
+                    type: string
+                    example: rose49@example.org
+                  email_verified_at:
+                    type: string
+                    example: '2024-08-09T12:16:19.000000Z'
+                  created_at:
+                    type: string
+                    example: '2024-08-09T12:16:19.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2024-08-09T12:16:19.000000Z'
       tags:
         - Endpoints
       security: []
@@ -539,68 +532,418 @@ paths:
         required: true
         schema:
           type: integer
-  /api/v1/homes:
+  /api/v1/users:
     get:
-      summary: 'Get Homes'
-      operationId: getHomes
+      summary: ''
+      operationId: getApiV1Users
       description: ''
-      parameters:
-        -
-          in: query
-          name: sort
-          description: 'Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.'
-          example: 'title, -created_at'
-          required: false
-          schema:
-            type: string
-            description: 'Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.'
-            example: 'title, -created_at'
-        -
-          in: query
-          name: price
-          description: 'Data field to filter homes by their price u can use comma to filter by range.'
-          example: 2000
-          required: false
-          schema:
-            type: integer
-            description: 'Data field to filter homes by their price u can use comma to filter by range.'
-            example: 2000
-        -
-          in: query
-          name: title
-          description: 'Data field to search for homes by their title.'
-          example: Lorem
-          required: false
-          schema:
-            type: string
-            description: 'Data field to search for homes by their title.'
-            example: Lorem
-        -
-          in: query
-          name: description
-          description: 'Data field to search for homes by their description.'
-          example: 'Lorem Ipsum'
-          required: false
-          schema:
-            type: string
-            description: 'Data field to search for homes by their description.'
-            example: 'Lorem Ipsum'
+      parameters: []
       responses:
         200:
           description: ''
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
                 example:
-                  data: []
-                properties:
-                  data:
-                    type: array
-                    example: []
+                  -
+                    id: 1
+                    name: 'Esta Beer'
+                    email: rose49@example.org
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 2
+                    name: 'Ramiro Green DVM'
+                    email: edd.steuber@example.net
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 3
+                    name: "Davin D'Amore"
+                    email: klein.addie@example.net
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 4
+                    name: 'Clay Waelchi'
+                    email: fzemlak@example.net
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 5
+                    name: 'Monserrate Stiedemann'
+                    email: eldora18@example.org
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 6
+                    name: 'Marion Kunze'
+                    email: toy.hollie@example.org
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 7
+                    name: 'Prof. Guy Brakus Jr.'
+                    email: jbartell@example.com
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 8
+                    name: 'Jada Harris'
+                    email: stevie72@example.com
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 9
+                    name: 'Prof. Wanda Wunsch'
+                    email: corkery.christophe@example.net
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 10
+                    name: 'Miss Heath Torp'
+                    email: rmraz@example.org
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 11
+                    name: 'Lorena White'
+                    email: misty00@example.com
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 12
+                    name: 'Mr. Enrique Funk IV'
+                    email: jeff.hodkiewicz@example.com
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 13
+                    name: 'Dr. Lenna Medhurst'
+                    email: atremblay@example.com
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 14
+                    name: 'Alysson Bartell'
+                    email: ywaelchi@example.com
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 15
+                    name: "Dr. D'angelo Kozey"
+                    email: qthompson@example.net
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 16
+                    name: 'River Bayer PhD'
+                    email: kacie45@example.com
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 17
+                    name: 'Brad Watsica'
+                    email: mireille.jones@example.org
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 18
+                    name: 'Dr. Jackie Kautzer II'
+                    email: dillan.von@example.com
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 19
+                    name: 'Mr. Eli Hermann PhD'
+                    email: hermann.erling@example.net
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 20
+                    name: 'Fritz Kulas'
+                    email: pcummerata@example.net
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 21
+                    name: 'Suzanne Treutel'
+                    email: bradtke.jany@example.org
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 22
+                    name: 'Telly Gislason'
+                    email: katelyn.windler@example.org
+                    email_verified_at: '2024-08-09T12:16:19.000000Z'
+                    created_at: '2024-08-09T12:16:19.000000Z'
+                    updated_at: '2024-08-09T12:16:19.000000Z'
+                  -
+                    id: 23
+                    name: 'Trisha Kilback'
+                    email: vergie00@example.net
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 24
+                    name: 'Brandon Bergnaum'
+                    email: mabelle.kutch@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 25
+                    name: 'Mrs. Amalia Mertz DDS'
+                    email: kristy80@example.net
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 26
+                    name: 'Prof. Gino Walker V'
+                    email: hortense.breitenberg@example.net
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 27
+                    name: 'Xander Langworth'
+                    email: laron07@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 28
+                    name: 'Dr. Cecil Boyle'
+                    email: german67@example.net
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 29
+                    name: 'Dr. Frieda Schowalter'
+                    email: ctromp@example.net
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 30
+                    name: 'Mr. Lula Kunde'
+                    email: korey.schinner@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 31
+                    name: 'Madyson Yost'
+                    email: laury12@example.com
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 32
+                    name: 'Orrin Weber'
+                    email: towne.audrey@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 33
+                    name: 'Cornell Kozey'
+                    email: rabbott@example.com
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 34
+                    name: "Troy O'Kon"
+                    email: fgerhold@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 35
+                    name: 'Jillian Bechtelar II'
+                    email: rwyman@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 36
+                    name: 'Lysanne Nikolaus'
+                    email: ziemann.ruby@example.net
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 37
+                    name: 'Prof. Ramiro Klocko'
+                    email: rowe.cora@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 38
+                    name: 'Abdul Christiansen'
+                    email: abelardo58@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 39
+                    name: 'Sandy Grady'
+                    email: viva.beahan@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 40
+                    name: 'Elwin Osinski'
+                    email: bianka83@example.com
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 41
+                    name: 'Sonya Donnelly'
+                    email: ena.rodriguez@example.com
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 42
+                    name: 'Breanne Mertz'
+                    email: flatley.marielle@example.net
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 43
+                    name: 'Alba Beahan'
+                    email: loren25@example.net
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 44
+                    name: 'Marjory Bogan'
+                    email: jtoy@example.net
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 45
+                    name: 'Savannah Kirlin'
+                    email: lueilwitz.ferne@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 46
+                    name: 'Brendon Ortiz'
+                    email: jacobs.issac@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 47
+                    name: 'Reta Hayes PhD'
+                    email: abigayle.waelchi@example.net
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 48
+                    name: 'Terrell Crooks'
+                    email: rashad.bahringer@example.com
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 49
+                    name: 'Mr. Maxime Satterfield Sr.'
+                    email: hkassulke@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 50
+                    name: 'Price Becker V'
+                    email: jeremy76@example.com
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 51
+                    name: 'Prof. Gordon Wisozk II'
+                    email: sonya49@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 52
+                    name: 'Mrs. Kamille Roberts V'
+                    email: omacejkovic@example.net
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 53
+                    name: 'Dr. Emil Harvey V'
+                    email: skye.veum@example.com
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 54
+                    name: 'Dejah Schuster'
+                    email: kohler.loy@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 55
+                    name: 'Miss Audreanne Kovacek III'
+                    email: shane.konopelski@example.net
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
+                  -
+                    id: 56
+                    name: 'Alphonso Beer'
+                    email: block.marilou@example.org
+                    email_verified_at: '2024-08-09T12:16:20.000000Z'
+                    created_at: '2024-08-09T12:16:20.000000Z'
+                    updated_at: '2024-08-09T12:16:20.000000Z'
       tags:
-        - 'Managing Homes'
+        - Endpoints
       security: []
+  /api/homes:
     post:
       summary: 'Create a Home'
       operationId: createAHome
@@ -629,19 +972,19 @@ paths:
                         title:
                           type: string
                           description: ''
-                          example: quibusdam
+                          example: praesentium
                         description:
                           type: string
                           description: ''
-                          example: 'Et sunt est a impedit eaque nulla.'
+                          example: 'Sed harum sequi minima quam eaque sed.'
                         price:
                           type: integer
                           description: ''
-                          example: 3
+                          example: 17
                         area:
                           type: integer
                           description: ''
-                          example: 7
+                          example: 5
                         bathrooms_no:
                           type: integer
                           description: ''
@@ -649,22 +992,83 @@ paths:
                         bedrooms_no:
                           type: integer
                           description: ''
-                          example: 14
+                          example: 7
                         location:
                           type: string
                           description: ''
-                          example: itaque
+                          example: aut
                         user_id:
                           type: integer
                           description: ''
-                          example: 5
+                          example: 14
               required:
                 - data
       security: []
-  /api/v1/tours:
+  /api/v1/homes:
+    post:
+      summary: 'Create a Home'
+      operationId: createAHome
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Managing Homes'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    attributes:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        title:
+                          type: string
+                          description: ''
+                          example: quisquam
+                        description:
+                          type: string
+                          description: ''
+                          example: 'Est veritatis eaque assumenda quam eveniet repellendus beatae.'
+                        price:
+                          type: integer
+                          description: ''
+                          example: 19
+                        area:
+                          type: integer
+                          description: ''
+                          example: 7
+                        bathrooms_no:
+                          type: integer
+                          description: ''
+                          example: 12
+                        bedrooms_no:
+                          type: integer
+                          description: ''
+                          example: 13
+                        location:
+                          type: string
+                          description: ''
+                          example: in
+                        user_id:
+                          type: integer
+                          description: ''
+                          example: 16
+              required:
+                - data
+      security: []
+  /api/tours:
     get:
-      summary: 'Get Tours'
-      operationId: getTours
+      summary: "Get Tours\nShow all Tours"
+      operationId: getToursShowAllTours
       description: ''
       parameters:
         -
@@ -700,121 +1104,133 @@ paths:
                       type: Tour
                       id: 1
                       attributes:
-                        price: 440
-                        source: harum
-                        destination: velit
-                        departure_time: null
-                        arrival_time: null
-                        company: beatae
-                        seat_position: c1
-                        traveller_gender: male
+                        price: 605
+                        source: natus
+                        destination: amet
+                        departure_time: '02:12 PM'
+                        arrival_time: '09:26 AM'
+                        tour_company_id: 1
+                        seat_position: f1
+                        traveller_gender: female
                     -
                       type: Tour
                       id: 2
                       attributes:
-                        price: 622
-                        source: nam
-                        destination: quae
-                        departure_time: null
-                        arrival_time: null
-                        company: doloremque
-                        seat_position: e3
+                        price: 689
+                        source: ut
+                        destination: fugit
+                        departure_time: '05:23 AM'
+                        arrival_time: '07:33 AM'
+                        tour_company_id: 2
+                        seat_position: d1
                         traveller_gender: female
                     -
                       type: Tour
                       id: 3
                       attributes:
-                        price: 312
-                        source: ea
-                        destination: est
-                        departure_time: null
-                        arrival_time: null
-                        company: et
-                        seat_position: c2
-                        traveller_gender: female
+                        price: 120
+                        source: et
+                        destination: quia
+                        departure_time: '12:01 AM'
+                        arrival_time: '06:28 AM'
+                        tour_company_id: 3
+                        seat_position: f1
+                        traveller_gender: male
                     -
                       type: Tour
                       id: 4
                       attributes:
-                        price: 756
-                        source: ipsam
-                        destination: corporis
-                        departure_time: null
-                        arrival_time: null
-                        company: minima
-                        seat_position: h3
+                        price: 793
+                        source: eveniet
+                        destination: dolorum
+                        departure_time: '11:38 PM'
+                        arrival_time: '06:38 AM'
+                        tour_company_id: 4
+                        seat_position: e4
                         traveller_gender: female
                     -
                       type: Tour
                       id: 5
                       attributes:
-                        price: 732
-                        source: id
-                        destination: ea
-                        departure_time: null
-                        arrival_time: null
-                        company: totam
-                        seat_position: c2
+                        price: 513
+                        source: culpa
+                        destination: iste
+                        departure_time: '09:20 AM'
+                        arrival_time: '02:09 AM'
+                        tour_company_id: 5
+                        seat_position: e1
                         traveller_gender: female
                     -
                       type: Tour
                       id: 6
                       attributes:
-                        price: 140
-                        source: quidem
-                        destination: architecto
-                        departure_time: null
-                        arrival_time: null
-                        company: quos
-                        seat_position: b2
+                        price: 615
+                        source: voluptatem
+                        destination: voluptas
+                        departure_time: '10:06 AM'
+                        arrival_time: '07:26 AM'
+                        tour_company_id: 6
+                        seat_position: g4
                         traveller_gender: male
                     -
                       type: Tour
                       id: 7
                       attributes:
-                        price: 594
-                        source: iusto
-                        destination: distinctio
-                        departure_time: null
-                        arrival_time: null
-                        company: quo
-                        seat_position: c1
-                        traveller_gender: male
+                        price: 276
+                        source: totam
+                        destination: voluptates
+                        departure_time: '03:46 PM'
+                        arrival_time: '01:06 AM'
+                        tour_company_id: 7
+                        seat_position: h2
+                        traveller_gender: female
                     -
                       type: Tour
                       id: 8
                       attributes:
-                        price: 119
-                        source: est
-                        destination: recusandae
-                        departure_time: null
-                        arrival_time: null
-                        company: iusto
-                        seat_position: c3
-                        traveller_gender: male
+                        price: 799
+                        source: voluptatem
+                        destination: illo
+                        departure_time: '05:39 PM'
+                        arrival_time: '08:50 AM'
+                        tour_company_id: 8
+                        seat_position: h1
+                        traveller_gender: female
                     -
                       type: Tour
                       id: 9
                       attributes:
-                        price: 113
-                        source: qui
-                        destination: et
-                        departure_time: null
-                        arrival_time: null
-                        company: cumque
-                        seat_position: a2
-                        traveller_gender: female
+                        price: 278
+                        source: quisquam
+                        destination: impedit
+                        departure_time: '08:59 PM'
+                        arrival_time: '09:17 PM'
+                        tour_company_id: 9
+                        seat_position: c2
+                        traveller_gender: male
                     -
                       type: Tour
                       id: 10
                       attributes:
-                        price: 501
-                        source: voluptate
-                        destination: ut
-                        departure_time: null
-                        arrival_time: null
-                        company: consectetur
-                        seat_position: e3
+                        price: 516
+                        source: minus
+                        destination: corrupti
+                        departure_time: '11:32 AM'
+                        arrival_time: '07:03 AM'
+                        tour_company_id: 10
+                        seat_position: f2
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 11
+                      attributes:
+                        price: 1000
+                        source: 'New York'
+                        destination: 'Los Angeles'
+                        departure_time: '09:00 PM'
+                        arrival_time: '01:00 AM'
+                        tour_company_id: 1
+                        seat_position: a1
                         traveller_gender: female
                 properties:
                   data:
@@ -824,121 +1240,133 @@ paths:
                         type: Tour
                         id: 1
                         attributes:
-                          price: 440
-                          source: harum
-                          destination: velit
-                          departure_time: null
-                          arrival_time: null
-                          company: beatae
-                          seat_position: c1
-                          traveller_gender: male
+                          price: 605
+                          source: natus
+                          destination: amet
+                          departure_time: '02:12 PM'
+                          arrival_time: '09:26 AM'
+                          tour_company_id: 1
+                          seat_position: f1
+                          traveller_gender: female
                       -
                         type: Tour
                         id: 2
                         attributes:
-                          price: 622
-                          source: nam
-                          destination: quae
-                          departure_time: null
-                          arrival_time: null
-                          company: doloremque
-                          seat_position: e3
+                          price: 689
+                          source: ut
+                          destination: fugit
+                          departure_time: '05:23 AM'
+                          arrival_time: '07:33 AM'
+                          tour_company_id: 2
+                          seat_position: d1
                           traveller_gender: female
                       -
                         type: Tour
                         id: 3
                         attributes:
-                          price: 312
-                          source: ea
-                          destination: est
-                          departure_time: null
-                          arrival_time: null
-                          company: et
-                          seat_position: c2
-                          traveller_gender: female
+                          price: 120
+                          source: et
+                          destination: quia
+                          departure_time: '12:01 AM'
+                          arrival_time: '06:28 AM'
+                          tour_company_id: 3
+                          seat_position: f1
+                          traveller_gender: male
                       -
                         type: Tour
                         id: 4
                         attributes:
-                          price: 756
-                          source: ipsam
-                          destination: corporis
-                          departure_time: null
-                          arrival_time: null
-                          company: minima
-                          seat_position: h3
+                          price: 793
+                          source: eveniet
+                          destination: dolorum
+                          departure_time: '11:38 PM'
+                          arrival_time: '06:38 AM'
+                          tour_company_id: 4
+                          seat_position: e4
                           traveller_gender: female
                       -
                         type: Tour
                         id: 5
                         attributes:
-                          price: 732
-                          source: id
-                          destination: ea
-                          departure_time: null
-                          arrival_time: null
-                          company: totam
-                          seat_position: c2
+                          price: 513
+                          source: culpa
+                          destination: iste
+                          departure_time: '09:20 AM'
+                          arrival_time: '02:09 AM'
+                          tour_company_id: 5
+                          seat_position: e1
                           traveller_gender: female
                       -
                         type: Tour
                         id: 6
                         attributes:
-                          price: 140
-                          source: quidem
-                          destination: architecto
-                          departure_time: null
-                          arrival_time: null
-                          company: quos
-                          seat_position: b2
+                          price: 615
+                          source: voluptatem
+                          destination: voluptas
+                          departure_time: '10:06 AM'
+                          arrival_time: '07:26 AM'
+                          tour_company_id: 6
+                          seat_position: g4
                           traveller_gender: male
                       -
                         type: Tour
                         id: 7
                         attributes:
-                          price: 594
-                          source: iusto
-                          destination: distinctio
-                          departure_time: null
-                          arrival_time: null
-                          company: quo
-                          seat_position: c1
-                          traveller_gender: male
+                          price: 276
+                          source: totam
+                          destination: voluptates
+                          departure_time: '03:46 PM'
+                          arrival_time: '01:06 AM'
+                          tour_company_id: 7
+                          seat_position: h2
+                          traveller_gender: female
                       -
                         type: Tour
                         id: 8
                         attributes:
-                          price: 119
-                          source: est
-                          destination: recusandae
-                          departure_time: null
-                          arrival_time: null
-                          company: iusto
-                          seat_position: c3
-                          traveller_gender: male
+                          price: 799
+                          source: voluptatem
+                          destination: illo
+                          departure_time: '05:39 PM'
+                          arrival_time: '08:50 AM'
+                          tour_company_id: 8
+                          seat_position: h1
+                          traveller_gender: female
                       -
                         type: Tour
                         id: 9
                         attributes:
-                          price: 113
-                          source: qui
-                          destination: et
-                          departure_time: null
-                          arrival_time: null
-                          company: cumque
-                          seat_position: a2
-                          traveller_gender: female
+                          price: 278
+                          source: quisquam
+                          destination: impedit
+                          departure_time: '08:59 PM'
+                          arrival_time: '09:17 PM'
+                          tour_company_id: 9
+                          seat_position: c2
+                          traveller_gender: male
                       -
                         type: Tour
                         id: 10
                         attributes:
-                          price: 501
-                          source: voluptate
-                          destination: ut
-                          departure_time: null
-                          arrival_time: null
-                          company: consectetur
-                          seat_position: e3
+                          price: 516
+                          source: minus
+                          destination: corrupti
+                          departure_time: '11:32 AM'
+                          arrival_time: '07:03 AM'
+                          tour_company_id: 10
+                          seat_position: f2
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 11
+                        attributes:
+                          price: 1000
+                          source: 'New York'
+                          destination: 'Los Angeles'
+                          departure_time: '09:00 PM'
+                          arrival_time: '01:00 AM'
+                          tour_company_id: 1
+                          seat_position: a1
                           traveller_gender: female
                     items:
                       type: object
@@ -954,32 +1382,95 @@ paths:
                           properties:
                             price:
                               type: integer
-                              example: 440
+                              example: 605
                             source:
                               type: string
-                              example: harum
+                              example: natus
                             destination:
                               type: string
-                              example: velit
+                              example: amet
                             departure_time:
                               type: string
-                              example: null
+                              example: '02:12 PM'
                             arrival_time:
                               type: string
-                              example: null
-                            company:
-                              type: string
-                              example: beatae
+                              example: '09:26 AM'
+                            tour_company_id:
+                              type: integer
+                              example: 1
                             seat_position:
                               type: string
-                              example: c1
+                              example: f1
                             traveller_gender:
                               type: string
-                              example: male
+                              example: female
       tags:
         - 'Managing Tours'
       security: []
-  '/api/v1/tours/{tour_id}':
+    post:
+      summary: 'Create a Tour'
+      operationId: createATour
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Managing Tours'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    attributes:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        price:
+                          type: integer
+                          description: ''
+                          example: 14
+                        source:
+                          type: string
+                          description: ''
+                          example: sequi
+                        destination:
+                          type: string
+                          description: ''
+                          example: voluptate
+                        departure_time:
+                          type: string
+                          description: 'Must be a valid date in the format <code>h:i A</code>.'
+                          example: '03:50 PM'
+                        arrival_time:
+                          type: string
+                          description: 'Must be a valid date in the format <code>h:i A</code>.'
+                          example: '03:50 PM'
+                        tour_company_id:
+                          type: integer
+                          description: ''
+                          example: 2
+                        seat_position:
+                          type: string
+                          description: ''
+                          example: sapiente
+                        traveller_gender:
+                          type: string
+                          description: ''
+                          example: male
+                          enum:
+                            - male
+                            - female
+              required:
+                - data
+      security: []
+  '/api/tours/{id}':
     get:
       summary: 'show a specific Tour'
       operationId: showASpecificTour
@@ -997,14 +1488,14 @@ paths:
                     type: Tour
                     id: 1
                     attributes:
-                      price: 440
-                      source: harum
-                      destination: velit
-                      departure_time: null
-                      arrival_time: null
-                      company: beatae
-                      seat_position: c1
-                      traveller_gender: male
+                      price: 605
+                      source: natus
+                      destination: amet
+                      departure_time: '02:12 PM'
+                      arrival_time: '09:26 AM'
+                      tour_company_id: 1
+                      seat_position: f1
+                      traveller_gender: female
                 properties:
                   data:
                     type: object
@@ -1020,41 +1511,524 @@ paths:
                         properties:
                           price:
                             type: integer
-                            example: 440
+                            example: 605
                           source:
                             type: string
-                            example: harum
+                            example: natus
                           destination:
                             type: string
-                            example: velit
+                            example: amet
                           departure_time:
                             type: string
-                            example: null
+                            example: '02:12 PM'
                           arrival_time:
                             type: string
-                            example: null
-                          company:
-                            type: string
-                            example: beatae
+                            example: '09:26 AM'
+                          tour_company_id:
+                            type: integer
+                            example: 1
                           seat_position:
                             type: string
-                            example: c1
+                            example: f1
                           traveller_gender:
                             type: string
-                            example: male
+                            example: female
       tags:
         - 'Managing Tours'
       security: []
     parameters:
       -
         in: path
-        name: tour_id
+        name: id
+        description: 'The ID of the tour.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/tours:
+    get:
+      summary: "Get Tours\nShow all Tours"
+      operationId: getToursShowAllTours
+      description: ''
+      parameters:
+        -
+          in: query
+          name: sort
+          description: 'Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.'
+          example: 'departure_time, -created_at'
+          required: false
+          schema:
+            type: string
+            description: 'Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.'
+            example: 'departure_time, -created_at'
+        -
+          in: query
+          name: price
+          description: 'Data field to filter tours by their price u can use comma to filter by range.'
+          example: 2000
+          required: false
+          schema:
+            type: integer
+            description: 'Data field to filter tours by their price u can use comma to filter by range.'
+            example: 2000
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      type: Tour
+                      id: 1
+                      attributes:
+                        price: 605
+                        source: natus
+                        destination: amet
+                        departure_time: '02:12 PM'
+                        arrival_time: '09:26 AM'
+                        tour_company_id: 1
+                        seat_position: f1
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 2
+                      attributes:
+                        price: 689
+                        source: ut
+                        destination: fugit
+                        departure_time: '05:23 AM'
+                        arrival_time: '07:33 AM'
+                        tour_company_id: 2
+                        seat_position: d1
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 3
+                      attributes:
+                        price: 120
+                        source: et
+                        destination: quia
+                        departure_time: '12:01 AM'
+                        arrival_time: '06:28 AM'
+                        tour_company_id: 3
+                        seat_position: f1
+                        traveller_gender: male
+                    -
+                      type: Tour
+                      id: 4
+                      attributes:
+                        price: 793
+                        source: eveniet
+                        destination: dolorum
+                        departure_time: '11:38 PM'
+                        arrival_time: '06:38 AM'
+                        tour_company_id: 4
+                        seat_position: e4
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 5
+                      attributes:
+                        price: 513
+                        source: culpa
+                        destination: iste
+                        departure_time: '09:20 AM'
+                        arrival_time: '02:09 AM'
+                        tour_company_id: 5
+                        seat_position: e1
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 6
+                      attributes:
+                        price: 615
+                        source: voluptatem
+                        destination: voluptas
+                        departure_time: '10:06 AM'
+                        arrival_time: '07:26 AM'
+                        tour_company_id: 6
+                        seat_position: g4
+                        traveller_gender: male
+                    -
+                      type: Tour
+                      id: 7
+                      attributes:
+                        price: 276
+                        source: totam
+                        destination: voluptates
+                        departure_time: '03:46 PM'
+                        arrival_time: '01:06 AM'
+                        tour_company_id: 7
+                        seat_position: h2
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 8
+                      attributes:
+                        price: 799
+                        source: voluptatem
+                        destination: illo
+                        departure_time: '05:39 PM'
+                        arrival_time: '08:50 AM'
+                        tour_company_id: 8
+                        seat_position: h1
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 9
+                      attributes:
+                        price: 278
+                        source: quisquam
+                        destination: impedit
+                        departure_time: '08:59 PM'
+                        arrival_time: '09:17 PM'
+                        tour_company_id: 9
+                        seat_position: c2
+                        traveller_gender: male
+                    -
+                      type: Tour
+                      id: 10
+                      attributes:
+                        price: 516
+                        source: minus
+                        destination: corrupti
+                        departure_time: '11:32 AM'
+                        arrival_time: '07:03 AM'
+                        tour_company_id: 10
+                        seat_position: f2
+                        traveller_gender: female
+                    -
+                      type: Tour
+                      id: 11
+                      attributes:
+                        price: 1000
+                        source: 'New York'
+                        destination: 'Los Angeles'
+                        departure_time: '09:00 PM'
+                        arrival_time: '01:00 AM'
+                        tour_company_id: 1
+                        seat_position: a1
+                        traveller_gender: female
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        type: Tour
+                        id: 1
+                        attributes:
+                          price: 605
+                          source: natus
+                          destination: amet
+                          departure_time: '02:12 PM'
+                          arrival_time: '09:26 AM'
+                          tour_company_id: 1
+                          seat_position: f1
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 2
+                        attributes:
+                          price: 689
+                          source: ut
+                          destination: fugit
+                          departure_time: '05:23 AM'
+                          arrival_time: '07:33 AM'
+                          tour_company_id: 2
+                          seat_position: d1
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 3
+                        attributes:
+                          price: 120
+                          source: et
+                          destination: quia
+                          departure_time: '12:01 AM'
+                          arrival_time: '06:28 AM'
+                          tour_company_id: 3
+                          seat_position: f1
+                          traveller_gender: male
+                      -
+                        type: Tour
+                        id: 4
+                        attributes:
+                          price: 793
+                          source: eveniet
+                          destination: dolorum
+                          departure_time: '11:38 PM'
+                          arrival_time: '06:38 AM'
+                          tour_company_id: 4
+                          seat_position: e4
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 5
+                        attributes:
+                          price: 513
+                          source: culpa
+                          destination: iste
+                          departure_time: '09:20 AM'
+                          arrival_time: '02:09 AM'
+                          tour_company_id: 5
+                          seat_position: e1
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 6
+                        attributes:
+                          price: 615
+                          source: voluptatem
+                          destination: voluptas
+                          departure_time: '10:06 AM'
+                          arrival_time: '07:26 AM'
+                          tour_company_id: 6
+                          seat_position: g4
+                          traveller_gender: male
+                      -
+                        type: Tour
+                        id: 7
+                        attributes:
+                          price: 276
+                          source: totam
+                          destination: voluptates
+                          departure_time: '03:46 PM'
+                          arrival_time: '01:06 AM'
+                          tour_company_id: 7
+                          seat_position: h2
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 8
+                        attributes:
+                          price: 799
+                          source: voluptatem
+                          destination: illo
+                          departure_time: '05:39 PM'
+                          arrival_time: '08:50 AM'
+                          tour_company_id: 8
+                          seat_position: h1
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 9
+                        attributes:
+                          price: 278
+                          source: quisquam
+                          destination: impedit
+                          departure_time: '08:59 PM'
+                          arrival_time: '09:17 PM'
+                          tour_company_id: 9
+                          seat_position: c2
+                          traveller_gender: male
+                      -
+                        type: Tour
+                        id: 10
+                        attributes:
+                          price: 516
+                          source: minus
+                          destination: corrupti
+                          departure_time: '11:32 AM'
+                          arrival_time: '07:03 AM'
+                          tour_company_id: 10
+                          seat_position: f2
+                          traveller_gender: female
+                      -
+                        type: Tour
+                        id: 11
+                        attributes:
+                          price: 1000
+                          source: 'New York'
+                          destination: 'Los Angeles'
+                          departure_time: '09:00 PM'
+                          arrival_time: '01:00 AM'
+                          tour_company_id: 1
+                          seat_position: a1
+                          traveller_gender: female
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: Tour
+                        id:
+                          type: integer
+                          example: 1
+                        attributes:
+                          type: object
+                          properties:
+                            price:
+                              type: integer
+                              example: 605
+                            source:
+                              type: string
+                              example: natus
+                            destination:
+                              type: string
+                              example: amet
+                            departure_time:
+                              type: string
+                              example: '02:12 PM'
+                            arrival_time:
+                              type: string
+                              example: '09:26 AM'
+                            tour_company_id:
+                              type: integer
+                              example: 1
+                            seat_position:
+                              type: string
+                              example: f1
+                            traveller_gender:
+                              type: string
+                              example: female
+      tags:
+        - 'Managing Tours'
+      security: []
+    post:
+      summary: 'Create a Tour'
+      operationId: createATour
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Managing Tours'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    attributes:
+                      type: object
+                      description: ''
+                      example: []
+                      properties:
+                        price:
+                          type: integer
+                          description: ''
+                          example: 11
+                        source:
+                          type: string
+                          description: ''
+                          example: impedit
+                        destination:
+                          type: string
+                          description: ''
+                          example: similique
+                        departure_time:
+                          type: string
+                          description: 'Must be a valid date in the format <code>h:i A</code>.'
+                          example: '03:50 PM'
+                        arrival_time:
+                          type: string
+                          description: 'Must be a valid date in the format <code>h:i A</code>.'
+                          example: '03:50 PM'
+                        tour_company_id:
+                          type: integer
+                          description: ''
+                          example: 9
+                        seat_position:
+                          type: string
+                          description: ''
+                          example: quod
+                        traveller_gender:
+                          type: string
+                          description: ''
+                          example: male
+                          enum:
+                            - male
+                            - female
+              required:
+                - data
+      security: []
+  '/api/v1/tours/{id}':
+    get:
+      summary: 'show a specific Tour'
+      operationId: showASpecificTour
+      description: 'Display an individual tour'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    type: Tour
+                    id: 1
+                    attributes:
+                      price: 605
+                      source: natus
+                      destination: amet
+                      departure_time: '02:12 PM'
+                      arrival_time: '09:26 AM'
+                      tour_company_id: 1
+                      seat_position: f1
+                      traveller_gender: female
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: Tour
+                      id:
+                        type: integer
+                        example: 1
+                      attributes:
+                        type: object
+                        properties:
+                          price:
+                            type: integer
+                            example: 605
+                          source:
+                            type: string
+                            example: natus
+                          destination:
+                            type: string
+                            example: amet
+                          departure_time:
+                            type: string
+                            example: '02:12 PM'
+                          arrival_time:
+                            type: string
+                            example: '09:26 AM'
+                          tour_company_id:
+                            type: integer
+                            example: 1
+                          seat_position:
+                            type: string
+                            example: f1
+                          traveller_gender:
+                            type: string
+                            example: female
+      tags:
+        - 'Managing Tours'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
         description: 'The ID of the tour.'
         example: 1
         required: true
         schema:
           type: integer
 tags:
+  -
+    name: Authentication
+    description: ''
   -
     name: Endpoints
     description: ''

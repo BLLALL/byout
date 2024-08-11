@@ -20,14 +20,6 @@ class ReviewResource extends JsonResource
             'attributes' => [
                 'rating' => $this->rating,
 
-            ],
-            'relationships' => [
-                'author' => [
-                    'data' => [
-                        'type' => 'user',
-                        'id' => $this->user_id
-                    ]
-                ]
             ]
         ];
     }

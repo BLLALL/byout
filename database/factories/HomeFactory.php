@@ -32,7 +32,15 @@ class HomeFactory extends Factory
             'location' => $this->faker->randomElement(['Cairo', 'Benha', 'Dahab', 'Alexandria', '6 October']),
             'user_id' => User::factory(),
             'avg_rating' => null, // This will be calculated after reviews are created
-
+            'coordinates' => [
+                fake()->randomFloat(2, -90, 90),
+                fake()->randomFloat(2, -180, 180),
+            ],
+            'home_images' => [
+                "https://loremflickr.com/cache/resized/65535_52894684044_4fa4df88d6_b_640_480_nofilter.jpg",
+                "https://loremflickr.com/cache/resized/65535_52966824287_f28aed51c7_z_640_480_nofilter.jpg",
+                ],
+            'rent_period' => fake()->randomElement(['weekly', 'monthly', 'yearly']),
         ];
     }
 

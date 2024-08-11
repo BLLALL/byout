@@ -10,6 +10,7 @@ use App\Http\Resources\Api\V1\UserReviewCollection;
 use App\Models\Home;
 use App\Models\Review;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -19,7 +20,7 @@ class ReviewController extends Controller
         return new UserReviewCollection($reviews, $user->id);
     }
 
-    public function BookReviews(Home $home)
+    public function HomeReviews(Home $home)
     {
         $reviews = $home->reviews;
         return new HomeReviewCollection($reviews, $home->id);
@@ -27,13 +28,14 @@ class ReviewController extends Controller
 
     public function store(StoreHomeReviewRequest $request)
     {
-        $user = $request->user();
+        $user = Auth::user();
 
-        return new ReviewResource(Review::create([
-            'rating' => $request->input('data.attributes.rating'),
-            'user_id' => $user->id,
-            'home_id' => $request->input('data.attributes.home_id'),
-        ]));
+        return new ReviewResource(Review::updateOrCreate(
+            ['user_id' => $request->input('data.user_id')],
+            [
+                'rating' => $request->input('data.rating'),
+                'home_id' => $request->input('data.home_id'),
+            ]));
     }
 
 }

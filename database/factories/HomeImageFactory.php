@@ -18,11 +18,11 @@ class HomeImageFactory extends Factory
      */
     public function definition(): array
     {
-        $images = Storage::disk('public')->files('images/homes');
+        $image = Storage::disk('public')->files('images/homes');
 
         return [
             'home_id' => Home::factory(),
-            'image_path' => $this->faker->randomElement($images),
+            'image_path' => "https://loremflickr.com/320/240/house",
             'type' => $this->faker->randomElement(['exterior', 'interior', 'floor_plan', 'other']),
         ];
     }

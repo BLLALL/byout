@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Api;
+namespace App\Http\Requests\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,8 +22,8 @@ class EmailVerificationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required'. 'email', 'exists:users,email'],
-            'otp' => ['required', 'max:6'],
+            'email' => ['required', 'email', 'exists:users,email'],
+            'otp' => ['required','string', 'max:6'],
         ];
     }
 }

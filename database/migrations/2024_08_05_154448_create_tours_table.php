@@ -20,8 +20,8 @@ return new class extends Migration
                 $table->unsignedInteger('price');
                 $table->string('source');
                 $table->string('destination');
-                $table->time('departure_time');
-                $table->time('arrival_time');
+                $table->string('departure_time');
+                $table->string('arrival_time');
                 $table->foreignId('tour_company_id');
                 $table->string('seat_position', 2);
                 $table->enum('traveller_gender', ['male', 'female']);

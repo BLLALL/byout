@@ -66,15 +66,22 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
+                    <ul id="tocify-header-authentication" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authentication">
+                    <a href="#authentication">Authentication</a>
+                </li>
+                                    <ul id="tocify-subheader-authentication" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="authentication-POSTapi-login">
+                                <a href="#authentication-POSTapi-login">Login</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-endpoints" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="endpoints">
                     <a href="#endpoints">Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login">
-                                <a href="#endpoints-POSTapi-login">POST api/login</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login-google">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login-google">
                                 <a href="#endpoints-POSTapi-login-google">POST api/login/google</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login-google-redirect">
@@ -86,14 +93,14 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-logout">
                                 <a href="#endpoints-POSTapi-logout">POST api/logout</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-reviews-users--user_id-">
+                                <a href="#endpoints-GETapi-reviews-users--user_id-">GET api/reviews/users/{user_id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-reviews">
+                                <a href="#endpoints-POSTapi-reviews">POST api/reviews</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
                                 <a href="#endpoints-GETapi-user">GET api/user</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-v1-homes--id-">
-                                <a href="#endpoints-PUTapi-v1-homes--id-">Update the specified resource in storage.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-v1-homes--id-">
-                                <a href="#endpoints-DELETEapi-v1-homes--id-">Remove the specified resource from storage.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-reviews-users--user_id-">
                                 <a href="#endpoints-GETapi-v1-reviews-users--user_id-">GET api/v1/reviews/users/{user_id}</a>
@@ -107,6 +114,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-users--id-">
                                 <a href="#endpoints-GETapi-v1-users--id-">GET api/v1/users/{id}</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-users">
+                                <a href="#endpoints-GETapi-v1-users">GET api/v1/users</a>
+                            </li>
                                                                         </ul>
                             </ul>
                     <ul id="tocify-header-managing-homes" class="tocify-header">
@@ -114,14 +124,11 @@
                     <a href="#managing-homes">Managing Homes</a>
                 </li>
                                     <ul id="tocify-subheader-managing-homes" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="managing-homes-GETapi-v1-homes">
-                                <a href="#managing-homes-GETapi-v1-homes">Get Homes</a>
+                                                    <li class="tocify-item level-2" data-unique="managing-homes-POSTapi-homes">
+                                <a href="#managing-homes-POSTapi-homes">Create a Home</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="managing-homes-POSTapi-v1-homes">
                                 <a href="#managing-homes-POSTapi-v1-homes">Create a Home</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="managing-homes-GETapi-v1-homes--id-">
-                                <a href="#managing-homes-GETapi-v1-homes--id-">show a specific Home</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -130,11 +137,25 @@
                     <a href="#managing-tours">Managing Tours</a>
                 </li>
                                     <ul id="tocify-subheader-managing-tours" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="managing-tours-GETapi-v1-tours">
-                                <a href="#managing-tours-GETapi-v1-tours">Get Tours</a>
+                                                    <li class="tocify-item level-2" data-unique="managing-tours-GETapi-tours">
+                                <a href="#managing-tours-GETapi-tours">Get Tours
+Show all Tours</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="managing-tours-GETapi-v1-tours--tour_id-">
-                                <a href="#managing-tours-GETapi-v1-tours--tour_id-">show a specific Tour</a>
+                                                                                <li class="tocify-item level-2" data-unique="managing-tours-POSTapi-tours">
+                                <a href="#managing-tours-POSTapi-tours">Create a Tour</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="managing-tours-GETapi-tours--id-">
+                                <a href="#managing-tours-GETapi-tours--id-">show a specific Tour</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="managing-tours-GETapi-v1-tours">
+                                <a href="#managing-tours-GETapi-v1-tours">Get Tours
+Show all Tours</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="managing-tours-POSTapi-v1-tours">
+                                <a href="#managing-tours-POSTapi-v1-tours">Create a Tour</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="managing-tours-GETapi-v1-tours--id-">
+                                <a href="#managing-tours-GETapi-v1-tours--id-">show a specific Tour</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -147,7 +168,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 8, 2024</li>
+        <li>Last updated: August 9, 2024</li>
     </ul>
 </div>
 
@@ -167,16 +188,16 @@ You can switch the language used with the tabs at the top right (or from the nav
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p>
 
-        <h1 id="endpoints">Endpoints</h1>
+        <h1 id="authentication">Authentication</h1>
 
     
 
-                                <h2 id="endpoints-POSTapi-login">POST api/login</h2>
+                                <h2 id="authentication-POSTapi-login">Login</h2>
 
 <p>
 </p>
 
-
+<p>Authenticates the user and returns the user's API token.</p>
 
 <span id="example-requests-POSTapi-login">
 <blockquote>Example request:</blockquote>
@@ -188,8 +209,8 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"rasheed.kunde@example.com\",
-    \"password\": \"V@Ui2In7rt#1p-~B~\"
+    \"email\": \"homenick.mckayla@example.com\",
+    \"password\": \"NlDAukkOeS{P*V7W=1J\\\\\"
 }"
 </code></pre></div>
 
@@ -205,8 +226,8 @@ const headers = {
 };
 
 let body = {
-    "email": "rasheed.kunde@example.com",
-    "password": "V@Ui2In7rt#1p-~B~"
+    "email": "homenick.mckayla@example.com",
+    "password": "NlDAukkOeS{P*V7W=1J\\"
 };
 
 fetch(url, {
@@ -218,7 +239,20 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-login">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;{YOUR_AUTH_KEY}&quot;
+    },
+    &quot;message&quot;: &quot;Authenticated&quot;,
+    &quot;status&quot;: 200
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-login" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-login"></span>:
@@ -295,10 +329,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-login"
-               value="rasheed.kunde@example.com"
+               value="homenick.mckayla@example.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>rasheed.kunde@example.com</code></p>
+<p>Must be a valid email address. Example: <code>homenick.mckayla@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -306,14 +340,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-login"
-               value="V@Ui2In7rt#1p-~B~"
+               value="NlDAukkOeS{P*V7W=1J\"
                data-component="body">
     <br>
-<p>Must be at least 8 characters. Example: <code>V@Ui2In7rt#1p-~B~</code></p>
+<p>Must be at least 8 characters. Example: <code>NlDAukkOeS{P*V7W=1J\</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-login-google">POST api/login/google</h2>
+                <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-POSTapi-login-google">POST api/login/google</h2>
 
 <p>
 </p>
@@ -548,9 +586,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"data\": {
         \"attributes\": {
-            \"name\": \"dgrsbhgjzg\",
-            \"email\": \"qherzog@example.net\",
-            \"password\": \"uCBV{f[8aMv)\"
+            \"name\": \"afttboesjqdwqlbl\",
+            \"email\": \"simone31@example.net\",
+            \"password\": \"qQntie\"
         }
     }
 }"
@@ -570,9 +608,9 @@ const headers = {
 let body = {
     "data": {
         "attributes": {
-            "name": "dgrsbhgjzg",
-            "email": "qherzog@example.net",
-            "password": "uCBV{f[8aMv)"
+            "name": "afttboesjqdwqlbl",
+            "email": "simone31@example.net",
+            "password": "qQntie"
         }
     }
 };
@@ -681,10 +719,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="data.attributes.name"                data-endpoint="POSTapi-register"
-               value="dgrsbhgjzg"
+               value="afttboesjqdwqlbl"
                data-component="body">
     <br>
-<p>Must not be greater than 50 characters. Example: <code>dgrsbhgjzg</code></p>
+<p>Must not be greater than 50 characters. Example: <code>afttboesjqdwqlbl</code></p>
                     </div>
                                                                 <div style="margin-left: 28px; clear: unset;">
                         <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -692,10 +730,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="data.attributes.email"                data-endpoint="POSTapi-register"
-               value="qherzog@example.net"
+               value="simone31@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>qherzog@example.net</code></p>
+<p>Must be a valid email address. Example: <code>simone31@example.net</code></p>
                     </div>
                                                                 <div style="margin-left: 28px; clear: unset;">
                         <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -703,10 +741,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="data.attributes.password"                data-endpoint="POSTapi-register"
-               value="uCBV{f[8aMv)"
+               value="qQntie"
                data-component="body">
     <br>
-<p>Must be at least 8 characters. Example: <code>uCBV{f[8aMv)</code></p>
+<p>Must be at least 8 characters. Example: <code>qQntie</code></p>
                     </div>
                                     </details>
         </div>
@@ -821,6 +859,348 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>application/json</code></p>
             </div>
                         </form>
+
+                    <h2 id="endpoints-GETapi-reviews-users--user_id-">GET api/reviews/users/{user_id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-reviews-users--user_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://real-estate.test/api/reviews/users/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://real-estate.test/api/reviews/users/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-reviews-users--user_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;type&quot;: &quot;user_reviews&quot;,
+        &quot;user_id&quot;: 1,
+        &quot;attributes&quot;: [
+            {
+                &quot;id&quot;: 52,
+                &quot;rating&quot;: 5,
+                &quot;home_id&quot;: 6
+            },
+            {
+                &quot;id&quot;: 53,
+                &quot;rating&quot;: 3,
+                &quot;home_id&quot;: 1
+            },
+            {
+                &quot;id&quot;: 56,
+                &quot;rating&quot;: 4,
+                &quot;home_id&quot;: 10
+            }
+        ],
+        &quot;relationships&quot;: {
+            &quot;author&quot;: {
+                &quot;data&quot;: {
+                    &quot;type&quot;: &quot;user&quot;,
+                    &quot;id&quot;: 1
+                },
+                &quot;links&quot;: [
+                    &quot;self&quot;,
+                    &quot;http://real-estate.test/api/v1/users/1&quot;
+                ]
+            }
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-reviews-users--user_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-reviews-users--user_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-reviews-users--user_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-reviews-users--user_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-reviews-users--user_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-reviews-users--user_id-" data-method="GET"
+      data-path="api/reviews/users/{user_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-reviews-users--user_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-reviews-users--user_id-"
+                    onclick="tryItOut('GETapi-reviews-users--user_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-reviews-users--user_id-"
+                    onclick="cancelTryOut('GETapi-reviews-users--user_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-reviews-users--user_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/reviews/users/{user_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-reviews-users--user_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-reviews-users--user_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="GETapi-reviews-users--user_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the user. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-reviews">POST api/reviews</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-reviews">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://real-estate.test/api/reviews" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"data\": {
+        \"attributes\": {
+            \"rating\": \"3\",
+            \"home_id\": 2
+        }
+    }
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://real-estate.test/api/reviews"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "data": {
+        "attributes": {
+            "rating": "3",
+            "home_id": 2
+        }
+    }
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-reviews">
+</span>
+<span id="execution-results-POSTapi-reviews" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-reviews"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-reviews"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-reviews" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-reviews">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-reviews" data-method="POST"
+      data-path="api/reviews"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-reviews', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-reviews"
+                    onclick="tryItOut('POSTapi-reviews');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-reviews"
+                    onclick="cancelTryOut('POSTapi-reviews');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-reviews"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/reviews</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-reviews"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-reviews"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>data</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+
+            </summary>
+                                                <div style=" margin-left: 14px; clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>attributes</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>rating</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="data.attributes.rating"                data-endpoint="POSTapi-reviews"
+               value="3"
+               data-component="body">
+    <br>
+<p>Example: <code>3</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>1</code></li> <li><code>2</code></li> <li><code>3</code></li> <li><code>4</code></li> <li><code>5</code></li></ul>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>home_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="data.attributes.home_id"                data-endpoint="POSTapi-reviews"
+               value="2"
+               data-component="body">
+    <br>
+<p>Example: <code>2</code></p>
+                    </div>
+                                    </details>
+        </div>
+                                        </details>
+        </div>
+        </form>
 
                     <h2 id="endpoints-GETapi-user">GET api/user</h2>
 
@@ -946,250 +1326,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-PUTapi-v1-homes--id-">Update the specified resource in storage.</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-PUTapi-v1-homes--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
-    "http://real-estate.test/api/v1/homes/1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://real-estate.test/api/v1/homes/1"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-PUTapi-v1-homes--id-">
-</span>
-<span id="execution-results-PUTapi-v1-homes--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PUTapi-v1-homes--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-v1-homes--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PUTapi-v1-homes--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-v1-homes--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PUTapi-v1-homes--id-" data-method="PUT"
-      data-path="api/v1/homes/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-v1-homes--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-v1-homes--id-"
-                    onclick="tryItOut('PUTapi-v1-homes--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-v1-homes--id-"
-                    onclick="cancelTryOut('PUTapi-v1-homes--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-v1-homes--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/v1/homes/{id}</code></b>
-        </p>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/v1/homes/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-v1-homes--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-v1-homes--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="PUTapi-v1-homes--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the home. Example: <code>1</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="endpoints-DELETEapi-v1-homes--id-">Remove the specified resource from storage.</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-DELETEapi-v1-homes--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "http://real-estate.test/api/v1/homes/1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://real-estate.test/api/v1/homes/1"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-DELETEapi-v1-homes--id-">
-</span>
-<span id="execution-results-DELETEapi-v1-homes--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-v1-homes--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-v1-homes--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-DELETEapi-v1-homes--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-v1-homes--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-DELETEapi-v1-homes--id-" data-method="DELETE"
-      data-path="api/v1/homes/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-homes--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-v1-homes--id-"
-                    onclick="tryItOut('DELETEapi-v1-homes--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-v1-homes--id-"
-                    onclick="cancelTryOut('DELETEapi-v1-homes--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-v1-homes--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/v1/homes/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-v1-homes--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-v1-homes--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="DELETEapi-v1-homes--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the home. Example: <code>1</code></p>
-            </div>
-                    </form>
-
                     <h2 id="endpoints-GETapi-v1-reviews-users--user_id-">GET api/v1/reviews/users/{user_id}</h2>
 
 <p>
@@ -1244,17 +1380,17 @@ access-control-allow-origin: *
         &quot;user_id&quot;: 1,
         &quot;attributes&quot;: [
             {
-                &quot;id&quot;: 55,
+                &quot;id&quot;: 52,
                 &quot;rating&quot;: 5,
                 &quot;home_id&quot;: 6
             },
             {
-                &quot;id&quot;: 63,
-                &quot;rating&quot;: 2,
-                &quot;home_id&quot;: 4
+                &quot;id&quot;: 53,
+                &quot;rating&quot;: 3,
+                &quot;home_id&quot;: 1
             },
             {
-                &quot;id&quot;: 65,
+                &quot;id&quot;: 56,
                 &quot;rating&quot;: 4,
                 &quot;home_id&quot;: 10
             }
@@ -1395,7 +1531,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-v1-reviews-homes--home_id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1407,33 +1543,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;type&quot;: &quot;home_specific_review&quot;,
-        &quot;home_id&quot;: 1,
-        &quot;attributes&quot;: [
-            {
-                &quot;id&quot;: 1,
-                &quot;rating&quot;: 4,
-                &quot;user_id&quot;: 6
-            },
-            {
-                &quot;id&quot;: 58,
-                &quot;rating&quot;: 5,
-                &quot;user_id&quot;: 4
-            }
-        ],
-        &quot;relationships&quot;: {
-            &quot;home&quot;: {
-                &quot;data&quot;: {
-                    &quot;id&quot;: 1
-                },
-                &quot;links&quot;: [
-                    &quot;self&quot;,
-                    &quot;http://real-estate.test/api/v1/homes/1&quot;
-                ]
-            }
-        }
-    }
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -1539,8 +1649,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"data\": {
         \"attributes\": {
-            \"rating\": \"2\",
-            \"home_id\": 20
+            \"rating\": \"5\",
+            \"home_id\": 13
         }
     }
 }"
@@ -1560,8 +1670,8 @@ const headers = {
 let body = {
     "data": {
         "attributes": {
-            "rating": "2",
-            "home_id": 20
+            "rating": "5",
+            "home_id": 13
         }
     }
 };
@@ -1670,10 +1780,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="data.attributes.rating"                data-endpoint="POSTapi-v1-reviews"
-               value="2"
+               value="5"
                data-component="body">
     <br>
-<p>Example: <code>2</code></p>
+<p>Example: <code>5</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>1</code></li> <li><code>2</code></li> <li><code>3</code></li> <li><code>4</code></li> <li><code>5</code></li></ul>
                     </div>
@@ -1683,10 +1793,10 @@ Must be one of:
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="data.attributes.home_id"                data-endpoint="POSTapi-v1-reviews"
-               value="20"
+               value="13"
                data-component="body">
     <br>
-<p>Example: <code>20</code></p>
+<p>Example: <code>13</code></p>
                     </div>
                                     </details>
         </div>
@@ -1731,7 +1841,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-v1-users--id-">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1743,7 +1853,12 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Esta Beer&quot;,
+    &quot;email&quot;: &quot;rose49@example.org&quot;,
+    &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+    &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -1830,41 +1945,28 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                <h1 id="managing-homes">Managing Homes</h1>
-
-    
-
-                                <h2 id="managing-homes-GETapi-v1-homes">Get Homes</h2>
+                    <h2 id="endpoints-GETapi-v1-users">GET api/v1/users</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-v1-homes">
+<span id="example-requests-GETapi-v1-users">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://real-estate.test/api/v1/homes?sort=title%2C+-created_at&amp;price=2000&amp;title=Lorem&amp;description=Lorem+Ipsum" \
+    --get "http://real-estate.test/api/v1/users" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://real-estate.test/api/v1/homes"
+    "http://real-estate.test/api/v1/users"
 );
-
-const params = {
-    "sort": "title, -created_at",
-    "price": "2000",
-    "title": "Lorem",
-    "description": "Lorem Ipsum",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Content-Type": "application/json",
@@ -1878,7 +1980,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-v1-homes">
+<span id="example-responses-GETapi-v1-users">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -1891,48 +1993,495 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: []
-}</code>
+<code class="language-json" style="max-height: 300px;">[
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Esta Beer&quot;,
+        &quot;email&quot;: &quot;rose49@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Ramiro Green DVM&quot;,
+        &quot;email&quot;: &quot;edd.steuber@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;Davin D&#039;Amore&quot;,
+        &quot;email&quot;: &quot;klein.addie@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 4,
+        &quot;name&quot;: &quot;Clay Waelchi&quot;,
+        &quot;email&quot;: &quot;fzemlak@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 5,
+        &quot;name&quot;: &quot;Monserrate Stiedemann&quot;,
+        &quot;email&quot;: &quot;eldora18@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 6,
+        &quot;name&quot;: &quot;Marion Kunze&quot;,
+        &quot;email&quot;: &quot;toy.hollie@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 7,
+        &quot;name&quot;: &quot;Prof. Guy Brakus Jr.&quot;,
+        &quot;email&quot;: &quot;jbartell@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 8,
+        &quot;name&quot;: &quot;Jada Harris&quot;,
+        &quot;email&quot;: &quot;stevie72@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 9,
+        &quot;name&quot;: &quot;Prof. Wanda Wunsch&quot;,
+        &quot;email&quot;: &quot;corkery.christophe@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 10,
+        &quot;name&quot;: &quot;Miss Heath Torp&quot;,
+        &quot;email&quot;: &quot;rmraz@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 11,
+        &quot;name&quot;: &quot;Lorena White&quot;,
+        &quot;email&quot;: &quot;misty00@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 12,
+        &quot;name&quot;: &quot;Mr. Enrique Funk IV&quot;,
+        &quot;email&quot;: &quot;jeff.hodkiewicz@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 13,
+        &quot;name&quot;: &quot;Dr. Lenna Medhurst&quot;,
+        &quot;email&quot;: &quot;atremblay@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 14,
+        &quot;name&quot;: &quot;Alysson Bartell&quot;,
+        &quot;email&quot;: &quot;ywaelchi@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 15,
+        &quot;name&quot;: &quot;Dr. D&#039;angelo Kozey&quot;,
+        &quot;email&quot;: &quot;qthompson@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 16,
+        &quot;name&quot;: &quot;River Bayer PhD&quot;,
+        &quot;email&quot;: &quot;kacie45@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 17,
+        &quot;name&quot;: &quot;Brad Watsica&quot;,
+        &quot;email&quot;: &quot;mireille.jones@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 18,
+        &quot;name&quot;: &quot;Dr. Jackie Kautzer II&quot;,
+        &quot;email&quot;: &quot;dillan.von@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 19,
+        &quot;name&quot;: &quot;Mr. Eli Hermann PhD&quot;,
+        &quot;email&quot;: &quot;hermann.erling@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 20,
+        &quot;name&quot;: &quot;Fritz Kulas&quot;,
+        &quot;email&quot;: &quot;pcummerata@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 21,
+        &quot;name&quot;: &quot;Suzanne Treutel&quot;,
+        &quot;email&quot;: &quot;bradtke.jany@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 22,
+        &quot;name&quot;: &quot;Telly Gislason&quot;,
+        &quot;email&quot;: &quot;katelyn.windler@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:19.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 23,
+        &quot;name&quot;: &quot;Trisha Kilback&quot;,
+        &quot;email&quot;: &quot;vergie00@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 24,
+        &quot;name&quot;: &quot;Brandon Bergnaum&quot;,
+        &quot;email&quot;: &quot;mabelle.kutch@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 25,
+        &quot;name&quot;: &quot;Mrs. Amalia Mertz DDS&quot;,
+        &quot;email&quot;: &quot;kristy80@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 26,
+        &quot;name&quot;: &quot;Prof. Gino Walker V&quot;,
+        &quot;email&quot;: &quot;hortense.breitenberg@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 27,
+        &quot;name&quot;: &quot;Xander Langworth&quot;,
+        &quot;email&quot;: &quot;laron07@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 28,
+        &quot;name&quot;: &quot;Dr. Cecil Boyle&quot;,
+        &quot;email&quot;: &quot;german67@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 29,
+        &quot;name&quot;: &quot;Dr. Frieda Schowalter&quot;,
+        &quot;email&quot;: &quot;ctromp@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 30,
+        &quot;name&quot;: &quot;Mr. Lula Kunde&quot;,
+        &quot;email&quot;: &quot;korey.schinner@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 31,
+        &quot;name&quot;: &quot;Madyson Yost&quot;,
+        &quot;email&quot;: &quot;laury12@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 32,
+        &quot;name&quot;: &quot;Orrin Weber&quot;,
+        &quot;email&quot;: &quot;towne.audrey@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 33,
+        &quot;name&quot;: &quot;Cornell Kozey&quot;,
+        &quot;email&quot;: &quot;rabbott@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 34,
+        &quot;name&quot;: &quot;Troy O&#039;Kon&quot;,
+        &quot;email&quot;: &quot;fgerhold@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 35,
+        &quot;name&quot;: &quot;Jillian Bechtelar II&quot;,
+        &quot;email&quot;: &quot;rwyman@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 36,
+        &quot;name&quot;: &quot;Lysanne Nikolaus&quot;,
+        &quot;email&quot;: &quot;ziemann.ruby@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 37,
+        &quot;name&quot;: &quot;Prof. Ramiro Klocko&quot;,
+        &quot;email&quot;: &quot;rowe.cora@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 38,
+        &quot;name&quot;: &quot;Abdul Christiansen&quot;,
+        &quot;email&quot;: &quot;abelardo58@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 39,
+        &quot;name&quot;: &quot;Sandy Grady&quot;,
+        &quot;email&quot;: &quot;viva.beahan@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 40,
+        &quot;name&quot;: &quot;Elwin Osinski&quot;,
+        &quot;email&quot;: &quot;bianka83@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 41,
+        &quot;name&quot;: &quot;Sonya Donnelly&quot;,
+        &quot;email&quot;: &quot;ena.rodriguez@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 42,
+        &quot;name&quot;: &quot;Breanne Mertz&quot;,
+        &quot;email&quot;: &quot;flatley.marielle@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 43,
+        &quot;name&quot;: &quot;Alba Beahan&quot;,
+        &quot;email&quot;: &quot;loren25@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 44,
+        &quot;name&quot;: &quot;Marjory Bogan&quot;,
+        &quot;email&quot;: &quot;jtoy@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 45,
+        &quot;name&quot;: &quot;Savannah Kirlin&quot;,
+        &quot;email&quot;: &quot;lueilwitz.ferne@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 46,
+        &quot;name&quot;: &quot;Brendon Ortiz&quot;,
+        &quot;email&quot;: &quot;jacobs.issac@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 47,
+        &quot;name&quot;: &quot;Reta Hayes PhD&quot;,
+        &quot;email&quot;: &quot;abigayle.waelchi@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 48,
+        &quot;name&quot;: &quot;Terrell Crooks&quot;,
+        &quot;email&quot;: &quot;rashad.bahringer@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 49,
+        &quot;name&quot;: &quot;Mr. Maxime Satterfield Sr.&quot;,
+        &quot;email&quot;: &quot;hkassulke@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 50,
+        &quot;name&quot;: &quot;Price Becker V&quot;,
+        &quot;email&quot;: &quot;jeremy76@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 51,
+        &quot;name&quot;: &quot;Prof. Gordon Wisozk II&quot;,
+        &quot;email&quot;: &quot;sonya49@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 52,
+        &quot;name&quot;: &quot;Mrs. Kamille Roberts V&quot;,
+        &quot;email&quot;: &quot;omacejkovic@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 53,
+        &quot;name&quot;: &quot;Dr. Emil Harvey V&quot;,
+        &quot;email&quot;: &quot;skye.veum@example.com&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 54,
+        &quot;name&quot;: &quot;Dejah Schuster&quot;,
+        &quot;email&quot;: &quot;kohler.loy@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 55,
+        &quot;name&quot;: &quot;Miss Audreanne Kovacek III&quot;,
+        &quot;email&quot;: &quot;shane.konopelski@example.net&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    },
+    {
+        &quot;id&quot;: 56,
+        &quot;name&quot;: &quot;Alphonso Beer&quot;,
+        &quot;email&quot;: &quot;block.marilou@example.org&quot;,
+        &quot;email_verified_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-08-09T12:16:20.000000Z&quot;
+    }
+]</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-v1-homes" hidden>
+<span id="execution-results-GETapi-v1-users" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-v1-homes"></span>:
+                id="execution-response-status-GETapi-v1-users"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-homes"
+    <pre class="json"><code id="execution-response-content-GETapi-v1-users"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-v1-homes" hidden>
+<span id="execution-error-GETapi-v1-users" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-homes">
+    <pre><code id="execution-error-message-GETapi-v1-users">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-v1-homes" data-method="GET"
-      data-path="api/v1/homes"
+<form id="form-GETapi-v1-users" data-method="GET"
+      data-path="api/v1/users"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-homes', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-users', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-v1-homes"
-                    onclick="tryItOut('GETapi-v1-homes');">Try it out ⚡
+                    id="btn-tryout-GETapi-v1-users"
+                    onclick="tryItOut('GETapi-v1-users');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-v1-homes"
-                    onclick="cancelTryOut('GETapi-v1-homes');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-v1-users"
+                    onclick="cancelTryOut('GETapi-v1-users');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-v1-homes"
+                    id="btn-executetryout-GETapi-v1-users"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -1940,7 +2489,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/v1/homes</code></b>
+            <b><code>api/v1/users</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -1948,7 +2497,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-v1-homes"
+                              name="Content-Type"                data-endpoint="GETapi-v1-users"
                value="application/json"
                data-component="header">
     <br>
@@ -1959,58 +2508,267 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-v1-homes"
+                              name="Accept"                data-endpoint="GETapi-v1-users"
                value="application/json"
                data-component="header">
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+                        </form>
+
+                <h1 id="managing-homes">Managing Homes</h1>
+
+    
+
+                                <h2 id="managing-homes-POSTapi-homes">Create a Home</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-homes">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://real-estate.test/api/homes" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"data\": {
+        \"attributes\": {
+            \"title\": \"praesentium\",
+            \"description\": \"Sed harum sequi minima quam eaque sed.\",
+            \"price\": 17,
+            \"area\": 5,
+            \"bathrooms_no\": 11,
+            \"bedrooms_no\": 7,
+            \"location\": \"aut\",
+            \"user_id\": 14
+        }
+    }
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://real-estate.test/api/homes"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "data": {
+        "attributes": {
+            "title": "praesentium",
+            "description": "Sed harum sequi minima quam eaque sed.",
+            "price": 17,
+            "area": 5,
+            "bathrooms_no": 11,
+            "bedrooms_no": 7,
+            "location": "aut",
+            "user_id": 14
+        }
+    }
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-homes">
+</span>
+<span id="execution-results-POSTapi-homes" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-homes"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-homes"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-homes" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-homes">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-homes" data-method="POST"
+      data-path="api/homes"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-homes', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-homes"
+                    onclick="tryItOut('POSTapi-homes');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-homes"
+                    onclick="cancelTryOut('POSTapi-homes');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-homes"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/homes</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
-                              name="sort"                data-endpoint="GETapi-v1-homes"
-               value="title, -created_at"
-               data-component="query">
+                              name="Content-Type"                data-endpoint="POSTapi-homes"
+               value="application/json"
+               data-component="header">
     <br>
-<p>Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign. Example: <code>title, -created_at</code></p>
+<p>Example: <code>application/json</code></p>
             </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-homes"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>data</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+ &nbsp;
+<br>
+
+            </summary>
+                                                <div style=" margin-left: 14px; clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>attributes</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+ &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.title"                data-endpoint="POSTapi-homes"
+               value="praesentium"
+               data-component="body">
+    <br>
+<p>Example: <code>praesentium</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.description"                data-endpoint="POSTapi-homes"
+               value="Sed harum sequi minima quam eaque sed."
+               data-component="body">
+    <br>
+<p>Example: <code>Sed harum sequi minima quam eaque sed.</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="price"                data-endpoint="GETapi-v1-homes"
-               value="2000"
-               data-component="query">
+               step="any"               name="data.attributes.price"                data-endpoint="POSTapi-homes"
+               value="17"
+               data-component="body">
     <br>
-<p>Data field to filter homes by their price u can use comma to filter by range. Example: <code>2000</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<p>Example: <code>17</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>area</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="data.attributes.area"                data-endpoint="POSTapi-homes"
+               value="5"
+               data-component="body">
+    <br>
+<p>Example: <code>5</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>bathrooms_no</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="data.attributes.bathrooms_no"                data-endpoint="POSTapi-homes"
+               value="11"
+               data-component="body">
+    <br>
+<p>Example: <code>11</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>bedrooms_no</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="data.attributes.bedrooms_no"                data-endpoint="POSTapi-homes"
+               value="7"
+               data-component="body">
+    <br>
+<p>Example: <code>7</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>location</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
-                              name="title"                data-endpoint="GETapi-v1-homes"
-               value="Lorem"
-               data-component="query">
+                              name="data.attributes.location"                data-endpoint="POSTapi-homes"
+               value="aut"
+               data-component="body">
     <br>
-<p>Data field to search for homes by their title. Example: <code>Lorem</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="description"                data-endpoint="GETapi-v1-homes"
-               value="Lorem Ipsum"
-               data-component="query">
+<p>Example: <code>aut</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="data.attributes.user_id"                data-endpoint="POSTapi-homes"
+               value="14"
+               data-component="body">
     <br>
-<p>Data field to search for homes by their description. Example: <code>Lorem Ipsum</code></p>
-            </div>
-                </form>
+<p>Example: <code>14</code></p>
+                    </div>
+                                    </details>
+        </div>
+                                        </details>
+        </div>
+        </form>
 
                     <h2 id="managing-homes-POSTapi-v1-homes">Create a Home</h2>
 
@@ -2031,14 +2789,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"data\": {
         \"attributes\": {
-            \"title\": \"quibusdam\",
-            \"description\": \"Et sunt est a impedit eaque nulla.\",
-            \"price\": 3,
+            \"title\": \"quisquam\",
+            \"description\": \"Est veritatis eaque assumenda quam eveniet repellendus beatae.\",
+            \"price\": 19,
             \"area\": 7,
-            \"bathrooms_no\": 11,
-            \"bedrooms_no\": 14,
-            \"location\": \"itaque\",
-            \"user_id\": 5
+            \"bathrooms_no\": 12,
+            \"bedrooms_no\": 13,
+            \"location\": \"in\",
+            \"user_id\": 16
         }
     }
 }"
@@ -2058,14 +2816,14 @@ const headers = {
 let body = {
     "data": {
         "attributes": {
-            "title": "quibusdam",
-            "description": "Et sunt est a impedit eaque nulla.",
-            "price": 3,
+            "title": "quisquam",
+            "description": "Est veritatis eaque assumenda quam eveniet repellendus beatae.",
+            "price": 19,
             "area": 7,
-            "bathrooms_no": 11,
-            "bedrooms_no": 14,
-            "location": "itaque",
-            "user_id": 5
+            "bathrooms_no": 12,
+            "bedrooms_no": 13,
+            "location": "in",
+            "user_id": 16
         }
     }
 };
@@ -2174,10 +2932,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="data.attributes.title"                data-endpoint="POSTapi-v1-homes"
-               value="quibusdam"
+               value="quisquam"
                data-component="body">
     <br>
-<p>Example: <code>quibusdam</code></p>
+<p>Example: <code>quisquam</code></p>
                     </div>
                                                                 <div style="margin-left: 28px; clear: unset;">
                         <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -2185,10 +2943,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="data.attributes.description"                data-endpoint="POSTapi-v1-homes"
-               value="Et sunt est a impedit eaque nulla."
+               value="Est veritatis eaque assumenda quam eveniet repellendus beatae."
                data-component="body">
     <br>
-<p>Example: <code>Et sunt est a impedit eaque nulla.</code></p>
+<p>Example: <code>Est veritatis eaque assumenda quam eveniet repellendus beatae.</code></p>
                     </div>
                                                                 <div style="margin-left: 28px; clear: unset;">
                         <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
@@ -2196,10 +2954,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="data.attributes.price"                data-endpoint="POSTapi-v1-homes"
-               value="3"
+               value="19"
                data-component="body">
     <br>
-<p>Example: <code>3</code></p>
+<p>Example: <code>19</code></p>
                     </div>
                                                                 <div style="margin-left: 28px; clear: unset;">
                         <b style="line-height: 2;"><code>area</code></b>&nbsp;&nbsp;
@@ -2218,10 +2976,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="data.attributes.bathrooms_no"                data-endpoint="POSTapi-v1-homes"
-               value="11"
+               value="12"
                data-component="body">
     <br>
-<p>Example: <code>11</code></p>
+<p>Example: <code>12</code></p>
                     </div>
                                                                 <div style="margin-left: 28px; clear: unset;">
                         <b style="line-height: 2;"><code>bedrooms_no</code></b>&nbsp;&nbsp;
@@ -2229,10 +2987,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="data.attributes.bedrooms_no"                data-endpoint="POSTapi-v1-homes"
-               value="14"
+               value="13"
                data-component="body">
     <br>
-<p>Example: <code>14</code></p>
+<p>Example: <code>13</code></p>
                     </div>
                                                                 <div style="margin-left: 28px; clear: unset;">
                         <b style="line-height: 2;"><code>location</code></b>&nbsp;&nbsp;
@@ -2240,10 +2998,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="data.attributes.location"                data-endpoint="POSTapi-v1-homes"
-               value="itaque"
+               value="in"
                data-component="body">
     <br>
-<p>Example: <code>itaque</code></p>
+<p>Example: <code>in</code></p>
                     </div>
                                                                 <div style="margin-left: 28px; clear: unset;">
                         <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
@@ -2251,10 +3009,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="data.attributes.user_id"                data-endpoint="POSTapi-v1-homes"
-               value="5"
+               value="16"
                data-component="body">
     <br>
-<p>Example: <code>5</code></p>
+<p>Example: <code>16</code></p>
                     </div>
                                     </details>
         </div>
@@ -2262,27 +3020,593 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="managing-homes-GETapi-v1-homes--id-">show a specific Home</h2>
+                <h1 id="managing-tours">Managing Tours</h1>
+
+    
+
+                                <h2 id="managing-tours-GETapi-tours">Get Tours
+Show all Tours</h2>
 
 <p>
 </p>
 
-<p>Display an individual home</p>
 
-<span id="example-requests-GETapi-v1-homes--id-">
+
+<span id="example-requests-GETapi-tours">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://real-estate.test/api/v1/homes/1" \
+    --get "http://real-estate.test/api/tours?sort=departure_time%2C+-created_at&amp;price=2000" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://real-estate.test/api/v1/homes/1"
+    "http://real-estate.test/api/tours"
+);
+
+const params = {
+    "sort": "departure_time, -created_at",
+    "price": "2000",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-tours">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;type&quot;: &quot;Tour&quot;,
+            &quot;id&quot;: 1,
+            &quot;attributes&quot;: {
+                &quot;price&quot;: 605,
+                &quot;source&quot;: &quot;natus&quot;,
+                &quot;destination&quot;: &quot;amet&quot;,
+                &quot;departure_time&quot;: &quot;02:12 PM&quot;,
+                &quot;arrival_time&quot;: &quot;09:26 AM&quot;,
+                &quot;tour_company_id&quot;: 1,
+                &quot;seat_position&quot;: &quot;f1&quot;,
+                &quot;traveller_gender&quot;: &quot;female&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Tour&quot;,
+            &quot;id&quot;: 2,
+            &quot;attributes&quot;: {
+                &quot;price&quot;: 689,
+                &quot;source&quot;: &quot;ut&quot;,
+                &quot;destination&quot;: &quot;fugit&quot;,
+                &quot;departure_time&quot;: &quot;05:23 AM&quot;,
+                &quot;arrival_time&quot;: &quot;07:33 AM&quot;,
+                &quot;tour_company_id&quot;: 2,
+                &quot;seat_position&quot;: &quot;d1&quot;,
+                &quot;traveller_gender&quot;: &quot;female&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Tour&quot;,
+            &quot;id&quot;: 3,
+            &quot;attributes&quot;: {
+                &quot;price&quot;: 120,
+                &quot;source&quot;: &quot;et&quot;,
+                &quot;destination&quot;: &quot;quia&quot;,
+                &quot;departure_time&quot;: &quot;12:01 AM&quot;,
+                &quot;arrival_time&quot;: &quot;06:28 AM&quot;,
+                &quot;tour_company_id&quot;: 3,
+                &quot;seat_position&quot;: &quot;f1&quot;,
+                &quot;traveller_gender&quot;: &quot;male&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Tour&quot;,
+            &quot;id&quot;: 4,
+            &quot;attributes&quot;: {
+                &quot;price&quot;: 793,
+                &quot;source&quot;: &quot;eveniet&quot;,
+                &quot;destination&quot;: &quot;dolorum&quot;,
+                &quot;departure_time&quot;: &quot;11:38 PM&quot;,
+                &quot;arrival_time&quot;: &quot;06:38 AM&quot;,
+                &quot;tour_company_id&quot;: 4,
+                &quot;seat_position&quot;: &quot;e4&quot;,
+                &quot;traveller_gender&quot;: &quot;female&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Tour&quot;,
+            &quot;id&quot;: 5,
+            &quot;attributes&quot;: {
+                &quot;price&quot;: 513,
+                &quot;source&quot;: &quot;culpa&quot;,
+                &quot;destination&quot;: &quot;iste&quot;,
+                &quot;departure_time&quot;: &quot;09:20 AM&quot;,
+                &quot;arrival_time&quot;: &quot;02:09 AM&quot;,
+                &quot;tour_company_id&quot;: 5,
+                &quot;seat_position&quot;: &quot;e1&quot;,
+                &quot;traveller_gender&quot;: &quot;female&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Tour&quot;,
+            &quot;id&quot;: 6,
+            &quot;attributes&quot;: {
+                &quot;price&quot;: 615,
+                &quot;source&quot;: &quot;voluptatem&quot;,
+                &quot;destination&quot;: &quot;voluptas&quot;,
+                &quot;departure_time&quot;: &quot;10:06 AM&quot;,
+                &quot;arrival_time&quot;: &quot;07:26 AM&quot;,
+                &quot;tour_company_id&quot;: 6,
+                &quot;seat_position&quot;: &quot;g4&quot;,
+                &quot;traveller_gender&quot;: &quot;male&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Tour&quot;,
+            &quot;id&quot;: 7,
+            &quot;attributes&quot;: {
+                &quot;price&quot;: 276,
+                &quot;source&quot;: &quot;totam&quot;,
+                &quot;destination&quot;: &quot;voluptates&quot;,
+                &quot;departure_time&quot;: &quot;03:46 PM&quot;,
+                &quot;arrival_time&quot;: &quot;01:06 AM&quot;,
+                &quot;tour_company_id&quot;: 7,
+                &quot;seat_position&quot;: &quot;h2&quot;,
+                &quot;traveller_gender&quot;: &quot;female&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Tour&quot;,
+            &quot;id&quot;: 8,
+            &quot;attributes&quot;: {
+                &quot;price&quot;: 799,
+                &quot;source&quot;: &quot;voluptatem&quot;,
+                &quot;destination&quot;: &quot;illo&quot;,
+                &quot;departure_time&quot;: &quot;05:39 PM&quot;,
+                &quot;arrival_time&quot;: &quot;08:50 AM&quot;,
+                &quot;tour_company_id&quot;: 8,
+                &quot;seat_position&quot;: &quot;h1&quot;,
+                &quot;traveller_gender&quot;: &quot;female&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Tour&quot;,
+            &quot;id&quot;: 9,
+            &quot;attributes&quot;: {
+                &quot;price&quot;: 278,
+                &quot;source&quot;: &quot;quisquam&quot;,
+                &quot;destination&quot;: &quot;impedit&quot;,
+                &quot;departure_time&quot;: &quot;08:59 PM&quot;,
+                &quot;arrival_time&quot;: &quot;09:17 PM&quot;,
+                &quot;tour_company_id&quot;: 9,
+                &quot;seat_position&quot;: &quot;c2&quot;,
+                &quot;traveller_gender&quot;: &quot;male&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Tour&quot;,
+            &quot;id&quot;: 10,
+            &quot;attributes&quot;: {
+                &quot;price&quot;: 516,
+                &quot;source&quot;: &quot;minus&quot;,
+                &quot;destination&quot;: &quot;corrupti&quot;,
+                &quot;departure_time&quot;: &quot;11:32 AM&quot;,
+                &quot;arrival_time&quot;: &quot;07:03 AM&quot;,
+                &quot;tour_company_id&quot;: 10,
+                &quot;seat_position&quot;: &quot;f2&quot;,
+                &quot;traveller_gender&quot;: &quot;female&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Tour&quot;,
+            &quot;id&quot;: 11,
+            &quot;attributes&quot;: {
+                &quot;price&quot;: 1000,
+                &quot;source&quot;: &quot;New York&quot;,
+                &quot;destination&quot;: &quot;Los Angeles&quot;,
+                &quot;departure_time&quot;: &quot;09:00 PM&quot;,
+                &quot;arrival_time&quot;: &quot;01:00 AM&quot;,
+                &quot;tour_company_id&quot;: 1,
+                &quot;seat_position&quot;: &quot;a1&quot;,
+                &quot;traveller_gender&quot;: &quot;female&quot;
+            }
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-tours" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-tours"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-tours"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-tours" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-tours">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-tours" data-method="GET"
+      data-path="api/tours"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-tours', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-tours"
+                    onclick="tryItOut('GETapi-tours');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-tours"
+                    onclick="cancelTryOut('GETapi-tours');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-tours"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/tours</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-tours"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-tours"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="sort"                data-endpoint="GETapi-tours"
+               value="departure_time, -created_at"
+               data-component="query">
+    <br>
+<p>Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign. Example: <code>departure_time, -created_at</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="price"                data-endpoint="GETapi-tours"
+               value="2000"
+               data-component="query">
+    <br>
+<p>Data field to filter tours by their price u can use comma to filter by range. Example: <code>2000</code></p>
+            </div>
+                </form>
+
+                    <h2 id="managing-tours-POSTapi-tours">Create a Tour</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-tours">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://real-estate.test/api/tours" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"data\": {
+        \"attributes\": {
+            \"price\": 14,
+            \"source\": \"sequi\",
+            \"destination\": \"voluptate\",
+            \"departure_time\": \"03:50 PM\",
+            \"arrival_time\": \"03:50 PM\",
+            \"tour_company_id\": 2,
+            \"seat_position\": \"sapiente\",
+            \"traveller_gender\": \"male\"
+        }
+    }
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://real-estate.test/api/tours"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "data": {
+        "attributes": {
+            "price": 14,
+            "source": "sequi",
+            "destination": "voluptate",
+            "departure_time": "03:50 PM",
+            "arrival_time": "03:50 PM",
+            "tour_company_id": 2,
+            "seat_position": "sapiente",
+            "traveller_gender": "male"
+        }
+    }
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-tours">
+</span>
+<span id="execution-results-POSTapi-tours" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-tours"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-tours"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-tours" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-tours">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-tours" data-method="POST"
+      data-path="api/tours"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-tours', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-tours"
+                    onclick="tryItOut('POSTapi-tours');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-tours"
+                    onclick="cancelTryOut('POSTapi-tours');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-tours"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/tours</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-tours"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-tours"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>data</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+ &nbsp;
+<br>
+
+            </summary>
+                                                <div style=" margin-left: 14px; clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>attributes</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+ &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="data.attributes.price"                data-endpoint="POSTapi-tours"
+               value="14"
+               data-component="body">
+    <br>
+<p>Example: <code>14</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>source</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.source"                data-endpoint="POSTapi-tours"
+               value="sequi"
+               data-component="body">
+    <br>
+<p>Example: <code>sequi</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>destination</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.destination"                data-endpoint="POSTapi-tours"
+               value="voluptate"
+               data-component="body">
+    <br>
+<p>Example: <code>voluptate</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>departure_time</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.departure_time"                data-endpoint="POSTapi-tours"
+               value="03:50 PM"
+               data-component="body">
+    <br>
+<p>Must be a valid date in the format <code>h:i A</code>. Example: <code>03:50 PM</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>arrival_time</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.arrival_time"                data-endpoint="POSTapi-tours"
+               value="03:50 PM"
+               data-component="body">
+    <br>
+<p>Must be a valid date in the format <code>h:i A</code>. Example: <code>03:50 PM</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>tour_company_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="data.attributes.tour_company_id"                data-endpoint="POSTapi-tours"
+               value="2"
+               data-component="body">
+    <br>
+<p>Example: <code>2</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>seat_position</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.seat_position"                data-endpoint="POSTapi-tours"
+               value="sapiente"
+               data-component="body">
+    <br>
+<p>Example: <code>sapiente</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>traveller_gender</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.traveller_gender"                data-endpoint="POSTapi-tours"
+               value="male"
+               data-component="body">
+    <br>
+<p>Example: <code>male</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>male</code></li> <li><code>female</code></li></ul>
+                    </div>
+                                    </details>
+        </div>
+                                        </details>
+        </div>
+        </form>
+
+                    <h2 id="managing-tours-GETapi-tours--id-">show a specific Tour</h2>
+
+<p>
+</p>
+
+<p>Display an individual tour</p>
+
+<span id="example-requests-GETapi-tours--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://real-estate.test/api/tours/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://real-estate.test/api/tours/1"
 );
 
 const headers = {
@@ -2297,7 +3621,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-v1-homes--id-">
+<span id="example-responses-GETapi-tours--id-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -2312,74 +3636,59 @@ access-control-allow-origin: *
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;type&quot;: &quot;Home&quot;,
+        &quot;type&quot;: &quot;Tour&quot;,
         &quot;id&quot;: 1,
         &quot;attributes&quot;: {
-            &quot;title&quot;: &quot;explicabo perferendis qui&quot;,
-            &quot;description&quot;: &quot;Enim accusamus voluptatum necessitatibus.&quot;,
-            &quot;bathrooms_no&quot;: 3,
-            &quot;bedrooms_no&quot;: 10,
-            &quot;price&quot;: 2028504,
-            &quot;location&quot;: &quot;Cairo&quot;,
-            &quot;area&quot;: 468,
-            &quot;avg_rating&quot;: 4.5,
-            &quot;rating_count&quot;: 2,
-            &quot;created_at&quot;: &quot;2024-08-06T16:02:45.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-08-06T16:02:46.000000Z&quot;
-        },
-        &quot;relationships&quot;: {
-            &quot;author&quot;: {
-                &quot;data&quot;: {
-                    &quot;type&quot;: &quot;user&quot;,
-                    &quot;id&quot;: 5
-                },
-                &quot;links&quot;: [
-                    &quot;self&quot;,
-                    &quot;http://real-estate.test/api/v1/users/5&quot;
-                ]
-            }
+            &quot;price&quot;: 605,
+            &quot;source&quot;: &quot;natus&quot;,
+            &quot;destination&quot;: &quot;amet&quot;,
+            &quot;departure_time&quot;: &quot;02:12 PM&quot;,
+            &quot;arrival_time&quot;: &quot;09:26 AM&quot;,
+            &quot;tour_company_id&quot;: 1,
+            &quot;seat_position&quot;: &quot;f1&quot;,
+            &quot;traveller_gender&quot;: &quot;female&quot;
         }
     }
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-v1-homes--id-" hidden>
+<span id="execution-results-GETapi-tours--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-v1-homes--id-"></span>:
+                id="execution-response-status-GETapi-tours--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-homes--id-"
+    <pre class="json"><code id="execution-response-content-GETapi-tours--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-v1-homes--id-" hidden>
+<span id="execution-error-GETapi-tours--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-homes--id-">
+    <pre><code id="execution-error-message-GETapi-tours--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-v1-homes--id-" data-method="GET"
-      data-path="api/v1/homes/{id}"
+<form id="form-GETapi-tours--id-" data-method="GET"
+      data-path="api/tours/{id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-homes--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-tours--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-v1-homes--id-"
-                    onclick="tryItOut('GETapi-v1-homes--id-');">Try it out ⚡
+                    id="btn-tryout-GETapi-tours--id-"
+                    onclick="tryItOut('GETapi-tours--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-v1-homes--id-"
-                    onclick="cancelTryOut('GETapi-v1-homes--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-tours--id-"
+                    onclick="cancelTryOut('GETapi-tours--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-v1-homes--id-"
+                    id="btn-executetryout-GETapi-tours--id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -2387,7 +3696,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/v1/homes/{id}</code></b>
+            <b><code>api/tours/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -2395,7 +3704,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-v1-homes--id-"
+                              name="Content-Type"                data-endpoint="GETapi-tours--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -2406,7 +3715,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-v1-homes--id-"
+                              name="Accept"                data-endpoint="GETapi-tours--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -2418,19 +3727,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="GETapi-v1-homes--id-"
+               step="any"               name="id"                data-endpoint="GETapi-tours--id-"
                value="1"
                data-component="url">
     <br>
-<p>The ID of the home. Example: <code>1</code></p>
+<p>The ID of the tour. Example: <code>1</code></p>
             </div>
                     </form>
 
-                <h1 id="managing-tours">Managing Tours</h1>
-
-    
-
-                                <h2 id="managing-tours-GETapi-v1-tours">Get Tours</h2>
+                    <h2 id="managing-tours-GETapi-v1-tours">Get Tours
+Show all Tours</h2>
 
 <p>
 </p>
@@ -2491,27 +3797,27 @@ access-control-allow-origin: *
             &quot;type&quot;: &quot;Tour&quot;,
             &quot;id&quot;: 1,
             &quot;attributes&quot;: {
-                &quot;price&quot;: 440,
-                &quot;source&quot;: &quot;harum&quot;,
-                &quot;destination&quot;: &quot;velit&quot;,
-                &quot;departure_time&quot;: null,
-                &quot;arrival_time&quot;: null,
-                &quot;company&quot;: &quot;beatae&quot;,
-                &quot;seat_position&quot;: &quot;c1&quot;,
-                &quot;traveller_gender&quot;: &quot;male&quot;
+                &quot;price&quot;: 605,
+                &quot;source&quot;: &quot;natus&quot;,
+                &quot;destination&quot;: &quot;amet&quot;,
+                &quot;departure_time&quot;: &quot;02:12 PM&quot;,
+                &quot;arrival_time&quot;: &quot;09:26 AM&quot;,
+                &quot;tour_company_id&quot;: 1,
+                &quot;seat_position&quot;: &quot;f1&quot;,
+                &quot;traveller_gender&quot;: &quot;female&quot;
             }
         },
         {
             &quot;type&quot;: &quot;Tour&quot;,
             &quot;id&quot;: 2,
             &quot;attributes&quot;: {
-                &quot;price&quot;: 622,
-                &quot;source&quot;: &quot;nam&quot;,
-                &quot;destination&quot;: &quot;quae&quot;,
-                &quot;departure_time&quot;: null,
-                &quot;arrival_time&quot;: null,
-                &quot;company&quot;: &quot;doloremque&quot;,
-                &quot;seat_position&quot;: &quot;e3&quot;,
+                &quot;price&quot;: 689,
+                &quot;source&quot;: &quot;ut&quot;,
+                &quot;destination&quot;: &quot;fugit&quot;,
+                &quot;departure_time&quot;: &quot;05:23 AM&quot;,
+                &quot;arrival_time&quot;: &quot;07:33 AM&quot;,
+                &quot;tour_company_id&quot;: 2,
+                &quot;seat_position&quot;: &quot;d1&quot;,
                 &quot;traveller_gender&quot;: &quot;female&quot;
             }
         },
@@ -2519,27 +3825,27 @@ access-control-allow-origin: *
             &quot;type&quot;: &quot;Tour&quot;,
             &quot;id&quot;: 3,
             &quot;attributes&quot;: {
-                &quot;price&quot;: 312,
-                &quot;source&quot;: &quot;ea&quot;,
-                &quot;destination&quot;: &quot;est&quot;,
-                &quot;departure_time&quot;: null,
-                &quot;arrival_time&quot;: null,
-                &quot;company&quot;: &quot;et&quot;,
-                &quot;seat_position&quot;: &quot;c2&quot;,
-                &quot;traveller_gender&quot;: &quot;female&quot;
+                &quot;price&quot;: 120,
+                &quot;source&quot;: &quot;et&quot;,
+                &quot;destination&quot;: &quot;quia&quot;,
+                &quot;departure_time&quot;: &quot;12:01 AM&quot;,
+                &quot;arrival_time&quot;: &quot;06:28 AM&quot;,
+                &quot;tour_company_id&quot;: 3,
+                &quot;seat_position&quot;: &quot;f1&quot;,
+                &quot;traveller_gender&quot;: &quot;male&quot;
             }
         },
         {
             &quot;type&quot;: &quot;Tour&quot;,
             &quot;id&quot;: 4,
             &quot;attributes&quot;: {
-                &quot;price&quot;: 756,
-                &quot;source&quot;: &quot;ipsam&quot;,
-                &quot;destination&quot;: &quot;corporis&quot;,
-                &quot;departure_time&quot;: null,
-                &quot;arrival_time&quot;: null,
-                &quot;company&quot;: &quot;minima&quot;,
-                &quot;seat_position&quot;: &quot;h3&quot;,
+                &quot;price&quot;: 793,
+                &quot;source&quot;: &quot;eveniet&quot;,
+                &quot;destination&quot;: &quot;dolorum&quot;,
+                &quot;departure_time&quot;: &quot;11:38 PM&quot;,
+                &quot;arrival_time&quot;: &quot;06:38 AM&quot;,
+                &quot;tour_company_id&quot;: 4,
+                &quot;seat_position&quot;: &quot;e4&quot;,
                 &quot;traveller_gender&quot;: &quot;female&quot;
             }
         },
@@ -2547,13 +3853,13 @@ access-control-allow-origin: *
             &quot;type&quot;: &quot;Tour&quot;,
             &quot;id&quot;: 5,
             &quot;attributes&quot;: {
-                &quot;price&quot;: 732,
-                &quot;source&quot;: &quot;id&quot;,
-                &quot;destination&quot;: &quot;ea&quot;,
-                &quot;departure_time&quot;: null,
-                &quot;arrival_time&quot;: null,
-                &quot;company&quot;: &quot;totam&quot;,
-                &quot;seat_position&quot;: &quot;c2&quot;,
+                &quot;price&quot;: 513,
+                &quot;source&quot;: &quot;culpa&quot;,
+                &quot;destination&quot;: &quot;iste&quot;,
+                &quot;departure_time&quot;: &quot;09:20 AM&quot;,
+                &quot;arrival_time&quot;: &quot;02:09 AM&quot;,
+                &quot;tour_company_id&quot;: 5,
+                &quot;seat_position&quot;: &quot;e1&quot;,
                 &quot;traveller_gender&quot;: &quot;female&quot;
             }
         },
@@ -2561,13 +3867,13 @@ access-control-allow-origin: *
             &quot;type&quot;: &quot;Tour&quot;,
             &quot;id&quot;: 6,
             &quot;attributes&quot;: {
-                &quot;price&quot;: 140,
-                &quot;source&quot;: &quot;quidem&quot;,
-                &quot;destination&quot;: &quot;architecto&quot;,
-                &quot;departure_time&quot;: null,
-                &quot;arrival_time&quot;: null,
-                &quot;company&quot;: &quot;quos&quot;,
-                &quot;seat_position&quot;: &quot;b2&quot;,
+                &quot;price&quot;: 615,
+                &quot;source&quot;: &quot;voluptatem&quot;,
+                &quot;destination&quot;: &quot;voluptas&quot;,
+                &quot;departure_time&quot;: &quot;10:06 AM&quot;,
+                &quot;arrival_time&quot;: &quot;07:26 AM&quot;,
+                &quot;tour_company_id&quot;: 6,
+                &quot;seat_position&quot;: &quot;g4&quot;,
                 &quot;traveller_gender&quot;: &quot;male&quot;
             }
         },
@@ -2575,55 +3881,69 @@ access-control-allow-origin: *
             &quot;type&quot;: &quot;Tour&quot;,
             &quot;id&quot;: 7,
             &quot;attributes&quot;: {
-                &quot;price&quot;: 594,
-                &quot;source&quot;: &quot;iusto&quot;,
-                &quot;destination&quot;: &quot;distinctio&quot;,
-                &quot;departure_time&quot;: null,
-                &quot;arrival_time&quot;: null,
-                &quot;company&quot;: &quot;quo&quot;,
-                &quot;seat_position&quot;: &quot;c1&quot;,
-                &quot;traveller_gender&quot;: &quot;male&quot;
+                &quot;price&quot;: 276,
+                &quot;source&quot;: &quot;totam&quot;,
+                &quot;destination&quot;: &quot;voluptates&quot;,
+                &quot;departure_time&quot;: &quot;03:46 PM&quot;,
+                &quot;arrival_time&quot;: &quot;01:06 AM&quot;,
+                &quot;tour_company_id&quot;: 7,
+                &quot;seat_position&quot;: &quot;h2&quot;,
+                &quot;traveller_gender&quot;: &quot;female&quot;
             }
         },
         {
             &quot;type&quot;: &quot;Tour&quot;,
             &quot;id&quot;: 8,
             &quot;attributes&quot;: {
-                &quot;price&quot;: 119,
-                &quot;source&quot;: &quot;est&quot;,
-                &quot;destination&quot;: &quot;recusandae&quot;,
-                &quot;departure_time&quot;: null,
-                &quot;arrival_time&quot;: null,
-                &quot;company&quot;: &quot;iusto&quot;,
-                &quot;seat_position&quot;: &quot;c3&quot;,
-                &quot;traveller_gender&quot;: &quot;male&quot;
+                &quot;price&quot;: 799,
+                &quot;source&quot;: &quot;voluptatem&quot;,
+                &quot;destination&quot;: &quot;illo&quot;,
+                &quot;departure_time&quot;: &quot;05:39 PM&quot;,
+                &quot;arrival_time&quot;: &quot;08:50 AM&quot;,
+                &quot;tour_company_id&quot;: 8,
+                &quot;seat_position&quot;: &quot;h1&quot;,
+                &quot;traveller_gender&quot;: &quot;female&quot;
             }
         },
         {
             &quot;type&quot;: &quot;Tour&quot;,
             &quot;id&quot;: 9,
             &quot;attributes&quot;: {
-                &quot;price&quot;: 113,
-                &quot;source&quot;: &quot;qui&quot;,
-                &quot;destination&quot;: &quot;et&quot;,
-                &quot;departure_time&quot;: null,
-                &quot;arrival_time&quot;: null,
-                &quot;company&quot;: &quot;cumque&quot;,
-                &quot;seat_position&quot;: &quot;a2&quot;,
-                &quot;traveller_gender&quot;: &quot;female&quot;
+                &quot;price&quot;: 278,
+                &quot;source&quot;: &quot;quisquam&quot;,
+                &quot;destination&quot;: &quot;impedit&quot;,
+                &quot;departure_time&quot;: &quot;08:59 PM&quot;,
+                &quot;arrival_time&quot;: &quot;09:17 PM&quot;,
+                &quot;tour_company_id&quot;: 9,
+                &quot;seat_position&quot;: &quot;c2&quot;,
+                &quot;traveller_gender&quot;: &quot;male&quot;
             }
         },
         {
             &quot;type&quot;: &quot;Tour&quot;,
             &quot;id&quot;: 10,
             &quot;attributes&quot;: {
-                &quot;price&quot;: 501,
-                &quot;source&quot;: &quot;voluptate&quot;,
-                &quot;destination&quot;: &quot;ut&quot;,
-                &quot;departure_time&quot;: null,
-                &quot;arrival_time&quot;: null,
-                &quot;company&quot;: &quot;consectetur&quot;,
-                &quot;seat_position&quot;: &quot;e3&quot;,
+                &quot;price&quot;: 516,
+                &quot;source&quot;: &quot;minus&quot;,
+                &quot;destination&quot;: &quot;corrupti&quot;,
+                &quot;departure_time&quot;: &quot;11:32 AM&quot;,
+                &quot;arrival_time&quot;: &quot;07:03 AM&quot;,
+                &quot;tour_company_id&quot;: 10,
+                &quot;seat_position&quot;: &quot;f2&quot;,
+                &quot;traveller_gender&quot;: &quot;female&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Tour&quot;,
+            &quot;id&quot;: 11,
+            &quot;attributes&quot;: {
+                &quot;price&quot;: 1000,
+                &quot;source&quot;: &quot;New York&quot;,
+                &quot;destination&quot;: &quot;Los Angeles&quot;,
+                &quot;departure_time&quot;: &quot;09:00 PM&quot;,
+                &quot;arrival_time&quot;: &quot;01:00 AM&quot;,
+                &quot;tour_company_id&quot;: 1,
+                &quot;seat_position&quot;: &quot;a1&quot;,
                 &quot;traveller_gender&quot;: &quot;female&quot;
             }
         }
@@ -2725,14 +4045,266 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                    <h2 id="managing-tours-GETapi-v1-tours--tour_id-">show a specific Tour</h2>
+                    <h2 id="managing-tours-POSTapi-v1-tours">Create a Tour</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-tours">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://real-estate.test/api/v1/tours" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"data\": {
+        \"attributes\": {
+            \"price\": 11,
+            \"source\": \"impedit\",
+            \"destination\": \"similique\",
+            \"departure_time\": \"03:50 PM\",
+            \"arrival_time\": \"03:50 PM\",
+            \"tour_company_id\": 9,
+            \"seat_position\": \"quod\",
+            \"traveller_gender\": \"male\"
+        }
+    }
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://real-estate.test/api/v1/tours"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "data": {
+        "attributes": {
+            "price": 11,
+            "source": "impedit",
+            "destination": "similique",
+            "departure_time": "03:50 PM",
+            "arrival_time": "03:50 PM",
+            "tour_company_id": 9,
+            "seat_position": "quod",
+            "traveller_gender": "male"
+        }
+    }
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-tours">
+</span>
+<span id="execution-results-POSTapi-v1-tours" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-tours"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-tours"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-tours" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-tours">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-tours" data-method="POST"
+      data-path="api/v1/tours"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-tours', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-tours"
+                    onclick="tryItOut('POSTapi-v1-tours');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-tours"
+                    onclick="cancelTryOut('POSTapi-v1-tours');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-tours"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/tours</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-tours"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-tours"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>data</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+ &nbsp;
+<br>
+
+            </summary>
+                                                <div style=" margin-left: 14px; clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>attributes</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+ &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>price</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="data.attributes.price"                data-endpoint="POSTapi-v1-tours"
+               value="11"
+               data-component="body">
+    <br>
+<p>Example: <code>11</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>source</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.source"                data-endpoint="POSTapi-v1-tours"
+               value="impedit"
+               data-component="body">
+    <br>
+<p>Example: <code>impedit</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>destination</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.destination"                data-endpoint="POSTapi-v1-tours"
+               value="similique"
+               data-component="body">
+    <br>
+<p>Example: <code>similique</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>departure_time</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.departure_time"                data-endpoint="POSTapi-v1-tours"
+               value="03:50 PM"
+               data-component="body">
+    <br>
+<p>Must be a valid date in the format <code>h:i A</code>. Example: <code>03:50 PM</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>arrival_time</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.arrival_time"                data-endpoint="POSTapi-v1-tours"
+               value="03:50 PM"
+               data-component="body">
+    <br>
+<p>Must be a valid date in the format <code>h:i A</code>. Example: <code>03:50 PM</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>tour_company_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="data.attributes.tour_company_id"                data-endpoint="POSTapi-v1-tours"
+               value="9"
+               data-component="body">
+    <br>
+<p>Example: <code>9</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>seat_position</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.seat_position"                data-endpoint="POSTapi-v1-tours"
+               value="quod"
+               data-component="body">
+    <br>
+<p>Example: <code>quod</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>traveller_gender</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="data.attributes.traveller_gender"                data-endpoint="POSTapi-v1-tours"
+               value="male"
+               data-component="body">
+    <br>
+<p>Example: <code>male</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>male</code></li> <li><code>female</code></li></ul>
+                    </div>
+                                    </details>
+        </div>
+                                        </details>
+        </div>
+        </form>
+
+                    <h2 id="managing-tours-GETapi-v1-tours--id-">show a specific Tour</h2>
 
 <p>
 </p>
 
 <p>Display an individual tour</p>
 
-<span id="example-requests-GETapi-v1-tours--tour_id-">
+<span id="example-requests-GETapi-v1-tours--id-">
 <blockquote>Example request:</blockquote>
 
 
@@ -2760,7 +4332,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-v1-tours--tour_id-">
+<span id="example-responses-GETapi-v1-tours--id-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -2778,56 +4350,56 @@ access-control-allow-origin: *
         &quot;type&quot;: &quot;Tour&quot;,
         &quot;id&quot;: 1,
         &quot;attributes&quot;: {
-            &quot;price&quot;: 440,
-            &quot;source&quot;: &quot;harum&quot;,
-            &quot;destination&quot;: &quot;velit&quot;,
-            &quot;departure_time&quot;: null,
-            &quot;arrival_time&quot;: null,
-            &quot;company&quot;: &quot;beatae&quot;,
-            &quot;seat_position&quot;: &quot;c1&quot;,
-            &quot;traveller_gender&quot;: &quot;male&quot;
+            &quot;price&quot;: 605,
+            &quot;source&quot;: &quot;natus&quot;,
+            &quot;destination&quot;: &quot;amet&quot;,
+            &quot;departure_time&quot;: &quot;02:12 PM&quot;,
+            &quot;arrival_time&quot;: &quot;09:26 AM&quot;,
+            &quot;tour_company_id&quot;: 1,
+            &quot;seat_position&quot;: &quot;f1&quot;,
+            &quot;traveller_gender&quot;: &quot;female&quot;
         }
     }
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-v1-tours--tour_id-" hidden>
+<span id="execution-results-GETapi-v1-tours--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-v1-tours--tour_id-"></span>:
+                id="execution-response-status-GETapi-v1-tours--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-tours--tour_id-"
+    <pre class="json"><code id="execution-response-content-GETapi-v1-tours--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-v1-tours--tour_id-" hidden>
+<span id="execution-error-GETapi-v1-tours--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-tours--tour_id-">
+    <pre><code id="execution-error-message-GETapi-v1-tours--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-v1-tours--tour_id-" data-method="GET"
-      data-path="api/v1/tours/{tour_id}"
+<form id="form-GETapi-v1-tours--id-" data-method="GET"
+      data-path="api/v1/tours/{id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-tours--tour_id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-tours--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-v1-tours--tour_id-"
-                    onclick="tryItOut('GETapi-v1-tours--tour_id-');">Try it out ⚡
+                    id="btn-tryout-GETapi-v1-tours--id-"
+                    onclick="tryItOut('GETapi-v1-tours--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-v1-tours--tour_id-"
-                    onclick="cancelTryOut('GETapi-v1-tours--tour_id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-v1-tours--id-"
+                    onclick="cancelTryOut('GETapi-v1-tours--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-v1-tours--tour_id-"
+                    id="btn-executetryout-GETapi-v1-tours--id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -2835,7 +4407,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/v1/tours/{tour_id}</code></b>
+            <b><code>api/v1/tours/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -2843,7 +4415,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-v1-tours--tour_id-"
+                              name="Content-Type"                data-endpoint="GETapi-v1-tours--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -2854,7 +4426,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-v1-tours--tour_id-"
+                              name="Accept"                data-endpoint="GETapi-v1-tours--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -2862,11 +4434,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>tour_id</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="tour_id"                data-endpoint="GETapi-v1-tours--tour_id-"
+               step="any"               name="id"                data-endpoint="GETapi-v1-tours--id-"
                value="1"
                data-component="url">
     <br>

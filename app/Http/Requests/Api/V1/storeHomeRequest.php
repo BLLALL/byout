@@ -22,15 +22,20 @@ class storeHomeRequest extends BaseHomeRequest
     {
         return [
             'data' => 'required|array',
-            'data.attributes' => 'required|array',
-            'data.attributes.title' => 'required|string',
-            'data.attributes.description' => 'required|string',
-            'data.attributes.price' => 'required|integer',
-            'data.attributes.area' => 'required|integer',
-            'data.attributes.bathrooms_no' => 'required|integer',
-            'data.attributes.bedrooms_no' => 'required|integer',
-            'data.attributes.location' => 'required|string',
-            'data.attributes.user_id' => 'required|integer|exists:users,id'
+            'data.title' => 'required|string',
+            'data.description' => 'required|string',
+            'data.price' => 'required|integer',
+            'data.area' => 'required|integer',
+            'data.bathrooms_no' => 'required|integer',
+            'data.bedrooms_no' => 'required|integer',
+            'data.location' => 'required|string',
+            'data.home_images' => 'sometimes|array',
+            'data.wifi' => 'required|boolean',
+            'data.coordinates' => 'required|array|size:2',
+            'data.coordinates.0' => 'required|numeric|between:-90,90',
+            'data.coordinates.1' => 'required|numeric|between:-180,180',
+            'data.rent_period' => 'required|string',
+            'data.user_id' => 'required|integer|exists:users,id'
         ];
     }
 }

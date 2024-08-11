@@ -19,9 +19,13 @@ return new class extends Migration
             $table->integer('area');
             $table->integer('bathrooms_no');
             $table->integer('bedrooms_no');
+            $table->json('home_images');
             $table->string('location');
             $table->integer('avg_rating')->nullable();
             $table->unsignedInteger('rating_count')->nullable();
+            $table->boolean('wifi')->default(false);
+            $table->json('coordinates');
+            $table->string('rent_period');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

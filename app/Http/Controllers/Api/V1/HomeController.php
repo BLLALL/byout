@@ -7,6 +7,7 @@ use App\Http\filters\HomeFilter;
 use App\Http\Requests\Api\V1\storeHomeRequest;
 use App\Http\Resources\Api\V1\HomeResource;
 use App\Models\Home;
+use App\Models\HomeImage;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -52,21 +53,6 @@ class HomeController extends Controller
         return new HomeResource($home);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Home $home)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Home $home)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

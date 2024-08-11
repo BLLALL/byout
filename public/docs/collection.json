@@ -10,17 +10,17 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "79258c05-1880-42c3-9805-03b1bcddc25f",
+        "_postman_id": "d695f460-869d-4c00-a107-393b6024c1b6",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
         {
-            "name": "Endpoints",
+            "name": "Authentication",
             "description": "",
             "item": [
                 {
-                    "name": "POST api\/login",
+                    "name": "Login",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -41,15 +41,28 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"rasheed.kunde@example.com\",\"password\":\"V@Ui2In7rt#1p-~B~\"}"
+                            "raw": "{\"email\":\"homenick.mckayla@example.com\",\"password\":\"NlDAukkOeS{P*V7W=1J\\\\\"}"
                         },
-                        "description": "",
+                        "description": "Authenticates the user and returns the user's API token.",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": []
-                },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"data\": {\n\"token\": \"{YOUR_AUTH_KEY}\"\n},\n\"message\": \"Authenticated\",\n\"status\": 200\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
                 {
                     "name": "POST api\/login\/google",
                     "request": {
@@ -128,7 +141,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"data\":{\"attributes\":{\"name\":\"dgrsbhgjzg\",\"email\":\"qherzog@example.net\",\"password\":\"uCBV{f[8aMv)\"}}}"
+                            "raw": "{\"data\":{\"attributes\":{\"name\":\"afttboesjqdwqlbl\",\"email\":\"simone31@example.net\",\"password\":\"qQntie\"}}}"
                         },
                         "description": "",
                         "auth": {
@@ -158,6 +171,93 @@
                             }
                         ],
                         "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/reviews\/users\/{user_id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/reviews\/users\/:user_id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/reviews\/users\/:user_id",
+                            "variable": [
+                                {
+                                    "id": "user_id",
+                                    "key": "user_id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"user_reviews\",\"user_id\":1,\"attributes\":[{\"id\":52,\"rating\":5,\"home_id\":6},{\"id\":53,\"rating\":3,\"home_id\":1},{\"id\":56,\"rating\":4,\"home_id\":10}],\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":1},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/1\"]}}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/reviews",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/reviews",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/reviews"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"rating\":\"3\",\"home_id\":2}}}"
+                        },
                         "description": "",
                         "auth": {
                             "type": "noauth"
@@ -214,78 +314,6 @@
                     ]
                 },
                 {
-                    "name": "Update the specified resource in storage.",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/homes\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/homes\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the home."
-                                }
-                            ]
-                        },
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Remove the specified resource from storage.",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/homes\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/homes\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the home."
-                                }
-                            ]
-                        },
-                        "method": "DELETE",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
                     "name": "GET api\/v1\/reviews\/users\/{user_id}",
                     "request": {
                         "url": {
@@ -336,7 +364,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":{\"type\":\"user_reviews\",\"user_id\":1,\"attributes\":[{\"id\":55,\"rating\":5,\"home_id\":6},{\"id\":63,\"rating\":2,\"home_id\":4},{\"id\":65,\"rating\":4,\"home_id\":10}],\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":1},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/1\"]}}}}",
+                            "body": "{\"data\":{\"type\":\"user_reviews\",\"user_id\":1,\"attributes\":[{\"id\":52,\"rating\":5,\"home_id\":6},{\"id\":53,\"rating\":3,\"home_id\":1},{\"id\":56,\"rating\":4,\"home_id\":10}],\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":1},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/1\"]}}}}",
                             "name": ""
                         }
                     ]
@@ -391,8 +419,8 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 200,
-                            "body": "{\"data\":{\"type\":\"home_specific_review\",\"home_id\":1,\"attributes\":[{\"id\":1,\"rating\":4,\"user_id\":6},{\"id\":58,\"rating\":5,\"user_id\":4}],\"relationships\":{\"home\":{\"data\":{\"id\":1},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/homes\\\/1\"]}}}}",
+                            "code": 500,
+                            "body": "{\n    \"message\": \"Server Error\"\n}",
                             "name": ""
                         }
                     ]
@@ -419,7 +447,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"data\":{\"attributes\":{\"rating\":\"2\",\"home_id\":20}}}"
+                            "raw": "{\"data\":{\"attributes\":{\"rating\":\"5\",\"home_id\":13}}}"
                         },
                         "description": "",
                         "auth": {
@@ -478,51 +506,20 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "code": 200,
+                            "body": "{\"id\":1,\"name\":\"Esta Beer\",\"email\":\"rose49@example.org\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"}",
                             "name": ""
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "name": "Managing Homes",
-            "description": "",
-            "item": [
+                },
                 {
-                    "name": "Get Homes",
+                    "name": "GET api\/v1\/users",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/homes",
-                            "query": [
-                                {
-                                    "key": "sort",
-                                    "value": "title%2C+-created_at",
-                                    "description": "Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "price",
-                                    "value": "2000",
-                                    "description": "Data field to filter homes by their price u can use comma to filter by range.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "title",
-                                    "value": "Lorem",
-                                    "description": "Data field to search for homes by their title.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "description",
-                                    "value": "Lorem+Ipsum",
-                                    "description": "Data field to search for homes by their description.",
-                                    "disabled": false
-                                }
-                            ],
-                            "raw": "{{baseUrl}}\/api\/v1\/homes?sort=title%2C+-created_at&price=2000&title=Lorem&description=Lorem+Ipsum"
+                            "path": "api\/v1\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users"
                         },
                         "method": "GET",
                         "header": [
@@ -558,10 +555,47 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[]}",
+                            "body": "[{\"id\":1,\"name\":\"Esta Beer\",\"email\":\"rose49@example.org\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":2,\"name\":\"Ramiro Green DVM\",\"email\":\"edd.steuber@example.net\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":3,\"name\":\"Davin D'Amore\",\"email\":\"klein.addie@example.net\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":4,\"name\":\"Clay Waelchi\",\"email\":\"fzemlak@example.net\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":5,\"name\":\"Monserrate Stiedemann\",\"email\":\"eldora18@example.org\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":6,\"name\":\"Marion Kunze\",\"email\":\"toy.hollie@example.org\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":7,\"name\":\"Prof. Guy Brakus Jr.\",\"email\":\"jbartell@example.com\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":8,\"name\":\"Jada Harris\",\"email\":\"stevie72@example.com\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":9,\"name\":\"Prof. Wanda Wunsch\",\"email\":\"corkery.christophe@example.net\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":10,\"name\":\"Miss Heath Torp\",\"email\":\"rmraz@example.org\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":11,\"name\":\"Lorena White\",\"email\":\"misty00@example.com\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":12,\"name\":\"Mr. Enrique Funk IV\",\"email\":\"jeff.hodkiewicz@example.com\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":13,\"name\":\"Dr. Lenna Medhurst\",\"email\":\"atremblay@example.com\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":14,\"name\":\"Alysson Bartell\",\"email\":\"ywaelchi@example.com\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":15,\"name\":\"Dr. D'angelo Kozey\",\"email\":\"qthompson@example.net\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":16,\"name\":\"River Bayer PhD\",\"email\":\"kacie45@example.com\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":17,\"name\":\"Brad Watsica\",\"email\":\"mireille.jones@example.org\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":18,\"name\":\"Dr. Jackie Kautzer II\",\"email\":\"dillan.von@example.com\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":19,\"name\":\"Mr. Eli Hermann PhD\",\"email\":\"hermann.erling@example.net\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":20,\"name\":\"Fritz Kulas\",\"email\":\"pcummerata@example.net\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":21,\"name\":\"Suzanne Treutel\",\"email\":\"bradtke.jany@example.org\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":22,\"name\":\"Telly Gislason\",\"email\":\"katelyn.windler@example.org\",\"email_verified_at\":\"2024-08-09T12:16:19.000000Z\",\"created_at\":\"2024-08-09T12:16:19.000000Z\",\"updated_at\":\"2024-08-09T12:16:19.000000Z\"},{\"id\":23,\"name\":\"Trisha Kilback\",\"email\":\"vergie00@example.net\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":24,\"name\":\"Brandon Bergnaum\",\"email\":\"mabelle.kutch@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":25,\"name\":\"Mrs. Amalia Mertz DDS\",\"email\":\"kristy80@example.net\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":26,\"name\":\"Prof. Gino Walker V\",\"email\":\"hortense.breitenberg@example.net\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":27,\"name\":\"Xander Langworth\",\"email\":\"laron07@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":28,\"name\":\"Dr. Cecil Boyle\",\"email\":\"german67@example.net\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":29,\"name\":\"Dr. Frieda Schowalter\",\"email\":\"ctromp@example.net\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":30,\"name\":\"Mr. Lula Kunde\",\"email\":\"korey.schinner@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":31,\"name\":\"Madyson Yost\",\"email\":\"laury12@example.com\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":32,\"name\":\"Orrin Weber\",\"email\":\"towne.audrey@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":33,\"name\":\"Cornell Kozey\",\"email\":\"rabbott@example.com\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":34,\"name\":\"Troy O'Kon\",\"email\":\"fgerhold@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":35,\"name\":\"Jillian Bechtelar II\",\"email\":\"rwyman@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":36,\"name\":\"Lysanne Nikolaus\",\"email\":\"ziemann.ruby@example.net\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":37,\"name\":\"Prof. Ramiro Klocko\",\"email\":\"rowe.cora@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":38,\"name\":\"Abdul Christiansen\",\"email\":\"abelardo58@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":39,\"name\":\"Sandy Grady\",\"email\":\"viva.beahan@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":40,\"name\":\"Elwin Osinski\",\"email\":\"bianka83@example.com\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":41,\"name\":\"Sonya Donnelly\",\"email\":\"ena.rodriguez@example.com\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":42,\"name\":\"Breanne Mertz\",\"email\":\"flatley.marielle@example.net\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":43,\"name\":\"Alba Beahan\",\"email\":\"loren25@example.net\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":44,\"name\":\"Marjory Bogan\",\"email\":\"jtoy@example.net\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":45,\"name\":\"Savannah Kirlin\",\"email\":\"lueilwitz.ferne@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":46,\"name\":\"Brendon Ortiz\",\"email\":\"jacobs.issac@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":47,\"name\":\"Reta Hayes PhD\",\"email\":\"abigayle.waelchi@example.net\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":48,\"name\":\"Terrell Crooks\",\"email\":\"rashad.bahringer@example.com\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":49,\"name\":\"Mr. Maxime Satterfield Sr.\",\"email\":\"hkassulke@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":50,\"name\":\"Price Becker V\",\"email\":\"jeremy76@example.com\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":51,\"name\":\"Prof. Gordon Wisozk II\",\"email\":\"sonya49@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":52,\"name\":\"Mrs. Kamille Roberts V\",\"email\":\"omacejkovic@example.net\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":53,\"name\":\"Dr. Emil Harvey V\",\"email\":\"skye.veum@example.com\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":54,\"name\":\"Dejah Schuster\",\"email\":\"kohler.loy@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":55,\"name\":\"Miss Audreanne Kovacek III\",\"email\":\"shane.konopelski@example.net\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"},{\"id\":56,\"name\":\"Alphonso Beer\",\"email\":\"block.marilou@example.org\",\"email_verified_at\":\"2024-08-09T12:16:20.000000Z\",\"created_at\":\"2024-08-09T12:16:20.000000Z\",\"updated_at\":\"2024-08-09T12:16:20.000000Z\"}]",
                             "name": ""
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "name": "Managing Homes",
+            "description": "",
+            "item": [
+                {
+                    "name": "Create a Home",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/homes",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/homes"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"title\":\"praesentium\",\"description\":\"Sed harum sequi minima quam eaque sed.\",\"price\":17,\"area\":5,\"bathrooms_no\":11,\"bedrooms_no\":7,\"location\":\"aut\",\"user_id\":14}}}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
                 },
                 {
                     "name": "Create a Home",
@@ -585,7 +619,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"data\":{\"attributes\":{\"title\":\"quibusdam\",\"description\":\"Et sunt est a impedit eaque nulla.\",\"price\":3,\"area\":7,\"bathrooms_no\":11,\"bedrooms_no\":14,\"location\":\"itaque\",\"user_id\":5}}}"
+                            "raw": "{\"data\":{\"attributes\":{\"title\":\"quisquam\",\"description\":\"Est veritatis eaque assumenda quam eveniet repellendus beatae.\",\"price\":19,\"area\":7,\"bathrooms_no\":12,\"bedrooms_no\":13,\"location\":\"in\",\"user_id\":16}}}"
                         },
                         "description": "",
                         "auth": {
@@ -593,23 +627,34 @@
                         }
                     },
                     "response": []
-                },
+                }
+            ]
+        },
+        {
+            "name": "Managing Tours",
+            "description": "",
+            "item": [
                 {
-                    "name": "show a specific Home",
+                    "name": "Get Tours\nShow all Tours",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/homes\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/homes\/:id",
-                            "variable": [
+                            "path": "api\/tours",
+                            "query": [
                                 {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the home."
+                                    "key": "sort",
+                                    "value": "departure_time%2C+-created_at",
+                                    "description": "Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "2000",
+                                    "description": "Data field to filter tours by their price u can use comma to filter by range.",
+                                    "disabled": false
                                 }
-                            ]
+                            ],
+                            "raw": "{{baseUrl}}\/api\/tours?sort=departure_time%2C+-created_at&price=2000"
                         },
                         "method": "GET",
                         "header": [
@@ -623,7 +668,7 @@
                             }
                         ],
                         "body": null,
-                        "description": "Display an individual home",
+                        "description": "",
                         "auth": {
                             "type": "noauth"
                         }
@@ -645,19 +690,100 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":{\"type\":\"Home\",\"id\":1,\"attributes\":{\"title\":\"explicabo perferendis qui\",\"description\":\"Enim accusamus voluptatum necessitatibus.\",\"bathrooms_no\":3,\"bedrooms_no\":10,\"price\":2028504,\"location\":\"Cairo\",\"area\":468,\"avg_rating\":4.5,\"rating_count\":2,\"created_at\":\"2024-08-06T16:02:45.000000Z\",\"updated_at\":\"2024-08-06T16:02:46.000000Z\"},\"relationships\":{\"author\":{\"data\":{\"type\":\"user\",\"id\":5},\"links\":[\"self\",\"http:\\\/\\\/real-estate.test\\\/api\\\/v1\\\/users\\\/5\"]}}}}",
+                            "body": "{\"data\":[{\"type\":\"Tour\",\"id\":1,\"attributes\":{\"price\":605,\"source\":\"natus\",\"destination\":\"amet\",\"departure_time\":\"02:12 PM\",\"arrival_time\":\"09:26 AM\",\"tour_company_id\":1,\"seat_position\":\"f1\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":2,\"attributes\":{\"price\":689,\"source\":\"ut\",\"destination\":\"fugit\",\"departure_time\":\"05:23 AM\",\"arrival_time\":\"07:33 AM\",\"tour_company_id\":2,\"seat_position\":\"d1\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":3,\"attributes\":{\"price\":120,\"source\":\"et\",\"destination\":\"quia\",\"departure_time\":\"12:01 AM\",\"arrival_time\":\"06:28 AM\",\"tour_company_id\":3,\"seat_position\":\"f1\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":4,\"attributes\":{\"price\":793,\"source\":\"eveniet\",\"destination\":\"dolorum\",\"departure_time\":\"11:38 PM\",\"arrival_time\":\"06:38 AM\",\"tour_company_id\":4,\"seat_position\":\"e4\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":5,\"attributes\":{\"price\":513,\"source\":\"culpa\",\"destination\":\"iste\",\"departure_time\":\"09:20 AM\",\"arrival_time\":\"02:09 AM\",\"tour_company_id\":5,\"seat_position\":\"e1\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":6,\"attributes\":{\"price\":615,\"source\":\"voluptatem\",\"destination\":\"voluptas\",\"departure_time\":\"10:06 AM\",\"arrival_time\":\"07:26 AM\",\"tour_company_id\":6,\"seat_position\":\"g4\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":7,\"attributes\":{\"price\":276,\"source\":\"totam\",\"destination\":\"voluptates\",\"departure_time\":\"03:46 PM\",\"arrival_time\":\"01:06 AM\",\"tour_company_id\":7,\"seat_position\":\"h2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":8,\"attributes\":{\"price\":799,\"source\":\"voluptatem\",\"destination\":\"illo\",\"departure_time\":\"05:39 PM\",\"arrival_time\":\"08:50 AM\",\"tour_company_id\":8,\"seat_position\":\"h1\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":9,\"attributes\":{\"price\":278,\"source\":\"quisquam\",\"destination\":\"impedit\",\"departure_time\":\"08:59 PM\",\"arrival_time\":\"09:17 PM\",\"tour_company_id\":9,\"seat_position\":\"c2\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":10,\"attributes\":{\"price\":516,\"source\":\"minus\",\"destination\":\"corrupti\",\"departure_time\":\"11:32 AM\",\"arrival_time\":\"07:03 AM\",\"tour_company_id\":10,\"seat_position\":\"f2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":11,\"attributes\":{\"price\":1000,\"source\":\"New York\",\"destination\":\"Los Angeles\",\"departure_time\":\"09:00 PM\",\"arrival_time\":\"01:00 AM\",\"tour_company_id\":1,\"seat_position\":\"a1\",\"traveller_gender\":\"female\"}}]}",
                             "name": ""
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "name": "Managing Tours",
-            "description": "",
-            "item": [
+                },
                 {
-                    "name": "Get Tours",
+                    "name": "Create a Tour",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/tours",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/tours"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"price\":14,\"source\":\"sequi\",\"destination\":\"voluptate\",\"departure_time\":\"03:50 PM\",\"arrival_time\":\"03:50 PM\",\"tour_company_id\":2,\"seat_position\":\"sapiente\",\"traveller_gender\":\"male\"}}}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "show a specific Tour",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/tours\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/tours\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the tour."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display an individual tour",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"Tour\",\"id\":1,\"attributes\":{\"price\":605,\"source\":\"natus\",\"destination\":\"amet\",\"departure_time\":\"02:12 PM\",\"arrival_time\":\"09:26 AM\",\"tour_company_id\":1,\"seat_position\":\"f1\",\"traveller_gender\":\"female\"}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Tours\nShow all Tours",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -712,23 +838,54 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[{\"type\":\"Tour\",\"id\":1,\"attributes\":{\"price\":440,\"source\":\"harum\",\"destination\":\"velit\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"beatae\",\"seat_position\":\"c1\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":2,\"attributes\":{\"price\":622,\"source\":\"nam\",\"destination\":\"quae\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"doloremque\",\"seat_position\":\"e3\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":3,\"attributes\":{\"price\":312,\"source\":\"ea\",\"destination\":\"est\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"et\",\"seat_position\":\"c2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":4,\"attributes\":{\"price\":756,\"source\":\"ipsam\",\"destination\":\"corporis\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"minima\",\"seat_position\":\"h3\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":5,\"attributes\":{\"price\":732,\"source\":\"id\",\"destination\":\"ea\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"totam\",\"seat_position\":\"c2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":6,\"attributes\":{\"price\":140,\"source\":\"quidem\",\"destination\":\"architecto\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"quos\",\"seat_position\":\"b2\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":7,\"attributes\":{\"price\":594,\"source\":\"iusto\",\"destination\":\"distinctio\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"quo\",\"seat_position\":\"c1\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":8,\"attributes\":{\"price\":119,\"source\":\"est\",\"destination\":\"recusandae\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"iusto\",\"seat_position\":\"c3\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":9,\"attributes\":{\"price\":113,\"source\":\"qui\",\"destination\":\"et\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"cumque\",\"seat_position\":\"a2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":10,\"attributes\":{\"price\":501,\"source\":\"voluptate\",\"destination\":\"ut\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"consectetur\",\"seat_position\":\"e3\",\"traveller_gender\":\"female\"}}]}",
+                            "body": "{\"data\":[{\"type\":\"Tour\",\"id\":1,\"attributes\":{\"price\":605,\"source\":\"natus\",\"destination\":\"amet\",\"departure_time\":\"02:12 PM\",\"arrival_time\":\"09:26 AM\",\"tour_company_id\":1,\"seat_position\":\"f1\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":2,\"attributes\":{\"price\":689,\"source\":\"ut\",\"destination\":\"fugit\",\"departure_time\":\"05:23 AM\",\"arrival_time\":\"07:33 AM\",\"tour_company_id\":2,\"seat_position\":\"d1\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":3,\"attributes\":{\"price\":120,\"source\":\"et\",\"destination\":\"quia\",\"departure_time\":\"12:01 AM\",\"arrival_time\":\"06:28 AM\",\"tour_company_id\":3,\"seat_position\":\"f1\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":4,\"attributes\":{\"price\":793,\"source\":\"eveniet\",\"destination\":\"dolorum\",\"departure_time\":\"11:38 PM\",\"arrival_time\":\"06:38 AM\",\"tour_company_id\":4,\"seat_position\":\"e4\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":5,\"attributes\":{\"price\":513,\"source\":\"culpa\",\"destination\":\"iste\",\"departure_time\":\"09:20 AM\",\"arrival_time\":\"02:09 AM\",\"tour_company_id\":5,\"seat_position\":\"e1\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":6,\"attributes\":{\"price\":615,\"source\":\"voluptatem\",\"destination\":\"voluptas\",\"departure_time\":\"10:06 AM\",\"arrival_time\":\"07:26 AM\",\"tour_company_id\":6,\"seat_position\":\"g4\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":7,\"attributes\":{\"price\":276,\"source\":\"totam\",\"destination\":\"voluptates\",\"departure_time\":\"03:46 PM\",\"arrival_time\":\"01:06 AM\",\"tour_company_id\":7,\"seat_position\":\"h2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":8,\"attributes\":{\"price\":799,\"source\":\"voluptatem\",\"destination\":\"illo\",\"departure_time\":\"05:39 PM\",\"arrival_time\":\"08:50 AM\",\"tour_company_id\":8,\"seat_position\":\"h1\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":9,\"attributes\":{\"price\":278,\"source\":\"quisquam\",\"destination\":\"impedit\",\"departure_time\":\"08:59 PM\",\"arrival_time\":\"09:17 PM\",\"tour_company_id\":9,\"seat_position\":\"c2\",\"traveller_gender\":\"male\"}},{\"type\":\"Tour\",\"id\":10,\"attributes\":{\"price\":516,\"source\":\"minus\",\"destination\":\"corrupti\",\"departure_time\":\"11:32 AM\",\"arrival_time\":\"07:03 AM\",\"tour_company_id\":10,\"seat_position\":\"f2\",\"traveller_gender\":\"female\"}},{\"type\":\"Tour\",\"id\":11,\"attributes\":{\"price\":1000,\"source\":\"New York\",\"destination\":\"Los Angeles\",\"departure_time\":\"09:00 PM\",\"arrival_time\":\"01:00 AM\",\"tour_company_id\":1,\"seat_position\":\"a1\",\"traveller_gender\":\"female\"}}]}",
                             "name": ""
                         }
                     ]
+                },
+                {
+                    "name": "Create a Tour",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/tours",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/tours"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"price\":11,\"source\":\"impedit\",\"destination\":\"similique\",\"departure_time\":\"03:50 PM\",\"arrival_time\":\"03:50 PM\",\"tour_company_id\":9,\"seat_position\":\"quod\",\"traveller_gender\":\"male\"}}}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
                 },
                 {
                     "name": "show a specific Tour",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/tours\/:tour_id",
+                            "path": "api\/v1\/tours\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/tours\/:tour_id",
+                            "raw": "{{baseUrl}}\/api\/v1\/tours\/:id",
                             "variable": [
                                 {
-                                    "id": "tour_id",
-                                    "key": "tour_id",
+                                    "id": "id",
+                                    "key": "id",
                                     "value": "1",
                                     "description": "The ID of the tour."
                                 }
@@ -768,7 +925,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":{\"type\":\"Tour\",\"id\":1,\"attributes\":{\"price\":440,\"source\":\"harum\",\"destination\":\"velit\",\"departure_time\":null,\"arrival_time\":null,\"company\":\"beatae\",\"seat_position\":\"c1\",\"traveller_gender\":\"male\"}}}",
+                            "body": "{\"data\":{\"type\":\"Tour\",\"id\":1,\"attributes\":{\"price\":605,\"source\":\"natus\",\"destination\":\"amet\",\"departure_time\":\"02:12 PM\",\"arrival_time\":\"09:26 AM\",\"tour_company_id\":1,\"seat_position\":\"f1\",\"traveller_gender\":\"female\"}}}",
                             "name": ""
                         }
                     ]

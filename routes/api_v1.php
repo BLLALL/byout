@@ -24,12 +24,14 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('reviews/users/{user}', [ReviewController::class, 'UserReviews']);
-Route::get('reviews/homes/{home}', [ReviewController::class, 'BookReviews']);
+Route::get('reviews/homes/{home}', [ReviewController::class, 'HomeReviews']);
 Route::middleware('auth:sanctum')->post('reviews', [ReviewController::class, 'store']);
+
 
 Route::middleware('auth:sanctum')->post('homes', [HomeController::class, 'store']);
 
 Route::apiResource('tours', TourController::class);
+//Route::apiResource('homes', HomeController::class)->except('post');
 
-
-Route::middleware('auth:sanctum')->get('users/{user}', [UserController::class, 'show'])->name('users.show');
+Route::get('users/{user}', [UserController::class, 'show'])->name('users.show');
+Route::get('users', [UserController::class, 'index'])->name('users.index');
