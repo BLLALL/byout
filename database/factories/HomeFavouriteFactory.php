@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Home;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,8 @@ class HomeFavouriteFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => User::factory(),
+            'home_id' => Home::factory(),
         ];
     }
 }

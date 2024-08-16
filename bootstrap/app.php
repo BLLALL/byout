@@ -19,7 +19,9 @@ return Application::configure(basePath: dirname(__DIR__))
 
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+           'hotel.owner' => \App\Http\Middleware\EnsureUserIsHotelOwner::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

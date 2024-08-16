@@ -34,7 +34,7 @@ class ReviewController extends Controller
             ['user_id' => $request->input('data.user_id')],
             [
                 'rating' => $request->input('data.rating'),
-                'home_id' => $request->input('data.home_id'),
+                'home_id' => $request->input('data.id'),
             ]));
     }
 

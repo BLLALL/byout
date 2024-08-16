@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,18 @@ class HotelFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->word(),
+            'location' => fake()->randomElement(['Cairo', 'Benha', 'Dahab', 'Alexandria', '6 October']),
+            'coordinates' => [
+                fake()->randomFloat(2, -90, 90),
+                fake()->randomFloat(2, -180, 180),
+            ],
+            'hotel_images' => [
+                "https://loremflickr.com/640/480/person",
+                "https://loremflickr.com/640/480/person",
+            ],
+            'hotel_rooms' => fake()->numberBetween(10, 20),
+            'user_id' => User::factory(),
         ];
     }
 }

@@ -32,10 +32,9 @@ class StoreTourRequest extends BaseTourRequest
             'data.attributes.source' => ['required', 'string'],
             'data.attributes.destination' => ['required', 'string'],
             'data.attributes.departure_time' => ['required',  'date_format:h:i A'],
+            'data.attributes.departure_day' => ['required',  Rule::in(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])],
             'data.attributes.arrival_time' => ['required', 'date_format:h:i A'],
             'data.attributes.tour_company_id' => ['required', 'integer', 'exists:tour_companies,id'],
-            'data.attributes.seat_position' => ['required', new validSeatPosition],
-            'data.attributes.traveller_gender' => ['required', Rule::in(['male', 'female'])]
         ];
     }
 }

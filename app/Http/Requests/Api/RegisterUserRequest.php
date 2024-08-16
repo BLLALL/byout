@@ -27,11 +27,9 @@ class RegisterUserRequest extends FormRequest
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8'],
             'phone_number' => ['required', 'numeric'],
-            'traveller_gender' => ['required', Rule::in(['male', 'female'])],
             'age' => ['required','numeric', 'max:100', 'min:10'],
             'marital_status' => ['required','string'],
             'current_job' => ['required','string'],
-
         ];
     }
 }

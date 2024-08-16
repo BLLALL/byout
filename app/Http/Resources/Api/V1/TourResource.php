@@ -19,16 +19,16 @@ class TourResource extends JsonResource
         return [
             'type' => 'Tour',
             'id' => $this->id,
-
+            'attributes' => [
                 'price' => $this->price,
                 'source' => $this->source,
                 'destination' => $this->destination,
                 'departure_time' => $this->departure_time,
                 'arrival_time' => $this->arrival_time,
+                'time_difference' => $this->time_difference,
                 'tour_company_id' => $this->tour_company_id,
-                'seat_position' => $this->seat_position,
-                'traveller_gender' => $this->traveller_gender,
-
+                'seat_status' => json_decode($this->seat_status),
+            ],
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class RegisterOwnerRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class RegisterOwnerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,15 @@ class RegisterOwnerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:8'],
+            'phone_number' => ['required', 'numeric'],
+            'identification_card' => ['required', 'file', 'max:2048'],
+            'licensing' => ['required', 'file', 'max:2048'],
+            'affiliation_certificate' => ['required', 'file', 'max:2048'],
+            'commercial_register' => ['required', 'file', 'max:2048'],
+            'role' => ['required', 'string', Rule::in(['Home Owner', 'Hotel Owner', 'Tour Company Owner', 'Chalet Owner'])],
         ];
     }
 }

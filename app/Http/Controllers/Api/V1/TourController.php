@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\filters\TourFilter;
 use App\Http\Requests\Api\V1\StoreTourRequest;
 use App\Http\Resources\Api\V1\TourResource;
 use App\Models\Tour;
@@ -20,9 +21,9 @@ class TourController extends Controller
      * @queryParam price integer Data field to filter tours by their price u can use comma to filter by range. Example: 2000,100000
      *
      */
-    public function index()
+    public function index(TourFilter $filter)
     {
-        return TourResource::collection(Tour::get());
+        return TourResource::collection(Tour::filter($filter)->get());
     }
 
     /**

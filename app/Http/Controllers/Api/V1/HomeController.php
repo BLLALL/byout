@@ -53,7 +53,6 @@ class HomeController extends Controller
         return new HomeResource($home);
     }
 
-
     /**
      * Remove the specified resource from storage.
      */

@@ -34,7 +34,6 @@ abstract class QueryFilter
                 $this->$key($value);
             }
         }
-
         return $this->builder;
     }
 
@@ -49,7 +48,6 @@ abstract class QueryFilter
                 $sortAttr = substr($sortAttr, 1);
             }
             return $this->builder->orderBy($sortAttr, $direction);
-
         }
 
     }

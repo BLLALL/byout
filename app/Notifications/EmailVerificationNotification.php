@@ -11,11 +11,13 @@ use Illuminate\Notifications\Notification;
 class EmailVerificationNotification extends Notification
 {
     use Queueable;
+
     public $message;
     public $subject;
     public $fromEmail;
     public $mailer;
     protected $otp;
+
     /**
      * Create a new notification instance.
      */
@@ -44,13 +46,13 @@ class EmailVerificationNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        $otp = $this->otp->generate($notifiable->email,'numeric',  6, 15);
+        $otp = $this->otp->generate($notifiable->email, 'numeric', 6, 15);
         return (new MailMessage)
-                  ->mailer('smtp')
-                  ->subject($this->subject)
-                  ->greeting('Hello '. $notifiable->first_name)
-                  ->line($this->message)
-                  ->line('code: ' . $otp->token);
+            ->mailer('smtp')
+            ->subject($this->subject)
+            ->greeting('Hello ' . $notifiable->first_name)
+            ->line($this->message)
+            ->line('code: ' . $otp->token);
     }
 
     /**

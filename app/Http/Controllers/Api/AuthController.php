@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginUserRequest;
+use App\Http\Requests\Api\RegisterOwnerRequest;
 use App\Http\Requests\Api\RegisterUserRequest;
 use App\Models\User;
 use App\Notifications\EmailVerificationNotification;
@@ -21,6 +22,13 @@ class AuthController extends Controller
 {
     use ApiResponses;
 
+    /**
+     *
+     * User Registration
+     *
+     * Create an account for the user.
+     * @group Authentication
+     */
 
     public function register(RegisterUserRequest $request)
     {
@@ -47,6 +55,90 @@ class AuthController extends Controller
 
         );
 
+    }
+
+    /**
+     *
+     * Owner Registration
+     *
+     * Create an account for an owner.
+     * @group Authentication
+     */
+    public function registerOwner(RegisterOwnerRequest $request)
+    {
+        $validatedData = $request->validated();
+
+        if (!$validatedData) {
+            return response()->json('Invalid credentials');
+        }
+        $id_card = $request->file('identification_card')->store('owner_details');
+        $license = $request->file('licensing')->store('owner_details');
+        $aff_cert = $request->file('affiliation_certificate')->store('owner_details');
+        $comm_reg = $request->file('commercial_register')->store('owner_details');
+
+        // TODO: complete registration
+    }
+    /**
+     * Login
+     *
+     * Authenticates the user and returns the user's API token.
+     *
+     * @unauthenticated
+     * @group Authentication
+     * @response 200 {
+     * "data": {
+     * "token": "{YOUR_AUTH_KEY}"
+     * },
+     * "message": "Authenticated",
+     * "status": 200
+     * }
+     */
+    public function login(LoginUserRequest $request)
+    {
+
+        $user = User::firstWhere('email', $request->email);
+
+        // Check if the user exists and the password matches
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return $this->error('Invalid credentials', 401);
+        }
+
+        $token = $user->createToken(
+            'API token for ' . $user->email,
+            ['*'],
+            now()->addHour()
+        )->plainTextToken;
+
+        if (!empty($token)) {
+            $user['token'] = $token;
+        }
+
+        $roleNames = DB::table('roles')
+            ->join('model_has_roles', 'roles.id', '=', 'model_has_roles.role_id')
+            ->where('model_has_roles.model_id', $user->id)
+            ->where('model_has_roles.model_type', 'App\Models\User')
+            ->pluck('roles.name');
+
+
+        $user['role'] = $roleNames[0];
+        $asd = $user->favouriteHome;
+        return response()->json(
+            [
+                'user' => $user,
+
+            ]
+
+        );
+
+    }
+
+
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return $this->ok('');
     }
 
     public function google()
@@ -83,59 +175,6 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * Login
-     *
-     * Authenticates the user and returns the user's API token.
-     *
-     * @unauthenticated
-     * @group Authentication
-     * @response 200 {
-     * "data": {
-     * "token": "{YOUR_AUTH_KEY}"
-     * },
-     * "message": "Authenticated",
-     * "status": 200
-     * }
-     */
-    public function login(LoginUserRequest $request)
-    {
-        $request->validated($request->all());
 
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return $this->error('Invalid credentials', 401);
-        }
-
-        $user = User::firstWhere('email', $request->email);
-
-        $user['token'] = $user->createToken(
-            'API token for ' . $user->email,
-            ['*'],
-            now()->addMonth())->plainTextToken;
-
-
-        $roleNames = DB::table('roles')
-            ->join('model_has_roles', 'roles.id', '=', 'model_has_roles.role_id')
-            ->where('model_has_roles.model_id', $user->id)
-            ->where('model_has_roles.model_type', 'App\Models\User')
-            ->pluck('roles.name');
-
-
-        $user['role'] = $roleNames[0];
-
-        return response()->json(
-            [
-                'user' => $user
-            ]
-
-        );
-
-    }
-
-    public function logout(Request $request)
-    {
-        $request->user()->currentAccessToken()->delete();
-
-        return $this->ok('');
-    }
 }
+

@@ -24,26 +24,39 @@ class Home extends Model
     }
 
 
-    public function HomeImage()
-    {
-        return $this->hasMany(HomeImage::class);
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'home_favourites',
+            'home_id', 'user_id');
+    }
+
     public function scopeFilter(Builder $builder, QueryFilter $filter)
     {
         return $filter->apply($builder);
+    }
+
+    public function getPopularityScore()
+    {
+        if ($this->rating_count > 0) {
+            return $this->avg_rating / sqrt($this->rating_count);
+        }
+        return 0;
     }
 
     public function calcAvgRatingAndCount()
     {
         $this->avg_rating = $this->reviews()->avg('rating') ?? 0;
         $this->rating_count = $this->reviews()->count();
+        $this->popularity_score = $this->getPopularityScore();
         $this->save();
     }
+
 
     public function getAvgRatingAttribute($value)
     {
@@ -54,4 +67,5 @@ class Home extends Model
     {
         $this->attributes['avg_rating'] = $value * 100;
     }
+
 }

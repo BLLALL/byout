@@ -9,10 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+
     public function up(): void
     {
         Schema::create('hotel_rooms', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->integer('price');
+            $table->integer('area');
+            $table->integer('bathrooms_no');
+            $table->integer('bedrooms_no');
+            $table->json('room_images');
+            $table->boolean('is_reserved')->default(false);
+            $table->foreignId('hotel_id')->constrained();
             $table->timestamps();
         });
     }

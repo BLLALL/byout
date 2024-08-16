@@ -33,8 +33,8 @@ class HomeResource extends JsonResource
             'owner_id' => $this->user_id,
             'owner_name' => $this->user->name,
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
-
+            'updated_at' => $this->updated_at,
+            'popularity_score' => $this->popularity_score,
         ];
     }
 }

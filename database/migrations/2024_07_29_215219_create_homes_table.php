@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('location');
             $table->integer('avg_rating')->nullable();
             $table->unsignedInteger('rating_count')->nullable();
+            $table->decimal('popularity_score', 8, 4)->nullable()->index();
             $table->boolean('wifi')->default(false);
             $table->json('coordinates');
             $table->string('rent_period');

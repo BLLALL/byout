@@ -15,6 +15,9 @@ class EnsureUserIsHotelOwner
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if(!$request->user() || !$request->user()->hasRole('Hotel Owner')) {
+            return \response()->json([ $request->user()->getRoleNames() ]);
+        }
         return $next($request);
     }
 }

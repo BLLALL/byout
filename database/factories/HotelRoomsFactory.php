@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Hotel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,18 @@ class HotelRoomsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => fake()->word(),
+            'price' => fake()->numberBetween(100, 500),
+            'area' => fake()->numberBetween(40, 100),
+            'bathrooms_no' => fake()->numberBetween(1, 3),
+            'bedrooms_no' => fake()->numberBetween(1, 3),
+            'room_images' => [
+                "https://loremflickr.com/640/480",
+                "https://loremflickr.com/640/480",
+                "https://loremflickr.com/640/480",
+            ],
+            'hotel_id' => Hotel::factory(),
+            'is_reserved' => fake()->randomElement([false, true]),
         ];
     }
 }

@@ -63,6 +63,23 @@ class User extends Authenticatable
         return $this->hasMany(Home::class);
     }
 
-    protected function getDefaultGuardName(): string { return 'web'; }
+    public function hotel()
+    {
+        return $this->hasMany(Hotel::class);
+    }
+    public function favouriteHome()
+    {
+        return $this->belongsToMany(Home::class, 'home_favourites',
+            'user_id', 'home_id');
+    }
 
+    /**
+     * Get the name of the guard for API authentication.
+     *
+     * @return string
+     */
+    public function guardName(): string
+    {
+        return 'api';
+    }
 }

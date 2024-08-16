@@ -14,6 +14,19 @@ class HotelResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'type' => 'Hotel',
+            'id' => $this->id,
+            'name' => $this->name,
+            'location' => $this->location,
+            'wifi' => $this->wifi,
+            'coordinates' => $this->coordinates,
+            'hotel_images' => $this->hotel_images,
+            'avg_rating' => $this->avg_rating,
+            'rating_count' => $this->rating_count,
+            'popularity_score' => $this->popularity_score,
+            'hotel_rooms' => $this->hotel_rooms,
+            'user_id' => $this->user_id,
+        ];
     }
 }
