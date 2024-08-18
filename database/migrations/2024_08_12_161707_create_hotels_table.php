@@ -17,11 +17,11 @@ return new class extends Migration {
             $table->boolean('wifi')->default(true);
             $table->json('coordinates');
             $table->json('hotel_images');
-            $table->integer('avg_rating')->nullable();
-            $table->unsignedInteger('rating_count')->nullable();
-            $table->decimal('popularity_score', 8, 4)->nullable()->index();
+            $table->integer('avg_rating')->default(0);
+            $table->unsignedInteger('rating_count')->default(0);
+            $table->decimal('popularity_score', 8, 4)->default(0)->index();
             $table->integer('hotel_rooms');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('owner_id')->constrained();
             $table->timestamps();
         });
     }

@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('home_images', function (Blueprint $table) {
+        Schema::create('owners', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('home_id')->constrained()->onDelete('cascade');
-            $table->string('image_path');
-//            $table->string('caption')->nullable();
-            $table->enum('type', ['exterior', 'interior', 'floor_plan', 'other'])->default('other');
+            $table->string('organization');
+            $table->string('identification_card');
+            $table->string('licensing');
+            $table->string('affiliation_certificate');
+            $table->string('commercial_register');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('home_images');
+        Schema::dropIfExists('owners');
     }
 };

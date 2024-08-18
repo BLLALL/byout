@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('home_favourites', function (Blueprint $table) {
+        Schema::create('favourites', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('home_id')->constrained();
+            $table->morphs('favorable');
+            $table->unique(['user_id', 'favorable_id', 'favorable_type']);
             $table->timestamps();
         });
     }
