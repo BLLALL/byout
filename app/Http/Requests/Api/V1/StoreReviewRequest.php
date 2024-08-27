@@ -4,14 +4,14 @@ namespace App\Http\Requests\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreHomeReviewRequest extends FormRequest
+class StoreReviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -19,12 +19,10 @@ class StoreHomeReviewRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules() : array
+    public function rules(): array
     {
         return [
-            'data.rating' => ['required', 'integer', 'in:1,2,3,4,5'],
-            'data.user_id' => ['required', 'integer', 'exists:users,id'],
-            'data.id' => ['required', 'integer', 'exists:homes,id'],
+            //
         ];
     }
 }
