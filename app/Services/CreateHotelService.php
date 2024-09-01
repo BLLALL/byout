@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class HotelService
+class CreateHotelService
 {
 
 }

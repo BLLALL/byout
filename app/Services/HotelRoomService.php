@@ -2,7 +2,19 @@
 
 namespace App\Services;
 
-class HotelRoomService
-{
+use App\Models\HotelRooms;
+use Illuminate\Http\Request;
 
+class HotelRoomService extends UpdateEntityService
+{
+    public function updateHotelRoom(HotelRooms $hotelRoom, Request $request)
+    {
+        $fillableAttributes = [
+            'title', 'price', 'area',
+            'bathrooms_no', 'bedrooms_no',
+            'is_reserved'
+        ];
+
+        $this->updateEntity($hotelRoom, $request, $fillableAttributes, 'room_images');
+    }
 }
