@@ -24,6 +24,7 @@ class OwnerResource extends JsonResource
             "current_job" => $this->user->current_job,
             "profile_image" => $this->user->profile_image,
             "role" => $this->role,
+            "token" => $this->token,
             "organization" => $this->organization,
             "identification_card" => $this->identification_card,
             "licensing" => $this->licensing,

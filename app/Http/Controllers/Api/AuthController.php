@@ -6,9 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginUserRequest;
 use App\Http\Requests\Api\RegisterOwnerRequest;
 use App\Http\Requests\Api\RegisterUserRequest;
+use App\Http\Resources\Api\V1\OwnerResource;
+use App\Http\Resources\Api\V1\UserResource;
+use App\Models\Owner;
 use App\Models\User;
 use App\Notifications\EmailVerificationNotification;
 use App\traits\apiResponses;
+use http\Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,10 +21,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
     use ApiResponses;
+
 
     /**
      *
@@ -38,21 +44,23 @@ class AuthController extends Controller
         if (!$validatedData) {
             return response()->json('Invalid credentials');
         }
-
-        $user = User::create($request->all());
+        $userData = $request->only([
+            "name", "email", "password", "phone_number", "age",
+            "marital_status", "current_job"
+        ]);
+        $user = User::create($userData);
 
         $user->notify(new EmailVerificationNotification());
         $user['token'] = $user->createToken(
             'API token for ' . $user->email,
             ['*'],
-            now()->addHours(2))->plainTextToken;
+            now()->addDays(30))->plainTextToken;
+
 
         return response()->json(
             [
-
                 'user' => $user
             ]
-
         );
 
     }
@@ -66,17 +74,47 @@ class AuthController extends Controller
      */
     public function registerOwner(RegisterOwnerRequest $request)
     {
-        $validatedData = $request->validated();
+        // Start a database transaction
+        DB::beginTransaction();
 
-        if (!$validatedData) {
-            return response()->json('Invalid credentials');
+        try {
+            // Handle user creation
+            $userData = $request->only(['name', 'email', 'password', 'phone_number']);
+
+            $user = User::create($userData);
+
+            // Handle owner creation and file uploads
+            $ownerData = $request->only(['organization', 'identification_card', 'licensing', 'affiliation_certificate', 'commercial_register']);
+
+            $filePaths = [];
+            foreach (['identification_card', 'licensing', 'affiliation_certificate', 'commercial_register'] as $fileField) {
+                if ($request->hasFile($fileField)) {
+                    $filePaths[$fileField] = 'https://fayroz97.com/real-estate/' . $request->file($fileField)->store('owner_documents', 'public');
+                }
+            }
+
+            $ownerData = array_merge($ownerData, $filePaths);
+            $ownerData['user_id'] = $user->id;
+            $owner = Owner::create($ownerData);
+
+            $user->notify(new EmailVerificationNotification());
+            $token = $user->createToken(
+                'API token for ' . $user->email,
+                ['*'],
+                now()->addDays(30))->plainTextToken;
+
+            // Assign role
+            $role = $request->input('role');
+            $user->assignRole($role);
+            $owner['role'] = $owner->user->role = $request->input('role');
+            $owner['token'] = $token;
+            DB::commit();
+
+            return new OwnerResource($owner);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['error' => 'Registration failed: ' . $e->getMessage()], 500);
         }
-        $id_card = $request->file('identification_card')->store('owner_details');
-        $license = $request->file('licensing')->store('owner_details');
-        $aff_cert = $request->file('affiliation_certificate')->store('owner_details');
-        $comm_reg = $request->file('commercial_register')->store('owner_details');
-
-        // TODO: complete registration
     }
     /**
      * Login
@@ -106,39 +144,14 @@ class AuthController extends Controller
         $token = $user->createToken(
             'API token for ' . $user->email,
             ['*'],
-            now()->addHour()
+            now()->addDays(30)
         )->plainTextToken;
 
         if (!empty($token)) {
             $user['token'] = $token;
         }
 
-        $roleNames = DB::table('roles')
-            ->join('model_has_roles', 'roles.id', '=', 'model_has_roles.role_id')
-            ->where('model_has_roles.model_id', $user->id)
-            ->where('model_has_roles.model_type', 'App\Models\User')
-            ->pluck('roles.name');
-
-
-        $user['role'] = $roleNames[0];
-        $asd = $user->favouriteHome;
-        return response()->json(
-            [
-                'user' => $user,
-
-            ]
-
-        );
-
-    }
-
-
-
-    public function logout(Request $request)
-    {
-        $request->user()->currentAccessToken()->delete();
-
-        return $this->ok('');
+        return new UserResource($user);
     }
 
     public function google()
@@ -154,7 +167,7 @@ class AuthController extends Controller
 
             $user = Socialite::driver('google')->user();
 
-            $user = User::Create([
+            $user = User::firstOrCreate([
                 'email' => $user->email
             ], [
                     'name' => $user->name,
@@ -175,6 +188,43 @@ class AuthController extends Controller
         }
     }
 
+
+    public function logout(Request $request)
+    {
+        $token = $request->user()->currentAccessToken();
+        $request->user()->currentAccessToken()->delete();
+
+        return $this->ok($token);
+    }
+
+    public function checkToken(Request $request)
+    {
+        if (!$request->user()) return response()->json([
+            "message" => "Unauthenticated"
+        ]);
+        $token = $request->user()->currentAccessToken();
+        if ($token->expires_at->isPast()) {
+            return response()->json([
+                "message" => "Unauthenticated"
+            ]);
+        } else {
+            return response()->json([
+                "message" => "Authenticated"
+            ]);
+        }
+    }
+
+    public function refreshToken(Request $request)
+    {
+        $user = $request->user();
+
+        $user->currentAccessToken()->delete();
+
+        return $user->createToken(
+            'API token for ' . $user->email,
+            ['*'],
+            now()->addDays(30))->plainTextToken;
+    }
 
 }
 

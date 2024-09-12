@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Api\V1;
 
 
+use Illuminate\Validation\Rule;
+
 class storeHomeRequest extends BaseHomeRequest
 {
     /**
@@ -21,21 +23,31 @@ class storeHomeRequest extends BaseHomeRequest
     public function rules(): array
     {
         return [
-            'data' => 'required|array',
-            'data.title' => 'required|string',
-            'data.description' => 'required|string',
-            'data.price' => 'required|integer',
-            'data.area' => 'required|integer',
-            'data.bathrooms_no' => 'required|integer',
-            'data.bedrooms_no' => 'required|integer',
-            'data.location' => 'required|string',
-            'data.home_images' => 'sometimes|array',
-            'data.wifi' => 'required|boolean',
-            'data.coordinates' => 'required|array|size:2',
-            'data.coordinates.0' => 'required|numeric|between:-90,90',
-            'data.coordinates.1' => 'required|numeric|between:-180,180',
-            'data.rent_period' => 'required|string',
-            'data.user_id' => 'required|integer|exists:users,id'
+            'title' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'price' => ['required', 'numeric', 'min:0'],
+            'area' => ['required', 'integer'],
+            'bathrooms_no' => ['required', 'integer'],
+            'bedrooms_no' => ['required', 'integer'],
+            'location' => ['required', 'string'],
+            'home_images' => ['sometimes', 'array'],
+            'home_images.*' => ['file', 'max:2048'],
+            'wifi' => ['required', 'boolean'],
+            'coordinates' => ['required' ,'array', 'size:2'],
+            'coordinates.0' => ['required' ,'integer' ,'between:-90,90'],
+            'coordinates.1' => ['required' ,'integer','between:-180,180'],
+            'rent_period' => ['required' ,'string'],
+            'owner_id' => ['required' ,'integer' ,'exists:users,id'],
+            'available_from' => ['required', 'date'],
+            'available_until' => ['required', 'date'],
+            'documents' => ['required', 'array'],
+            'documents.*.type' => ['required_with:documents', 'string', Rule::in([
+                'signatory_authorization',
+                'property_ownership',
+                'agreement_contract',
+            ])],
+            'documents.*.file' => ['required_with:documents', 'file', 'max:10240'], // 10MB max
+            
         ];
     }
 }

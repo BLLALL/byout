@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ScheduleTourRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class ScheduleTourRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,13 @@ class ScheduleTourRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'tour_type' => ['required', Rule::in(['fixed', 'individual'])],
+            'source' => ['required', 'string'],
+            'destination' => ['required', 'string', 'max:255'],
+            'recurrence' => ['nullable', 'sometimes', 'integer'],
+            'transportation_company' => ['sometimes', 'integer', 'exists:tour_companies,id'],
+            'bus_id' => ['required', 'integer', 'exists:buses,id'],
+            'driver_id' => [ 'required', 'exists:drivers,id'],
         ];
     }
 }

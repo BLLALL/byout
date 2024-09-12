@@ -2,6 +2,8 @@
 
 namespace App\Http\filters;
 
+use Illuminate\Database\Eloquent\Builder;
+
 class TourFilter extends QueryFilter
 {
     public function price($value)
@@ -28,5 +30,22 @@ class TourFilter extends QueryFilter
 
     public function destination($value) {
         return $this->builder->where('destination', $value);
+    }
+
+    public function owner_id($value)
+    {
+        return $this->builder->whereHas('owner', (function (Builder $query) use ($value) {
+            $query->where('user_id', $value);
+        }));
+    }
+
+    public function driver_id($value)
+    {
+        return $this->builder->where('driver_id', $value);
+    }
+
+    public function bus_id($value)
+    {
+        return $this->builder->where('bus_id', $value);
     }
 }

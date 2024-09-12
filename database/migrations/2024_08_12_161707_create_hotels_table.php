@@ -20,8 +20,8 @@ return new class extends Migration {
             $table->integer('avg_rating')->default(0);
             $table->unsignedInteger('rating_count')->default(0);
             $table->decimal('popularity_score', 8, 4)->default(0)->index();
-            $table->integer('hotel_rooms');
-            $table->foreignId('owner_id')->constrained();
+            $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
+            $table->boolean('pending')->default(true);
             $table->timestamps();
         });
     }

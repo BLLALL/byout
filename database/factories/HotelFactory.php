@@ -2,6 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Home;
+use App\Models\Hotel;
+use App\Models\Owner;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -28,8 +32,24 @@ class HotelFactory extends Factory
                 "https://loremflickr.com/640/480/person",
                 "https://loremflickr.com/640/480/person",
             ],
-            'hotel_rooms' => fake()->numberBetween(10, 20),
-            'user_id' => User::factory(),
+            'owner_id' => Owner::factory(),
         ];
     }
+
+    public function configure() {
+        return $this->afterCreating(function (Hotel $hotel){
+            //create a number of reviews for this home
+            $reviews = Review::factory()
+                ->create([
+                    'reviewable_id' => $hotel->id,
+                    'reviewable_type' => Hotel::class,
+                    'user_id' => User::factory()
+                ]);
+
+
+//            calculate and set avg_rating
+            $hotel->updateReviewStatistics();
+        });
+    }
+
 }

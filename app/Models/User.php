@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,16 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'phone_number',
-        'traveller_gender',
-        'age',
-        'marital_status',
-        'current_job',
-    ];
+    protected $guarded = [];
 
 
     /**
@@ -53,24 +43,63 @@ class User extends Authenticatable
         ];
     }
 
-    public function review()
+    public function owner()
+    {
+        return $this->hasOne(Owner::class);
+    }
+
+    public function ownsCompanyWithOwnerId($ownerId)
+    {
+        return $this->owner()->where('id', $ownerId)->exists();
+    }
+
+    public function reviews()
     {
         return $this->hasMany(Review::class);
     }
 
-    public function home()
+    public function driver()
     {
-        return $this->hasMany(Home::class);
+        return $this->hasOne(Driver::class);
     }
 
-    public function hotel()
+    public function hotelReviews()
     {
-        return $this->hasMany(Hotel::class);
+        return $this->reviews()->where('reviewable_type', Hotel::class);
     }
+
+    public function chaletReviews()
+    {
+        return $this->reviews()->where('reviewable_type', Chalet::class);
+    }
+
+    public function homeReviews()
+    {
+        return $this->reviews()->where('reviewable_type', Home::class);
+    }
+
+
     public function favouriteHome()
     {
-        return $this->belongsToMany(Home::class, 'home_favourites',
-            'user_id', 'home_id');
+        return $this->morphedByMany(Home::class, 'favorable',
+            'favourites')->exists();
+    }
+
+    public function favouriteHotel()
+    {
+        return $this->morphedByMany(Hotel::class, 'favorable',
+            'favourites');
+    }
+
+    public function favouriteChalet()
+    {
+        return $this->morphedByMany(Chalet::class, 'favorable',
+            'favourites');
+    }
+
+    public function favourites()
+    {
+        return $this->hasMany(Favourite::class);
     }
 
     /**
@@ -78,6 +107,7 @@ class User extends Authenticatable
      *
      * @return string
      */
+
     public function guardName(): string
     {
         return 'api';

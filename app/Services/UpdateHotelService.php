@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\Hotel;
 use Illuminate\Http\Request;
 
-class HotelService extends UpdateEntityService
+class UpdateHotelService extends UpdateEntityService
 {
     public function updateHotel(Hotel $hotel, Request $request)
     {

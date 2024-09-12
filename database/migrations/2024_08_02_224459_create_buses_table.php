@@ -15,17 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('registration_number');
             $table->string('model');
-            $table->string('bus_image')->nullable();
-            $table->enum('status', ['available', 'in use', 'unavailable'])->default('available');
+            $table->json('bus_images')->nullable();
             $table->integer('seats_number');
             $table->boolean('has_wifi')->default(false);
             $table->boolean('has_bathroom')->default(false);
             $table->boolean('has_movie_screens')->default(false);
+            $table->boolean('has_air_conditioner')->default(false);
             $table->boolean('has_entrance_camera')->default(false);
             $table->boolean('has_passenger_camera')->default(false);
+            $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
             $table->enum('ownership', ['driver_owned', 'company_owned']);
-            $table->string('transportation_company')->nullable(); // Nullable if driver-owned
-
             $table->timestamps();
         });
 

@@ -18,9 +18,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string( 'password');
             $table->string('phone_number');
-            $table->unsignedTinyInteger('age');
-            $table->string('marital_status');
-            $table->string('current_job');
+            $table->unsignedTinyInteger('age')->nullable();
+            $table->string('marital_status')->nullable();
+            $table->string('current_job')->nullable();
+            $table->string('profile_image')->nullable();
+            $table->string('preferred_currency')->default('SYP');
             $table->rememberToken();
             $table->timestamps();
         });

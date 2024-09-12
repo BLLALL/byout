@@ -22,8 +22,10 @@ class ToggleHomeFavouriteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'data.user_id' => ['required', 'exists:users.id'],
-            'data.home_id' => ['required', 'exists:home,id'],
+            'data' => ['required', 'array'],
+            'data.user_id' => ['required', 'exists:users,id'],
+            'data.favorable_id' => ['required', 'integer'],
+            'data.favorable_type' => ['required', 'string', 'in:Home,Hotel,Chalet'],
         ];
     }
 }

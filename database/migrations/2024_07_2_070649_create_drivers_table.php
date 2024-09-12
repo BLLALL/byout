@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('license');
             $table->date('license_expiry_date');
             $table->boolean('is_smoker')->default(false);
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
             $table->timestamps();
         });
     }

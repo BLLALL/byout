@@ -15,7 +15,7 @@ abstract class UpdateEntityService
         $entity->fill($data);
 
         // Handle new images
-        if ($request->hasFile('new_images')) {
+        if ($request->hasFile(key: 'new_images')) {
             $existingImages = $entity->{$imageColumn} ?? [];
             foreach ($request->file('new_images') as $image) {
                 $imagePath = 'https://fayroz97.com/real-estate/' . $image->store($imageColumn, 'public');

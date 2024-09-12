@@ -11,7 +11,7 @@ class UpdateHotelRoomRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class UpdateHotelRoomRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['sometimes', 'string', ],
+            'price' => ['sometimes', 'integer'],
+            'area' => ['sometimes', 'integer'],
+            'bathrooms_no' => ['sometimes', 'integer'],
+            'bedrooms_no' => ['sometimes', 'integer'],
+            'room_images' => ['sometimes', 'array'],
+            'room_images.*' => ['image', 'mimes:jpg,png,jpeg'],
+            'is_reserved' => ['sometimes', 'boolean'],
+            'hotel_id' => ['sometimes', 'integer', 'exists:hotels,id'],
         ];
     }
 }

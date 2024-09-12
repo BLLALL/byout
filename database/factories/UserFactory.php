@@ -37,32 +37,7 @@ class UserFactory extends Factory
         ];
     }
 
-    public function asHomeOwner()
-    {
-        return $this->afterCreating(function (User $user) {
-                $user->assignRole('Home Owner');
-            });
-    }
 
-    public function asHotelOwner()
-    {
-        return $this->afterCreating(function (User $user) {
-            $user->assignRole('Hotel Owner');
-        });
-    }
-
-    public function asRegularUser()
-    {
-        return $this->afterCreating(function (User $user) {
-            $user->assignRole('Regular User');
-        });
-    }
-    public function asTourCompanyOwner()
-    {
-        return $this->afterCreating(function (User $user) {
-            $user->assignRole('Tour Company Owner');
-        });
-    }
 
     /**
      * Indicate that the model's email address should be unverified.

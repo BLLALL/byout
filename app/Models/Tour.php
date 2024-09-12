@@ -23,11 +23,30 @@ class Tour extends Model
         return $filter->apply($builder);
     }
 
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class);
+    }
+
     public function tourCompany()
     {
         return $this->belongsTo(TourCompany::class);
     }
 
+    public function bus()
+    {
+        return $this->belongsTo(Bus::class);
+    }
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
+
+    public function documents()
+    {
+        return $this->morphMany(Document::class, 'documentable');
+    }
     public function tourReservations() {
         return $this->hasMany(TourReservation::class);
     }

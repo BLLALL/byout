@@ -23,15 +23,21 @@ class RegisterOwnerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:50'],
-            'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'string', 'min:8'],
-            'phone_number' => ['required', 'numeric'],
-            'identification_card' => ['required', 'file', 'max:2048'],
-            'licensing' => ['required', 'file', 'max:2048'],
-            'affiliation_certificate' => ['required', 'file', 'max:2048'],
-            'commercial_register' => ['required', 'file', 'max:2048'],
-            'role' => ['required', 'string', Rule::in(['Home Owner', 'Hotel Owner', 'Tour Company Owner', 'Chalet Owner'])],
+            // User rules
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8', //|confirmed',
+            'phone_number' => 'required|numeric',
+
+
+            // Owner rules
+            'organization' => ['string', 'max:128'],
+            'identification_card' => 'sometimes|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'licensing' => 'sometimes|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'affiliation_certificate' => 'sometimes|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'commercial_register' => 'sometimes|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            'role' => 'required|string|in:Home Owner,Hotel Owner,Tour Company Owner,Chalet Owner',
+
         ];
     }
 }

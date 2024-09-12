@@ -14,6 +14,15 @@ class homeOwnerResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'name' => $this->user->name,
+            'id' => $this->user_id,
+            'role' => $this->user->roles->pluck('name'),
+            'organization' => $this->organization,
+            'identification_card' => $this->identification_card,
+            'licensing' => $this->licensing,
+            'affiliation_certificate' => $this->affiliation_certificate,
+            'commercial_register' => $this->commercial_register,
+        ];
     }
 }

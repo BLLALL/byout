@@ -9,9 +9,6 @@ class TourReservation extends Model
 {
     use HasFactory;
 
-    protected $casts = [
-        'seat_positions' => 'array',
-    ];
     protected $guarded = [];
 
     public function tour()

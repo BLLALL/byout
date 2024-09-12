@@ -2,15 +2,20 @@
 
 namespace Database\Factories;
 
+use App\Models\Chalet;
+use App\Models\Favourite;
 use App\Models\Home;
+use App\Models\Hotel;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Favourite>
  */
-class HomeFavouriteFactory extends Factory
+class FavouriteFactory extends Factory
 {
+    protected $model = Favourite::class;
+
     /**
      * Define the model's default state.
      *
@@ -18,9 +23,18 @@ class HomeFavouriteFactory extends Factory
      */
     public function definition(): array
     {
+        $favouritableTypes = [
+            Home::class,
+            Hotel::class,
+            Chalet::class,
+        ];
+
+        $favouritableType = fake()->randomElement($favouritableTypes);
+        $favouritableId = $favouritableType::factory()->create()->id;
         return [
             'user_id' => User::factory(),
-            'home_id' => Home::factory(),
+            'favorable_id' => $favouritableId,
+            'favorable_type' => $favouritableType,
         ];
     }
 }

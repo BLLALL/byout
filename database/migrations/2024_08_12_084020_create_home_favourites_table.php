@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('favourites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->morphs('favorable');
             $table->unique(['user_id', 'favorable_id', 'favorable_type']);
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('home_favourites');
+        Schema::dropIfExists('favourites');
     }
 };

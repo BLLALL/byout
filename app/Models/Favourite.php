@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HomeFavourite extends Model
+class Favourite extends Model
 {
     use HasFactory;
 
@@ -14,5 +14,9 @@ class HomeFavourite extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function favorable()
+    {
+        return $this->morphTo();
+    }
 
 }

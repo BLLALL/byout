@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Bus;
+use App\Models\Driver;
 use App\Models\Home;
+use App\Models\Owner;
 use App\Models\Tour;
 use App\Models\TourCompany;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,11 +24,17 @@ class TourFactory extends Factory
     {
         return [
             'price' => $this->faker->numberBetween(100, 800),
+            'tour_type' => 'fixed',
             'source' => $this->faker->word(),
             'destination' => $this->faker->word(),
             'departure_time' => $this->faker->dateTimeBetween(now(), '+30 day'),
             'arrival_time' => $this->faker->dateTimeBetween('+30 day', '+1 month'),
-            'tour_company_id' => TourCompany::factory(),
+            'recurrence' => 1,
+            'status' => 'scheduled',
+            'transportation_company' => fake()->word,
+            'bus_id' => Bus::factory(),
+            'owner_id' => Owner::factory(),
+            'driver_id' => Driver::factory(),
         ];
     }
 

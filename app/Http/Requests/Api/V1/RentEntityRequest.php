@@ -11,7 +11,7 @@ class RentEntityRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class RentEntityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "rentable_type" => ["required", "string", "in:Home,Hotel Room,Chalet"],
+            "rentable_id" => ["required", "integer"],
+            "user_id" => ["required", "integer", "exists:users,id"],
+            "check_in" => ["required", "date"],
+            "check_out" => ["required", "date", "after:check_in"],
+            "payment_method" => ["required", "string", "in:credit_card,debit_card,paypal,bank_transfer,other"],
         ];
     }
 }

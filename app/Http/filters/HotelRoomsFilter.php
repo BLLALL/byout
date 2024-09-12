@@ -19,7 +19,7 @@ class HotelRoomsFilter extends QueryFilter
     public function location($value)
     {
 
-        return $this->hotel::where('location', $value);;
+        return $this->hotel::where('location', $value);
     }
 
     public function is_reserved($value)

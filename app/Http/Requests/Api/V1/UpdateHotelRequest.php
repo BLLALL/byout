@@ -11,7 +11,7 @@ class UpdateHotelRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class UpdateHotelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'sometimes|string',
+            'location' => 'sometimes|string',
+            'wifi' => 'boolean',
+            'coordinates' => 'sometimes|array|size:2',
+            'coordinates.0' => 'sometimes|numeric|between:-90,90',
+            'coordinates.1' => 'sometimes|numeric|between:-180,180',
+            'hotel_images' => 'sometimes|array',
+            'hotel_images.*' => 'image|max:2048',
+            'hotel_rooms' => 'sometimes|integer',
+            'owner_id' => 'sometimes|integer|exists:users,id',
         ];
     }
 }

@@ -14,7 +14,8 @@ class UpdateVehicleService extends UpdateEntityService
             'type', 'model', 'registration_number',
             'vehicle_images', 'seats_number', 'status',
             'has_wifi', 'has_air_conditioner', 'has_gps',
-            'has_movie_screens',
+            'has_movie_screens', 'has_entrance_camera', 'has_passenger_camera',
+            'has_bathroom'
         ];
 
         $this->updateEntity($vehicle, $request, $fillableAttributes, 'vehicle_images');

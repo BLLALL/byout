@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->foreignId('tour_id')->constrained();
             $table->string('seat_positions');
             $table->enum('gender', ['male', 'female']);
+            $table->unique(['tour_id', 'seat_positions']);
             $table->timestamps();
         });
     }

@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
             $table->string('organization');
-            $table->string('identification_card');
-            $table->string('licensing');
-            $table->string('affiliation_certificate');
-            $table->string('commercial_register');
-            $table->foreignId('user_id');
+            $table->string('identification_card')->nullable();
+            $table->string('licensing')->nullable();
+            $table->string('affiliation_certificate')->nullable();
+            $table->string('commercial_register')->nullable();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

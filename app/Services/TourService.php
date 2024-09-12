@@ -15,19 +15,18 @@ class TourService
     {
         $bus = Bus::findOrFail($tour->bus_id);
 
-
-
         $conflictingTours = Tour::where('bus_id', $tour->bus_id)
             ->where(function ($query) use ($tour) {
                 $query->where('departure_time', '<', $tour->arrival_time)
                     ->where('arrival_time', '>', $tour->departure_time);
             })->get();
-        Log::info('SQL Query:', DB::getQueryLog());
+            
+        // Log::info('SQL Query:', DB::getQueryLog());
 
-        Log::info($conflictingTours);
+        // Log::info($conflictingTours);
 
-        $loggedTour = Tour::find(46);
-        Log::info($loggedTour);
+        // $loggedTour = Tour::find(46);
+        // Log::info($loggedTour);
 
         if ($conflictingTours->isNotEmpty()) {
             throw new \Exception('Bus is already scheduled for another tour during this time');

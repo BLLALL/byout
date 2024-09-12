@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('homes', function (Blueprint $table) {
             $table->id();
+            $table->softDeletes();  
             $table->string('title');
             $table->text('description');
-            $table->integer('price');
+            $table->unsignedBigInteger('price');
+            $table->string('currency')->default('SYP');
             $table->integer('area');
             $table->integer('bathrooms_no');
             $table->integer('bedrooms_no');
             $table->json('home_images');
+            $table->string('license')->nullable();
             $table->string('location');
             $table->integer('avg_rating')->default(0);
             $table->unsignedInteger('rating_count')->default(0);
@@ -27,7 +30,11 @@ return new class extends Migration
             $table->boolean('wifi')->default(false);
             $table->json('coordinates');
             $table->string('rent_period');
-            $table->foreignId('owner_id')->constrained();
+            $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
+            $table->boolean('pending')->default(true);
+            $table->dateTime('available_from');
+            $table->dateTime('available_until');
+            $table->boolean('is_available')->default(true);
             $table->timestamps();
         });
     }

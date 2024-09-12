@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,13 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['string', 'max:100'],
+            'email' => ['email', 'string'],
+            'profile_image' => ['image', 'mimes:png,jpg,jpeg', 'max:2048'],
+            'phone_number' => ['integer', 'max:11'],
+            'age' => ['integer', 'max:100', 'min:10'],
+            'marital_status' => ['string', Rule::in(["single", "married", "divorced"])],
+            'current_job' => [ 'string'],
         ];
     }
 }

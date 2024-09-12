@@ -31,7 +31,7 @@ class TourReservationFactory extends Factory
                 'h1', 'h2', 'h3', 'h4',
             ]),
             'gender' => fake()->randomElement(['male', 'female']),
-            ];
+        ];
     }
 }
 

@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 
 return [
 
@@ -11,7 +10,7 @@ return [
      * Supported: 'null', 'fixer', 'exchange_rate', 'frankfurter', 'currency_geo', 'cache'
      */
 
-    'default' => env('EXCHANGE_DRIVER', 'frankfurter'),
+    'default' => env('EXCHANGE_DRIVER', 'null'),
 
     'services' => [
 

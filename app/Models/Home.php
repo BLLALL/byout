@@ -5,35 +5,45 @@ namespace App\Models;
 use App\Http\filters\QueryFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use \Illuminate\Database\Eloquent\Builder;
 
 class Home extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $casts = [
         'coordinates' => 'array',
         'home_images' => 'array',
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['avg_rating', 'rating_count', 'popularity_score'];
+
+
+
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class);
+    }
 
     public function reviews()
     {
-        return $this->hasMany(Review::class);
+        return $this->morphMany(Review::class, 'reviewable');
     }
-
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'home_favourites',
-            'home_id', 'user_id');
+        return $this->morphToMany(User::class, 'favorable');
+    }
+
+    public function documents()
+    {
+        return $this->morphMany(Document::class, 'documentable');
+    }
+
+    public function rentals()
+    {
+        return $this->morphMany(Rental::class, 'rentable');
     }
 
     public function scopeFilter(Builder $builder, QueryFilter $filter)
@@ -41,21 +51,31 @@ class Home extends Model
         return $filter->apply($builder);
     }
 
+    public function updateReviewStatistics()
+    {
+        $avgRating = Review::where('reviewable_type', get_class($this))
+            ->where('reviewable_id', $this->id)
+            ->avg('rating') ?? 0;
+
+        $ratingCount = Review::where('reviewable_type', get_class($this))
+            ->where('reviewable_id', $this->id)
+            ->count();
+
+        $this->avg_rating = $avgRating;
+        $this->rating_count = $ratingCount;
+        $this->popularity_score = $this->getPopularityScore();
+
+        $this->saveQuietly();
+    }
+
     public function getPopularityScore()
     {
         if ($this->rating_count > 0) {
             return $this->avg_rating / sqrt($this->rating_count);
         }
-        return 0;
+        return 0.0;
     }
 
-    public function calcAvgRatingAndCount()
-    {
-        $this->avg_rating = $this->reviews()->avg('rating') ?? 0;
-        $this->rating_count = $this->reviews()->count();
-        $this->popularity_score = $this->getPopularityScore();
-        $this->save();
-    }
 
 
     public function getAvgRatingAttribute($value)

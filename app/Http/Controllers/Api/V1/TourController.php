@@ -4,14 +4,24 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\filters\TourFilter;
+use App\Http\Requests\Api\V1\ScheduleTourRequest;
 use App\Http\Requests\Api\V1\StoreTourRequest;
 use App\Http\Resources\Api\V1\TourResource;
+use App\Models\Bus;
+use App\Models\Owner;
 use App\Models\Tour;
+use App\Services\TourService;
+use App\traits\apiResponses;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Mockery\Exception;
 
 class TourController extends Controller
 {
+    use apiResponses;
+
     /**
      * Get Tours
      * Show all Tours
@@ -21,6 +31,46 @@ class TourController extends Controller
      * @queryParam price integer Data field to filter tours by their price u can use comma to filter by range. Example: 2000,100000
      *
      */
+
+    protected TourService $tourService;
+
+    public function __construct(TourService $tourService)
+    {
+        $this->tourService = $tourService;
+    }
+
+
+    public function schedule(ScheduleTourRequest $request)
+    {
+        $tourData = $request->only([
+            'price', 'tour_type', 'source', 'destination', 'departure_time',
+            'arrival_time', 'recurrence', 'ownership', 'bus_id', 'driver_id'
+        ]);
+
+        $bus = Bus::findOrFail($tourData['bus_id']);
+        $ownerId = $bus->owner_id;
+        $userId = $bus->owner->user_id;
+        $user = $bus->owner->user;
+
+        if (Auth::user()->id != $userId || !($user->hasRole('Tour Company Owner'))) {
+            return response()->json([
+                    "message" => "you are not authorized to schedule this tours"
+                ]);
+        }
+        $tourData['owner_id'] = $ownerId;
+        $tour = new Tour($tourData);
+        if ($tourData['recurrence'])
+            $this->tourService->createRecurringTour($tour, $tour['recurrence']);
+        try {
+            $this->tourService->scheduleTour($tour);
+            return response()->json([
+                'message' => 'Tour successfully scheduled',
+                'tour' => new TourResource($tour)
+            ], 200);
+        } catch (\Exception $exception) {
+           return $exception;
+        }
+    }
     public function index(TourFilter $filter)
     {
         return TourResource::collection(Tour::filter($filter)->get());
@@ -47,6 +97,15 @@ class TourController extends Controller
      */
     public function store(StoreTourRequest $request)
     {
-        return new TourResource(Tour::create($request->mappedAttributes()));
+
+        if (Auth::user()->can('Post Tours')) {
+            return new TourResource(Tour::create($request->mappedAttributes()));
+        } else {
+            return $this->error([
+                "you aren't authorized to store this tour."
+            ], 403);
+        }
     }
+
+
 }

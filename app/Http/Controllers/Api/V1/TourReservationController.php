@@ -10,6 +10,7 @@ use App\traits\apiResponses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use phpDocumentor\Reflection\Types\Collection;
 
 class TourReservationController extends Controller
 {
@@ -46,10 +47,11 @@ class TourReservationController extends Controller
         $tour = Tour::findOrFail($validated['tour_id']);
 
         // Check for existing reservations
+
         $existingReservations = $tour->tourReservations()
-            ->whereRaw('JSON_CONTAINS(seat_positions, ?)', [json_encode($seatPositions)])
-            ->orWhereRaw('JSON_CONTAINS(?, seat_positions)', [json_encode($seatPositions)])
+            ->whereIn('seat_positions', $seatPositions)
             ->get();
+
 
         if ($existingReservations->isNotEmpty()) {
             $conflictingSeats = collect($seatPositions)->filter(function ($seat) use ($existingReservations) {
@@ -69,7 +71,7 @@ class TourReservationController extends Controller
             foreach ($seatPositions as $index => $seatPosition) {
                 $reservations[] = new TourReservation([
                     'user_id' => $validated['user_id'],
-                    'seat_positions' => [$seatPosition],
+                    'seat_positions' => $seatPosition,
                     'gender' => $travellerGenders[$index],
                 ]);
             }
@@ -109,22 +111,23 @@ class TourReservationController extends Controller
         ]);
     }
 
-    public function getReservedSeats()
+    public function getReservedSeats($tourId)
     {
-        $reserved_seats = TourReservation::with('tour')
-            ->get()
+        $tour = Tour::find($tourId);
+        if(!$tour) return "Tour u entered not valid";
+        $reserved_seats = $tour->tourReservations
             ->flatMap(function ($reservation) {
-                $seats = is_array($reservation->seat_positions)
-                    ? $reservation->seat_positions
-                    : [$reservation->seat_positions];
+                $seats = $reservation->seat_positions;
 
                 return collect($seats)->mapWithKeys(function ($seat) use ($reservation) {
                     return [$seat => [
                         'gender' => $reservation->gender,
-                        'tour_id' => $reservation->tour_id
+                        'user_id' => $reservation->user_id,
+                        'position' => $reservation->seat_positions,
                     ]];
                 });
             });
+        if($reserved_seats->isEmpty()) return null;
 
         return response()->json([
             'reserved_seats' => $reserved_seats,

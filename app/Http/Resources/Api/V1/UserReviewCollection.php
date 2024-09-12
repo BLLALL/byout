@@ -26,15 +26,6 @@ class UserReviewCollection extends ResourceCollection
             'type' => 'user_reviews',
             'user_id' => $this->user_id,
             'attributes' => $this->collection,
-            'relationships' => [
-                'author' => [
-                    'data' => [
-                        'type' => 'user',
-                        'id' => $this->user_id
-                    ],
-                    'links' =>  ['self', route('users.show', ['user' => $this->user_id])],
-                ]
-            ]
         ];
     }
 }

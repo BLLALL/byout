@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Tour;
 use App\Services\TourService;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class StartScheduledTours extends Command
 {
@@ -28,11 +29,12 @@ class StartScheduledTours extends Command
      */
     public function handle(TourService $tourService)
     {
+
         $now = now();
-        $fiveMinutesAgo = $now->copy()->subMinutes(5);
         $toursToStart = Tour::where('status', 'scheduled')
-            ->whereBetween('departure_time', [$fiveMinutesAgo, $now])
+            ->where('departure_time', "<=",  $now)
             ->get();
+
         foreach ($toursToStart as $tour) {
             $tourService->startTour($tour);
             $this->info("Started tour ID: {$tour->id}");
