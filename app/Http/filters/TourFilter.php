@@ -44,8 +44,15 @@ class TourFilter extends QueryFilter
         return $this->builder->where('driver_id', $value);
     }
 
-    public function bus_id($value)
+    public function vehicle_id($value)
     {
-        return $this->builder->where('bus_id', $value);
+        return $this->builder->where('vehicle_id', $value);
+    }
+
+    public function vehicle_type($value)
+    {
+        return $this->builder->whereHas('vehicle', (function (Builder $query) use ($value) {
+            $query->where('type', $value);
+        }));
     }
 }

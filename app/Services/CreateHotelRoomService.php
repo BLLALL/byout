@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\hotelRooms;
+use App\Models\HotelRooms;
 
 class CreateHotelRoomService extends CreateEntityService
 {
@@ -37,17 +37,17 @@ class CreateHotelRoomService extends CreateEntityService
         return 'hotel_rooms';
     }
 
-    protected function handleImages($entity, $request)
-    {
-        $roomImages = $request->input('room_images', []);
-        if (!empty($roomImages)) {
-            $images = [];
-            foreach ($roomImages as $image) {
-                $imagePath = $image->store($this->imagePath, 'public');
-                $images[] = 'https://fayroz97.com/real-estate/' . $imagePath;
-            }
-            $entity->room_images = $images;
-        }
-        return $entity;
-    }
+    // protected function handleImages($entity, $request)
+    // {
+    //     $roomImages = $request->input('room_images');
+    //     if (!empty($roomImages)) {
+    //         $images = [];
+    //         foreach ($roomImages as $image) {
+    //             $imagePath = $image->store($this->imagePath, 'public');
+    //             $images[] = 'https://fayroz97.com/real-estate/' . $imagePath;
+    //         }
+    //         $entity->room_images = $images;
+    //     }
+    //     return $entity;
+    // }
 }

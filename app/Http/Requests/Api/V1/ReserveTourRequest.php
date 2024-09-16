@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ReserveTourRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class ReserveTourRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,12 @@ class ReserveTourRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'seat_positions' => ['required', 'array'],
+            'seat_positions.*' => ['required', 'string', 'size:2'],
+            'tour_id' => ['required', 'integer', 'exists:tours,id'],
+            'user_id' => ['required', 'integer', 'exists:users,id'],
+            'traveller_gender' => ['required', 'array', 'size:' . count($this->seat_positions)],
+            'traveller_gender.*' => ['required', 'string', Rule::in(['male', 'female'])],
         ];
     }
 }

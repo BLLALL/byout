@@ -3,9 +3,15 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\V1\ReserveTourRequest;
 use App\Models\Tour;
 use App\Models\TourReservation;
 use App\Models\User;
+use App\Services\ReserveCarService;
+use App\Services\ReserveVanService;
+use App\Services\ReserveBusService;
+
+use App\Services\ReserveVehicleService;
 use App\traits\apiResponses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +22,20 @@ class TourReservationController extends Controller
 {
     use apiResponses;
 
-    protected $seats = ['a1', 'a2', 'a3', 'a4',
+    protected ReserveCarService $reserveCarService;
+    protected ReserveVanService $reserveVanService;
+    protected ReserveBusService $reserveBusService;
+
+    public function __construct(ReserveCarService $reserveCarService, ReserveVanService $reserveVanService, ReserveBusService $reserveBusService)
+    {
+        $this->reserveCarService = $reserveCarService;
+        $this->reserveVanService = $reserveVanService;
+        $this->reserveBusService = $reserveBusService;
+
+    }
+
+    protected $seats = [
+        'a1', 'a2', 'a3', 'a4',
         'b1', 'b2', 'b3', 'b4',
         'c1', 'c2', 'c3', 'c4',
         'd1', 'd2', 'd3', 'd4',
@@ -26,12 +45,25 @@ class TourReservationController extends Controller
         'h1', 'h2', 'h3', 'h4',
     ];
 
-    public function __construct()
+
+    public function reserve(ReserveTourRequest $request)
     {
-        $this->seats = collect($this->seats);
+        $tour = Tour::find($request->tour_id);
+
+        $vehicle = $tour->vehicle;
+        return $this->reserveVehicle($vehicle, $request);
     }
 
-    public function reserve(Request $request)
+    private function reserveVehicle($vehicle, $request)
+    {
+        return match($vehicle->type) {
+            "bus" => $this->reserveBusService->createReservation($request),
+            "van" => $this->reserveVanService->createReservation($request),
+            "car" => $this->reserveCarService->createReservation($request),
+        };
+    }
+
+    public function past_Reserve(Request $request)
     {
         $validated = $request->validate([
             'seat_positions' => ['required', 'array'],
@@ -114,23 +146,28 @@ class TourReservationController extends Controller
     public function getReservedSeats($tourId)
     {
         $tour = Tour::find($tourId);
-        if(!$tour) return "Tour u entered not valid";
-        $reserved_seats = $tour->tourReservations
-            ->flatMap(function ($reservation) {
-                $seats = $reservation->seat_positions;
 
-                return collect($seats)->mapWithKeys(function ($seat) use ($reservation) {
-                    return [$seat => [
-                        'gender' => $reservation->gender,
-                        'user_id' => $reservation->user_id,
-                        'position' => $reservation->seat_positions,
-                    ]];
-                });
-            });
-        if($reserved_seats->isEmpty()) return null;
-
-        return response()->json([
-            'reserved_seats' => $reserved_seats,
-        ]);
+        return $this->reserveCarService->getReservedSeats($tourId);
     }
+//    public function getReservedSeats($tourId)
+//    {
+//        $tour = Tour::find($tourId);
+//        if(!$tour) return "Tour u entered not valid";
+//        $reserved_seats = $tour->tourReservations
+//            ->flatMap(function ($reservation) {
+//                $seats = $reservation->seat_positions;
+//                return collect($seats)->mapWithKeys(function ($seat) use ($reservation) {
+//                    return [$seat => [
+//                        'gender' => $reservation->gender,
+//                        'user_id' => $reservation->user_id,
+//                        'position' => $reservation->seat_positions,
+//                    ]];
+//                });
+//            });
+//        if($reserved_seats->isEmpty()) return null;
+//
+//        return response()->json([
+//            'reserved_seats' => $reserved_seats,
+//        ]);
+//    }
 }

@@ -17,7 +17,7 @@ class HomeResource extends JsonResource
     public function toArray(Request $request): array
     {
         $money = Money::ofMinor($this->price, $this->currency);
-        
+
         return [
             'type' => 'Home',
             'id' => $this->id,

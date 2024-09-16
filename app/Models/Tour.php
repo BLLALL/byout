@@ -33,9 +33,9 @@ class Tour extends Model
         return $this->belongsTo(TourCompany::class);
     }
 
-    public function bus()
+    public function vehicle()
     {
-        return $this->belongsTo(Bus::class);
+        return $this->belongsTo(Vehicle::class);
     }
 
     public function driver()
@@ -47,6 +47,7 @@ class Tour extends Model
     {
         return $this->morphMany(Document::class, 'documentable');
     }
+    
     public function tourReservations() {
         return $this->hasMany(TourReservation::class);
     }

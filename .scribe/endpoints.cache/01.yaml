@@ -66,7 +66,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/register
+    uri: api/email-verification
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -84,57 +84,27 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      data.attributes:
-        name: data.attributes
-        description: ''
-        required: false
-        example: []
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      data:
-        name: data
-        description: ''
-        required: false
-        example: []
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      data.attributes.name:
-        name: data.attributes.name
-        description: 'Must not be greater than 50 characters.'
-        required: true
-        example: afttboesjqdwqlbl
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
-      data.attributes.email:
-        name: data.attributes.email
+      email:
+        name: email
         description: 'Must be a valid email address.'
         required: true
-        example: simone31@example.net
+        example: yquigley@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      data.attributes.password:
-        name: data.attributes.password
-        description: 'Must be at least 8 characters.'
+      otp:
+        name: otp
+        description: 'Must not be greater than 6 characters.'
         required: true
-        example: qQntie
+        example: dfomr
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      data:
-        attributes:
-          name: afttboesjqdwqlbl
-          email: simone31@example.net
-          password: qQntie
+      email: yquigley@example.com
+      otp: dfomr
     fileParameters: []
     responses: []
     responseFields: []
@@ -146,7 +116,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/logout
+    uri: api/forgot-password
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -161,6 +131,1170 @@ endpoints:
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: uwalsh@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      email: uwalsh@example.com
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/reset-password
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: fveum@example.org
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      otp:
+        name: otp
+        description: 'Must not be greater than 6 characters.'
+        required: true
+        example: i
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 8 characters.'
+        required: true
+        example: '`/XJYHO3'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      email: fveum@example.org
+      otp: i
+      password: '`/XJYHO3'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/token/refresh
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/tours
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/users
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/users/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 100 characters.'
+        required: false
+        example: jirfyzxupc
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: false
+        example: wgrady@example.org
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      profile_image:
+        name: profile_image
+        description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      phone_number:
+        name: phone_number
+        description: 'Must not be greater than 11.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      age:
+        name: age
+        description: 'Must not be greater than 100. Must be at least 10.'
+        required: false
+        example: 51
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      marital_status:
+        name: marital_status
+        description: ''
+        required: false
+        example: divorced
+        type: string
+        enumValues:
+          - single
+          - married
+          - divorced
+        exampleWasSpecified: false
+        custom: []
+      current_job:
+        name: current_job
+        description: ''
+        required: false
+        example: aperiam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      name: jirfyzxupc
+      email: wgrady@example.org
+      phone_number: 1
+      age: 51
+      marital_status: divorced
+      current_job: aperiam
+    fileParameters:
+      profile_image: null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/chalets
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/chalets
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: 'Must not be greater than 128 characters.'
+        required: true
+        example: iwxzxgcq
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      description:
+        name: description
+        description: 'Must not be greater than 1024 characters.'
+        required: true
+        example: 'In distinctio nobis in voluptatem ratione in architecto animi.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      price:
+        name: price
+        description: 'Must be at least 0.'
+        required: true
+        example: 42
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      area:
+        name: area
+        description: ''
+        required: true
+        example: 11
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bathrooms_no:
+        name: bathrooms_no
+        description: ''
+        required: true
+        example: 7
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bedrooms_no:
+        name: bedrooms_no
+        description: ''
+        required: true
+        example: 4
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      chalet_images:
+        name: chalet_images
+        description: 'Must be an image.'
+        required: true
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      location:
+        name: location
+        description: ''
+        required: true
+        example: hic
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      wifi:
+        name: wifi
+        description: ''
+        required: true
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      coordinates:
+        name: coordinates
+        description: ''
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      coordinates.0:
+        name: coordinates.0
+        description: 'Must be between -90 and 90.'
+        required: true
+        example: -90
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      coordinates.1:
+        name: coordinates.1
+        description: 'Must be between -180 and 180.'
+        required: true
+        example: -180
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      rent_period:
+        name: rent_period
+        description: ''
+        required: true
+        example: adipisci
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      owner_id:
+        name: owner_id
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      air_conditioning:
+        name: air_conditioning
+        description: ''
+        required: true
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      sea_view:
+        name: sea_view
+        description: ''
+        required: true
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      distance_to_beach:
+        name: distance_to_beach
+        description: ''
+        required: false
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      max_occupancy:
+        name: max_occupancy
+        description: ''
+        required: true
+        example: deserunt
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      documents:
+        name: documents
+        description: ''
+        required: true
+        example:
+          - []
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      available_from:
+        name: available_from
+        description: 'Must be a valid date.'
+        required: true
+        example: '2024-09-13T11:22:12'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      available_until:
+        name: available_until
+        description: 'Must be a valid date.'
+        required: true
+        example: '2024-09-13T11:22:12'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'documents[].type':
+        name: 'documents[].type'
+        description: 'This field is required when <code>documents</code> is present.'
+        required: false
+        example: signatory_authorization
+        type: string
+        enumValues:
+          - signatory_authorization
+          - property_ownership
+          - agreement_contract
+        exampleWasSpecified: false
+        custom: []
+      'documents[].file':
+        name: 'documents[].file'
+        description: 'This field is required when <code>documents</code> is present.  Must be a file. Must not be greater than 10240 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      title: iwxzxgcq
+      description: 'In distinctio nobis in voluptatem ratione in architecto animi.'
+      price: 42
+      area: 11
+      bathrooms_no: 7
+      bedrooms_no: 4
+      location: hic
+      wifi: false
+      coordinates:
+        - -90
+        - -180
+      rent_period: adipisci
+      owner_id: 5
+      air_conditioning: false
+      sea_view: true
+      distance_to_beach: 17
+      max_occupancy: deserunt
+      documents:
+        -
+          type: signatory_authorization
+      available_from: '2024-09-13T11:22:12'
+      available_until: '2024-09-13T11:22:12'
+    fileParameters:
+      chalet_images:
+        - null
+      documents:
+        -
+          file: null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/chalets/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the chalet.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/chalets/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the chalet.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: 'Must not be greater than 128 characters.'
+        required: false
+        example: qfakrfvcuuskgkbhx
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      description:
+        name: description
+        description: 'Must not be greater than 1024 characters.'
+        required: false
+        example: 'Magni cupiditate et est corrupti blanditiis nostrum consequatur.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      price:
+        name: price
+        description: ''
+        required: false
+        example: 9
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      area:
+        name: area
+        description: ''
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bathrooms_no:
+        name: bathrooms_no
+        description: ''
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bedrooms_no:
+        name: bedrooms_no
+        description: ''
+        required: false
+        example: 8
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      chalet_images:
+        name: chalet_images
+        description: 'Must be an image.'
+        required: false
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      location:
+        name: location
+        description: ''
+        required: false
+        example: nostrum
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      wifi:
+        name: wifi
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      coordinates:
+        name: coordinates
+        description: ''
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      coordinates.0:
+        name: coordinates.0
+        description: 'Must be between -90 and 90.'
+        required: false
+        example: -89
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      coordinates.1:
+        name: coordinates.1
+        description: 'Must be between -180 and 180.'
+        required: false
+        example: -179
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      rent_period:
+        name: rent_period
+        description: ''
+        required: false
+        example: ea
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      owner_id:
+        name: owner_id
+        description: ''
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      air_conditioning:
+        name: air_conditioning
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      sea_view:
+        name: sea_view
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      distance_to_beach:
+        name: distance_to_beach
+        description: ''
+        required: false
+        example: 9
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      available_from:
+        name: available_from
+        description: 'Must be a valid date.'
+        required: false
+        example: '2024-09-13T11:22:12'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      available_until:
+        name: available_until
+        description: 'Must be a valid date.'
+        required: false
+        example: '2024-09-13T11:22:12'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      max_occupancy:
+        name: max_occupancy
+        description: ''
+        required: false
+        example: ab
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      is_available:
+        name: is_available
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      title: qfakrfvcuuskgkbhx
+      description: 'Magni cupiditate et est corrupti blanditiis nostrum consequatur.'
+      price: 9
+      area: 10
+      bathrooms_no: 2
+      bedrooms_no: 8
+      location: nostrum
+      wifi: false
+      coordinates:
+        - -89
+        - -179
+      rent_period: ea
+      owner_id: 1
+      air_conditioning: false
+      sea_view: false
+      distance_to_beach: 9
+      available_from: '2024-09-13T11:22:12'
+      available_until: '2024-09-13T11:22:12'
+      max_occupancy: ab
+      is_available: true
+    fileParameters:
+      chalet_images:
+        - null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/chalets/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the chalet.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/hotels/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the hotel.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: false
+        example: ipsam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      location:
+        name: location
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      wifi:
+        name: wifi
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      coordinates:
+        name: coordinates
+        description: 'Must contain 2 items.'
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      coordinates.0:
+        name: coordinates.0
+        description: 'Must be between -90 and 90.'
+        required: false
+        example: -90
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      coordinates.1:
+        name: coordinates.1
+        description: 'Must be between -180 and 180.'
+        required: false
+        example: -179
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      hotel_images:
+        name: hotel_images
+        description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+        required: false
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      hotel_rooms:
+        name: hotel_rooms
+        description: ''
+        required: false
+        example: 12
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      owner_id:
+        name: owner_id
+        description: ''
+        required: false
+        example: 8
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      name: ipsam
+      location: architecto
+      wifi: false
+      coordinates:
+        - -90
+        - -179
+      hotel_rooms: 12
+      owner_id: 8
+    fileParameters:
+      hotel_images:
+        - null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/hotels/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the hotel.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -208,8 +1342,155 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: '{"data":{"type":"user_reviews","user_id":1,"attributes":[{"id":52,"rating":5,"home_id":6},{"id":53,"rating":3,"home_id":1},{"id":56,"rating":4,"home_id":10}],"relationships":{"author":{"data":{"type":"user","id":1},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/1"]}}}}'
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/reviews/homes/{home_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      home_id:
+        name: home_id
+        description: 'The ID of the home.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      home_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/reviews/hotels/{hotel_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      hotel_id:
+        name: hotel_id
+        description: 'The ID of the hotel.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      hotel_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/reviews/chalets/{chalet_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      chalet_id:
+        name: chalet_id
+        description: 'The ID of the chalet.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      chalet_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -243,15 +1524,6 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      data.attributes:
-        name: data.attributes
-        description: ''
-        required: false
-        example: []
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
       data:
         name: data
         description: ''
@@ -261,34 +1533,125 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      data.attributes.rating:
-        name: data.attributes.rating
-        description: ''
+      data.rating:
+        name: data.rating
+        description: 'Must be at least 1. Must not be greater than 5.'
         required: true
-        example: '3'
+        example: 5
         type: integer
-        enumValues:
-          - '1'
-          - '2'
-          - '3'
-          - '4'
-          - '5'
+        enumValues: []
         exampleWasSpecified: false
         custom: []
-      data.attributes.home_id:
-        name: data.attributes.home_id
+      data.type:
+        name: data.type
         description: ''
         required: true
-        example: 2
+        example: Hotel
+        type: string
+        enumValues:
+          - Home
+          - Hotel
+          - Chalet
+        exampleWasSpecified: false
+        custom: []
+      data.user_id:
+        name: data.user_id
+        description: ''
+        required: true
+        example: 14
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.reviewable_id:
+        name: data.reviewable_id
+        description: ''
+        required: true
+        example: 17
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
       data:
-        attributes:
-          rating: '3'
-          home_id: 2
+        rating: 5
+        type: Hotel
+        user_id: 14
+        reviewable_id: 17
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/tours/reserve
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      seat_positions:
+        name: seat_positions
+        description: 'Must be 2 characters.'
+        required: true
+        example:
+          - cc
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      tour_id:
+        name: tour_id
+        description: ''
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      user_id:
+        name: user_id
+        description: ''
+        required: true
+        example: 20
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      traveller_gender:
+        name: traveller_gender
+        description: ''
+        required: true
+        example:
+          - quis
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      seat_positions:
+        - cc
+      tour_id: 16
+      user_id: 20
+      traveller_gender:
+        - quis
     fileParameters: []
     responses: []
     responseFields: []
@@ -300,7 +1663,105 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/user
+    uri: 'api/tours/{tour}/available-seats'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      tour:
+        name: tour
+        description: 'The tour.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      tour: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/tours/{id}/reserved-seats'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the tour.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/drivers
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -324,6 +1785,1304 @@ endpoints:
       -
         status: 401
         content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/drivers
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      license:
+        name: license
+        description: 'Must be a file. Must not be greater than 2048 kilobytes.'
+        required: true
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      license_expiry_date:
+        name: license_expiry_date
+        description: 'Must be a valid date.'
+        required: true
+        example: '2024-09-13T11:22:12'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      is_smoker:
+        name: is_smoker
+        description: ''
+        required: true
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: nnqocujidurpgtylivtkqwa
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: eula76@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      password:
+        name: password
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: 'w$^R(:w}]'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      phone_number:
+        name: phone_number
+        description: ''
+        required: true
+        example: 25481.328
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      profile_image:
+        name: profile_image
+        description: 'Must be an image.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      license_expiry_date: '2024-09-13T11:22:12'
+      is_smoker: true
+      name: nnqocujidurpgtylivtkqwa
+      email: eula76@example.net
+      password: 'w$^R(:w}]'
+      phone_number: 25481.328
+    fileParameters:
+      license: null
+      profile_image: null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/drivers/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the driver.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/drivers/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the driver.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      license:
+        name: license
+        description: 'Must be a file. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      license_expiry_date:
+        name: license_expiry_date
+        description: 'Must be a valid date.'
+        required: false
+        example: '2024-09-13T11:22:12'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      is_smoker:
+        name: is_smoker
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: bbyaznixlf
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: false
+        example: christop.mertz@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      password:
+        name: password
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'kh}x<+^a,fKik'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      phone_number:
+        name: phone_number
+        description: ''
+        required: false
+        example: 4649.157
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      profile_image:
+        name: profile_image
+        description: 'Must be an image.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      license_expiry_date: '2024-09-13T11:22:12'
+      is_smoker: false
+      name: bbyaznixlf
+      email: christop.mertz@example.com
+      password: 'kh}x<+^a,fKik'
+      phone_number: 4649.157
+    fileParameters:
+      license: null
+      profile_image: null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/drivers/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the driver.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/vehicles
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/vehicles
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      type:
+        name: type
+        description: ''
+        required: true
+        example: van
+        type: string
+        enumValues:
+          - bus
+          - van
+          - car
+        exampleWasSpecified: false
+        custom: []
+      model:
+        name: model
+        description: ''
+        required: true
+        example: nesciunt
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      registration_number:
+        name: registration_number
+        description: ''
+        required: true
+        example: eos
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      vehicle_images:
+        name: vehicle_images
+        description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+        required: false
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      seats_number:
+        name: seats_number
+        description: ''
+        required: true
+        example: 6
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      status:
+        name: status
+        description: ''
+        required: true
+        example: available
+        type: string
+        enumValues:
+          - available
+          - unavailable
+        exampleWasSpecified: false
+        custom: []
+      has_wifi:
+        name: has_wifi
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      has_air_conditioner:
+        name: has_air_conditioner
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      has_gps:
+        name: has_gps
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      has_movie_screens:
+        name: has_movie_screens
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      has_bathroom:
+        name: has_bathroom
+        description: 'This field is required when <code>type</code> is <code>bus</code>.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      has_entrance_camera:
+        name: has_entrance_camera
+        description: 'This field is required when <code>type</code> is <code>bus</code>.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      has_passenger_camera:
+        name: has_passenger_camera
+        description: 'This field is required when <code>type</code> is <code>bus</code>.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      owner_id:
+        name: owner_id
+        description: ''
+        required: true
+        example: commodi
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      type: van
+      model: nesciunt
+      registration_number: eos
+      seats_number: 6
+      status: available
+      has_wifi: false
+      has_air_conditioner: true
+      has_gps: false
+      has_movie_screens: false
+      has_bathroom: true
+      has_entrance_camera: true
+      has_passenger_camera: true
+      owner_id: commodi
+    fileParameters:
+      vehicle_images:
+        - null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/vehicles/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the vehicle.'
+        required: true
+        example: 20
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 20
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/vehicles/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the vehicle.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/tours/schedule
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      tour_type:
+        name: tour_type
+        description: ''
+        required: true
+        example: individual
+        type: string
+        enumValues:
+          - fixed
+          - individual
+        exampleWasSpecified: false
+        custom: []
+      source:
+        name: source
+        description: ''
+        required: true
+        example: natus
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      destination:
+        name: destination
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: ajqexnnblihfk
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      recurrence:
+        name: recurrence
+        description: ''
+        required: false
+        example: 9
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      transportation_company:
+        name: transportation_company
+        description: ''
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bus_id:
+        name: bus_id
+        description: ''
+        required: true
+        example: 19
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      driver_id:
+        name: driver_id
+        description: ''
+        required: true
+        example: at
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      tour_type: individual
+      source: natus
+      destination: ajqexnnblihfk
+      recurrence: 9
+      transportation_company: 16
+      bus_id: 19
+      driver_id: at
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/owner/{id}/hotel-rooms'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the owner.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/owner/{id}/hotel'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the owner.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/hotel-rooms
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/hotel-rooms/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the hotel room.'
+        required: true
+        example: qui
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: qui
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/hotel-rooms/{id}/owner'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the hotel room.'
+        required: true
+        example: quod
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: quod
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/hotel-rooms
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: zikfjisshkkuuvcbroiuum
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      price:
+        name: price
+        description: 'Must be at least 0.'
+        required: true
+        example: 47
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      area:
+        name: area
+        description: ''
+        required: true
+        example: 9
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bathrooms_no:
+        name: bathrooms_no
+        description: ''
+        required: true
+        example: 8
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bedrooms_no:
+        name: bedrooms_no
+        description: ''
+        required: true
+        example: 8
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      room_images:
+        name: room_images
+        description: 'Must be an image.'
+        required: false
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      is_reserved:
+        name: is_reserved
+        description: ''
+        required: true
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      hotel_id:
+        name: hotel_id
+        description: ''
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      available_from:
+        name: available_from
+        description: 'Must be a valid date.'
+        required: true
+        example: '2024-09-13T11:22:12'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      available_until:
+        name: available_until
+        description: 'Must be a valid date.'
+        required: true
+        example: '2024-09-13T11:22:12'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      title: zikfjisshkkuuvcbroiuum
+      price: 47
+      area: 9
+      bathrooms_no: 8
+      bedrooms_no: 8
+      is_reserved: false
+      hotel_id: 3
+      available_from: '2024-09-13T11:22:12'
+      available_until: '2024-09-13T11:22:12'
+    fileParameters:
+      room_images:
+        - null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/hotel-rooms/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the hotel room.'
+        required: true
+        example: qui
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: qui
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: ''
+        required: false
+        example: provident
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      price:
+        name: price
+        description: ''
+        required: false
+        example: 11
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      area:
+        name: area
+        description: ''
+        required: false
+        example: 14
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bathrooms_no:
+        name: bathrooms_no
+        description: ''
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      bedrooms_no:
+        name: bedrooms_no
+        description: ''
+        required: false
+        example: 12
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      room_images:
+        name: room_images
+        description: 'Must be an image.'
+        required: false
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      is_reserved:
+        name: is_reserved
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      hotel_id:
+        name: hotel_id
+        description: ''
+        required: false
+        example: 6
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      title: provident
+      price: 11
+      area: 14
+      bathrooms_no: 10
+      bedrooms_no: 12
+      is_reserved: false
+      hotel_id: 6
+    fileParameters:
+      room_images:
+        - null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/hotel-rooms/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the hotel room.'
+        required: true
+        example: odit
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: odit
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/rates
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -371,8 +3130,11 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: '{"data":{"type":"user_reviews","user_id":1,"attributes":[{"id":52,"rating":5,"home_id":6},{"id":53,"rating":3,"home_id":1},{"id":56,"rating":4,"home_id":10}],"relationships":{"author":{"data":{"type":"user","id":1},"links":["self","http:\/\/real-estate.test\/api\/v1\/users\/1"]}}}}'
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -420,11 +3182,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 200
+        content: '[]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -458,15 +3217,6 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      data.attributes:
-        name: data.attributes
-        description: ''
-        required: false
-        example: []
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        custom: []
       data:
         name: data
         description: ''
@@ -476,36 +3226,92 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         custom: []
-      data.attributes.rating:
-        name: data.attributes.rating
-        description: ''
+      data.rating:
+        name: data.rating
+        description: 'Must be at least 1. Must not be greater than 5.'
         required: true
-        example: '5'
+        example: 3
         type: integer
-        enumValues:
-          - '1'
-          - '2'
-          - '3'
-          - '4'
-          - '5'
+        enumValues: []
         exampleWasSpecified: false
         custom: []
-      data.attributes.home_id:
-        name: data.attributes.home_id
+      data.type:
+        name: data.type
         description: ''
         required: true
-        example: 13
+        example: Home
+        type: string
+        enumValues:
+          - Home
+          - Hotel
+          - Chalet
+        exampleWasSpecified: false
+        custom: []
+      data.user_id:
+        name: data.user_id
+        description: ''
+        required: true
+        example: 9
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.reviewable_id:
+        name: data.reviewable_id
+        description: ''
+        required: true
+        example: 10
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
       data:
-        attributes:
-          rating: '5'
-          home_id: 13
+        rating: 3
+        type: Home
+        user_id: 9
+        reviewable_id: 10
     fileParameters: []
     responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/tours
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"type":"Tour","id":1,"price":369,"tour_type":"fixed","source":"voluptatem","destination":"ut","departure_time":"2024-10-12 16:12:18","arrival_time":"2024-10-13 11:21:36","time_difference":"19:09","recurrence":1,"status":"scheduled","tour_company_id":null,"has_wifi":0,"has_bathroom":0,"has_movie_screens":0,"has_entrance_camera":0,"has_air_conditioner":0,"has_passenger_camera":0,"bus_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/"],"seats_number":12,"driver_name":null,"is_driver_smoker":0,"owner_id":11,"driver_id":1,"tour_company_name":"est","documents":[]},{"type":"Tour","id":2,"price":669,"tour_type":"fixed","source":"ut","destination":"praesentium","departure_time":"2024-10-04 04:04:31","arrival_time":"2024-10-13 11:21:36","time_difference":"223:17","recurrence":1,"status":"scheduled","tour_company_id":null,"has_wifi":0,"has_bathroom":0,"has_movie_screens":0,"has_entrance_camera":0,"has_air_conditioner":0,"has_passenger_camera":0,"bus_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/"],"seats_number":12,"driver_name":null,"is_driver_smoker":0,"owner_id":9,"driver_id":2,"tour_company_name":"doloribus","documents":[]},{"type":"Tour","id":3,"price":129,"tour_type":"fixed","source":"odio","destination":"blanditiis","departure_time":"2024-09-24 19:44:49","arrival_time":"2024-10-13 11:21:36","time_difference":"447:36","recurrence":1,"status":"scheduled","tour_company_id":null,"has_wifi":0,"has_bathroom":0,"has_movie_screens":0,"has_entrance_camera":0,"has_air_conditioner":0,"has_passenger_camera":0,"bus_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/"],"seats_number":12,"driver_name":null,"is_driver_smoker":0,"owner_id":9,"driver_id":3,"tour_company_name":"quia","documents":[]},{"type":"Tour","id":4,"price":499,"tour_type":"fixed","source":"asperiores","destination":"rerum","departure_time":"2024-10-08 15:15:49","arrival_time":"2024-10-13 11:21:37","time_difference":"116:05","recurrence":1,"status":"scheduled","tour_company_id":null,"has_wifi":0,"has_bathroom":0,"has_movie_screens":0,"has_entrance_camera":0,"has_air_conditioner":0,"has_passenger_camera":0,"bus_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/"],"seats_number":92,"driver_name":null,"is_driver_smoker":0,"owner_id":94,"driver_id":4,"tour_company_name":"consequatur","documents":[{"id":7,"type":"commercial_document","file_path":"https:\/\/fayroz97.com\/real-estate\/storage\/file","uploaded_at":null}]},{"type":"Tour","id":5,"price":289,"tour_type":"fixed","source":"amet","destination":"eum","departure_time":"2024-09-19 17:56:20","arrival_time":"2024-10-13 11:21:38","time_difference":"569:25","recurrence":1,"status":"scheduled","tour_company_id":null,"has_wifi":0,"has_bathroom":0,"has_movie_screens":0,"has_entrance_camera":0,"has_air_conditioner":0,"has_passenger_camera":0,"bus_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/"],"seats_number":54,"driver_name":null,"is_driver_smoker":0,"owner_id":129,"driver_id":5,"tour_company_name":"eveniet","documents":[{"id":10,"type":"driver_license","file_path":"https:\/\/fayroz97.com\/real-estate\/storage\/file","uploaded_at":null}]}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
     responseFields: []
     auth: []
     controller: null
@@ -548,7 +3354,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"id":1,"name":"Esta Beer","email":"rose49@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"}'
+        content: '{"data":{"id":1,"name":"ahmedsarg","email":"xsarg22@gmail.com","email_verified_at":"2024-09-13T11:21:34.000000Z","phone_number":"74467114571","age":41,"marital_status":"divorced","current_job":"nisi","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:34.000000Z","updated_at":"2024-09-13T11:21:34.000000Z","token":null,"role":"Super Admin","hotel":null}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -587,7 +3393,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '[{"id":1,"name":"Esta Beer","email":"rose49@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":2,"name":"Ramiro Green DVM","email":"edd.steuber@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":3,"name":"Davin D''Amore","email":"klein.addie@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":4,"name":"Clay Waelchi","email":"fzemlak@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":5,"name":"Monserrate Stiedemann","email":"eldora18@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":6,"name":"Marion Kunze","email":"toy.hollie@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":7,"name":"Prof. Guy Brakus Jr.","email":"jbartell@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":8,"name":"Jada Harris","email":"stevie72@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":9,"name":"Prof. Wanda Wunsch","email":"corkery.christophe@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":10,"name":"Miss Heath Torp","email":"rmraz@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":11,"name":"Lorena White","email":"misty00@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":12,"name":"Mr. Enrique Funk IV","email":"jeff.hodkiewicz@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":13,"name":"Dr. Lenna Medhurst","email":"atremblay@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":14,"name":"Alysson Bartell","email":"ywaelchi@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":15,"name":"Dr. D''angelo Kozey","email":"qthompson@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":16,"name":"River Bayer PhD","email":"kacie45@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":17,"name":"Brad Watsica","email":"mireille.jones@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":18,"name":"Dr. Jackie Kautzer II","email":"dillan.von@example.com","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":19,"name":"Mr. Eli Hermann PhD","email":"hermann.erling@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":20,"name":"Fritz Kulas","email":"pcummerata@example.net","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":21,"name":"Suzanne Treutel","email":"bradtke.jany@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":22,"name":"Telly Gislason","email":"katelyn.windler@example.org","email_verified_at":"2024-08-09T12:16:19.000000Z","created_at":"2024-08-09T12:16:19.000000Z","updated_at":"2024-08-09T12:16:19.000000Z"},{"id":23,"name":"Trisha Kilback","email":"vergie00@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":24,"name":"Brandon Bergnaum","email":"mabelle.kutch@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":25,"name":"Mrs. Amalia Mertz DDS","email":"kristy80@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":26,"name":"Prof. Gino Walker V","email":"hortense.breitenberg@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":27,"name":"Xander Langworth","email":"laron07@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":28,"name":"Dr. Cecil Boyle","email":"german67@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":29,"name":"Dr. Frieda Schowalter","email":"ctromp@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":30,"name":"Mr. Lula Kunde","email":"korey.schinner@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":31,"name":"Madyson Yost","email":"laury12@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":32,"name":"Orrin Weber","email":"towne.audrey@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":33,"name":"Cornell Kozey","email":"rabbott@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":34,"name":"Troy O''Kon","email":"fgerhold@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":35,"name":"Jillian Bechtelar II","email":"rwyman@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":36,"name":"Lysanne Nikolaus","email":"ziemann.ruby@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":37,"name":"Prof. Ramiro Klocko","email":"rowe.cora@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":38,"name":"Abdul Christiansen","email":"abelardo58@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":39,"name":"Sandy Grady","email":"viva.beahan@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":40,"name":"Elwin Osinski","email":"bianka83@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":41,"name":"Sonya Donnelly","email":"ena.rodriguez@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":42,"name":"Breanne Mertz","email":"flatley.marielle@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":43,"name":"Alba Beahan","email":"loren25@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":44,"name":"Marjory Bogan","email":"jtoy@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":45,"name":"Savannah Kirlin","email":"lueilwitz.ferne@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":46,"name":"Brendon Ortiz","email":"jacobs.issac@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":47,"name":"Reta Hayes PhD","email":"abigayle.waelchi@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":48,"name":"Terrell Crooks","email":"rashad.bahringer@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":49,"name":"Mr. Maxime Satterfield Sr.","email":"hkassulke@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":50,"name":"Price Becker V","email":"jeremy76@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":51,"name":"Prof. Gordon Wisozk II","email":"sonya49@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":52,"name":"Mrs. Kamille Roberts V","email":"omacejkovic@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":53,"name":"Dr. Emil Harvey V","email":"skye.veum@example.com","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":54,"name":"Dejah Schuster","email":"kohler.loy@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":55,"name":"Miss Audreanne Kovacek III","email":"shane.konopelski@example.net","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"},{"id":56,"name":"Alphonso Beer","email":"block.marilou@example.org","email_verified_at":"2024-08-09T12:16:20.000000Z","created_at":"2024-08-09T12:16:20.000000Z","updated_at":"2024-08-09T12:16:20.000000Z"}]'
+        content: '{"data":[{"id":1,"name":"ahmedsarg","email":"xsarg22@gmail.com","email_verified_at":"2024-09-13T11:21:34.000000Z","phone_number":"74467114571","age":41,"marital_status":"divorced","current_job":"nisi","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:34.000000Z","updated_at":"2024-09-13T11:21:34.000000Z","token":null,"role":"Super Admin","hotel":null},{"id":2,"name":"Hotel Owner","email":"HotelOwner@owner.com","email_verified_at":"2024-09-13T11:21:34.000000Z","phone_number":"3093976721","age":26,"marital_status":"divorced","current_job":"deserunt","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:34.000000Z","updated_at":"2024-09-13T11:21:34.000000Z","token":null,"role":"Hotel Owner","hotel":null},{"id":3,"name":"Home Owner","email":"HomeOwner@owner.com","email_verified_at":"2024-09-13T11:21:35.000000Z","phone_number":"49692613264","age":44,"marital_status":"single","current_job":"vel","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:35.000000Z","updated_at":"2024-09-13T11:21:35.000000Z","token":null,"role":"Home Owner","hotel":null},{"id":4,"name":"Chalet Owner","email":"ChaletOwner@owner.com","email_verified_at":"2024-09-13T11:21:35.000000Z","phone_number":"16420057688","age":31,"marital_status":"divorced","current_job":"nulla","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:35.000000Z","updated_at":"2024-09-13T11:21:35.000000Z","token":null,"role":"Chalet Owner","hotel":null},{"id":5,"name":"Tour Company Owner","email":"TourCompanyOwner@owner.com","email_verified_at":"2024-09-13T11:21:35.000000Z","phone_number":"39265898223","age":53,"marital_status":"widower","current_job":"excepturi","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:35.000000Z","updated_at":"2024-09-13T11:21:35.000000Z","token":null,"role":"Tour Company Owner","hotel":null},{"id":6,"name":"Dr. Brianne Ondricka","email":"stanton.bridie@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"19312598028","age":28,"marital_status":"widow","current_job":"quia","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":"Home Owner","hotel":null},{"id":7,"name":"Ozella Lemke","email":"lbecker@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"7599668447","age":38,"marital_status":"Married","current_job":"nesciunt","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":"Home Owner","hotel":null},{"id":8,"name":"Shemar Stiedemann","email":"russel22@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"16999721749","age":57,"marital_status":"Married","current_job":"ipsam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":"Home Owner","hotel":null},{"id":9,"name":"Saul Jacobs","email":"wilton88@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"25327799019","age":52,"marital_status":"widower","current_job":"dolorem","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":"Tour Company Owner","hotel":null},{"id":10,"name":"Reggie Hahn","email":"rosenbaum.graciela@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"27357264631","age":36,"marital_status":"divorced","current_job":"nihil","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":"Tour Company Owner","hotel":null},{"id":11,"name":"Anjali Connelly Sr.","email":"williamson.sherman@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"73222921084","age":78,"marital_status":"widower","current_job":"quam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":"Tour Company Owner","hotel":null},{"id":12,"name":"Jacky Hand","email":"amonahan@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"7688948789","age":27,"marital_status":"Married","current_job":"illum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":13,"name":"Shaniya Bins","email":"wanda01@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"35003320516","age":52,"marital_status":"widower","current_job":"ea","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":14,"name":"Boyd Dooley","email":"glenna.koch@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"90876763845","age":80,"marital_status":"Married","current_job":"laborum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":15,"name":"Prof. Barney Spencer DDS","email":"tkunze@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"5975656568","age":41,"marital_status":"divorced","current_job":"in","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":"Hotel Owner","hotel":{"id":1,"name":"laudantium","location":"6 October","wifi":1,"coordinates":[8.2,134.25],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":1,"rating_count":1,"popularity_score":"1.0000","owner_id":7,"pending":1,"created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z"}},{"id":16,"name":"Muriel Beahan","email":"vlowe@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"42912745400","age":32,"marital_status":"widow","current_job":"ex","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":"Hotel Owner","hotel":{"id":4,"name":"voluptatibus","location":"Alexandria","wifi":1,"coordinates":[12.49,62.51],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":4,"rating_count":1,"popularity_score":"4.0000","owner_id":8,"pending":1,"created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z"}},{"id":17,"name":"Dr. Eileen Muller MD","email":"makenzie.rempel@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"76191749974","age":73,"marital_status":"widower","current_job":"quia","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":"Hotel Owner","hotel":{"id":5,"name":"consequatur","location":"Cairo","wifi":1,"coordinates":[-45.36,162.95],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":5,"rating_count":1,"popularity_score":"5.0000","owner_id":9,"pending":1,"created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z"}},{"id":18,"name":"Heath Waters","email":"dooley.jazmyn@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"83302506108","age":67,"marital_status":"separated","current_job":"aliquam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":{"id":2,"name":"esse","location":"Benha","wifi":1,"coordinates":[34.21,-24.5],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":4,"rating_count":1,"popularity_score":"4.0000","owner_id":10,"pending":1,"created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z"}},{"id":19,"name":"Carrie Beier","email":"brycen.parker@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"4438502669","age":28,"marital_status":"widower","current_job":"aut","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":{"id":3,"name":"ducimus","location":"Dahab","wifi":1,"coordinates":[1.19,136.38],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":1,"rating_count":1,"popularity_score":"1.0000","owner_id":11,"pending":1,"created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z"}},{"id":20,"name":"Lynn Senger DDS","email":"brath@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"38158962562","age":43,"marital_status":"single","current_job":"voluptas","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":21,"name":"Delfina Rolfson","email":"kovacek.athena@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"5541408700","age":51,"marital_status":"widow","current_job":"aut","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":22,"name":"Wilbert Bruen","email":"liana.beier@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"9916167632","age":68,"marital_status":"single","current_job":"sint","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":23,"name":"Prof. Jules Mitchell Sr.","email":"pattie.osinski@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"57668462277","age":23,"marital_status":"widow","current_job":"rerum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":24,"name":"Brain Veum","email":"cronin.mekhi@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"28086022239","age":48,"marital_status":"divorced","current_job":"et","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":25,"name":"Faustino Bins","email":"hertha.abernathy@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"95065459848","age":48,"marital_status":"separated","current_job":"quam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":26,"name":"Randal Moen","email":"ymayert@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"37621156737","age":36,"marital_status":"separated","current_job":"nostrum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":{"id":6,"name":"culpa","location":"Benha","wifi":1,"coordinates":[2.68,-168.62],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":5,"rating_count":1,"popularity_score":"5.0000","owner_id":14,"pending":1,"created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z"}},{"id":27,"name":"Dr. Alexis Shields IV","email":"stamm.ashton@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"35998451469","age":49,"marital_status":"separated","current_job":"tempore","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":28,"name":"Wilma Douglas","email":"keyon.greenholt@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"82068549140","age":76,"marital_status":"single","current_job":"molestias","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":29,"name":"Mr. Wyman Powlowski Jr.","email":"qklocko@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"86387613126","age":80,"marital_status":"widower","current_job":"dicta","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":30,"name":"Pedro Ratke","email":"delaney52@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"51101231932","age":79,"marital_status":"widower","current_job":"suscipit","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":"Chalet Owner","hotel":null},{"id":31,"name":"Jeramy Harris","email":"harris.godfrey@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"9911293798","age":26,"marital_status":"widower","current_job":"aliquid","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":"Chalet Owner","hotel":null},{"id":32,"name":"Rhoda Smith","email":"boehm.dustin@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"10420789239","age":27,"marital_status":"Married","current_job":"et","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":"Chalet Owner","hotel":null},{"id":33,"name":"Susanna Medhurst","email":"rleffler@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"41978229565","age":71,"marital_status":"separated","current_job":"consequatur","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":34,"name":"Dr. Ansel Kirlin","email":"mledner@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"21936870175","age":24,"marital_status":"widow","current_job":"accusantium","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":{"id":7,"name":"reprehenderit","location":"Dahab","wifi":1,"coordinates":[68.81,150.37],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":3,"rating_count":1,"popularity_score":"3.0000","owner_id":20,"pending":1,"created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z"}},{"id":35,"name":"Brendon Rodriguez","email":"boyer.elmore@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"95497216822","age":40,"marital_status":"separated","current_job":"et","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":36,"name":"Dr. Wilfredo Bergstrom V","email":"mbuckridge@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"70728560886","age":24,"marital_status":"divorced","current_job":"et","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":37,"name":"Prof. Cristian Runolfsdottir","email":"halvorson.reyna@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"72078880919","age":69,"marital_status":"divorced","current_job":"aut","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":38,"name":"Michele Bernhard","email":"bjohns@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"22820930894","age":21,"marital_status":"widow","current_job":"minima","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":39,"name":"Dr. Melany Lockman","email":"genevieve08@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"75551264589","age":26,"marital_status":"separated","current_job":"dignissimos","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":{"id":8,"name":"quo","location":"Cairo","wifi":1,"coordinates":[-68.24,-108.03],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":5,"rating_count":1,"popularity_score":"5.0000","owner_id":22,"pending":1,"created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z"}},{"id":40,"name":"Kenyatta Ullrich","email":"lwest@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"31594501574","age":25,"marital_status":"Married","current_job":"doloribus","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":41,"name":"Vaughn Ernser","email":"emmet.gorczany@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"26942904573","age":48,"marital_status":"Married","current_job":"ut","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":{"id":9,"name":"porro","location":"Cairo","wifi":1,"coordinates":[23,65.68],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":3,"rating_count":1,"popularity_score":"3.0000","owner_id":24,"pending":1,"created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z"}},{"id":42,"name":"Prof. Nigel Rau","email":"ubayer@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"42474209076","age":32,"marital_status":"divorced","current_job":"quas","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":43,"name":"Lorenzo Witting","email":"meagan49@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"98300094634","age":74,"marital_status":"single","current_job":"eum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":44,"name":"Dr. Shad Fritsch DVM","email":"johns.christa@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"38706012564","age":80,"marital_status":"divorced","current_job":"qui","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":45,"name":"Trey Heidenreich Jr.","email":"janiya.braun@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"78644941769","age":64,"marital_status":"widower","current_job":"et","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":46,"name":"Dr. Kaitlyn Gottlieb","email":"gudrun.eichmann@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"30131185684","age":32,"marital_status":"separated","current_job":"consequatur","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":47,"name":"Keon Tremblay V","email":"hershel52@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"70928735526","age":21,"marital_status":"single","current_job":"nostrum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":48,"name":"Dr. Gaston Bednar I","email":"deckow.neha@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"13808083458","age":64,"marital_status":"separated","current_job":"aspernatur","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":49,"name":"Richmond Nolan","email":"darwin.gulgowski@example.com","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"14419762864","age":46,"marital_status":"widow","current_job":"consectetur","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":50,"name":"Garfield Dickens DDS","email":"volkman.cicero@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"29282434837","age":78,"marital_status":"divorced","current_job":"sed","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":51,"name":"Greg Denesik","email":"wschultz@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"76034692507","age":31,"marital_status":"Married","current_job":"sint","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":{"id":10,"name":"reiciendis","location":"Alexandria","wifi":1,"coordinates":[68.21,-131.33],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":3,"rating_count":1,"popularity_score":"3.0000","owner_id":29,"pending":1,"created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:37.000000Z"}},{"id":52,"name":"Blaise Koelpin","email":"kmorissette@example.net","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"97264890203","age":59,"marital_status":"separated","current_job":"occaecati","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":53,"name":"Payton Bergstrom V","email":"nova17@example.org","email_verified_at":"2024-09-13T11:21:36.000000Z","phone_number":"38137319007","age":68,"marital_status":"single","current_job":"laboriosam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:36.000000Z","updated_at":"2024-09-13T11:21:36.000000Z","token":null,"role":null,"hotel":null},{"id":54,"name":"Jeremy Ullrich","email":"hcorkery@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"38324263087","age":74,"marital_status":"widower","current_job":"delectus","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":55,"name":"Napoleon Rice V","email":"ullrich.maeve@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"82096865942","age":43,"marital_status":"widower","current_job":"odio","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":56,"name":"Bernhard Kub","email":"jennyfer.conroy@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"40304734791","age":59,"marital_status":"divorced","current_job":"labore","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":57,"name":"Meghan Hammes","email":"zoie.dickens@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"44023069691","age":70,"marital_status":"single","current_job":"consectetur","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":58,"name":"Miss Luella Hoeger","email":"meredith.turcotte@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"73975128032","age":37,"marital_status":"single","current_job":"fuga","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":59,"name":"Kendall Gutkowski","email":"janis79@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"9712845572","age":56,"marital_status":"separated","current_job":"nulla","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":{"id":11,"name":"dolor","location":"Dahab","wifi":1,"coordinates":[20.14,101.3],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":3,"rating_count":1,"popularity_score":"3.0000","owner_id":37,"pending":1,"created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z"}},{"id":60,"name":"Ms. Lizzie Adams","email":"rowe.era@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"19394881930","age":65,"marital_status":"single","current_job":"aliquam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":61,"name":"Annabelle Prohaska","email":"verda.mills@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"15629423327","age":35,"marital_status":"single","current_job":"ex","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":62,"name":"Dr. Brody Bartoletti","email":"malcolm.abbott@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"13099182837","age":18,"marital_status":"separated","current_job":"atque","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":63,"name":"Dr. Destinee Krajcik","email":"vincenza16@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"32795429136","age":61,"marital_status":"Married","current_job":"dolorum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":64,"name":"Prof. Fiona Tromp MD","email":"emonahan@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"95424989040","age":46,"marital_status":"single","current_job":"illum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":65,"name":"Richard Reinger","email":"zcassin@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"34497000557","age":37,"marital_status":"Married","current_job":"asperiores","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":66,"name":"Stephany Wilkinson","email":"uwilderman@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"85512569635","age":63,"marital_status":"widower","current_job":"earum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":67,"name":"Prof. Cruz Zieme","email":"julien.olson@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"87735384132","age":40,"marital_status":"divorced","current_job":"eveniet","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":{"id":12,"name":"est","location":"Cairo","wifi":1,"coordinates":[14.41,52.99],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":5,"rating_count":1,"popularity_score":"5.0000","owner_id":43,"pending":1,"created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z"}},{"id":68,"name":"Ressie Champlin","email":"marilyne99@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"30277745749","age":70,"marital_status":"divorced","current_job":"error","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":69,"name":"Glenda Murphy","email":"nader.lou@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"9207187034","age":48,"marital_status":"divorced","current_job":"expedita","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":70,"name":"Lance Champlin","email":"gottlieb.emilio@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"20111042498","age":64,"marital_status":"divorced","current_job":"eius","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":71,"name":"Alisa Schiller","email":"aohara@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"58535592353","age":77,"marital_status":"separated","current_job":"reprehenderit","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":72,"name":"May Rogahn","email":"slittel@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"52170673945","age":20,"marital_status":"Married","current_job":"occaecati","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":73,"name":"Curt Mitchell","email":"jenifer.smitham@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"71754043631","age":24,"marital_status":"single","current_job":"maxime","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":{"id":13,"name":"illum","location":"Alexandria","wifi":1,"coordinates":[61.73,-83.99],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":3,"rating_count":1,"popularity_score":"3.0000","owner_id":47,"pending":1,"created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z"}},{"id":74,"name":"Carli Gutkowski","email":"norma.swift@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"22534577900","age":28,"marital_status":"single","current_job":"molestiae","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":75,"name":"Lora Monahan I","email":"vincent.beer@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"17553259587","age":35,"marital_status":"divorced","current_job":"eum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":76,"name":"Dr. Zakary Sawayn","email":"antonia83@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"15538617091","age":48,"marital_status":"Married","current_job":"fuga","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":77,"name":"Prof. Jeremie Steuber II","email":"oda.balistreri@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"40921306240","age":52,"marital_status":"widower","current_job":"sint","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":78,"name":"Dejuan Runte V","email":"rhiannon.hauck@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"20265313449","age":21,"marital_status":"Married","current_job":"dicta","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":79,"name":"Prof. Cecil Gutmann","email":"terdman@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"21337894062","age":52,"marital_status":"single","current_job":"sequi","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":{"id":14,"name":"incidunt","location":"Alexandria","wifi":1,"coordinates":[-40.12,-144.36],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":5,"rating_count":1,"popularity_score":"5.0000","owner_id":51,"pending":1,"created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z"}},{"id":80,"name":"Amina Jerde","email":"eliezer.wisozk@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"83064989448","age":28,"marital_status":"widow","current_job":"molestiae","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":{"id":15,"name":"eum","location":"Cairo","wifi":1,"coordinates":[42.73,9.32],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":5,"rating_count":1,"popularity_score":"5.0000","owner_id":52,"pending":1,"created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z"}},{"id":81,"name":"Jaeden Shields","email":"ncarter@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"17757572406","age":49,"marital_status":"divorced","current_job":"dolore","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":82,"name":"Miss Sophie Sporer","email":"hane.sheldon@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"75557683744","age":33,"marital_status":"widower","current_job":"voluptatibus","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":{"id":16,"name":"similique","location":"Dahab","wifi":1,"coordinates":[-80.95,134.83],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":5,"rating_count":1,"popularity_score":"5.0000","owner_id":54,"pending":1,"created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z"}},{"id":83,"name":"Mr. Jeramie Block MD","email":"pboehm@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"35122388373","age":31,"marital_status":"single","current_job":"omnis","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":84,"name":"Toby Fritsch","email":"qmoore@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"30927410432","age":42,"marital_status":"divorced","current_job":"quia","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":85,"name":"Nya Christiansen","email":"raheem.quigley@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"57980388990","age":53,"marital_status":"widower","current_job":"dolorem","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":86,"name":"Kyler Funk","email":"llewellyn06@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"28318242085","age":48,"marital_status":"single","current_job":"quia","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":87,"name":"Tania Russel","email":"josie05@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"46812123107","age":24,"marital_status":"divorced","current_job":"ullam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":88,"name":"Alexys Dietrich","email":"bharris@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"31541496935","age":30,"marital_status":"single","current_job":"voluptate","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":89,"name":"Prof. Dayton Mitchell MD","email":"hoeger.marilyne@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"86077124467","age":78,"marital_status":"Married","current_job":"suscipit","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":90,"name":"Prof. Lillian Hudson","email":"gbecker@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"60673570974","age":67,"marital_status":"widow","current_job":"dolore","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":91,"name":"Virgie Collier","email":"margarette.roob@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"82453388400","age":68,"marital_status":"separated","current_job":"et","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":92,"name":"Prof. Pat Monahan DDS","email":"aisha67@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"12788239417","age":21,"marital_status":"widower","current_job":"qui","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":93,"name":"Eino Runte","email":"bernier.davonte@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"50484671762","age":25,"marital_status":"widower","current_job":"tempora","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":94,"name":"Kennedy Beatty","email":"damore.enrico@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"90764231104","age":80,"marital_status":"widower","current_job":"commodi","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":95,"name":"Filomena O''Keefe DVM","email":"tiara07@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"52315877367","age":67,"marital_status":"Married","current_job":"consequatur","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":96,"name":"Jace Williamson","email":"verona54@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"74090850499","age":18,"marital_status":"divorced","current_job":"nisi","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":97,"name":"Ida Larson","email":"gosinski@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"17843594588","age":47,"marital_status":"separated","current_job":"amet","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":98,"name":"Cecil Moen","email":"corkery.agustin@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"92729081517","age":47,"marital_status":"separated","current_job":"et","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":99,"name":"Mrs. Mallie Balistreri","email":"garett71@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"40636400773","age":49,"marital_status":"separated","current_job":"doloremque","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":{"id":17,"name":"nobis","location":"Cairo","wifi":1,"coordinates":[47.76,56.45],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":1,"rating_count":1,"popularity_score":"1.0000","owner_id":64,"pending":1,"created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:38.000000Z"}},{"id":100,"name":"Myah Leannon","email":"zackery65@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"16965514026","age":27,"marital_status":"widower","current_job":"in","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":101,"name":"Maximillian McClure","email":"elvie31@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"41590736576","age":33,"marital_status":"widower","current_job":"officia","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":{"id":18,"name":"rem","location":"Cairo","wifi":1,"coordinates":[-40.88,-162.9],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":3,"rating_count":1,"popularity_score":"3.0000","owner_id":66,"pending":1,"created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z"}},{"id":102,"name":"Mrs. Violet Reichel Sr.","email":"hegmann.guido@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"42112156189","age":57,"marital_status":"divorced","current_job":"molestias","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":103,"name":"Prof. Leonardo Marquardt IV","email":"friesen.willa@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"29820088474","age":53,"marital_status":"widow","current_job":"voluptas","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":104,"name":"Dino Bergnaum MD","email":"frederique93@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"68798155652","age":52,"marital_status":"Married","current_job":"libero","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":105,"name":"Roxane Gleason","email":"derrick.rogahn@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"60336161143","age":29,"marital_status":"widow","current_job":"voluptas","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":{"id":19,"name":"quia","location":"Cairo","wifi":1,"coordinates":[45.58,30.66],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":2,"rating_count":1,"popularity_score":"2.0000","owner_id":70,"pending":1,"created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z"}},{"id":106,"name":"Camilla Swaniawski","email":"rippin.rosina@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"68273708503","age":24,"marital_status":"widower","current_job":"id","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":107,"name":"Evert Mraz DVM","email":"ephraim.pfannerstill@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"45362236116","age":48,"marital_status":"widow","current_job":"molestiae","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":{"id":20,"name":"perferendis","location":"Dahab","wifi":1,"coordinates":[-3.05,43.25],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":3,"rating_count":1,"popularity_score":"3.0000","owner_id":72,"pending":1,"created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z"}},{"id":108,"name":"Jevon Hyatt","email":"zkunde@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"51160768259","age":55,"marital_status":"widower","current_job":"facere","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":109,"name":"Trenton Will","email":"pouros.reyna@example.com","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"23168144516","age":76,"marital_status":"widower","current_job":"impedit","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":{"id":21,"name":"dolores","location":"Cairo","wifi":1,"coordinates":[-89.42,-149.87],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":2,"rating_count":1,"popularity_score":"2.0000","owner_id":74,"pending":1,"created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z"}},{"id":110,"name":"Donald Gulgowski","email":"witting.margie@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"35359223819","age":64,"marital_status":"widower","current_job":"ut","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":111,"name":"Mina Cremin","email":"arlene54@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"83347045567","age":33,"marital_status":"divorced","current_job":"alias","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":112,"name":"Gabe Waters","email":"dina04@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"20557869647","age":42,"marital_status":"widow","current_job":"voluptatibus","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":113,"name":"Mr. Rudolph Kunde","email":"xschmidt@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"50785822402","age":49,"marital_status":"Married","current_job":"voluptatem","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":114,"name":"Ms. Icie Hand V","email":"schaefer.carlotta@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"56093325225","age":31,"marital_status":"Married","current_job":"perspiciatis","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":115,"name":"Rahsaan Emard","email":"hermann.flatley@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"51278949524","age":53,"marital_status":"single","current_job":"consectetur","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":116,"name":"Dillan Rutherford","email":"jsauer@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"44790428236","age":80,"marital_status":"widower","current_job":"ut","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":117,"name":"Rey Pagac","email":"kutch.kiarra@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"84453521532","age":47,"marital_status":"divorced","current_job":"sit","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":118,"name":"Samson Parisian","email":"beatty.aisha@example.net","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"19793284762","age":49,"marital_status":"widower","current_job":"in","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":119,"name":"Prof. Angelo Gleichner","email":"ztrantow@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"83423007813","age":44,"marital_status":"widower","current_job":"inventore","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":120,"name":"Mossie Mertz","email":"camilla03@example.org","email_verified_at":"2024-09-13T11:21:37.000000Z","phone_number":"58416465311","age":53,"marital_status":"Married","current_job":"architecto","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:37.000000Z","updated_at":"2024-09-13T11:21:37.000000Z","token":null,"role":null,"hotel":null},{"id":121,"name":"Mrs. Meghan Sanford DDS","email":"bruce.lindgren@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"85555595758","age":70,"marital_status":"widower","current_job":"rerum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":122,"name":"Janiya Kuhn","email":"itremblay@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"68836338501","age":43,"marital_status":"divorced","current_job":"enim","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":123,"name":"Manley McCullough","email":"bernhard.anderson@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"21672030799","age":40,"marital_status":"single","current_job":"placeat","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":124,"name":"Ryan Hudson DDS","email":"letha.johnson@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"17756662055","age":62,"marital_status":"widow","current_job":"sint","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":{"id":22,"name":"quod","location":"6 October","wifi":1,"coordinates":[1.07,-85.46],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":3,"rating_count":1,"popularity_score":"3.0000","owner_id":77,"pending":1,"created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z"}},{"id":125,"name":"Mr. Randall Daugherty MD","email":"gislason.sylvia@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"9861253023","age":66,"marital_status":"widow","current_job":"alias","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":126,"name":"Prof. Janet Upton","email":"stiedemann.virgil@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"61913814144","age":33,"marital_status":"single","current_job":"voluptatem","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":127,"name":"Winona Wiza","email":"sydney35@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"31766799701","age":55,"marital_status":"separated","current_job":"mollitia","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":128,"name":"Margret Koepp","email":"vdonnelly@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"57445126140","age":42,"marital_status":"single","current_job":"rerum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":129,"name":"Destiny Zulauf","email":"willy94@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"75689862527","age":54,"marital_status":"separated","current_job":"id","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":130,"name":"Candelario Kassulke","email":"andreane19@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"97515346569","age":70,"marital_status":"single","current_job":"et","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":131,"name":"Myriam Luettgen","email":"korbin.rosenbaum@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"89487183433","age":20,"marital_status":"separated","current_job":"et","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":132,"name":"Jedediah Orn","email":"bhane@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"99435091820","age":29,"marital_status":"widow","current_job":"culpa","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":133,"name":"Yasmeen Schaden I","email":"raynor.kaylee@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"94008455595","age":56,"marital_status":"separated","current_job":"ratione","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":134,"name":"Carter Huels","email":"axel47@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"98902998176","age":59,"marital_status":"Married","current_job":"laboriosam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":{"id":23,"name":"quam","location":"Dahab","wifi":1,"coordinates":[-26.56,-13.93],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":1,"rating_count":1,"popularity_score":"1.0000","owner_id":85,"pending":1,"created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z"}},{"id":135,"name":"Isac Greenfelder","email":"ekub@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"73388078325","age":61,"marital_status":"separated","current_job":"quaerat","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":136,"name":"Mohamed Ebert","email":"theresa01@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"67649954578","age":47,"marital_status":"divorced","current_job":"ut","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":137,"name":"Willy Collier DDS","email":"frederik61@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"15449881278","age":22,"marital_status":"single","current_job":"corrupti","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":138,"name":"Annette Dach","email":"dubuque.fernando@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"33498189985","age":56,"marital_status":"widower","current_job":"autem","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":139,"name":"Gerda Kuhlman II","email":"aubrey43@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"9733570074","age":30,"marital_status":"divorced","current_job":"laboriosam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":140,"name":"Prof. Courtney Ortiz","email":"vwill@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"57495052952","age":49,"marital_status":"separated","current_job":"quam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":141,"name":"Michele Stark Jr.","email":"flatley.lamar@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"20111099048","age":19,"marital_status":"Married","current_job":"nemo","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":142,"name":"Dr. Brycen Schmeler","email":"beatrice.cruickshank@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"8453680794","age":26,"marital_status":"divorced","current_job":"ut","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":143,"name":"Kim Shanahan","email":"nader.virginia@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"93320972053","age":37,"marital_status":"single","current_job":"laborum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":144,"name":"Marjory Corwin","email":"viviane.watsica@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"81300473429","age":79,"marital_status":"single","current_job":"voluptatibus","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":{"id":24,"name":"saepe","location":"Cairo","wifi":1,"coordinates":[-41.56,168.26],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":1,"rating_count":1,"popularity_score":"1.0000","owner_id":90,"pending":1,"created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z"}},{"id":145,"name":"Prof. Elvis Wilkinson","email":"fward@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"19187498489","age":76,"marital_status":"divorced","current_job":"et","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":{"id":25,"name":"dolore","location":"Dahab","wifi":1,"coordinates":[48.29,-63.62],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":2,"rating_count":1,"popularity_score":"2.0000","owner_id":91,"pending":1,"created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z"}},{"id":146,"name":"Zander Sawayn","email":"ulueilwitz@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"87786140769","age":29,"marital_status":"divorced","current_job":"voluptas","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":147,"name":"Ernestine Barton I","email":"ehessel@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"81652659817","age":75,"marital_status":"widower","current_job":"animi","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":{"id":26,"name":"repudiandae","location":"Dahab","wifi":1,"coordinates":[2.14,-34.64],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":3,"rating_count":1,"popularity_score":"3.0000","owner_id":93,"pending":1,"created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z"}},{"id":148,"name":"Spencer Volkman","email":"tressie.moen@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"44203158061","age":58,"marital_status":"Married","current_job":"laboriosam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":149,"name":"Prof. Rocio Predovic MD","email":"dickinson.chet@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"82762936265","age":40,"marital_status":"single","current_job":"ut","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":150,"name":"Mathilde Fisher","email":"jamison.kuhn@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"49040224389","age":51,"marital_status":"single","current_job":"nulla","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":{"id":27,"name":"et","location":"Alexandria","wifi":1,"coordinates":[-87.31,-147.48],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":5,"rating_count":1,"popularity_score":"5.0000","owner_id":96,"pending":1,"created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z"}},{"id":151,"name":"Tiara DuBuque","email":"amy07@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"92550034933","age":45,"marital_status":"single","current_job":"molestiae","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":152,"name":"Cora Beahan","email":"natasha.hintz@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"48603143070","age":69,"marital_status":"single","current_job":"praesentium","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":153,"name":"Angelina Hegmann PhD","email":"beahan.ceasar@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"15639133131","age":57,"marital_status":"widower","current_job":"quam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":154,"name":"Madison Raynor","email":"oreilly.sheila@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"40947000804","age":43,"marital_status":"Married","current_job":"eligendi","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":155,"name":"Ms. Abigale Wehner","email":"cschneider@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"84836970306","age":45,"marital_status":"divorced","current_job":"excepturi","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":156,"name":"Merl Crist II","email":"jacobson.felicity@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"64195280830","age":79,"marital_status":"widower","current_job":"pariatur","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":157,"name":"Dr. Hester Botsford","email":"wdoyle@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"46534420155","age":72,"marital_status":"widow","current_job":"aut","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":158,"name":"Tillman Frami","email":"antone38@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"81140587013","age":22,"marital_status":"single","current_job":"quo","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":159,"name":"Minnie O''Hara IV","email":"zboncak.emmalee@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"60832157083","age":19,"marital_status":"divorced","current_job":"at","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":160,"name":"Ansel Herzog Jr.","email":"wendell.jerde@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"42791076546","age":46,"marital_status":"divorced","current_job":"molestias","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":161,"name":"Bernice Sporer","email":"asia.mertz@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"38791788830","age":62,"marital_status":"divorced","current_job":"ea","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":{"id":28,"name":"tenetur","location":"Cairo","wifi":1,"coordinates":[64.06,3.48],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":2,"rating_count":1,"popularity_score":"2.0000","owner_id":98,"pending":1,"created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z"}},{"id":162,"name":"Prof. Caterina Yundt MD","email":"luna05@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"5470747275","age":66,"marital_status":"single","current_job":"nemo","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":163,"name":"Iva Grant","email":"nvandervort@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"58486918830","age":58,"marital_status":"widow","current_job":"vel","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":164,"name":"Keagan Hudson","email":"brigitte.williamson@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"82833585972","age":29,"marital_status":"Married","current_job":"aperiam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":165,"name":"Ms. Kirsten Rutherford","email":"seamus.moore@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"89812895428","age":65,"marital_status":"Married","current_job":"rerum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":{"id":29,"name":"quia","location":"Benha","wifi":1,"coordinates":[-19.68,102.37],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":4,"rating_count":1,"popularity_score":"4.0000","owner_id":100,"pending":1,"created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z"}},{"id":166,"name":"Chaim Quitzon DVM","email":"annie.gaylord@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"52708322637","age":37,"marital_status":"widower","current_job":"pariatur","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":167,"name":"London Vandervort MD","email":"cummings.devan@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"55709653228","age":31,"marital_status":"widow","current_job":"iusto","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":168,"name":"Christelle Runte","email":"pfannerstill.raheem@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"82309340862","age":66,"marital_status":"divorced","current_job":"ipsam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":169,"name":"Prof. Gene Murphy","email":"reymundo.zieme@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"75832617798","age":67,"marital_status":"separated","current_job":"necessitatibus","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":170,"name":"Mrs. Aryanna Pfeffer","email":"zoey.mayert@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"2820667519","age":73,"marital_status":"Married","current_job":"ut","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":171,"name":"Dr. Kayla Wiza","email":"kaleigh95@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"74605944923","age":54,"marital_status":"Married","current_job":"error","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":172,"name":"Jose Koepp","email":"boehm.demarcus@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"23508773692","age":43,"marital_status":"single","current_job":"perspiciatis","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":173,"name":"Mrs. Shyanne Fadel I","email":"domenico.okeefe@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"93420517450","age":48,"marital_status":"separated","current_job":"ut","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":174,"name":"Lawson Reilly","email":"justine88@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"66896503629","age":54,"marital_status":"separated","current_job":"minima","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":175,"name":"Prof. Felicity Satterfield","email":"toni.powlowski@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"50439602384","age":43,"marital_status":"divorced","current_job":"optio","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":{"id":30,"name":"distinctio","location":"Cairo","wifi":1,"coordinates":[13.75,58.61],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":1,"rating_count":1,"popularity_score":"1.0000","owner_id":105,"pending":1,"created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z"}},{"id":176,"name":"Effie Ruecker","email":"mtoy@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"98117776950","age":32,"marital_status":"widower","current_job":"et","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":177,"name":"Brett Kihn IV","email":"garth.haag@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"31663902905","age":67,"marital_status":"single","current_job":"quia","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":178,"name":"Albertha D''Amore","email":"llangosh@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"65829958279","age":48,"marital_status":"separated","current_job":"doloremque","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":179,"name":"Stewart Dare","email":"zshanahan@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"43216256946","age":39,"marital_status":"widower","current_job":"voluptas","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":180,"name":"Gretchen Crona","email":"payton49@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"8319453811","age":67,"marital_status":"Married","current_job":"ullam","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":181,"name":"Billie Reynolds","email":"vaughn61@example.net","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"88783960426","age":50,"marital_status":"divorced","current_job":"impedit","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":{"id":31,"name":"dolore","location":"Benha","wifi":1,"coordinates":[-80.55,-146.1],"hotel_images":["https:\/\/loremflickr.com\/640\/480\/person","https:\/\/loremflickr.com\/640\/480\/person"],"avg_rating":2,"rating_count":1,"popularity_score":"2.0000","owner_id":108,"pending":1,"created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z"}},{"id":182,"name":"Prof. Ayden Bernier","email":"tkonopelski@example.com","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"58624623636","age":25,"marital_status":"widow","current_job":"illum","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":183,"name":"Verlie Moen","email":"lprosacco@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"54789570499","age":64,"marital_status":"divorced","current_job":"ab","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null},{"id":184,"name":"Marianna Eichmann","email":"mlemke@example.org","email_verified_at":"2024-09-13T11:21:38.000000Z","phone_number":"94694714282","age":57,"marital_status":"Married","current_job":"commodi","profile_image":null,"preferred_currency":"SYP","created_at":"2024-09-13T11:21:38.000000Z","updated_at":"2024-09-13T11:21:38.000000Z","token":null,"role":null,"hotel":null}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json

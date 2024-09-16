@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Bus;
+use App\Models\Vehicle;
 use App\Models\Tour;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -13,9 +13,9 @@ class TourService
 {
     public function scheduleTour(Tour $tour)
     {
-        $bus = Bus::findOrFail($tour->bus_id);
+        $vehicle = Vehicle::findOrFail($tour->vehicle_id);
 
-        $conflictingTours = Tour::where('bus_id', $tour->bus_id)
+        $conflictingTours = Tour::where('vehicle_id', $tour->vehicle_id)
             ->where(function ($query) use ($tour) {
                 $query->where('departure_time', '<', $tour->arrival_time)
                     ->where('arrival_time', '>', $tour->departure_time);
@@ -29,7 +29,7 @@ class TourService
         // Log::info($loggedTour);
 
         if ($conflictingTours->isNotEmpty()) {
-            throw new \Exception('Bus is already scheduled for another tour during this time');
+            throw new \Exception('Vehicle is already scheduled for another tour during this time');
         }
         $tour->status = 'scheduled';
         $tour->save();
@@ -37,9 +37,9 @@ class TourService
 
     public function startTour(Tour $tour)
     {
-        $bus = Bus::findOrFail($tour->bus_id);
-        $bus->status = "in use";
-        $bus->save();
+        $vehicle = Vehicle::findOrFail($tour->vehicle_id);
+        $vehicle->status = "in use";
+        $vehicle->save();
 
         $tour->status = 'in_progress';
         $tour->save();
@@ -47,10 +47,10 @@ class TourService
 
     public function endTour(Tour $tour)
     {
-        $bus = Bus::find($tour->bus_id);
+        $vehicle = Vehicle::find($tour->vehicle_id);
 
-        $bus->status = "available";
-        $bus->save();
+        $vehicle->status = "available";
+        $vehicle->save();
 
         if ($tour->tour_type == 'fixed') {
             $tour->status = "scheduled";

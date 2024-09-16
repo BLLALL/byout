@@ -12,20 +12,21 @@ use App\Models\Hotel;
 use App\Models\HotelRooms;
 use App\Models\Owner;
 use App\Models\User;
-use App\Services\HotelRoomService;
+use App\Services\CreateHotelRoomService;
 use App\traits\apiResponses;
 use Illuminate\Support\Facades\Auth;
-
+use App\Services\HotelRoomService;
 class HotelRoomsController extends Controller
 {
     use apiResponses;
 
 
-    protected HotelRoomService $HotelRoomService;
+    protected CreateHotelRoomService $createHotelRoomService;
 
-    public function __construct(HotelRoomService $HotelRoomService)
+    protected HotelRoomService $updateHotelRoomService;
+    public function __construct(CreateHotelRoomService $createHotelRoomService)
     {
-        $this->HotelRoomService = $HotelRoomService;
+        $this->createHotelRoomService = $createHotelRoomService;
     }
 
     public function index(HotelRoomsFilter $filter)
@@ -44,7 +45,8 @@ class HotelRoomsController extends Controller
     public function store(StoreHotelRoomRequest $request)
     {
         if (Auth::user()->can('Post Rooms')) {
-            return new HotelRoomsResource(HotelRooms::create($request->mappedAttributes()));
+            $room = $this->createHotelRoomService->createEntity($request);
+            return new HotelRoomsResource($room);
 
         } else return $this->error(["You're not authorized to store rooms to this hotel"], 403);
     }
@@ -54,7 +56,7 @@ class HotelRoomsController extends Controller
         $room = HotelRooms::findOrFail($roomId);
 
         if (Auth::user()->id === $room->hotel->owner->user_id) {
-            $this->HotelRoomService->updateHotelRoom($room, $request);
+            $this->updateHotelRoomService->updateHotelRoom($room, $request);
             return new HotelRoomsResource($room);
         } else {
             return response()->json([

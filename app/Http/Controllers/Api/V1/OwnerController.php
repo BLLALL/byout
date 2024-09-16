@@ -42,7 +42,13 @@ class OwnerController extends Controller
         $endDate = $request->input('end_date');
 
         $report = $this->rentalService->getOwnerFinancialReport($ownerId, $startDate, $endDate);
-        return response()->json($report);
+        $reportWithTransactions = $report->map(function ($rentable) use ($ownerId) {
+            $transactions = $this->rentalService->getLastTransactions($ownerId);
+            $rentable['latest_transactions'] = $transactions;
+            return $rentable;
+        });
+
+        return response()->json(["data" => $reportWithTransactions]);
     }
 
     /**
@@ -54,7 +60,7 @@ class OwnerController extends Controller
         $ownerId = $owner->id;
         $period = $request->input('period');
         $report = $this->rentalService->getOwnerFinancialReportByPeriod($ownerId, $period);
-        return response()->json($report);
+        return $report ? response()->json(["data" => $report]) : response()->json(["message" => "No report found for this period"], 404);
     }
-    
+
 }

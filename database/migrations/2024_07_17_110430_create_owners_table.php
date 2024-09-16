@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('licensing')->nullable();
             $table->string('affiliation_certificate')->nullable();
             $table->string('commercial_register')->nullable();
+            $table->string('transportation_company')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ class HotelRoomsResource extends JsonResource
     public function toArray(Request $request): array
     {
         $money = Money::ofMinor($this->price, $this->currency);
-
+    
         return [
             'id' => $this->id,
             'title' => $this->title,

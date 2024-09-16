@@ -1,0 +1,125 @@
+name: 'Home Favourites'
+description: "if the home isn't in user's favourites will be added, if it's in his favourites; then it will be removed."
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/favourites/{user_id}'
+    metadata:
+      groupName: 'Home Favourites'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Get all user's favourite homes"
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      user_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/users/favourites/toggle
+    metadata:
+      groupName: 'Home Favourites'
+      groupDescription: "if the home isn't in user's favourites will be added, if it's in his favourites; then it will be removed."
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Toggle homes.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      data:
+        name: data
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.user_id:
+        name: data.user_id
+        description: ''
+        required: true
+        example: blanditiis
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.favorable_id:
+        name: data.favorable_id
+        description: ''
+        required: true
+        example: 8
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      data.favorable_type:
+        name: data.favorable_type
+        description: ''
+        required: true
+        example: Home
+        type: string
+        enumValues:
+          - Home
+          - Hotel
+          - Chalet
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      data:
+        user_id: blanditiis
+        favorable_id: 8
+        favorable_type: Home
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

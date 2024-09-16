@@ -26,7 +26,7 @@ class RentEntityRequest extends FormRequest
             "rentable_id" => ["required", "integer"],
             "user_id" => ["required", "integer", "exists:users,id"],
             "check_in" => ["required", "date"],
-            "check_out" => ["required", "date", "after:check_in"],
+            "check_out" => ["required", "date", "after_or_equal:check_in"],
             "payment_method" => ["required", "string", "in:credit_card,debit_card,paypal,bank_transfer,other"],
         ];
     }

@@ -11,7 +11,7 @@ class UpdateHotelService extends UpdateEntityService
     {
         $fillableAttributes =[
             'name', 'wifi', 'location',
-            'wifi', 'coordinates'
+            'wifi', 'coordinates', 'pending',
         ];
 
         $this->updateEntity($hotel, $request, $fillableAttributes, 'hotel_images');

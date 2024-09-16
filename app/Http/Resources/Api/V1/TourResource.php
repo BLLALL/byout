@@ -29,21 +29,13 @@ class TourResource extends JsonResource
             'recurrence' => $this->recurrence,
             'status' => $this->status,
             'tour_company_id' => $this->tour_company_id,
-            //start bus details
-            'has_wifi' => $this->bus->has_wifi,
-            'has_bathroom' => $this->bus->has_bathroom,
-            'has_movie_screens' => $this->bus->has_movie_screens,
-            'has_entrance_camera' => $this->bus->has_entrance_camera,
-            'has_air_conditioner' => $this->bus->has_air_conditioner,
-            'has_passenger_camera' => $this->bus->has_passenger_camera,
-            'bus_images' => $this->bus->bus_images,
-            'seats_number' => $this->bus->seats_number,
-            //end bus details
+            'vehicle' => $this->vehicle,
             'driver_name' => $this->driver->name,
+            'vehicle_id' => $this->vehicle_id,
             'is_driver_smoker' => $this->driver->is_smoker,
-            'owner_id' => $this->owner->user_id,
             'driver_id' => $this->driver_id,
-            'tour_company_name' => $this->transportation_company,
+            'owner_id' => $this->owner->user_id,
+            'transportation_company' => $this->transportation_company,
             'documents' => $this->documents->map(function ($document) {
                 return [
                     'id' => $document->id,

@@ -12,7 +12,7 @@ return [
     | Supported: "exchange-rates-api-io", "exchange-rates-data-api", "exchange-rate-host"
     |
     */
-    'driver' => 'exchange-rates-data-api',
+    'driver' => 'exchange-rate-host',
 
     /*
     |--------------------------------------------------------------------------

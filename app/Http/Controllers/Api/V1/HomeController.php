@@ -21,6 +21,7 @@ use App\Services\CurrencyRateExchangeService;
 use App\Services\RentalService;
 use Brick\Money\Money;
 use Carbon\Carbon;
+use AshAllenDesign\LaravelExchangeRates\Classes\ExchangeRate;
 
 class HomeController extends Controller
 {
@@ -49,9 +50,13 @@ class HomeController extends Controller
      * @queryParam description string Data field to search for homes by their description. Example:Lorem Ipsum
      *
      */
-    
+
     public function index(HomeFilter $filter)
     {
+        $exchangeRates = app(ExchangeRate::class);
+
+        return $exchangeRates->currencies();
+
         $homes = Home::filter($filter)->get();
 
         $userCurrency = Auth::user()->preferred_currency;
@@ -60,9 +65,10 @@ class HomeController extends Controller
 
         $homes = $homes->map(function ($home) use ($userCurrency, $currencyRateExchangeService) {
             if ($home->currency != $userCurrency) {
-                $money = $currencyRateExchangeService->convertPrice($home->currency, $userCurrency, $home->price);
-                $home->price = $money->getAmount()->toFloat();
-                $home->currency = $money->getCurrency();
+                $money = Money::ofMinor($home->price, $home->currency);
+                $money = $currencyRateExchangeService->convertPrice($home->currency, $userCurrency, $money->getAmount()->toFloat());
+                $home->price = $money->getMinorAmount()->toInt();
+                $home->currency = $money->getCurrency()->getCurrencyCode();
             }
             return $home;
         });
@@ -80,9 +86,6 @@ class HomeController extends Controller
     public function store(storeHomeRequest $request)
     {
         if (Auth::user()->can('Post Homes') && Auth::user()->id == $request->owner_id) {
-            $money = Money::of($request->input('price'), Auth::user()->preferred_currency);
-            $priceInCents = $money->getMinorAmount()->toInt();
-            $request->merge(['price' => $priceInCents]);
             $home = $this->createHomeService->createEntity($request);
             return new HomeResource($home);
         } else {
@@ -113,7 +116,7 @@ class HomeController extends Controller
         return new HomeResource($home);
     }
 
-   
+
 
     /**
      * Update a specific home.

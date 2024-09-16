@@ -28,7 +28,7 @@ class StoreHotelRoomRequest extends BaseHotelRoomRequest
             'bathrooms_no' => ['required', 'integer'],
             'bedrooms_no' => ['required', 'integer'],
             'room_images' => ['required', 'array'],
-            'room_images.*' => ['image', 'mimes:jpg,png,jpeg'],
+            'room_images.*' => ['required_with:room_images', 'image', 'mimes:jpg,png,jpeg'],
             'is_reserved' => ['required', 'boolean'],
             'hotel_id' => ['required', 'integer', 'exists:hotels,id'],
             'available_from' => ['required', 'date'],

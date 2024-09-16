@@ -26,6 +26,7 @@ class OwnerFactory extends Factory
             'affiliation_certificate' => UploadedFile::fake()->create('affiliation_certificate.pdf', 100),
             'commercial_register' => UploadedFile::fake()->create('commercial_register.pdf', 100),
             'user_id' => User::factory(),
+            'status' => 'approved',
         ];
     }
 

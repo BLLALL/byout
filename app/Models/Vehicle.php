@@ -8,7 +8,7 @@ use App\Models\Tour;
 use App\Models\Owner;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\filters\QueryFilter;
-
+use App\Models\Driver;
 class Vehicle extends Model
 {
     use HasFactory;
@@ -41,5 +41,10 @@ class Vehicle extends Model
     public function isAvailable()
     {
         return $this->status === 'available';
+    }
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
     }
 }

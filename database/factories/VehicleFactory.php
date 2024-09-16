@@ -4,7 +4,7 @@
 
     use App\Models\Owner;
     use Illuminate\Database\Eloquent\Factories\Factory;
-
+    use App\Models\Driver;
     /**
      * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Vehicle>
      */
@@ -38,13 +38,13 @@
                 'has_gps' => $this->faker->boolean(80),
                 'has_movie_screens' => $this->faker->boolean(40),
                 'has_entrance_camera' => function ($attributes) {
-                    return $attributes['type'] === 'bus' ? $this->faker->boolean(60) : false;
+                    return $attributes['type'] === 'bus' && $this->faker->boolean(60);
                 },
                 'has_passenger_camera' => function ($attributes) {
-                    return $attributes['type'] === 'bus' ? $this->faker->boolean(60) : false;
+                    return $attributes['type'] === 'bus' && $this->faker->boolean(60);
                 },
                 'has_bathroom' => function ($attributes) {
-                    return $attributes['type'] === 'bus' ? $this->faker->boolean(60) : false;
+                    return $attributes['type'] === 'bus' && $this->faker->boolean(60);
                 },
                 'owner_id' => Owner::factory(),
             ];

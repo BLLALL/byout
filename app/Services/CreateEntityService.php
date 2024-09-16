@@ -33,12 +33,10 @@ abstract class CreateEntityService
             $this->handleImages($entity, $request);
             $entity->save();
             $this->handleDocuments($entity, $request);
-            
+
             if (method_exists($this, 'handleAdditionalData')) {
                 $this->handleAdditionalData($entity, $request->validated());
-
             }
-            
             return $entity;
         });
     }
@@ -70,10 +68,11 @@ abstract class CreateEntityService
 
         if ($entity->price) {
             $money = Money::of($request->price, $owner->user->preferred_currency);
-            Log::info($money);
             $entity->price = $money->getMinorAmount()->toInt();
             $entity->currency = $owner->user->preferred_currency;
         }
+
+
     }
 
     protected function handleImages($entity, $request)
@@ -84,7 +83,7 @@ abstract class CreateEntityService
                 $images[] = 'https://fayroz97.com/real-estate/' . $image->store($this->imagePath, 'public');
             }
         }
-       
+
         $entity->{$this->imageColumn} = $images;
         return $entity;
     }
@@ -104,6 +103,6 @@ abstract class CreateEntityService
         }
     }
 
-    
+
 
 }

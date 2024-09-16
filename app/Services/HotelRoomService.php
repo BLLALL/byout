@@ -12,7 +12,7 @@ class HotelRoomService extends UpdateEntityService
         $fillableAttributes = [
             'title', 'price', 'area',
             'bathrooms_no', 'bedrooms_no',
-            'is_reserved'
+            'is_reserved','available_from', 'available_until',
         ];
 
         $this->updateEntity($hotelRoom, $request, $fillableAttributes, 'room_images');

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Bus;
+use App\Models\Vehicle;
 use App\Models\Driver;
 use App\Models\Home;
 use App\Models\Owner;
@@ -32,10 +32,9 @@ class TourFactory extends Factory
             'recurrence' => 1,
             'status' => 'scheduled',
             'transportation_company' => fake()->word,
-            'bus_id' => Bus::factory(),
+            'vehicle_id' => Vehicle::factory(),
             'owner_id' => Owner::factory(),
             'driver_id' => Driver::factory(),
         ];
     }
-
 }

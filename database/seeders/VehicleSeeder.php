@@ -5,7 +5,9 @@ namespace Database\Seeders;
 use App\Models\Vehicle;
 use App\Models\Owner;
 use Illuminate\Database\Seeder;
-
+use App\Models\Tour;
+use Spatie\Permission\Models\Role;
+use App\Models\User;
 class VehicleSeeder extends Seeder
 {
     public function run(): void
@@ -25,9 +27,36 @@ class VehicleSeeder extends Seeder
             ]);
         }
 
-        Vehicle::factory(5)->create();
+        $vehicles = Vehicle::factory(3)->create([
+            'type' => 'car',
+            'seats_number' => 5
+        ]);
+        $vehicles = Vehicle::factory(3)->create([
+            'type' => 'car',
+            'seats_number' => 3
+        ]);
 
-//        Vehicle::factory()->create([
+        //        $vehicles = Vehicle::factory(5)->create();
+//        $vehicles = Vehicle::factory(5)->create();
+
+        $tourCompanyOwners = Owner::factory(3)->create([
+            'user_id' => function () {
+                return User::factory()->create()->assignRole('Tour Company Owner')->id;
+            }
+        ]);
+        $tours = Tour::factory(10)->recycle($vehicles)->recycle($tourCompanyOwners)->create();
+
+
+        $vehicles = Vehicle::all();
+        $vehicles->each(function ($vehicle) {
+            $vehicle->owner->user->assignRole('Tour Company Owner');
+        });
+
+        $tours->each(function ($tour) {
+            $tour->owner->user->assignRole('Tour Company Owner');
+        });
+
+        //        Vehicle::factory()->create([
 //            'type' => 'bus',
 //            'model' => 'Volvo 9700',
 //            'seats_number' => 53,

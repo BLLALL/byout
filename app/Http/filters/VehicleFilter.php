@@ -31,6 +31,11 @@ class VehicleFilter extends QueryFilter
         return $this->builder->where('status', $value);
     }
 
+    public function driver_id($value)
+    {
+        return $this->builder->where('driver_id', $value);
+    }
+
     public function has_wifi($value)
     {
         return $this->builder->where('has_wifi', $value);

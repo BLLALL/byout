@@ -74,16 +74,13 @@ class AuthController extends Controller
      */
     public function registerOwner(RegisterOwnerRequest $request)
     {
-        // Start a database transaction
         DB::beginTransaction();
 
         try {
-            // Handle user creation
             $userData = $request->only(['name', 'email', 'password', 'phone_number']);
 
             $user = User::create($userData);
 
-            // Handle owner creation and file uploads
             $ownerData = $request->only(['organization', 'identification_card', 'licensing', 'affiliation_certificate', 'commercial_register']);
 
             $filePaths = [];
@@ -93,7 +90,7 @@ class AuthController extends Controller
                 }
             }
 
-            $ownerData = array_merge($ownerData, $filePaths);
+            $ownerData = array_merge($ownerData, $filePaths, ['status'=>'pending']);
             $ownerData['user_id'] = $user->id;
             $owner = Owner::create($ownerData);
 
@@ -103,7 +100,6 @@ class AuthController extends Controller
                 ['*'],
                 now()->addDays(30))->plainTextToken;
 
-            // Assign role
             $role = $request->input('role');
             $user->assignRole($role);
             $owner['role'] = $owner->user->role = $request->input('role');
@@ -188,29 +184,44 @@ class AuthController extends Controller
         }
     }
 
-
+    /**
+     * Logout
+     *
+     * Logs out the user and deletes the API token.
+     *
+     * @authenticated
+     * @group Authentication
+     * @response 200 {
+     * "message": "Logged out successfully"
+     * }
+     */
     public function logout(Request $request)
     {
         $token = $request->user()->currentAccessToken();
         $request->user()->currentAccessToken()->delete();
 
-        return $this->ok($token);
+        return $this->success('Logged out successfully');
     }
 
+    /**
+     * Check Token
+     *
+     * Checks if the user's token is still valid.
+     *
+     * @authenticated
+     * @group Authentication
+     * @response 200 {
+     * "message": "Authenticated"
+     * }
+     */
     public function checkToken(Request $request)
     {
-        if (!$request->user()) return response()->json([
-            "message" => "Unauthenticated"
-        ]);
+        if (!$request->user()) return $this->error('Unauthenticated', 401);
         $token = $request->user()->currentAccessToken();
         if ($token->expires_at->isPast()) {
-            return response()->json([
-                "message" => "Unauthenticated"
-            ]);
+            return $this->error('Unauthenticated', 401);
         } else {
-            return response()->json([
-                "message" => "Authenticated"
-            ]);
+            return $this->success('Authenticated');
         }
     }
 

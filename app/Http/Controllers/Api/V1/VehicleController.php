@@ -11,6 +11,7 @@ use App\Models\Vehicle;
 use App\Services\UpdateVehicleService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Owner;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -48,14 +49,15 @@ class VehicleController extends Controller
 
     public function store(StoreVehicleRequest $request)
     {
-        $ownerId = $request->input('owner_id');
         $authUserId = Auth::user()->id;
-        if (Auth::user()->hasRole('Tour Company Owner') && $ownerId == $authUserId) {
+        $owner = Owner::where('user_id', $authUserId)->first();
+        if (Auth::user()->hasRole('Tour Company Owner') && $authUserId == $owner->user_id) {
             $validatedData =  $this->handlingFiles($request);
-
+    
+            $validatedData['owner_id'] = $owner->id;
             $vehicle = Vehicle::create($validatedData);
 
-            return new VehicleResource($vehicle);
+            return new VehicleResource($vehicle);   
         } else {
             return response()->json([
                 "message" => "You're not authorized to store this resource"

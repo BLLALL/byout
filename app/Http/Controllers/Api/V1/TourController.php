@@ -7,7 +7,7 @@ use App\Http\filters\TourFilter;
 use App\Http\Requests\Api\V1\ScheduleTourRequest;
 use App\Http\Requests\Api\V1\StoreTourRequest;
 use App\Http\Resources\Api\V1\TourResource;
-use App\Models\Bus;
+use App\Models\Vehicle;
 use App\Models\Owner;
 use App\Models\Tour;
 use App\Services\TourService;
@@ -24,7 +24,7 @@ class TourController extends Controller
 
     /**
      * Get Tours
-     * Show all Tours
+     * Show all Tours`
      * @group Managing Tours
      * @queryParam sort string Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.
      * Example: departure_time, -created_at
@@ -44,13 +44,13 @@ class TourController extends Controller
     {
         $tourData = $request->only([
             'price', 'tour_type', 'source', 'destination', 'departure_time',
-            'arrival_time', 'recurrence', 'ownership', 'bus_id', 'driver_id'
+            'arrival_time', 'recurrence', 'ownership', 'vehicle_id', 'driver_id'
         ]);
 
-        $bus = Bus::findOrFail($tourData['bus_id']);
-        $ownerId = $bus->owner_id;
-        $userId = $bus->owner->user_id;
-        $user = $bus->owner->user;
+        $vehicle = Vehicle::findOrFail($tourData['vehicle_id']);
+        $ownerId = $vehicle->owner_id;
+        $userId = $vehicle->owner->user_id;
+        $user = $vehicle->owner->user;
 
         if (Auth::user()->id != $userId || !($user->hasRole('Tour Company Owner'))) {
             return response()->json([

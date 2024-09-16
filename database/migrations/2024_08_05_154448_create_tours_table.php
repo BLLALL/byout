@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
 
     /**
-     * Run the migrations.
-     */
+    * Run the migrations.
+    */
     public function up(): void
     {
         Schema::create('tours', function (Blueprint $table) {
@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->string('time_difference');
             $table->integer('recurrence')->nullable();
             $table->enum('status', ['scheduled', 'in_progress', 'completed', 'cancelled']);
-            $table->foreignId('bus_id')->constrained();
+            $table->foreignId('vehicle_id')->constrained('vehicles')->onDelete('cascade');
             $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
             $table->foreignId('driver_id')->constrained();
             $table->string('transportation_company')->nullable();
@@ -33,7 +33,8 @@ return new class extends Migration {
 
     /**
      * Reverse the migrations.
-     */
+    */
+
     public function down(): void
     {
         Schema::dropIfExists('tours');

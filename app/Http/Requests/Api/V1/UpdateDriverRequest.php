@@ -30,6 +30,7 @@ class UpdateDriverRequest extends BaseDriverRequest
             "password" => ["sometimes", "string", "max:255"],
             "phone_number" => ["sometimes", "numeric",],
             "profile_image" => ["sometimes", "image"],
+            
         ];
     }
 }

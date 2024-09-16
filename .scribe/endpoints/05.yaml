@@ -1,0 +1,101 @@
+name: 'Managing Rentals'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/rent
+    metadata:
+      groupName: 'Managing Rentals'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Rent a specific entity.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      rentable_type:
+        name: rentable_type
+        description: ''
+        required: true
+        example: Home
+        type: string
+        enumValues:
+          - Home
+          - 'Hotel Room'
+          - Chalet
+        exampleWasSpecified: false
+        custom: []
+      rentable_id:
+        name: rentable_id
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      user_id:
+        name: user_id
+        description: ''
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      check_in:
+        name: check_in
+        description: 'Must be a valid date.'
+        required: true
+        example: '2024-09-13T11:22:12'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      check_out:
+        name: check_out
+        description: 'Must be a valid date. Must be a date after <code>check_in</code>.'
+        required: true
+        example: '2036-05-23'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      payment_method:
+        name: payment_method
+        description: ''
+        required: true
+        example: debit_card
+        type: string
+        enumValues:
+          - credit_card
+          - debit_card
+          - paypal
+          - bank_transfer
+          - other
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      rentable_type: Home
+      rentable_id: 5
+      user_id: 1
+      check_in: '2024-09-13T11:22:12'
+      check_out: '2036-05-23'
+      payment_method: debit_card
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('max_occupancy');
             $table->string('rent_period');
             $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
-            $table->boolean('pending')->default(true);
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->boolean('is_available')->default(true);
             $table->date('available_from');
             $table->date('available_until');

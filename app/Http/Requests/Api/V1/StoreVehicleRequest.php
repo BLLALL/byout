@@ -37,7 +37,6 @@ class StoreVehicleRequest extends FormRequest
             'has_bathroom' => 'boolean|required_if:type,bus',
             'has_entrance_camera' => 'boolean|required_if:type,bus',
             'has_passenger_camera' => 'boolean|required_if:type,bus',
-            'owner_id' => 'required|exists:users,id',
         ];
     }
 

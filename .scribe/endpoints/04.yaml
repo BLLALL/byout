@@ -1,0 +1,366 @@
+name: 'Managing Hotels'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/hotels
+    metadata:
+      groupName: 'Managing Hotels'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get Hotels'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      sort:
+        name: sort
+        description: 'Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.'
+        required: false
+        example: 'title, -created_at'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      price:
+        name: price
+        description: 'Data field to filter hotels by their price u can use comma to filter by range.'
+        required: false
+        example: 2000
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      title:
+        name: title
+        description: 'Data field to search for hotels by their title.'
+        required: false
+        example: Lorem
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      description:
+        name: description
+        description: 'Data field to search for hotels by their description.'
+        required: false
+        example: 'Lorem Ipsum'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+    cleanQueryParameters:
+      sort: 'title, -created_at'
+      price: 2000
+      title: Lorem
+      description: 'Lorem Ipsum'
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/hotels
+    metadata:
+      groupName: 'Managing Hotels'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a Hotel'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: et
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      location:
+        name: location
+        description: ''
+        required: true
+        example: velit
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      wifi:
+        name: wifi
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      coordinates:
+        name: coordinates
+        description: 'Must contain 2 items.'
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      coordinates.0:
+        name: coordinates.0
+        description: 'Must be between -90 and 90.'
+        required: true
+        example: -90
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      coordinates.1:
+        name: coordinates.1
+        description: 'Must be between -180 and 180.'
+        required: true
+        example: -179
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      hotel_images:
+        name: hotel_images
+        description: 'Must be a file. Must not be greater than 2048 kilobytes.'
+        required: false
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      owner_id:
+        name: owner_id
+        description: ''
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      rooms:
+        name: rooms
+        description: ''
+        required: false
+        example: null
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      documents:
+        name: documents
+        description: ''
+        required: true
+        example:
+          - []
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'rooms[].title':
+        name: 'rooms[].title'
+        description: ''
+        required: true
+        example: cupiditate
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'rooms[].price':
+        name: 'rooms[].price'
+        description: ''
+        required: true
+        example: 932369.6
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'rooms[].area':
+        name: 'rooms[].area'
+        description: ''
+        required: true
+        example: 9866.0919024
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'rooms[].bathrooms_no':
+        name: 'rooms[].bathrooms_no'
+        description: ''
+        required: true
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'rooms[].bedrooms_no':
+        name: 'rooms[].bedrooms_no'
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'rooms[].room_images':
+        name: 'rooms[].room_images'
+        description: 'Must be a file. Must not be greater than 2048 kilobytes.'
+        required: true
+        example:
+          - null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'rooms[].is_reserved':
+        name: 'rooms[].is_reserved'
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'documents[].type':
+        name: 'documents[].type'
+        description: 'This field is required when <code>documents</code> is present.'
+        required: false
+        example: hotel_license
+        type: string
+        enumValues:
+          - signatory_authorization
+          - property_ownership
+          - agreement_contract
+          - hotel_license
+        exampleWasSpecified: false
+        custom: []
+      'documents[].file':
+        name: 'documents[].file'
+        description: 'This field is required when <code>documents</code> is present.  Must be a file. Must not be greater than 10240 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      name: et
+      location: velit
+      wifi: true
+      coordinates:
+        - -90
+        - -179
+      owner_id: 1
+      documents:
+        -
+          type: hotel_license
+      rooms:
+        -
+          title: cupiditate
+          price: 932369.6
+          area: 9866.0919024
+          bathrooms_no: 10
+          bedrooms_no: 5
+          is_reserved: true
+    fileParameters:
+      hotel_images:
+        - null
+      documents:
+        -
+          file: null
+      rooms:
+        -
+          room_images:
+            - null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/hotels/{id}'
+    metadata:
+      groupName: 'Managing Hotels'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'show a specific Hotel'
+      description: 'Display an individual Hotel'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the hotel.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

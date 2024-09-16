@@ -15,7 +15,6 @@ use App\Http\Controllers\Api\V1\ReviewController;
 use App\Http\Controllers\Api\V1\TourController;
 use App\Http\Controllers\Api\V1\TourReservationController;
 use App\Http\Controllers\Api\V1\UserController;
-use App\Http\Controllers\Api\V1\BusController;
 use App\Http\Controllers\Api\V1\VehicleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\RentController;
@@ -33,7 +32,7 @@ use App\Http\Controllers\Api\V1\RentController;
 
 // http://localhost:8000/api/
 // univseral resource locator
-// houses...
+// homes...
 // users
 
 Route::post('/login', [AuthController::class, 'login']);
@@ -67,6 +66,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('hotels', HotelController::class);
 
     Route::post('rent', [RentController::class, 'rent']);
+    Route::get('rent/reserved-dates', [RentController::class, 'getReservedDates']);
+    
     Route::get('owners/{owner}/report', [OwnerController::class, 'getOwnerFinancialReport']);
     Route::get('owners/{owner}/period-report', [OwnerController::class, 'getOwnerFincialReportByPeriod']);
 
@@ -80,11 +81,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/tours/reserve', [TourReservationController::class, 'reserve']);
     Route::get('/tours/{tour}/available-seats', [TourReservationController::class, 'getAvailableSeats']);
     Route::get('/tours/{id}/reserved-seats', [TourReservationController::class, 'getReservedSeats']);
-
-    Route::apiResource('buses', BusController::class);
-    Route::get('available-buses', [BusController::class, 'getAvailableBuses']);
-    Route::get('in-use-buses', [BusController::class, 'getInUseBuses']);
-
 
     Route::apiResource('drivers', DriverController::class);
     Route::apiResource('vehicles', VehicleController::class);

@@ -39,8 +39,10 @@ class StoreHotelRequest extends BaseHotelRequest
             'rooms.*.bathrooms_no' => 'required|integer',
             'rooms.*.bedrooms_no' => 'required|integer',
             'rooms.*.room_images' => 'required|array',
-            'rooms.*.room_images.*' => 'required|file|max:2048',
+            'rooms.*.room_images.*' => 'required_with:rooms.*.room_images|image|max:5048',
             'rooms.*.is_reserved' => 'boolean',
+            'rooms.*.available_from' => 'required|date',
+            'rooms.*.available_until' => 'required|date',
             'documents' => ['required', 'array'],
             'documents.*.type' => ['required_with:documents', 'string', Rule::in([
                 'signatory_authorization',
@@ -49,7 +51,7 @@ class StoreHotelRequest extends BaseHotelRequest
                 'hotel_license',
             ])],
             'documents.*.file' => ['required_with:documents', 'file', 'max:10240'],
-
+            
         ];
     }
 }

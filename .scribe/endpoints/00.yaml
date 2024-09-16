@@ -26,7 +26,7 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: homenick.mckayla@example.com
+        example: gregorio32@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -35,14 +35,14 @@ endpoints:
         name: password
         description: 'Must be at least 8 characters.'
         required: true
-        example: 'NlDAukkOeS{P*V7W=1J\'
+        example: '!H"Tr'''
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      email: homenick.mckayla@example.com
-      password: 'NlDAukkOeS{P*V7W=1J\'
+      email: gregorio32@example.com
+      password: '!H"Tr'''
     fileParameters: []
     responses:
       -
@@ -60,6 +60,329 @@ endpoints:
         custom: []
     responseFields: []
     auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/register/user
+    metadata:
+      groupName: Authentication
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'User Registration'
+      description: 'Create an account for the user.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: gprrzyizxdxtyeowhx
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: xluettgen@example.org
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 8 characters.'
+        required: true
+        example: iAAdmrZ7
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      phone_number:
+        name: phone_number
+        description: ''
+        required: true
+        example: 5257565.4
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      age:
+        name: age
+        description: 'Must not be greater than 100. Must be at least 10.'
+        required: true
+        example: 19
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      marital_status:
+        name: marital_status
+        description: ''
+        required: true
+        example: married
+        type: string
+        enumValues:
+          - single
+          - married
+          - divorced
+        exampleWasSpecified: false
+        custom: []
+      current_job:
+        name: current_job
+        description: ''
+        required: true
+        example: ad
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      name: gprrzyizxdxtyeowhx
+      email: xluettgen@example.org
+      password: iAAdmrZ7
+      phone_number: 5257565.4
+      age: 19
+      marital_status: married
+      current_job: ad
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/register/owner
+    metadata:
+      groupName: Authentication
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Owner Registration'
+      description: 'Create an account for an owner.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: xmgcetjb
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        required: true
+        example: kkuhn@example.org
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 8 characters.'
+        required: true
+        example: '?OtFE*'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      phone_number:
+        name: phone_number
+        description: ''
+        required: true
+        example: 16.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      organization:
+        name: organization
+        description: 'Must not be greater than 128 characters.'
+        required: false
+        example: xotsygaj
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      identification_card:
+        name: identification_card
+        description: 'Must be a file. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      licensing:
+        name: licensing
+        description: 'Must be a file. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      affiliation_certificate:
+        name: affiliation_certificate
+        description: 'Must be a file. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      commercial_register:
+        name: commercial_register
+        description: 'Must be a file. Must not be greater than 2048 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      role:
+        name: role
+        description: ''
+        required: true
+        example: 'Hotel Owner'
+        type: string
+        enumValues:
+          - 'Home Owner'
+          - 'Hotel Owner'
+          - 'Tour Company Owner'
+          - 'Chalet Owner'
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      name: xmgcetjb
+      email: kkuhn@example.org
+      password: '?OtFE*'
+      phone_number: 16.0
+      organization: xotsygaj
+      role: 'Hotel Owner'
+    fileParameters:
+      identification_card: null
+      licensing: null
+      affiliation_certificate: null
+      commercial_register: null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      groupName: Authentication
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: Logout
+      description: 'Logs out the user and deletes the API token.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "message": "Logged out successfully"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer adh4gka3ec168vDPbfE6ZV5'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/token/check
+    metadata:
+      groupName: Authentication
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Check Token'
+      description: "Checks if the user's token is still valid."
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "message": "Authenticated"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 8gv4a1bDVE3aPcfe665dkZh'
     controller: null
     method: null
     route: null

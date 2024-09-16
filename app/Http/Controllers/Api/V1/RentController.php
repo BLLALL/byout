@@ -38,7 +38,7 @@ class RentController extends Controller
         try {
             $checkIn = Carbon::parse($request->input('check_in'));
             $checkOut = Carbon::parse($request->input('check_out'));
-            $numberOfNights = $checkIn->diffInDays($checkOut);
+            $numberOfNights = $checkIn->diffInDays($checkOut) + 1;
             $amount = $rentable->price * $numberOfNights;
 
             $request->merge([
@@ -56,6 +56,26 @@ class RentController extends Controller
         }
     }
 
+
+    public function getReservedDates(Request $request) {
+        $rentableType = $request->input('rentable_type');
+        $rentableId = $request->input('rentable_id');
+        $rentable = $this->getRentableModel($rentableType, $rentableId);
+
+        if (!$rentable) {
+            return response()->json(['message' => 'Invalid rentable type or ID'], 400);
+        }
+        
+        $reservedDates = $rentable->rentals->map(function ($rental) {
+            return [
+                'check_in' => $rental->check_in->format('Y-m-d'),
+                'check_out' => $rental->check_out->format('Y-m-d')
+            ];
+        });
+        return response()->json([
+            'reserved_dates' => $reservedDates
+        ]);
+    }
     private function getRentableModel($type, $id)
     {
         return match ($type) {
