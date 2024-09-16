@@ -107,5 +107,12 @@ class TourController extends Controller
         }
     }
 
+    public function delete(Tour $tour)
+    {
+        if(Auth::hasRole('Tour Company Owner') && $tour->owner->user_id == Auth::user()->id) {
+
+        }
+    }
+
 
 }

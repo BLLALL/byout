@@ -28,6 +28,8 @@ class ScheduleTourRequest extends FormRequest
             'destination' => ['required', 'string', 'max:255'],
             'recurrence' => ['nullable', 'sometimes', 'integer'],
             'transportation_company' => ['sometimes', 'integer', 'exists:tour_companies,id'],
+            "departure_time" => ["required", "date"],
+            'arrival_time' => ["required", "date", "after:departure_time"],
             'vehicle_id' => ['required', 'integer', 'exists:vehicles,id'],
             'driver_id' => [ 'required', 'exists:drivers,id'],
         ];

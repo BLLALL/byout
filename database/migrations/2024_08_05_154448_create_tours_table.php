@@ -14,6 +14,7 @@ return new class extends Migration {
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
+            $table->softDeletes();
             $table->unsignedInteger('price');
             $table->enum('tour_type', ['fixed', 'individual']);
             $table->string('source');

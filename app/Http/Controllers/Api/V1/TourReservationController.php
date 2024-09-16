@@ -143,31 +143,26 @@ class TourReservationController extends Controller
         ]);
     }
 
+
     public function getReservedSeats($tourId)
     {
         $tour = Tour::find($tourId);
+        if(!$tour) return "Tour u entered not valid";
+        $reserved_seats = $tour->tourReservations
+            ->flatMap(function ($reservation) {
+                $seats = $reservation->seat_positions;
+                return collect($seats)->mapWithKeys(function ($seat) use ($reservation) {
+                    return [$seat => [
+                        'gender' => $reservation->gender,
+                        'user_id' => $reservation->user_id,
+                        'position' => $reservation->seat_positions,
+                    ]];
+                });
+            });
+        if($reserved_seats->isEmpty()) return null;
 
-        return $this->reserveCarService->getReservedSeats($tourId);
+        return response()->json([
+            'reserved_seats' => $reserved_seats,
+        ]);
     }
-//    public function getReservedSeats($tourId)
-//    {
-//        $tour = Tour::find($tourId);
-//        if(!$tour) return "Tour u entered not valid";
-//        $reserved_seats = $tour->tourReservations
-//            ->flatMap(function ($reservation) {
-//                $seats = $reservation->seat_positions;
-//                return collect($seats)->mapWithKeys(function ($seat) use ($reservation) {
-//                    return [$seat => [
-//                        'gender' => $reservation->gender,
-//                        'user_id' => $reservation->user_id,
-//                        'position' => $reservation->seat_positions,
-//                    ]];
-//                });
-//            });
-//        if($reserved_seats->isEmpty()) return null;
-//
-//        return response()->json([
-//            'reserved_seats' => $reserved_seats,
-//        ]);
-//    }
 }

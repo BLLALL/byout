@@ -21,7 +21,6 @@ use App\Services\CurrencyRateExchangeService;
 use App\Services\RentalService;
 use Brick\Money\Money;
 use Carbon\Carbon;
-use AshAllenDesign\LaravelExchangeRates\Classes\ExchangeRate;
 
 class HomeController extends Controller
 {
@@ -50,13 +49,10 @@ class HomeController extends Controller
      * @queryParam description string Data field to search for homes by their description. Example:Lorem Ipsum
      *
      */
-
+    
     public function index(HomeFilter $filter)
     {
-        $exchangeRates = app(ExchangeRate::class);
-
-        return $exchangeRates->currencies();
-
+        return "sda";
         $homes = Home::filter($filter)->get();
 
         $userCurrency = Auth::user()->preferred_currency;
@@ -65,13 +61,13 @@ class HomeController extends Controller
 
         $homes = $homes->map(function ($home) use ($userCurrency, $currencyRateExchangeService) {
             if ($home->currency != $userCurrency) {
-                $money = Money::ofMinor($home->price, $home->currency);
-                $money = $currencyRateExchangeService->convertPrice($home->currency, $userCurrency, $money->getAmount()->toFloat());
-                $home->price = $money->getMinorAmount()->toInt();
-                $home->currency = $money->getCurrency()->getCurrencyCode();
+                $money = $currencyRateExchangeService->convertPrice($home->currency, $userCurrency, $home->price);
+                $home->price = $money->getAmount()->toFloat();
+                $home->currency = $money->getCurrency();
             }
             return $home;
         });
+        return $homes;
         return HomeResource::collection($homes);
     }
 
@@ -116,7 +112,7 @@ class HomeController extends Controller
         return new HomeResource($home);
     }
 
-
+   
 
     /**
      * Update a specific home.

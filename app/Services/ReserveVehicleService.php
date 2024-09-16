@@ -11,12 +11,7 @@ use Illuminate\Support\Facades\DB;
 class ReserveVehicleService
 {
 
-    protected array $seats;
 
-    public function __construct()
-    {
-
-    }
 
     public function createReservation(Request $request)
     {

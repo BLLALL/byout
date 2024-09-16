@@ -7,10 +7,11 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tour extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $casts = [
         'seat_status' => 'array'
@@ -47,7 +48,7 @@ class Tour extends Model
     {
         return $this->morphMany(Document::class, 'documentable');
     }
-    
+
     public function tourReservations() {
         return $this->hasMany(TourReservation::class);
     }

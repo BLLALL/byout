@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\VehicleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\RentController;
+use App\Http\Controllers\Api\V1\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,7 +68,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('rent', [RentController::class, 'rent']);
     Route::get('rent/reserved-dates', [RentController::class, 'getReservedDates']);
-    
+
     Route::get('owners/{owner}/report', [OwnerController::class, 'getOwnerFinancialReport']);
     Route::get('owners/{owner}/period-report', [OwnerController::class, 'getOwnerFincialReportByPeriod']);
 
@@ -98,6 +99,17 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/hotel-rooms', [HotelRoomsController::class, 'store']);
     Route::patch('/hotel-rooms/{id}', [HotelRoomsController::class, 'update']);
     Route::delete('/hotel-rooms/{id}', [HotelRoomsController::class, 'destroy']);
+
+
+
+    Route::post('/create-payment', [PaymentController::class, 'createPayment']);
+    Route::get('/payment-status/{paymentId}', [PaymentController::class, 'checkPaymentStatus']);
+    Route::post('/cancel-payment/{paymentId}', [PaymentController::class, 'cancelPayment']);
+    Route::get('/payment-callback', [PaymentController::class, 'paymentCallback'])->name('payment.callback');
+    Route::get('/payment-trigger', [PaymentController::class, 'paymentTrigger'])->name('payment.trigger');
+
 });
 
 Route::get('rates', [ExchangeRateController::class, 'getRates']);
+
+Route::get('/tour-financial-report', [OwnerController::class, 'getTourFinancialReport']);

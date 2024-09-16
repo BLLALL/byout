@@ -6,16 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\V1\homeOwnerResource;
 use App\Models\User;
 use App\Services\RentalService;
+use App\Services\TourService;
 use Illuminate\Http\Request;
 use App\Models\Owner;
 use Carbon\Carbon;
 
 class OwnerController extends Controller
 {
-    protected $rentalService;
+    protected $rentalService, $tourService;
 
-    public function __construct(RentalService $rentalService)
+    public function __construct(RentalService $rentalService, TourService $tourService)
     {
+        $this->tourService = $tourService;
         $this->rentalService = $rentalService;
     }
 
@@ -63,4 +65,10 @@ class OwnerController extends Controller
         return $report ? response()->json(["data" => $report]) : response()->json(["message" => "No report found for this period"], 404);
     }
 
+    public function getTourFinancialReport(Request $request)
+    {
+        $authenticatedUserID = auth()->user()->id;
+        $owner = Owner::where('user_id', $authenticatedUserID)->first();
+        return $this->tourService->generateReport($request, $owner);
+    }
 }

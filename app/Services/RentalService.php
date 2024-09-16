@@ -103,21 +103,21 @@ class RentalService
     }
 
     private function getRentalDataForOwner(int $ownerId, $startDate, $endDate)
-    {
-        return DB::table('rentals')
-            ->join('payments', 'rentals.id', '=', 'payments.rental_id')
-            ->whereIn('rentals.rentable_type', ['App\Models\Home', 'App\Models\Chalet', 'App\Models\HotelRooms'])
-            ->where('rentals.owner_id', operator: $ownerId)
-            ->where($this->getRentalDateCondition($startDate, $endDate))
-            ->select(
-                'rentals.rentable_type',
+        {
+            return DB::table('rentals')
+                ->join('payments', 'rentals.id', '=', 'payments.rental_id')
+                ->whereIn('rentals.rentable_type', ['App\Models\Home', 'App\Models\Chalet', 'App\Models\HotelRooms'])
+                ->where('rentals.owner_id', operator: $ownerId)
+                ->where($this->getRentalDateCondition($startDate, $endDate))
+                ->select(
+                    'rentals.rentable_type',
 
-                DB::raw('COUNT(*) as total_rentals'),
-                DB::raw('SUM(payments.amount) as total_revenue'),
-                'payments.currency'
-            )
-            ->groupBy('rentals.rentable_type', 'payments.currency')
-            ->get();
+                    DB::raw('COUNT(*) as total_rentals'),
+                    DB::raw('SUM(payments.amount) as total_revenue'),
+                    'payments.currency'
+                )
+                ->groupBy('rentals.rentable_type', 'payments.currency')
+                ->get();
     }
 
     public function getLastTransactions($ownerId)
