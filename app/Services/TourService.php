@@ -113,6 +113,8 @@ class TourService
                 return $tour->price * $tour->tour_reservations_count;
             });
     }
+
+
     private function getToursByVehicleType($startDate, $endDate, $ownerId)
     {
         return DB::table('tours')
@@ -124,7 +126,7 @@ class TourService
                 'vehicles.type',
                 DB::raw('COUNT(DISTINCT tours.id) as tour_count'),
                 DB::raw('COUNT(tour_reservations.id) as reservation_count'),
-                DB::raw('CAST(SUM(tours.price) AS FLOAT) as total_revenue')
+//                DB::raw('CAST(SUM(tour_reservations.id * tours.price) AS FLOAT) as total_revenue') // Multiplies number of reservations by the tour price
             )
             ->groupBy('vehicles.type')
             ->get();

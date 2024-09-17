@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\V1\AdminController;
 use App\Http\Controllers\Api\V1\ChaletController;
 use App\Http\Controllers\Api\V1\DriverController;
 use App\Http\Controllers\Api\V1\EmailVerificationController;
@@ -70,7 +71,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('rent/reserved-dates', [RentController::class, 'getReservedDates']);
 
     Route::get('owners/{owner}/report', [OwnerController::class, 'getOwnerFinancialReport']);
-    Route::get('owners/{owner}/period-report', [OwnerController::class, 'getOwnerFincialReportByPeriod']);
+    Route::get('owners/{id}/period-report', [OwnerController::class, 'getOwnerFinancialReportByPeriod']);
 
     Route::get('reviews/users/{user}', [ReviewController::class, 'UserReviews']);
     Route::get('reviews/homes/{home}', [ReviewController::class, 'HomeReviews']);
@@ -108,6 +109,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/payment-callback', [PaymentController::class, 'paymentCallback'])->name('payment.callback');
     Route::get('/payment-trigger', [PaymentController::class, 'paymentTrigger'])->name('payment.trigger');
 
+
+    Route::post('/approve-owner/{owner}', [AdminController::class, 'approveOwner']);
 });
 
 Route::get('rates', [ExchangeRateController::class, 'getRates']);

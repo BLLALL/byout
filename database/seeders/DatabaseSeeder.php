@@ -55,7 +55,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-
+        $admin = User::factory()->create([
+            'email' => 'admin@owner.com',
+            'name' => 'Admoon',
+            'password' => Hash::make('password'),
+        ]);
         Permission::create(['name' => 'Post Homes']);
         Permission::create(['name' => 'Delete Homes']);
         Permission::create(['name' => 'Post Hotels']);
@@ -79,7 +83,8 @@ class DatabaseSeeder extends Seeder
         $adminRole = Role::create(['name' => 'Super Admin']);
 
         $adminRole->givePermissionTo(Permission::all());
-        $sarg->assignRole($adminRole);
+
+        $admin->assignRole($adminRole);
 
         $homeOwnerRole = Role::create(['name' => 'Home Owner']);
         $homeOwnerRole->givePermissionTo(['Post Homes', 'Delete Homes']);
@@ -95,7 +100,6 @@ class DatabaseSeeder extends Seeder
         $chaletOwnerRole->givePermissionTo(['Post Chalets', 'Delete Chalets']);
 
         Role::create(['name' => 'Driver']);
-
 
         $regularUserRole = Role::create(['name' => 'Regular User']);
 

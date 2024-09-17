@@ -29,7 +29,9 @@ class TourResource extends JsonResource
             'recurrence' => $this->recurrence,
             'status' => $this->status,
             'tour_company_id' => $this->tour_company_id,
-            'vehicle' => $this->vehicle,
+            'vehicle' => $this->when($this->vehicle, function () {
+                return new VehicleResource($this->vehicle);
+            }),
             'driver_name' => $this->driver->name,
             'vehicle_id' => $this->vehicle_id,
             'is_driver_smoker' => $this->driver->is_smoker,

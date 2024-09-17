@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\V1\OwnerResource;
 use App\Models\Chalet;
 use App\Models\Owner;
 use App\Models\Tour;
@@ -13,8 +14,10 @@ class AdminController extends Controller
 {
     public function approveOwner(Owner $owner)
     {
+
         $owner->update(['status' => 'approved']);
-        return response()->json(['message' => 'Owner approved successfully']);
+        $user = $owner->user;
+        return new OwnerResource($owner);
     }
 
     public function rejectOwner(Owner $owner)
@@ -38,7 +41,7 @@ class AdminController extends Controller
 
     public function getFinancialReport()
     {
-        
+
     }
 
     public function deleteUser(User $user)

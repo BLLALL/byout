@@ -104,11 +104,13 @@ class RentalService
 
     private function getRentalDataForOwner(int $ownerId, $startDate, $endDate)
         {
+            $startDate = $startDate . ' 00:00:00';
+            $endDate = $endDate . ' 23:59:59';
             return DB::table('rentals')
                 ->join('payments', 'rentals.id', '=', 'payments.rental_id')
                 ->whereIn('rentals.rentable_type', ['App\Models\Home', 'App\Models\Chalet', 'App\Models\HotelRooms'])
                 ->where('rentals.owner_id', operator: $ownerId)
-                ->where($this->getRentalDateCondition($startDate, $endDate))
+                ->whereBetween('rentals.created_at', [$startDate, $endDate])
                 ->select(
                     'rentals.rentable_type',
 
@@ -127,12 +129,15 @@ class RentalService
         $transactions = new Collection();
         foreach ($rents as $rent) {
             $user = $rent->user;
+            $days_in_rent = abs($rent->check_in->diffInDays($rent->check_out) + 1);
             $rentable = $rent->rentable;
             $transactions->push([
                 "user_id" => $user->id,
                 "user_name" => $user->name,
+                "rentable_id" => $rentable->id,
                 "rentable_title" => $rentable->title,
-                "rentable_price" => $rentable->price,
+                "rentable_price" => $rentable->price * $days_in_rent,
+                "days_in_rent" => $days_in_rent,
                 "rentable_currency" => $rentable->currency,
                 "check_in" => $rent->check_in->format('Y-m-d'),
                 "check_out" => $rent->check_out->format('Y-m-d'),
@@ -158,16 +163,20 @@ class RentalService
 
     private function formatFinancialResults($results)
     {
-        return $results->map(function ($item) {
+        $item = $results->first();
+        if ($item) {
             $money = Money::of($item->total_revenue, $item->currency);
             $rentableType = $item->rentable_type === 'App\Models\HotelRooms' ? 'Hotel Room' : Str::afterLast($item->rentable_type, '\\');
-            return [
+    
+            return [    
                 'rentable_type' => $rentableType,
                 'total_rentals' => $item->total_rentals,
                 'total_revenue' => $money->getAmount()->toInt(),
                 'currency' => $item->currency,
             ];
-        });
+        }
+    
+        return null; // Return null or handle case where there are no results
     }
 
     public function getOwnerFinancialReportByPeriod(string $ownerId, string $period)

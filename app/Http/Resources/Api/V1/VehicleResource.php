@@ -21,9 +21,9 @@ class VehicleResource extends JsonResource
             'has_gps' => $this->has_gps,
             'has_movie_screens' => $this->has_movie_screens,
             'owner_id' => $this->owner->user_id,
-            'has_entrance_camera' => $this->when($this->type === 'bus', $this->has_entrance_camera),
-            'has_passenger_camera' => $this->when($this->type === 'bus', $this->has_passenger_camera),
-            'has_bathroom' => $this->when($this->type === 'bus', $this->has_bathroom),
+            'has_entrance_camera' => (boolean)$this->when($this->type === 'bus', $this->has_entrance_camera),
+            'has_passenger_camera' => (boolean)$this->when($this->type === 'bus', $this->has_passenger_camera),
+            'has_bathroom' => (boolean)$this->when($this->type === 'bus', $this->has_bathroom),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

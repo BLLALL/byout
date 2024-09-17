@@ -23,6 +23,7 @@ class OwnerResource extends JsonResource
             "marital_status" => $this->user->marital_status,
             "current_job" => $this->user->current_job,
             "profile_image" => $this->user->profile_image,
+            "status" => $this->status,
             "role" => $this->role,
             "token" => $this->token,
             "organization" => $this->organization,

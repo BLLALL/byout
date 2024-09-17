@@ -37,32 +37,34 @@ class OwnerController extends Controller
      * Get Owner Financial Report
      * @group Managing Owners
      */
-    public function getOwnerFinancialReport(Request $request, Owner $owner)
+    public function getOwnerFinancialReport(Request $request, $ownerId)
     {
-        $ownerId = $owner->id;
         $startDate = $request->input('start_date');
         $endDate = $request->input('end_date');
 
         $report = $this->rentalService->getOwnerFinancialReport($ownerId, $startDate, $endDate);
-        $reportWithTransactions = $report->map(function ($rentable) use ($ownerId) {
-            $transactions = $this->rentalService->getLastTransactions($ownerId);
-            $rentable['latest_transactions'] = $transactions;
-            return $rentable;
-        });
-
-        return response()->json(["data" => $reportWithTransactions]);
+        $reportWithTransactions = $this->getLatestTransactions($report, $ownerId);
+        return ($reportWithTransactions);
     }
 
+    private function getLatestTransactions($report, $ownerId)
+    {
+        $transactions = $this->rentalService->getLastTransactions($ownerId);
+        $report['latest_transactions'] = $transactions;
+    
+        return $report;
+    }
+    
     /**
      * Get Owner Financial Report By Period
      * @group Managing Owners
      */
-    public function getOwnerFincialReportByPeriod(Request $request, Owner $owner)
+    public function getOwnerFinancialReportByPeriod(Request $request, $ownerId)
     {
-        $ownerId = $owner->id;
         $period = $request->input('period');
         $report = $this->rentalService->getOwnerFinancialReportByPeriod($ownerId, $period);
-        return $report ? response()->json(["data" => $report]) : response()->json(["message" => "No report found for this period"], 404);
+        $reportWithTransactions = $this->getLatestTransactions($report, $ownerId);
+        return ( $reportWithTransactions);
     }
 
     public function getTourFinancialReport(Request $request)
