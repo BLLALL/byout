@@ -46,11 +46,13 @@ class RentalService
                     'amount' => $data['amount'],
                     'currency' => $data['currency'],
                     'payment_method' => $data['payment_method'],
-                    'payment_status' => 'completed',
+                    'payment_status' => 'pending',
                 ];
+                
                 $money = Money::of($paymentData['amount'], $paymentData['currency']);
-                $paymentData['amount'] = $money->getAmount()->toFloat();
+                $paymentData['amount'] = $money->getMinorAmount()->toFloat();
                 $paymentData['currency'] = $money->getCurrency()->getCurrencyCode();
+
                 $this->paymentService->processPayment($rental, $paymentData);
 
                 return $rental->load('payment');
@@ -103,42 +105,45 @@ class RentalService
     }
 
     private function getRentalDataForOwner(int $ownerId, $startDate, $endDate)
-        {
-            $startDate = $startDate . ' 00:00:00';
-            $endDate = $endDate . ' 23:59:59';
-            return DB::table('rentals')
-                ->join('payments', 'rentals.id', '=', 'payments.rental_id')
-                ->whereIn('rentals.rentable_type', ['App\Models\Home', 'App\Models\Chalet', 'App\Models\HotelRooms'])
-                ->where('rentals.owner_id', operator: $ownerId)
-                ->whereBetween('rentals.created_at', [$startDate, $endDate])
-                ->select(
-                    'rentals.rentable_type',
+    {
+        $startDate = $startDate . ' 00:00:00';
+        $endDate = $endDate . ' 23:59:59';
+        return DB::table('rentals')
+            ->join('payments', 'rentals.id', '=', 'payments.rental_id')
+            ->whereIn('rentals.rentable_type', ['App\Models\Home', 'App\Models\Chalet', 'App\Models\HotelRooms'])
+            ->where('rentals.owner_id', operator: $ownerId)
+            ->whereBetween('rentals.created_at', [$startDate, $endDate])
+            ->select(
+                'rentals.rentable_type',
 
-                    DB::raw('COUNT(*) as total_rentals'),
-                    DB::raw('SUM(payments.amount) as total_revenue'),
-                    'payments.currency'
-                )
-                ->groupBy('rentals.rentable_type', 'payments.currency')
-                ->get();
+                DB::raw('COUNT(*) as total_rentals'),
+                DB::raw('SUM(payments.amount) as total_revenue'),
+                'payments.currency'
+            )
+            ->groupBy('rentals.rentable_type', 'payments.currency')
+            ->get();
     }
 
     public function getLastTransactions($ownerId)
     {
         $owner = $this->getOwnerByUserId($ownerId);
-        $rents = Rental::with('user', 'rentable')->where('owner_id', $owner->id)->get();
+        $rents = Rental::with('user', 'rentable', 'payment')->where('owner_id', $owner->id)->get();
         $transactions = new Collection();
         foreach ($rents as $rent) {
             $user = $rent->user;
             $days_in_rent = abs($rent->check_in->diffInDays($rent->check_out) + 1);
             $rentable = $rent->rentable;
+            $money = Money::ofMinor($rentable->price  * $days_in_rent, $rentable->currency);
             $transactions->push([
                 "user_id" => $user->id,
                 "user_name" => $user->name,
                 "rentable_id" => $rentable->id,
+                "rentable_type" => $rentable->type,
                 "rentable_title" => $rentable->title,
-                "rentable_price" => $rentable->price * $days_in_rent,
+                "rentable_price" => $money->getAmount()->toFloat(),
+                "payment_method" => $rent->payment->payment_method,
                 "days_in_rent" => $days_in_rent,
-                "rentable_currency" => $rentable->currency,
+                "rentable_currency" => $money->getCurrency()->getCurrencyCode(),
                 "check_in" => $rent->check_in->format('Y-m-d'),
                 "check_out" => $rent->check_out->format('Y-m-d'),
                 "rented_at" => $rent->created_at,
@@ -147,35 +152,24 @@ class RentalService
         return $transactions->sortByDesc('created_at');
     }
 
-    private function getRentalDateCondition($startDate, $endDate)
-    {
-        return function ($query) use ($startDate, $endDate) {
-            $query->where(function ($q) use ($startDate, $endDate) {
-                $q->whereBetween('rentals.check_in', [$startDate, $endDate])
-                    ->orWhereBetween('rentals.check_out', [$startDate, $endDate])
-                    ->orWhere(function ($subQ) use ($startDate, $endDate) {
-                        $subQ->where('rentals.check_in', '<=', $startDate)
-                            ->where('rentals.check_out', '>=', $endDate);
-                    });
-            });
-        };
-    }
 
     private function formatFinancialResults($results)
     {
         $item = $results->first();
+
         if ($item) {
-            $money = Money::of($item->total_revenue, $item->currency);
+            $money = Money::ofMinor($item->total_revenue, $item->currency);
+            $money = Money::ofMinor($money->getAmount()->toFloat(), $item->currency);
             $rentableType = $item->rentable_type === 'App\Models\HotelRooms' ? 'Hotel Room' : Str::afterLast($item->rentable_type, '\\');
-    
-            return [    
+
+            return [
                 'rentable_type' => $rentableType,
                 'total_rentals' => $item->total_rentals,
-                'total_revenue' => $money->getAmount()->toInt(),
+                'total_revenue' => $money->getAmount()->toFloat(),
                 'currency' => $item->currency,
             ];
         }
-    
+
         return null; // Return null or handle case where there are no results
     }
 

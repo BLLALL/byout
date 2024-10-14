@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\filters\QueryFilter;
+use App\Http\filters\UserFilter;
 use App\Http\Requests\Api\RegisterUserRequest;
 use App\Http\Requests\Api\V1\UpdateUserRequest;
 use App\Http\Resources\Api\V1\UserResource;
@@ -14,8 +16,8 @@ use function Laravel\Prompts\error;
 class UserController extends Controller
 {
     use apiResponses;
-    public function index() {
-        return UserResource::collection(User::get());
+    public function index(UserFilter $filter) {
+        return UserResource::collection(User::filter($filter)->get());
     }
     public function show(User $user) {
         return new UserResource($user->load(['roles', 'roles.permissions']));
@@ -34,7 +36,7 @@ class UserController extends Controller
         $userData = [];
         $profile_image = $request->file('profile_image');
         if ($profile_image) {
-            $userData['profile_image'] = 'https://fayroz97.com/real-estate/' . $profile_image->store('profile_picture', 'public');
+            $userData['profile_image'] = 'https://travelersres.com/api/' . $profile_image->store('profile_picture', 'public');
         }
         foreach ($userColumns as $userColumn) {
             if ($request->has($userColumn)) {

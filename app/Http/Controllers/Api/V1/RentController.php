@@ -10,21 +10,29 @@ use App\Models\HotelRooms;
 use App\Services\RentalService;
 use Illuminate\Http\Request;
 use App\Http\Resources\Api\V1\RentalResource;
+use App\Services\FatoraService;
+use Brick\Money\Money;
+use Brick\Math\RoundingMode;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class RentController extends Controller
 {
     protected RentalService $rentalService;
 
-    public function __construct(RentalService $rentalService)
+    protected FatoraService $fatoraService;
+    
+    public function __construct(RentalService $rentalService, FatoraService $fatoraService)
     {
         $this->rentalService = $rentalService;
+        $this->fatoraService = $fatoraService;
     }
 
     /**
      * Rent a specific entity.
      * @group Managing Rentals
      */
+    
     public function rent(RentEntityRequest $request)        
     {
         $rentableType = $request->input('rentable_type');
@@ -40,12 +48,11 @@ class RentController extends Controller
             $checkOut = Carbon::parse($request->input('check_out'));
             $numberOfNights = $checkIn->diffInDays($checkOut) + 1;
             $amount = $rentable->price * $numberOfNights;
-
+            $money = Money::ofMinor($amount, $rentable->currency, roundingMode: RoundingMode::HALF_UP);
             $request->merge([
-                'amount' => $amount,
-                'currency' => $rentable->currency
+                'amount' => $money->getAmount()->toFloat(),
+                'currency' => $money->getCurrency()->getCurrencyCode(),
             ]);
-
             $rental = $this->rentalService->createRental($rentable, $request);
             return new RentalResource($rental);
         } catch (\Exception $e) {

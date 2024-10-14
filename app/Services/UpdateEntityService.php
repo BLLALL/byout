@@ -18,13 +18,13 @@ abstract class UpdateEntityService
         if ($request->hasFile(key: 'new_images')) {
             $existingImages = $entity->{$imageColumn} ?? [];
             foreach ($request->file('new_images') as $image) {
-                $imagePath = 'https://fayroz97.com/real-estate/' . $image->store($imageColumn, 'public');
+                $imagePath = 'https://travelersres.com/' . $image->store($imageColumn, 'public');
                 $existingImages[] = $imagePath;
             }
             $entity->{$imageColumn} = $existingImages;
         }
 
-        // Handle image removal
+    // Handle image removal
         if ($request->has('remove_images')) {
             $existingImages = $entity->{$imageColumn} ?? [];
 

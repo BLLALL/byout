@@ -50,7 +50,7 @@ class Tour extends Model
     }
 
     public function tourReservations() {
-        return $this->hasMany(TourReservation::class);
+        return $this->hasMany(TourReservation::class)->chaperone();
     }
 
 

@@ -16,6 +16,8 @@ class Payment extends Model
         'payment_status',
         'amount',
         'currency',
+        'payment_id',
+        'payment_url',
     ];
 
     public function rental(): BelongsTo

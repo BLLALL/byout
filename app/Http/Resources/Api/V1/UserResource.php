@@ -14,7 +14,7 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
+        return array_merge([
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
@@ -29,7 +29,24 @@ class UserResource extends JsonResource
             'updated_at' => $this->updated_at,
             'token' => $this->token,
             'role' => $this->roles->pluck('name')->first(),
-            'hotel' =>  ($this?->owner?->hotel)->count() ? ($this->owner->hotel)->first() : null,
-        ];
+            'hotel' => ($this?->owner?->hotel)->count() ? ($this->owner->hotel)->first() : null,
+        ], (array) $this->when($this->hasAnyRole(['Home Owner', 'Hotel Owner', 'Chalet Owner', 'Tour Company Owner']), function () {
+            return [
+                'owner_id' => $this->owner->id,
+                'organization' => $this->owner->organization,
+                'identification_card' => $this->owner->identification_card,
+                'licensing' => $this->owner->licensing,
+                'hotel_license' => $this->when($this->hasRole('Hotel Owner'), function () {
+                    return $this->owner->hotel->first()->documents->where('document_type', 'hotel_license');
+                }),
+                'property_ownership' => $this->when($this->hasRole('Hotel Owner'), function () {
+                    return $this->owner->hotel->first()->documents->where('document_type', 'property_ownership');
+                }),
+                'affiliation_certificate' => $this->owner->affiliation_certificate,
+                'commercial_register' => $this->owner->commercial_register,
+                'transportation_company' => $this->owner->transportation_company,
+                'status' => $this->owner->status,
+            ];
+        }));
     }
 }

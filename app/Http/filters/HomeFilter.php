@@ -10,7 +10,7 @@ class HomeFilter extends QueryFilter
     {
         $prices = explode(',', $value);
 
-        if(count($prices) > 1) {
+        if (count($prices) > 1) {
             return $this->builder->whereBetween('price', $prices);
         }
         return $this->builder->where('price', $prices);
@@ -25,7 +25,6 @@ class HomeFilter extends QueryFilter
     public function description($value)
     {
         return $this->builder->where('description', 'LIKE', '%' . $value . '%');
-
     }
 
     public function owner_id($value)
@@ -33,5 +32,9 @@ class HomeFilter extends QueryFilter
         return $this->builder->whereHas('owner', (function (Builder $query) use ($value) {
             $query->where('user_id', $value);
         }));
+    }
+
+    public function pending($value) {
+        return $this->builder->where('pending',  $value );
     }
 }

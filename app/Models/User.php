@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Http\filters\QueryFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use \Illuminate\Database\Eloquent\Builder;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -43,9 +45,14 @@ class User extends Authenticatable
         ];
     }
 
+    public function scopeFilter(Builder $builder, QueryFilter $filter)
+    {
+        return $filter->apply($builder);
+    }
+
     public function owner()
     {
-        return $this->hasOne(Owner::class);
+        return $this->hasOne(Owner::class)->chaperone();
     }
 
     public function ownsCompanyWithOwnerId($ownerId)

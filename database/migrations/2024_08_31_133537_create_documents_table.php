@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('documents', function (Blueprint $table) {
-            $table->id();
-            $table->morphs('documentable');
-            $table->string('document_type');
-            $table->string('file_path');
-            $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
-            $table->timestamps();
-        });
+            Schema::create('documents', function (Blueprint $table) {
+                $table->id();
+                $table->morphs('documentable');
+                $table->string('document_type');
+                $table->string('file_path');
+                $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
+                $table->timestamps();
+            });
     }
 
     /**

@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('rent_period');
             $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->boolean('pending')->default(true);
             $table->boolean('is_available')->default(true);
             $table->date('available_from');
             $table->date('available_until');

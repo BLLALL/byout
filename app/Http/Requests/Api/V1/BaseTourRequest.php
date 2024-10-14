@@ -18,7 +18,7 @@ class BaseTourRequest extends FormRequest
             'data.attributes.tour_company_id' => 'tour_company_id',
             'data.attributes.seat_position' => 'seat_position',
             'data.attributes.traveller_gender' => 'traveller_gender',
-
+            
             ], $otherAttributes);
 
         $attributesToUpdate = [];

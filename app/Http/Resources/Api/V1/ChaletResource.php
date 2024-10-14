@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\V1;
 
+use Brick\Math\RoundingMode;
 use Brick\Money\Money;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -15,7 +16,7 @@ class ChaletResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $money = Money::ofMinor($this->price, $this->currency);
+        $money = Money::ofMinor($this->price, $this->currency, roundingMode: RoundingMode::HALF_UP);
         return [
             'type' => 'Chalet',
             'id' => $this->id,

@@ -16,6 +16,10 @@ class Rental extends Model
         'check_out' => 'datetime',
     ];
 
+    const PAYMENT_PENDING = 'pending';
+    const PAYMENT_ACCEPTED = 'accepted';
+    const PAYMENT_FAILED = 'failed';
+    const PAYMENT_CANCELLED = 'cancelled';
     public function rentable()
     {
         return $this->morphTo();
@@ -24,7 +28,7 @@ class Rental extends Model
     public function payment()
     {
         return $this->hasOne(Payment::class);
-    }   
+    }
 
     public function user()
     {

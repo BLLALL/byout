@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\V1;
 
+use Brick\Math\RoundingMode;
 use Brick\Money\Money;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -15,7 +16,7 @@ class RentalResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $money = Money::ofMinor($this->payment->amount, $this->payment->currency);
+        $money = Money::ofMinor($this->payment->amount, $this->payment->currency, roundingMode: RoundingMode::HALF_UP);
         $amount = $money->getAmount()->toFloat();
         $currency = $money->getCurrency()->getCurrencyCode();
         return [
@@ -31,6 +32,9 @@ class RentalResource extends JsonResource
             "payment_currency" => $currency,
             "payment_method" => $this->payment->payment_method,
             "payment_status" => $this->payment->payment_status,
+            //
+            "payment_id" => $this->payment->payment_id,
+            "payment_url" => $this->payment->payment_url,
         ];
     }
 }

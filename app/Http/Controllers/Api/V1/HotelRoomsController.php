@@ -24,9 +24,10 @@ class HotelRoomsController extends Controller
     protected CreateHotelRoomService $createHotelRoomService;
 
     protected HotelRoomService $updateHotelRoomService;
-    public function __construct(CreateHotelRoomService $createHotelRoomService)
+    public function __construct(CreateHotelRoomService $createHotelRoomService, HotelRoomService $updateHotelRoomService)
     {
         $this->createHotelRoomService = $createHotelRoomService;
+        $this->updateHotelRoomService = $updateHotelRoomService;
     }
 
     public function index(HotelRoomsFilter $filter)
@@ -54,7 +55,6 @@ class HotelRoomsController extends Controller
     public function update(UpdateHotelRoomRequest $request, $roomId)
     {
         $room = HotelRooms::findOrFail($roomId);
-
         if (Auth::user()->id === $room->hotel->owner->user_id) {
             $this->updateHotelRoomService->updateHotelRoom($room, $request);
             return new HotelRoomsResource($room);

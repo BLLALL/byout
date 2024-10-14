@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\DB;
 class ReserveVehicleService
 {
 
-
-
     public function createReservation(Request $request)
     {
 

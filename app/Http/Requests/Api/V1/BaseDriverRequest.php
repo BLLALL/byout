@@ -32,7 +32,7 @@ class BaseDriverRequest extends FormRequest
 
         if ($this->hasFile('profile_image')) {
             $imagePath = $this->file('profile_image')->store('profile_images', 'public');
-            $user->profile_image = $imagePath;
+            $user->profile_image = 'https://travelersres.com/api/' .  $imagePath;   
             $user->save();
         }
 
@@ -51,7 +51,7 @@ class BaseDriverRequest extends FormRequest
             'license_expiry_date' => $this->license_expiry_date,
             'is_smoker' => $this->is_smoker,
             'user_id' => $user->id,
-            'license' => $licensePath,
+            'license' => 'https://travelersres.com/api/' . $licensePath,
             'owner_id' => $ownerId,
         ]);
         $driver->save();
@@ -73,7 +73,7 @@ class BaseDriverRequest extends FormRequest
         ]);
         if ($this->hasFile('profile_image')) {
             $imagePath = $this->file('profile_image')->store('profile_images', 'public');
-            $user->profile_image = $imagePath;
+            $user->profile_image = 'https://travelersres.com/api/' . $imagePath;
         }
         $user->save();
 
@@ -84,7 +84,7 @@ class BaseDriverRequest extends FormRequest
 
         if ($this->hasFile('license')) {
             $licensePath = $this->file('license')->store('licenses', 'public');
-            $driver->license = $licensePath;
+            $driver->license = 'https://travelersres.com/api/' . $licensePath;
         }
         $driver->save();
     }

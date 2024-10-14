@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('rental_id')->constrained('rentals')->onDelete('cascade');
             $table->string('payment_method');
-            $table->string('payment_status');
+            $table->string('payment_id')->unique();
+            $table->string('payment_status')->default('pending');
+            $table->string('payment_url');
             $table->integer('amount');
             $table->string('currency');
             $table->timestamps();

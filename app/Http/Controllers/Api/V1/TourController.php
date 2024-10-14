@@ -14,11 +14,7 @@ use App\Models\Tour;
 use App\Services\CreateTourService;
 use App\Services\TourService;
 use App\traits\apiResponses;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use Mockery\Exception;
 
 class TourController extends Controller
 {
@@ -45,10 +41,10 @@ class TourController extends Controller
 
 
     /**
-     * 
+     *
      * @group Managing Tours
      * Schedule a new Tour
-     * 
+     *
      */
     public function schedule(ScheduleTourRequest $request)
     {
@@ -126,6 +122,12 @@ class TourController extends Controller
         return new TourResource($tour);
     }
 
+    /**
+     * update a specific tours
+     *
+     * @group Managing
+     *
+     */
     public function update(updateTourRequest $request, Tour $tour)
     {
 

@@ -31,13 +31,10 @@ class TourService
 
         // $loggedTour = Tour::find(46);
         // Log::info($loggedTour);
-
         if ($conflictingTours->isNotEmpty()) {
-            return response()->json([
-                'Vehicle is already scheduled for another tour during this time'
-            ]);
+            throw new Exception('There is a conflict in tours dates with the driver and vehicle you entered');
         }
-        $tour->status = 'scheduled';
+        $tour->status = 'scheduled';    
         $tour->save();
     }
 
@@ -92,8 +89,8 @@ class TourService
     {
         $startDate = Carbon::parse($request->input('start_date'));
         $endDate = Carbon::parse($request->input('end_date'));
-        $ownerId = $owner->id;;
-
+        $ownerId = $owner->id;
+        
         $report = [
             'total_revenue' => $this->calculateTotalRevenue($startDate, $endDate, $ownerId),
             'tours_by_vehicle_type' => $this->getToursByVehicleType($startDate, $endDate, $ownerId),
@@ -104,15 +101,20 @@ class TourService
     }
 
     private function calculateTotalRevenue($startDate, $endDate, $ownerId)
-    {
-        return Tour::whereBetween('departure_time', [$startDate, $endDate])
-            ->where('owner_id', $ownerId)
-            ->withCount('tourReservations')
-            ->get()
-            ->sum(function ($tour) {
-                return $tour->price * $tour->tour_reservations_count;
-            });
-    }
+{
+    return Tour::where('owner_id', $ownerId)
+        ->whereHas('tourReservations', function ($query) use ($startDate, $endDate) {
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        })
+        ->withCount('tourReservations')
+        ->get()
+        ->sum(function ($tour) {
+            $reservationCount = $tour->tour_reservations_count ?? 0;
+            $price = $tour->price ?? 0;
+            return $price * $reservationCount;
+        });
+}
+
 
 
     private function getToursByVehicleType($startDate, $endDate, $ownerId)
@@ -120,7 +122,7 @@ class TourService
         return DB::table('tours')
             ->join('vehicles', 'tours.vehicle_id', '=', 'vehicles.id')
             ->leftJoin('tour_reservations', 'tours.id', '=', 'tour_reservations.tour_id')
-            ->whereBetween('tours.departure_time', [$startDate, $endDate])
+            ->whereBetween('tour_reservations.created_at', [$startDate, $endDate])
             ->where('tours.owner_id', $ownerId)
             ->select(
                 'vehicles.type',
@@ -139,7 +141,6 @@ class TourService
             ->where('tours.owner_id', $ownerId)
                     ->with(['user:id,name', 'tour'])
             ->latest('tour_reservations.created_at')
-            ->take(50)
             ->get()
             ->map(function ($reservation) {
                 return [
@@ -151,7 +152,6 @@ class TourService
                     'tour_arrival_time' => $reservation->tour->arrival_time,
                     'amount_paid' => $reservation->tour->price,
                     'vehicle_type' => $reservation->tour->vehicle->type,
-
                 ];
             });
     }

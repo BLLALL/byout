@@ -2,10 +2,12 @@
 
 namespace App\Http\Resources\Api\V1;
 
+use Brick\Math\RoundingMode;
 use Brick\Money\Money;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Route;
 
 class HomeResource extends JsonResource
 {
@@ -16,7 +18,7 @@ class HomeResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $money = Money::ofMinor($this->price, $this->currency);
+        $money = Money::ofMinor($this->price, $this->currency, roundingMode: RoundingMode::HALF_UP);
 
         return [
             'type' => 'Home',

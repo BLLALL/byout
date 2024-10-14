@@ -19,9 +19,13 @@ abstract class CreateEntityService
 
     abstract protected function getFillableAttributes();
 
-    abstract protected function getImageColumn();
+    protected function getImageColumn() {
+        return null;
+    }
 
-    abstract protected function getImagePath();
+    protected function getImagePath() {
+        return null;
+    }
 
     public function createEntity(Request $request)
     {
@@ -54,33 +58,44 @@ abstract class CreateEntityService
         return $this->model->fill($request->only($this->fillableAttributes));
     }
 
-    protected function setOwnerAndCurrency($entity, Request $request)
+    public function setOwner($entity, Request $request)
     {
         if (method_exists($entity, 'owner')) {
             $userId = $request->input('owner_id');
             $owner = Owner::where('user_id', $userId)->first();
             $entity->owner_id = $owner->id;
+            return $owner;
         } elseif (method_exists($entity, 'hotel')) {
-            $owner = $entity->hotel->owner;
+            return $entity->hotel->owner;
         } else {
             throw new \Exception('Entity does not have an owner or hotel relation');
         }
+    }
 
+    public function setCurrency($entity, Request $request, $owner)
+    {
         if ($entity->price) {
             $money = Money::of($request->price, $owner->user->preferred_currency);
             $entity->price = $money->getMinorAmount()->toInt();
             $entity->currency = $owner->user->preferred_currency;
         }
-
-
     }
+
+    protected function setOwnerAndCurrency($entity, Request $request)
+    {
+        
+        $owner = $this->setOwner($entity, $request);
+
+        $this->setCurrency($entity, $request, $owner);
+    }
+
 
     protected function handleImages($entity, $request)
     {
         if ($request->hasFile($this->imageColumn)) {
             $images = [];
             foreach ($request->file($this->imageColumn) as $image) {
-                $images[] = 'https://fayroz97.com/real-estate/' . $image->store($this->imagePath, 'public');
+                $images[] = 'https://travelersres.com/' . $image->store($this->imagePath, 'public');
             }
         }
 
@@ -88,12 +103,11 @@ abstract class CreateEntityService
         return $entity;
     }
 
-    protected function handleDocuments($entity, Request $request)
+    public function handleDocuments($entity, Request $request)
     {
         if($request->has('documents')) {
             foreach ($request->documents as $document) {
-                return $request->documents;
-                $path =  'https://fayroz97.com/real-estate/' . $document['file']->store('documents/' . class_basename($entity), 'public');
+                $path =  'https://travelersres.com/' . $document['file']->store('documents/' . class_basename($entity), 'public');
                 $entity->documents()->create([
                     'document_type' => $document['type'],
                     'file_path' => $path,
@@ -102,7 +116,5 @@ abstract class CreateEntityService
             }
         }
     }
-
-
 
 }

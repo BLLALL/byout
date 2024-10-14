@@ -49,10 +49,9 @@ class HomeController extends Controller
      * @queryParam description string Data field to search for homes by their description. Example:Lorem Ipsum
      *
      */
-    
+
     public function index(HomeFilter $filter)
     {
-        return "sda";
         $homes = Home::filter($filter)->get();
 
         $userCurrency = Auth::user()->preferred_currency;
@@ -67,7 +66,6 @@ class HomeController extends Controller
             }
             return $home;
         });
-        return $homes;
         return HomeResource::collection($homes);
     }
 
@@ -112,7 +110,7 @@ class HomeController extends Controller
         return new HomeResource($home);
     }
 
-   
+
 
     /**
      * Update a specific home.
@@ -136,10 +134,9 @@ class HomeController extends Controller
      */
     public function destroy(Home $home)
     {
-        if (Auth::user()->hasRole("Home Owner") && $home->owner->user_id == Auth::user()->id) {
+        if ($home->owner->user_id == Auth::user()->id) {
             try {
                 $home->isAvailable = false;
-                $home->save();
                 $home->delete();
                 return response()->json([
                     "message" => "Home deleted successfully"

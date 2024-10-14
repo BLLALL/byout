@@ -35,7 +35,6 @@ class AuthController extends Controller
      * Create an account for the user.
      * @group Authentication
      */
-
     public function register(RegisterUserRequest $request)
     {
 
@@ -44,13 +43,15 @@ class AuthController extends Controller
         if (!$validatedData) {
             return response()->json('Invalid credentials');
         }
+        
         $userData = $request->only([
             "name", "email", "password", "phone_number", "age",
             "marital_status", "current_job"
         ]);
+
         $user = User::create($userData);
 
-        $user->notify(new EmailVerificationNotification());
+        // $user->notify(new EmailVerificationNotification());
         $user['token'] = $user->createToken(
             'API token for ' . $user->email,
             ['*'],
@@ -86,7 +87,7 @@ class AuthController extends Controller
             $filePaths = [];
             foreach (['identification_card', 'licensing', 'affiliation_certificate', 'commercial_register'] as $fileField) {
                 if ($request->hasFile($fileField)) {
-                    $filePaths[$fileField] = 'https://fayroz97.com/real-estate/' . $request->file($fileField)->store('owner_documents', 'public');
+                    $filePaths[$fileField] = 'https://travelersres.com/api/' . $request->file($fileField)->store('owner_documents', 'public');
                 }
             }
 
@@ -94,7 +95,7 @@ class AuthController extends Controller
             $ownerData['user_id'] = $user->id;
             $owner = Owner::create($ownerData);
 
-            $user->notify(new EmailVerificationNotification());
+            // $user->notify(new EmailVerificationNotification());
             $token = $user->createToken(
                 'API token for ' . $user->email,
                 ['*'],
@@ -109,7 +110,7 @@ class AuthController extends Controller
             return new OwnerResource($owner);
         } catch (\Exception $e) {
             DB::rollBack();
-            return response()->json(['error' => 'Registration failed: ' . $e->getMessage()], 500);
+            return response()->json($e, 500);
         }
     }
     /**

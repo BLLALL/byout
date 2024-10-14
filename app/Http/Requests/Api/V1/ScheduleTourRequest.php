@@ -32,6 +32,7 @@ class ScheduleTourRequest extends FormRequest
             'arrival_time' => ["required", "date", "after:departure_time"],
             'vehicle_id' => ['required', 'integer', 'exists:vehicles,id'],
             'driver_id' => [ 'required', 'exists:drivers,id'],
+
         ];
     }
 }

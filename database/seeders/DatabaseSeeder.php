@@ -2,15 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Bus;
 use App\Models\Chalet;
-use App\Models\Document;
 use App\Models\Home;
-use App\Models\Favourite;
 use App\Models\Hotel;
 use App\Models\HotelRooms;
 use App\Models\Owner;
-use App\Models\Tour;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -53,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'TourCompanyOwner@owner.com',
             'name' => 'Tour Company Owner',
             'password' => Hash::make('password'),
-        ]);
+        ]); 
 
         $admin = User::factory()->create([
             'email' => 'admin@owner.com',
