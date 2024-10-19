@@ -12,27 +12,25 @@ use Illuminate\Support\Facades\Log;
 
 class BaseDriverRequest extends FormRequest
 {
-    protected function passedValidation()
-    {
-        if ($this->isMethod('post')) {
-            $this->createUserAndDriver();
-        } elseif ($this->isMethod('patch')) {
-            $this->updateUserAndDriver();
-        }
-    }
+    // protected function passedValidation()
+    // {
+    //     if ($this->isMethod('post')) {
+    //         $this->createUserAndDriver();
+    //     } elseif ($this->isMethod('patch')) {
+    //         $this->updateUserAndDriver();
+    //     }
+    // }
 
-    protected function createUserAndDriver()
+    public function createUserAndDriver()
     {
         $user = User::create([
             'name' => $this->name,
-            'email' => $this->email,
-            'password' => $this->password,
             'phone_number' => $this->phone_number,
         ]);
 
         if ($this->hasFile('profile_image')) {
             $imagePath = $this->file('profile_image')->store('profile_images', 'public');
-            $user->profile_image = 'https://travelersres.com/api/' .  $imagePath;   
+            $user->profile_image = 'https://travelersres.com/' .  $imagePath;   
             $user->save();
         }
 
@@ -51,16 +49,17 @@ class BaseDriverRequest extends FormRequest
             'license_expiry_date' => $this->license_expiry_date,
             'is_smoker' => $this->is_smoker,
             'user_id' => $user->id,
-            'license' => 'https://travelersres.com/api/' . $licensePath,
+            'license' => 'https://travelersres.com/' . $licensePath,
             'owner_id' => $ownerId,
         ]);
         $driver->save();
+        
+        return $driver;
     }
 
-    protected function updateUserAndDriver()
+    public function updateUserAndDriver()
     {
         $driver = ($this->route('driver'));
-
         $user = $driver->user;
 
 
@@ -73,7 +72,7 @@ class BaseDriverRequest extends FormRequest
         ]);
         if ($this->hasFile('profile_image')) {
             $imagePath = $this->file('profile_image')->store('profile_images', 'public');
-            $user->profile_image = 'https://travelersres.com/api/' . $imagePath;
+            $user->profile_image = 'https://travelersres.com/' . $imagePath;
         }
         $user->save();
 
@@ -84,9 +83,11 @@ class BaseDriverRequest extends FormRequest
 
         if ($this->hasFile('license')) {
             $licensePath = $this->file('license')->store('licenses', 'public');
-            $driver->license = 'https://travelersres.com/api/' . $licensePath;
+            $driver->license = 'https://travelersres.com/' . $licensePath;
         }
         $driver->save();
+        
+        return $driver;
     }
 
 }

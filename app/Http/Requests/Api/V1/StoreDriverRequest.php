@@ -26,8 +26,6 @@ class StoreDriverRequest extends BaseDriverRequest
             "license_expiry_date" => ['required', "date"],
             "is_smoker" => ['required', "boolean",],
             "name" => ['required', 'string', 'max:255'],
-            "email" => ['required', 'email'],
-            "password" => ["required", "string", "max:255"],
             "phone_number" => ["required", "numeric",],
             "profile_image" => ["sometimes", "image"],
         ];

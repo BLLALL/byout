@@ -10,25 +10,35 @@ class TourFilter extends QueryFilter
     {
         $prices = explode(',', $value);
 
-        if(count($prices) > 1) {
+        if (count($prices) > 1) {
             return $this->builder->whereBetween('price', $prices);
         }
         return $this->builder->where('price', $prices);
     }
 
-    public function departure_time($value) {
-        return $this->builder->where('departure_time', 'LIKE', '%' . $value . '%');
+    public function departure_time($value)
+    {
+        return $this->builder->where('departure_time', '>=', $value);
     }
 
-    public function arrival_time($value) {
-        return $this->builder->where('departure_time', 'LIKE', '%' . $value . '%');
+    public function arrival_time($value)
+    {
+        return $this->builder->where('arrival_time', '<=', $value);
     }
 
-    public function source($value) {
+    public function inBetween($value)
+    {
+        $times = explode(',', $value);
+        return $this->builder->whereBetween('departure_time', $times);
+    }
+
+    public function source($value)
+    {
         return $this->builder->where('source', $value);
     }
 
-    public function destination($value) {
+    public function destination($value)
+    {
         return $this->builder->where('destination', $value);
     }
 

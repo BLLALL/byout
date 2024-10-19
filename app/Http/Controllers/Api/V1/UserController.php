@@ -16,7 +16,7 @@ use function Laravel\Prompts\error;
 class UserController extends Controller
 {
     use apiResponses;
-    public function index(UserFilter $filter) {
+    public function index(UserFilter $filter){
         return UserResource::collection(User::filter($filter)->get());
     }
     public function show(User $user) {
@@ -42,7 +42,7 @@ class UserController extends Controller
             if ($request->has($userColumn)) {
                 $userData[$userColumn] = $request->input($userColumn);
             }
-        }
+        }   
 
         $user->update($userData);
 

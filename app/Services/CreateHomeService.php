@@ -19,7 +19,7 @@ class CreateHomeService extends CreateEntityService
     protected function getFillableAttributes()
     {
         return [
-            'title', 'description', 'price',
+            'title', 'description', 'price', 'living_room_no', 'kitchen_no',
             'area', 'bathrooms_no', 'bedrooms_no', 'location',
             'wifi', 'coordinates', 'rent_period', 'available_from', 'available_until'
         ];

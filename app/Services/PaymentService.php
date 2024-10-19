@@ -15,7 +15,7 @@ class PaymentService
     {
         $this->fatoraService = $fatoraService;
     }
-    public function processPayment(Rental $rental, array $paymentData)
+    public function processPayment($payable, array $paymentData)
     {
         try {
 
@@ -37,16 +37,17 @@ class PaymentService
             $paymentId = $fatoraResponse['Data']['paymentId'];
             
             $paymentUrl = $fatoraResponse['Data']['url'];
-
-            Log::info("Payment created with payment_id: $paymentId and url: $paymentUrl for rental_id: {$rental->id}");
+            
+            Log::info("Payment created with payment_id: $paymentId and url: $paymentUrl for" . get_class($payable) . ": {$payable->id}");
             $payment = Payment::create([
-                'rental_id' => $rental->id,
+                'payable_id' => $payable->id,
+                'payable_type' => get_class($payable),
                 'payment_id' => $paymentId,
                 'payment_url' => $paymentUrl,
                 'amount' => $paymentData['amount'],
                 'currency' => $paymentData['currency'],
                 'payment_method' => $paymentData['payment_method'],
-                'payment_status' => 'pending',
+                'payment_status' =>'pending', 
             ]);
 
             return $payment;

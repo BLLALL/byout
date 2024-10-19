@@ -4,6 +4,7 @@ namespace App\Http\Requests\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class UpdateDriverRequest extends BaseDriverRequest
 {
     /**
@@ -29,7 +30,7 @@ class UpdateDriverRequest extends BaseDriverRequest
             "email" => ['sometimes', 'email'],
             "password" => ["sometimes", "string", "max:255"],
             "phone_number" => ["sometimes", "numeric",],
-            "profile_image" => ["sometimes", "image"],
+            "profile_image" => ["sometimes", "image",  "mimes:jpeg,png,jpg,gif", "max:2048"],
             
         ];
     }

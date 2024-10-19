@@ -11,7 +11,8 @@ class Payment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'rental_id',
+        'payable_type',
+        'payable_id',
         'payment_method',
         'payment_status',
         'amount',
@@ -20,12 +21,10 @@ class Payment extends Model
         'payment_url',
     ];
 
-    public function rental(): BelongsTo
+    public function payable()
     {
-        return $this->belongsTo(Rental::class);
+        return $this->morphTo();
     }
-
-    
 
 }
 

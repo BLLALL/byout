@@ -27,7 +27,7 @@ class Rental extends Model
 
     public function payment()
     {
-        return $this->hasOne(Payment::class);
+        return $this->morphMany(Payment::class, 'payable');
     }
 
     public function user()

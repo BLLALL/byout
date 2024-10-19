@@ -10,6 +10,7 @@ class BasevehicleRequest extends FormRequest
     public function mappedAttributes(array $otherAttributes = [])
     {
         $attributeMap = array_merge([
+            
             'registration_number' => 'registration_number',
             'model' => 'model',
             'vehicle_images' => 'vehicle_images',
@@ -33,7 +34,7 @@ class BasevehicleRequest extends FormRequest
             $imagePath = [];
             $vehicle_images = $this->file('vehicle_images');
             foreach ($vehicle_images as $vehicle_image) {
-                $imagePath[] = 'https://fayroz97.com/real-estate/' . $vehicle_image->store('vehicle_images', 'public');
+                $imagePath[] = 'https://travelersres.com/' . $vehicle_image->store('vehicle_images', 'public');
             }
 
         }

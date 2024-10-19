@@ -20,7 +20,7 @@ abstract class UpdateEntityService
             foreach ($request->file('new_images') as $image) {
                 $imagePath = 'https://travelersres.com/' . $image->store($imageColumn, 'public');
                 $existingImages[] = $imagePath;
-            }
+        }
             $entity->{$imageColumn} = $existingImages;
         }
 

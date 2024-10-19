@@ -13,11 +13,11 @@ class UpdateHomeService extends UpdateEntityService
         $fillableAttributes = [
             'title', 'description', 'price', 'area',
             'bathrooms_no', 'bedrooms_no', 'location',
-            'wifi', 'coordinates', 'rent_period'
+            'wifi', 'coordinates', 'rent_period',
+            'living_room_no', 'kitchen_no',
         ];
 
         $this->updateEntity($home, $request, $fillableAttributes, 'home_images');
     }
-
 
 }

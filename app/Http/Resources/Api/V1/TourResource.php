@@ -36,11 +36,12 @@ class TourResource extends JsonResource
             'vehicle' => $this->when($this->vehicle, function () {
                 return new VehicleResource($this->vehicle);
             }),
-            'driver_name' => $this->driver->user->name,
+            'driver_name' => $this->driver?->user->name,
             'vehicle_id' => $this->vehicle_id,
-            'is_driver_smoker' => $this->driver->is_smoker,
+            'is_driver_smoker' => $this->driver?->is_smoker,
             'driver_id' => $this->driver_id,
-            'driver_image' => $this->driver->user->profile_image, 
+            'driver_image' => $this->driver?->user->profile_image, 
+            'driver_phone_number' => $this->driver?->user->phone_number,
             'owner_id' => $this->owner->user_id,
             'transportation_company' => $this->transportation_company,
             'documents' => $this->documents->map(function ($document) {

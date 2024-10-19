@@ -16,9 +16,7 @@ class RentalResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $money = Money::ofMinor($this->payment->amount, $this->payment->currency, roundingMode: RoundingMode::HALF_UP);
-        $amount = $money->getAmount()->toFloat();
-        $currency = $money->getCurrency()->getCurrencyCode();
+        
         return [
             "id" => $this->id,
             "rentable_id" => $this->rentable_id,
@@ -28,13 +26,17 @@ class RentalResource extends JsonResource
             "check_out" => $this->check_out->format('Y-m-d'),
             "owner_id" => $this->owner->user_id,
             "customer_id" => $this->user_id,
-            "payment_amount" => $amount,
-            "payment_currency" => $currency,
-            "payment_method" => $this->payment->payment_method,
-            "payment_status" => $this->payment->payment_status,
-            //
-            "payment_id" => $this->payment->payment_id,
-            "payment_url" => $this->payment->payment_url,
+            $this->mergeWhen(!empty($this->payment) && isset($this->payment?->amount, $this->payment?->currency), function () {
+                $money = Money::ofMinor($this->payment?->amount, $this->payment?->currency, roundingMode: RoundingMode::HALF_UP);
+                return [
+                    'payment_amount' => $money->getAmount()->toFloat(),
+                    'payment_currency' => $money->getCurrency()->getCurrencyCode(),
+                    'payment_method' => $this->payment?->payment_method,
+                    'payment_status' => $this->payment?->payment_status,
+                    "payment_id" => $this->payment?->payment_id,
+                    "payment_url" => $this->payment?->payment_url,
+                ];
+            }),
         ];
     }
 }

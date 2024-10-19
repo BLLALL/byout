@@ -29,6 +29,7 @@ class ReserveTourRequest extends FormRequest
             'user_id' => ['required', 'integer', 'exists:users,id'],
             'traveller_gender' => ['required', 'array', 'size:' . count($this->seat_positions)],
             'traveller_gender.*' => ['required', 'string', Rule::in(['male', 'female'])],
+            'payment_method' => ['required', 'string', Rule::in(['fatora', 'paypal', 'other'])],
         ];
     }
 }

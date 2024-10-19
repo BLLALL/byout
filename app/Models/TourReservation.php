@@ -20,4 +20,9 @@ class TourReservation extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function payment()
+    {
+        return $this->morphMany(Payment::class, 'payable');
+    }
 }

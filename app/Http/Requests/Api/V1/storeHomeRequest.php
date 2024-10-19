@@ -32,6 +32,8 @@ class storeHomeRequest extends BaseHomeRequest
             'location' => ['required', 'string'],
             'home_images' => ['sometimes', 'array'],
             'home_images.*' => ['file', 'max:2048'],
+            'living_room_no' => ['required', 'integer'],
+            'kitchen_no' => ['required', 'integer'],
             'wifi' => ['required', 'boolean'],
             'coordinates' => ['required' ,'array', 'size:2'],
             'coordinates.0' => ['required' ,'integer' ,'between:-90,90'],

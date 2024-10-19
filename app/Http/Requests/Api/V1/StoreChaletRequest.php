@@ -29,6 +29,8 @@ class StoreChaletRequest extends BaseChaletRequest
             'area' => ['required', 'integer'],
             'bathrooms_no' => ['required', 'integer'],
             'bedrooms_no' => ['required', 'integer'],
+            'living_room_no' => ['required', 'integer'],
+            'kitchen_no' => ['required', 'integer'],
             'chalet_images' => ['required', 'array'],
             'chalet_images.*' => ['required', 'image', 'mimes:png,jpg,jpeg'],
             'location' => ['required', 'string'],

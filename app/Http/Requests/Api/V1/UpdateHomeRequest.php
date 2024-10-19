@@ -28,6 +28,8 @@ class UpdateHomeRequest extends FormRequest
             'area' => 'sometimes|integer',
             'bathrooms_no' => 'sometimes|integer',
             'bedrooms_no' => 'sometimes|integer',
+            'living_room_no' => 'sometimes|integer',
+            'kitchen_no' => 'sometimes|integer',
             'location' => 'sometimes|string',
             'new_images' => 'sometimes|array',
             'new_images.*' => 'image|max:2048',

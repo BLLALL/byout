@@ -5,16 +5,15 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\filters\TourFilter;
 use App\Http\Requests\Api\V1\ScheduleTourRequest;
-use App\Http\Requests\Api\V1\StoreTourRequest;
 use App\Http\Requests\Api\V1\updateTourRequest;
 use App\Http\Resources\Api\V1\TourResource;
 use App\Models\Vehicle;
-use App\Models\Owner;
 use App\Models\Tour;
 use App\Services\CreateTourService;
 use App\Services\TourService;
 use App\traits\apiResponses;
 use Illuminate\Support\Facades\Auth;
+use App\Services\CurrencyRateExchangeService;
 
 class TourController extends Controller
 {
@@ -22,7 +21,7 @@ class TourController extends Controller
 
     /**
      * Get Tours
-     * Show all Tours`
+     * Show all Tours
      * @group Managing Tours
      * @queryParam sort string Data field to sort by. Separate multiple parameters with commas. Denote descending order with a minus sign.
      * Example: departure_time, -created_at
@@ -33,10 +32,14 @@ class TourController extends Controller
     protected TourService $tourService;
     protected CreateTourService $createTourService;
 
-    public function __construct(TourService $tourService, CreateTourService $createTourService)
+    protected CurrencyRateExchangeService $currencyRateExchangeService;
+
+
+    public function __construct(TourService $tourService, CreateTourService $createTourService, CurrencyRateExchangeService $currencyRateExchangeService)
     {
         $this->tourService = $tourService;
         $this->createTourService = $createTourService;
+        $this->currencyRateExchangeService = $currencyRateExchangeService;
     }
 
 
@@ -68,8 +71,9 @@ class TourController extends Controller
         if (Auth::user()->id != $userId || !($user->hasRole('Tour Company Owner'))) {
             return response()->json([
                 "message" => "you are not authorized to schedule this tours"
-            ]);
+            ], 400);
         }
+
         $tourData['owner_id'] = $ownerId;
         $tour = new Tour($tourData);
         if (isset($tourData['recurrence']))
@@ -105,9 +109,21 @@ class TourController extends Controller
     public function index(TourFilter $filter)
     {
         $tours = Tour::filter($filter)->get();
-        $tours = $tours->map(function ($tour) {});
 
-        return TourResource::collection(Tour::filter($filter)->get());
+        $userCurrency = Auth::user()->preferred_currency;
+
+        $currencyRateExchangeService = $this->currencyRateExchangeService;
+
+        $tours = $tours->map(function ($tour) use ($userCurrency, $currencyRateExchangeService) {
+            if ($tour->currency != $userCurrency) {
+                $money = $currencyRateExchangeService->convertPrice($tour->currency, $userCurrency, $tour->price);
+            $tour->price = $money->getAmount()->toFloat();
+                $tour->currency = $money->getCurrency();
+            }
+            return $tour;
+        });
+
+        return TourResource::collection($tours);
     }
 
     /**

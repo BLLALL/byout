@@ -28,6 +28,8 @@ class UpdateChaletRequest extends FormRequest
             'area' => ['sometimes', 'integer'],
             'bathrooms_no' => ['sometimes', 'integer'],
             'bedrooms_no' => ['sometimes', 'integer'],
+            'living_room_no' => ['sometimes', 'integer'],
+            'kitchen_no' => ['sometimes', 'integer'],
             'chalet_images' => ['sometimes', 'array'],
             'chalet_images.*' => ['sometimes', 'image', 'mimes:png,jpg,jpeg'],
             'location' => ['sometimes', 'string'],

@@ -25,7 +25,7 @@ class DriverController extends Controller
     public function store(StoreDriverRequest $request)
     {
         if (Auth::user()->hasRole('Tour Company Owner')) {
-            $driver = Driver::latest()->first();
+            $driver = $request->createUserAndDriver();
             return new DriverResource($driver);
         } else {
             return response()->json([
@@ -40,8 +40,10 @@ class DriverController extends Controller
             return response()->json([
                 "You're not authorized to store that driver."
             ]);
-
         }
+
+
+        $request->updateUserAndDriver();
         return new DriverResource($driver);
     }
 
@@ -63,4 +65,5 @@ class DriverController extends Controller
                 "message" => 'You are not authorized to delete the driver. ',
             ], 500);
         }
-    }}
+    }
+}

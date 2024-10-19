@@ -119,7 +119,7 @@ class VehicleController extends Controller
             $imageUrls = [];
             foreach ($request->file('vehicle_images') as $image) {
                 $path = $image->store('vehicle_images', 'public');
-                $imageUrls[] = 'https://fayroz97.com/real-estate/' . $path;
+                $imageUrls[] = 'https://travelersres.com/' . $path;
             }
             $validatedData['vehicle_images'] = $imageUrls;
         }

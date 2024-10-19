@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use phpDocumentor\Reflection\Types\Collection;
+use Brick\Math\RoundingMode;
+use Brick\Money\Money;
 
 class TourReservationController extends Controller
 {
@@ -51,6 +53,7 @@ class TourReservationController extends Controller
         };
     }
 
+    //not used anymore
     public function past_Reserve(Request $request)
     {
         $validated = $request->validate([
@@ -60,6 +63,7 @@ class TourReservationController extends Controller
             'user_id' => ['required', 'integer', 'exists:users,id'],
             'traveller_gender' => ['required', 'array', 'size:' . count($request->seat_positions)],
             'traveller_gender.*' => ['required', 'string', Rule::in(['male', 'female'])],
+            
         ]);
 
         $seatPositions = $validated['seat_positions'];
@@ -96,7 +100,11 @@ class TourReservationController extends Controller
                 ]);
             }
 
+
+
             $tour->tourReservations()->saveMany($reservations);
+
+           
 
             DB::commit();
 
@@ -145,8 +153,8 @@ class TourReservationController extends Controller
                         'user_id' => $reservation->user_id,
                         'position' => $reservation->seat_positions,
                     ]];
-                });
-            });
+                }); 
+            }); 
         if($reserved_seats->isEmpty()) return null;
 
         return response()->json([

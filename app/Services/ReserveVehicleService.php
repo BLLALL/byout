@@ -5,17 +5,30 @@ namespace App\Services;
 use App\Models\Tour;
 use App\Models\TourReservation;
 use App\Rules\validSeatPosition;
+use Brick\Math\RoundingMode;
+use Brick\Money\Money;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ReserveVehicleService
 {
 
+    protected PaymentService $paymentService;
+
+    public function __construct(PaymentService $paymentService)
+    {
+        $this->paymentService = $paymentService;
+    }
+
     public function createReservation(Request $request)
     {
 
         $reservationData = $request->only([
-            'tour_id', 'user_id', 'seat_positions', 'traveller_gender'
+            'tour_id',
+            'user_id',
+            'seat_positions',
+            'traveller_gender',
+            'payment_method',
         ]);
 
         $tour = Tour::find($reservationData['tour_id']);
@@ -58,6 +71,15 @@ class ReserveVehicleService
                 ]);
                 $tour->tourReservations()->saveMany($reservations);
             }
+            if ($reservationData['payment_method'] == 'fatora') {
+                foreach ($reservations as $reservation) {
+                    $this->paymentService->processPayment($reservation, [
+                        'amount' => $tour->price,
+                        'currency' => $tour->currency,
+                        'payment_method' => $reservationData['payment_method'],
+                    ]);
+                }
+            }
             DB::commit();
 
             return response()->json([
@@ -65,7 +87,6 @@ class ReserveVehicleService
                 'reserved_seats' => array_combine($seatPositions, $travellerGenders),
                 'reservation_ids' => collect($reservations)->pluck('id'),
             ], 201);
-
         } catch (\Exception $exception) {
             DB::rollBack();
             return response()->json([
@@ -79,7 +100,7 @@ class ReserveVehicleService
     public function getReservedSeats($tourId)
     {
         $tour = Tour::find($tourId);
-        if(!$tour) return "Tour u entered not valid";
+        if (!$tour) return "Tour u entered not valid";
         $reserved_seats = $tour->tourReservations
             ->flatMap(function ($reservation) {
                 $seats = $reservation->seat_positions;
@@ -91,9 +112,10 @@ class ReserveVehicleService
                     ]];
                 });
             });
-        if($reserved_seats->isEmpty()) return null;
+        if ($reserved_seats->isEmpty()) return null;
 
         return response()->json([
             'reserved_seats' => $reserved_seats,
         ]);
-    }}
+    }
+}

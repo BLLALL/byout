@@ -118,14 +118,15 @@ class HomeController extends Controller
      */
     public function update(UpdateHomeRequest $request, Home $home)
     {
-        if (Auth::user()->id === $home->owner->user_id) {
+        // if (Auth::user()->id === $home->owner->user_id) {
+        return $request->allFiles();
             $this->updateHomeService->updateHome($home, $request);
             return new HomeResource($home);
-        } else {
-            return response()->json([
-                "You are not authorized to update this resource."
-            ]);
-        }
+        // } else {
+        //     return response()->json([
+        //         "You are not authorized to update this resource."
+        //     ]);
+        // }
     }
 
     /**

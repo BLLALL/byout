@@ -40,21 +40,13 @@ class TourService
 
     public function startTour(Tour $tour)
     {
-        $vehicle = Vehicle::findOrFail($tour->vehicle_id);
-        $vehicle->status = "in use";
-        $vehicle->save();
-
         $tour->status = 'in_progress';
         $tour->save();
     }
 
     public function endTour(Tour $tour)
     {
-        $vehicle = Vehicle::find($tour->vehicle_id);
-
-        $vehicle->status = "available";
-        $vehicle->save();
-
+    
         if ($tour->tour_type == 'fixed') {
             $tour->status = "scheduled";
             $this->createRecurringTour($tour, $tour->recurrence);

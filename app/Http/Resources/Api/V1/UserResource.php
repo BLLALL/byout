@@ -37,11 +37,41 @@ class UserResource extends JsonResource
                 'identification_card' => $this->owner->identification_card,
                 'licensing' => $this->owner->licensing,
                 'hotel_license' => $this->when($this->hasRole('Hotel Owner'), function () {
-                    return $this->owner->hotel->first()->documents->where('document_type', 'hotel_license');
+
+                    if (!$this->owner) {
+                        return null;
+                    }
+                    $hotel = $this->owner->hotel;
+                    if (!$hotel) {
+                        return null;
+                    }
+                    $firstHotel = $hotel->first();
+                    if (!$firstHotel) {
+                        return null;
+                    }
+                    $documents = $firstHotel->documents;
+                    if (!$documents) {
+                        return null;
+                    }
+                    return $documents->where('document_type', 'hotel_license')->values();
                 }),
                 'property_ownership' => $this->when($this->hasRole('Hotel Owner'), function () {
-                    return $this->owner->hotel->first()->documents->where('document_type', 'property_ownership');
-                }),
+                    if (!$this->owner) {
+                        return null;
+                    }
+                    $hotel = $this->owner->hotel;
+                    if (!$hotel) {
+                        return null;
+                    }
+                    $firstHotel = $hotel->first();
+                    if (!$firstHotel) {
+                        return null;
+                    }
+                    $documents = $firstHotel->documents;
+                    if (!$documents) {
+                        return null;
+                    }
+                    return $documents->where('document_type', 'property_ownership')->values();                }),
                 'affiliation_certificate' => $this->owner->affiliation_certificate,
                 'commercial_register' => $this->owner->commercial_register,
                 'transportation_company' => $this->owner->transportation_company,

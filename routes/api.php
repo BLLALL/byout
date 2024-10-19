@@ -48,8 +48,6 @@ Route::post('/register/owner', [AuthController::class, 'registerOwner']);
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 
 
-
-
 Route::post('email-verification', [EmailVerificationController::class, 'email_verification']);
 
 
@@ -125,6 +123,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('/fatora/trigger', [FatoraController::class, 'handleTrigger'])->name('fatora.trigger');
 });
-    Route::get('/fatora/callback', [FatoraController::class, 'handleCallback'])->name('fatora.callback');
+Route::get('/fatora/callback', [FatoraController::class, 'handleCallback'])->name('fatora.callback');
 
 Route::get('rates', [ExchangeRateController::class, 'getRates']);

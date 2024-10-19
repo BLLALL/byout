@@ -21,6 +21,8 @@ return new class extends Migration
             $table->integer('area');
             $table->integer('bathrooms_no');
             $table->integer('bedrooms_no');
+            $table->integer('living_room_no')->default(1);
+            $table->integer('kitchen_no')->default(1);
             $table->json('home_images');
             $table->string('license')->nullable();
             $table->string('location');

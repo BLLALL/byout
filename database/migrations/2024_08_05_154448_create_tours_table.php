@@ -25,9 +25,9 @@
                 $table->string('time_difference');
                 $table->integer('recurrence')->nullable();
                 $table->enum('status', ['scheduled', 'in_progress', 'completed', 'cancelled']);
-                $table->foreignId('vehicle_id')->constrained('vehicles')->onDelete('cascade');
+                $table->foreignId('vehicle_id')->nullable()->constrained('vehicles')->onDelete('set null')->onUpdate('cascade');
                 $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
-                $table->foreignId('driver_id')->constrained();
+                $table->foreignId('driver_id')->nullable()->constrained('drivers')->onDelete('set null')->onUpdate('cascade');
                 $table->string('transportation_company')->nullable();
                 $table->timestamps();
             });

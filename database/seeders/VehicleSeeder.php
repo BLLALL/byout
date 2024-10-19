@@ -28,13 +28,12 @@ class VehicleSeeder extends Seeder
         }
 
         $vehicles = Vehicle::factory(3)->create([
-            'type' => 'car',
-            'seats_number' => 5
+            'type' => 'van',
+            'seats_number' => 7,
         ]);
-        $vehicles = Vehicle::factory(3)->create([
-            'type' => 'car',
-            'seats_number' => 3
-        ]);
+
+        
+
 
         //        $vehicles = Vehicle::factory(5)->create();
 //        $vehicles = Vehicle::factory(5)->create();
@@ -44,6 +43,13 @@ class VehicleSeeder extends Seeder
                 return User::factory()->create()->assignRole('Tour Company Owner')->id;
             }
         ]);
+        $tours = Tour::factory(10)->recycle($vehicles)->recycle($tourCompanyOwners)->create();
+
+        $vehicles = Vehicle::factory(3)->create([
+            'type' => 'bus',
+            'seats_number' => 24
+        ]);
+
         $tours = Tour::factory(10)->recycle($vehicles)->recycle($tourCompanyOwners)->create();
 
 

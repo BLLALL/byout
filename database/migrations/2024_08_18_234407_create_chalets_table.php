@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('area');
             $table->integer('bathrooms_no');
             $table->integer('bedrooms_no');
+            $table->integer('living_room_no')->default(1);
+            $table->integer('kitchen_no')->default(1);
             $table->json('chalet_images');
             $table->string('location');
             $table->integer('avg_rating')->default(0);

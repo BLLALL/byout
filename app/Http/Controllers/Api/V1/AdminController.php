@@ -33,11 +33,12 @@ class AdminController extends Controller
     {
         $owner = Owner::where('user_id', $user->id)->firstOrFail();
         $owner->update(['status' => 'approved']);
-        if($owner->hotel)
-            {   $hotel = $owner->hotel;
-                $hotel[0]->update(["pending" => false]);
-                dd($hotel);
-            }
+        if ($owner->user->hasRole('Hotel Owner')) {
+            $hotel = $owner->hotel;
+
+            $hotel[0]->update(["pending" => false]);
+            dd($hotel);
+        }
         return new OwnerResource($owner);
     }
 

@@ -28,15 +28,15 @@ class EndCompletedTours extends Command
      */
     public function handle(TourService $tourService)
     {
-        $now = now();
-        $fiveMinutesAgo = $now->copy()->subMinutes(5);
         $toursToEnd = Tour::where('status', 'in_progress')
-            ->whereBetween('arrival_time', [$fiveMinutesAgo, $now])
+            ->where('arrival_time', '<=', now())
             ->get();
         foreach ($toursToEnd as $tour) {
             $tourService->endTour($tour);
             $this->info("Started tour ID: {$tour->id}");
         }
+        $this->info("I'm HERE!!!");
+
     }
 
 

@@ -15,5 +15,5 @@ return [
         'password' => env('FATORA_PROD_PASSWORD'),
         'terminal_id' => env('FATORA_PROD_TERMINAL_ID'),
     ],
-    'environment' => env('FATORA_ENV', 'test'), // 'test' or 'production'
+    'environment' => env('FATORA_ENV', 'production'), // 'test' or 'production'
 ];

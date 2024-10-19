@@ -20,7 +20,7 @@
             $vehicleTypes = [
                 'car' => [3, 5],
                 'van' => [7, 14],
-                'bus' => [24, 30, 46, 49, 53, 67],
+                'bus' => [24, 30, 46, 53, 67],
             ];
             $type = fake()->randomElement(array_keys($vehicleTypes));
             $seat = fake()->randomElement($vehicleTypes[$type]);
