@@ -67,7 +67,7 @@ class VehicleController extends Controller
 
     public function update(UpdateVehicleRequest $request, Vehicle $vehicle)
     {
-        if (Auth::user()->hasRole("Tour Company Owner")) {
+        if (Auth::user()->can('Post Homes')) {
             $this->updateVehicleService->updateVehicle($vehicle, $request);
             return new VehicleResource($vehicle);
         } else {

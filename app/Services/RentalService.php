@@ -42,6 +42,10 @@ class RentalService
                     'check_out' => $checkOut,
                     'owner_id' => $rentable->owner_id ?? $rentable->hotel->owner_id,
                 ]);
+                 if ($data['payment_method'] == "paypal") 
+                   {
+                        return $rental;
+                   }
                 $paymentData = [
                     'amount' => $data['amount'],
                     'currency' => $data['currency'],
@@ -53,8 +57,8 @@ class RentalService
                 $paymentData['amount'] = $money->getMinorAmount()->toFloat();
                 $paymentData['currency'] = $money->getCurrency()->getCurrencyCode();
 
-                $this->paymentService->processPayment($rental, $paymentData);
-
+                $payment = $this->paymentService->processPayment($rental, $paymentData);
+                
                 return $rental->load('payment');
             }
             throw new Exception("This " . class_basename($rentable) . " is not available for selected dates");
@@ -69,7 +73,7 @@ class RentalService
 
         return !$this->hasOverlappingRentals($rentable, $checkIn, $checkOut);
     }
-
+    
     private function isWithinAvailableDates($rentable, Carbon $checkIn, Carbon $checkOut)
     {
         return $checkIn->gte($rentable->available_from) && $checkOut->lte($rentable->available_until);

@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class UpdateHotelService extends UpdateEntityService
 {
+    protected PendingUpdateService $pendingUpdateService;
+
+    public function __construct(PendingUpdateService $pendingUpdateService)
+    {
+        $this->pendingUpdateService = $pendingUpdateService;
+    }
+
     public function updateHotel(Hotel $hotel, Request $request)
     {
         $fillableAttributes =[
@@ -14,7 +21,7 @@ class UpdateHotelService extends UpdateEntityService
             'wifi', 'coordinates', 'pending',
         ];
 
-        $this->updateEntity($hotel, $request, $fillableAttributes, 'hotel_images');
+        return $this->updateEntity($hotel, $request, $fillableAttributes, 'hotel_images');
     }
 
 }

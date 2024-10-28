@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class HotelRoomService extends UpdateEntityService
 {
+    protected PendingUpdateService $pendingUpdateService;
+    public function __construct(PendingUpdateService $pendingUpdateService)
+    {
+        $this->pendingUpdateService = $pendingUpdateService;
+    }
+
     public function updateHotelRoom(HotelRooms $hotelRoom, Request $request)
     {
         $fillableAttributes = [
@@ -15,6 +21,6 @@ class HotelRoomService extends UpdateEntityService
             'is_reserved','available_from', 'available_until',
         ];
 
-        $this->updateEntity($hotelRoom, $request, $fillableAttributes, 'room_images');
+        return $this->pendingUpdateService->createPendingUpdate($hotelRoom, $request, $fillableAttributes, 'room_images');
     }
 }

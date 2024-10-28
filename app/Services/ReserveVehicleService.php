@@ -22,7 +22,6 @@ class ReserveVehicleService
 
     public function createReservation(Request $request)
     {
-
         $reservationData = $request->only([
             'tour_id',
             'user_id',
@@ -44,10 +43,10 @@ class ReserveVehicleService
         $invalidSeats = array_diff($seatPositions, $seatStructure);
         if (!empty($invalidSeats)) {
             return response()->json([
-                "The seat(s) you tried to reserve is/are not valid for the seat structure for this vehicle type.",
-                "Invalid seats" => array_values($invalidSeats),
-                "The seat structure for this vehicle" => $seatStructure,
-            ]);
+                "message" => "The seat(s) you tried to reserve is/are not valid for the seat structure for this vehicle type.",
+                "invalid_seats" => array_values($invalidSeats),
+                "seat_structure" => $seatStructure,
+            ], 400);
         }
 
         $conflictingSeats = $tour->tourReservations()->whereIn('seat_positions', $seatPositions)->pluck('seat_positions')->toArray();
@@ -57,65 +56,58 @@ class ReserveVehicleService
                 'conflicting_seats' => $conflictingSeats
             ], 400);
         }
+
         $travellerGenders = $reservationData['traveller_gender'];
+
         try {
             DB::beginTransaction();
 
-            $reservations = [];
+            $reservations = collect();
 
             foreach ($seatPositions as $index => $seatPosition) {
-                $reservations[] = new TourReservation([
+                $reservation = $tour->tourReservations()->create([
                     'user_id' => $reservationData['user_id'],
                     'seat_positions' => $seatPosition,
                     'gender' => $travellerGenders[$index],
                 ]);
-                $tour->tourReservations()->saveMany($reservations);
+                $reservations->push($reservation);
             }
+
+            $totalAmount = $tour->price * count($seatPositions);
+
+            $payment = null;
             if ($reservationData['payment_method'] == 'fatora') {
+                // Process payment for the first reservation, but with the total amount
+                $payment = $this->paymentService->processPayment($reservations->first(), [
+                    'amount' => $totalAmount,
+                    'currency' => $tour->currency,
+                    'payment_method' => $reservationData['payment_method'],
+                ]);
+
+                // Associate the payment with all reservations
                 foreach ($reservations as $reservation) {
-                    $this->paymentService->processPayment($reservation, [
-                        'amount' => $tour->price,
-                        'currency' => $tour->currency,
-                        'payment_method' => $reservationData['payment_method'],
-                    ]);
+                    $reservation->payment()->save($payment);
                 }
             }
+
             DB::commit();
 
             return response()->json([
                 'message' => 'Seats reserved successfully',
                 'reserved_seats' => array_combine($seatPositions, $travellerGenders),
-                'reservation_ids' => collect($reservations)->pluck('id'),
+                'reservation_ids' => $reservations->pluck('id'),
+                'payment_id' => $payment?->payment_id,
+                'amount' => $payment?->amount,
+                'payment_url' => $payment?->payment_url,
+                'currency' => $payment?->currency,
+
             ], 201);
         } catch (\Exception $exception) {
             DB::rollBack();
             return response()->json([
                 'message' => 'Failed to reserve seats',
-                'error' => $exception->getMessage()
+                'error' => $exception->getMessage(),
             ], 500);
         }
-    }
-
-
-    public function getReservedSeats($tourId)
-    {
-        $tour = Tour::find($tourId);
-        if (!$tour) return "Tour u entered not valid";
-        $reserved_seats = $tour->tourReservations
-            ->flatMap(function ($reservation) {
-                $seats = $reservation->seat_positions;
-                return collect($seats)->mapWithKeys(function ($seat) use ($reservation) {
-                    return [$seat => [
-                        'gender' => $reservation->gender,
-                        'user_id' => $reservation->user_id,
-                        'position' => $reservation->seat_positions,
-                    ]];
-                });
-            });
-        if ($reserved_seats->isEmpty()) return null;
-
-        return response()->json([
-            'reserved_seats' => $reserved_seats,
-        ]);
     }
 }

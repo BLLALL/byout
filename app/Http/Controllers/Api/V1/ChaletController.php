@@ -12,6 +12,7 @@ use App\Services\CreateChaletService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\RentEntityRequest;
+use App\Http\Resources\Api\V1\PendingUpdateResource;
 use Illuminate\Support\Facades\Auth;
 use App\Services\CurrencyRateExchangeService;
 use App\Services\RentalService;
@@ -94,8 +95,12 @@ class ChaletController extends Controller
     public function update(UpdateChaletRequest $request, Chalet $chalet)
     {
         if (Auth::user()->id === $chalet->owner->user_id) {
-            $this->chaletService->updateChalet($chalet, $request);
-            return new ChaletResource($chalet);
+            $pendingUpdate = $this->chaletService->updateChalet($chalet, $request);
+            
+            return response()->json([
+                'message' => 'Update request submitted for approval',
+                'pending_update' => new PendingUpdateResource($pendingUpdate)
+            ]);
         } else {
             return response()->json([
                 "You are not authorized to update this resource."

@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class UpdateChaletService extends UpdateEntityService
 {
+    protected PendingUpdateService $pendingUpdateService;
+
+    public function __construct(PendingUpdateService $pendingUpdateService)
+    {
+        $this->pendingUpdateService = $pendingUpdateService;
+    }
+
     public function updateChalet(Chalet $chalet, Request $request)
     {
         $fillableAttributes = [
@@ -18,6 +25,6 @@ class UpdateChaletService extends UpdateEntityService
             'description', 'is_reserved', 'available_from', 'available_until', 'is_available'
         ];
 
-        $this->updateEntity($chalet, $request, $fillableAttributes, 'chalet_images');
+        return $this->pendingUpdateService->createPendingUpdate($chalet, $request, $fillableAttributes, 'chalet_images');
     }
 }

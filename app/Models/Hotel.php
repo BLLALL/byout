@@ -51,10 +51,11 @@ class Hotel extends Model
         return $this->hasMany(HotelRooms::class);
     }
 
-    public function setRoomsCount()
+    public function pendingUpdates() 
     {
-        $this->hotel_rooms = $this->hotelRooms()->count();
+        return $this->morphMany(PendingUpdates::class, 'updatable');
     }
+    
 
     public function getAvgRatingAttribute($value)
     {

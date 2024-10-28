@@ -9,12 +9,12 @@ use App\Http\Requests\Api\V1\storeHomeRequest;
 use App\Http\Requests\Api\V1\UpdateHomeRequest;
 use App\Http\Resources\Api\V1\HomeResource;
 use App\Http\Resources\Api\V1\RentalResource;
+use App\Http\Resources\Api\V1\PendingUpdateResource;
 use App\Models\Home;
 use App\Models\Owner;
 use App\Services\CreateHomeService;
 use App\Services\UpdateHomeService;
 use App\traits\apiResponses;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function Laravel\Prompts\error;
 use App\Services\CurrencyRateExchangeService;
@@ -110,23 +110,24 @@ class HomeController extends Controller
         return new HomeResource($home);
     }
 
-
-
     /**
      * Update a specific home.
      * @group Managing Homes
      */
     public function update(UpdateHomeRequest $request, Home $home)
     {
-        // if (Auth::user()->id === $home->owner->user_id) {
-        return $request->allFiles();
-            $this->updateHomeService->updateHome($home, $request);
-            return new HomeResource($home);
-        // } else {
-        //     return response()->json([
-        //         "You are not authorized to update this resource."
-        //     ]);
-        // }
+        if (Auth::user()->can('Update Home')) {
+            $pendingUpdate = $this->updateHomeService->updateHome($home, $request);
+
+            return response()->json([
+                'message' => 'Update request submitted for approval',
+                'pending_update' => new PendingUpdateResource($pendingUpdate)
+            ]);
+        } else {
+            return response()->json([
+                "You are not authorized to update this resource."
+            ]);
+        }
     }
 
     /**

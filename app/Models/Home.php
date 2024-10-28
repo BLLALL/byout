@@ -46,6 +46,11 @@ class Home extends Model
         return $this->morphMany(Rental::class, 'rentable');
     }
 
+    public function pendingUpdates() 
+    {
+        return $this->morphMany(PendingUpdates::class, 'updatable');
+    }
+
     public function scopeFilter(Builder $builder, QueryFilter $filter)
     {
         return $filter->apply($builder);

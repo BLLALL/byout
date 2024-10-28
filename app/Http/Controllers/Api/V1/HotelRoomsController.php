@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\filters\HotelRoomsFilter;
 use App\Http\Requests\Api\V1\StoreHotelRoomRequest;
 use App\Http\Requests\Api\V1\UpdateHotelRoomRequest;
-use App\Http\Resources\Api\V1\HotelResource;
 use App\Http\Resources\Api\V1\HotelRoomsResource;
+use App\Http\Resources\Api\V1\PendingUpdateResource;
 use App\Models\Hotel;
 use App\Models\HotelRooms;
 use App\Models\Owner;
@@ -56,8 +56,12 @@ class HotelRoomsController extends Controller
     {
         $room = HotelRooms::findOrFail($roomId);
         if (Auth::user()->id === $room->hotel->owner->user_id) {
-            $this->updateHotelRoomService->updateHotelRoom($room, $request);
-            return new HotelRoomsResource($room);
+            $pendingUpdate = $this->updateHotelRoomService->updateHotelRoom($room, $request);
+            
+            return response()->json([
+                'message' => 'Update request submitted for approval',
+                'pending_update' => new PendingUpdateResource($pendingUpdate)
+            ]);
         } else {
             return response()->json([
                 "You are not authorized to update this resource."

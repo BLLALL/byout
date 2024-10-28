@@ -104,6 +104,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/create-payment', [FatoraController::class, 'createPayment']);
         Route::get('/payment-status/{paymentId}', [FatoraController::class, 'getPaymentStatus']);
         Route::post('/cancel-payment', [FatoraController::class, 'cancelPayment']);
+        Route::get('callback', [FatoraController::class, 'handleCallback'])->name('fatora.callback');
     });
 
     Route::post('/approve-owner/{user}', [AdminController::class, 'approveOwner']);
@@ -113,16 +114,37 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/approve-hotel/{hotel}', [AdminController::class, 'approveHotel']);
     Route::post('/approve-chalet/{chalet}', [AdminController::class, 'approveChalet']);
 
-    Route::delete('/reject-home/{home}', [AdminController::class, 'rejectHome']);
-    Route::delete('/reject-hotel/{hotel}', [AdminController::class, 'rejectHotel']);
-    Route::delete('/reject-chalet/{chalet}', [AdminController::class, 'rejectChalet']);
+    Route::middleware('role:Super Admin')->group(function () {
+        Route::post('/approve-owner/{user}', [AdminController::class, 'approveOwner']);
+        Route::post('/reject-owner/{user}', [AdminController::class, 'rejectOwner']);
 
-    Route::get('app-data', [AdminController::class, 'appData']);
-    Route::get('owners/{id}', [AdminController::class, 'getOwner']);
-    Route::get('owners', [AdminController::class, 'getOwners']);
+        Route::post('/approve-home/{home}', [AdminController::class, 'approveHome']);
+        Route::post('/approve-hotel/{hotel}', [AdminController::class, 'approveHotel']);
+        Route::post('/approve-chalet/{chalet}', [AdminController::class, 'approveChalet']);
 
-    Route::post('/fatora/trigger', [FatoraController::class, 'handleTrigger'])->name('fatora.trigger');
+        Route::get('pending-updates', [AdminController::class, 'getPendingUpdates']);
+        Route::post('pending-updates/{pendingUpdate}/approve', [AdminController::class, 'approveUpdate']);
+        Route::post('pending-updates/{pendingUpdate}/reject', [AdminController::class, 'rejectUpdate']);
+
+        Route::delete('/reject-home/{home}', [AdminController::class, 'rejectHome']);
+        Route::delete('/reject-hotel/{hotel}', [AdminController::class, 'rejectHotel']);
+        Route::delete('/reject-chalet/{chalet}', [AdminController::class, 'rejectChalet']);
+
+        Route::get('app-data', [AdminController::class, 'appData']);
+        Route::get('owners/{id}', [AdminController::class, 'getOwner']);
+        Route::get('owners', [AdminController::class, 'getOwners']);
+
+        Route::delete('/reject-home/{home}', [AdminController::class, 'rejectHome']);
+        Route::delete('/reject-hotel/{hotel}', [AdminController::class, 'rejectHotel']);
+        Route::delete('/reject-chalet/{chalet}', [AdminController::class, 'rejectChalet']);
+
+        Route::get('app-data', [AdminController::class, 'appData']);
+        Route::get('owners/{id}', [AdminController::class, 'getOwner']);
+        Route::get('owners', [AdminController::class, 'getOwners']);
+    });
+    
+
+
 });
-Route::get('/fatora/callback', [FatoraController::class, 'handleCallback'])->name('fatora.callback');
 
 Route::get('rates', [ExchangeRateController::class, 'getRates']);

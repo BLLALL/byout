@@ -26,10 +26,15 @@ class HotelRooms extends Model
     public function hotel() {
         return $this->belongsTo(Hotel::class);
     }
-
     
     public function rentals()
     {
         return $this->morphMany(Rental::class, 'rentable');
     }
+
+    public function pendingUpdates() 
+    {
+        return $this->morphMany(PendingUpdates::class, 'updatable');
+    }
+
 }

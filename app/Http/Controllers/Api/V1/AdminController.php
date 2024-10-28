@@ -7,27 +7,33 @@ use App\Http\Resources\Api\V1\ChaletResource;
 use App\Http\Resources\Api\V1\HomeResource;
 use App\Http\Resources\Api\V1\HotelResource;
 use App\Http\Resources\Api\V1\OwnerResource;
+use App\Http\Resources\Api\V1\PendingUpdateResource;
 use App\Models\Chalet;
 use App\Models\Driver;
 use App\Models\Home;
 use App\Models\Hotel;
 use App\Models\Owner;
+use App\Models\PendingUpdates;
 use App\Models\Rental;
 use App\Models\Tour;
 use App\Models\TourReservation;
 use App\Models\User;
 use App\Models\Vehicle;
 use App\Services\OwnerDetailsService;
+use App\Services\PendingUpdateService;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
 
     protected OwnerDetailsService $ownerDetailsService;
+    protected PendingUpdateService $pendingUpdateService;
 
-    public function __construct(OwnerDetailsService $ownerDetailsService)
+    public function __construct(OwnerDetailsService $ownerDetailsService, PendingUpdateService $pendingUpdateService)
     {
         $this->ownerDetailsService = $ownerDetailsService;
+        $this->pendingUpdateService = $pendingUpdateService;
     }
     public function approveOwner(User $user)
     {
@@ -66,6 +72,43 @@ class AdminController extends Controller
         $chalet->update(['pending' => false]);
         return new ChaletResource($chalet);
     }
+
+    public function getPendingUpdates()
+    {
+        $pendingUpdates = PendingUpdates::with(['updatable', 'owner'])->get();
+        return PendingUpdateResource::collection($pendingUpdates);
+    }
+
+    public function approveUpdate(PendingUpdates $pendingUpdate)
+    {
+        DB::beginTransaction();
+        try {
+            $updatedEntity = $this->pendingUpdateService->applyPendingUpdate($pendingUpdate);
+            $resourceClass = 'App\\Http\\Resources\\Api\\V1\\' . class_basename($updatedEntity) . 'Resource';
+            DB::commit();
+            return response()->json([
+                'message' => 'Update approved successfully',
+                class_basename($updatedEntity) => new $resourceClass($updatedEntity),
+            ]);
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
+    public function rejectUpdate(PendingUpdates $pendingUpdate)
+    {
+        DB::beginTransaction();
+        try {
+            $pendingUpdate->delete();
+            DB::commit();
+            return response()->json(['message' => 'Update rejected successfully']);
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
 
     public function rejectHome(Home $home)
     {
