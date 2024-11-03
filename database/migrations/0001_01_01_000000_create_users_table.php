@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('current_job')->nullable();
             $table->string('profile_image')->nullable();
             $table->string('preferred_currency')->default('SYP');
-            // $table->string('timezone');
+            $table->string('timezone')->default('UTC');
             $table->rememberToken();
             $table->timestamps();
         });

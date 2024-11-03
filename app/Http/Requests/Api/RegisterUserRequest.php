@@ -28,8 +28,9 @@ class RegisterUserRequest extends FormRequest
             'password' => ['required', 'string', 'min:8'],
             'phone_number' => ['required', 'numeric'],
             'age' => ['required','numeric', 'max:100', 'min:10'],
-            'marital_status' => ['required', 'string', Rule::in(["single", "married", "divorced"])],
-            'current_job' => ['required','string'],
+            'marital_status' => [ 'required', 'string', Rule::in(["single", "married", "divorced"])],
+            'current_job' => [ 'required','string' ],
+            'timezone' => ['required', Rule::in((timezone_identifiers_list()))],
         ];
     }
 }

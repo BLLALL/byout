@@ -18,6 +18,7 @@ return new class extends Migration
             $table->datetime('check_in');
             $table->datetime('check_out');
             $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
+            $table->string( 'status')->default('pending');
             $table->timestamps();
         });
     }

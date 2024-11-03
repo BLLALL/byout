@@ -116,8 +116,14 @@ class FatoraController extends Controller
 
         $mappedStatus = $statusMap[$paymentStatus];
         $payment->payment_status = $mappedStatus;
+
         $payment->save();
 
+        if ($mappedStatus === 'completed') {
+            $rental = $payment->payable;
+            $rental->update(['status' => 'confirmed']);
+            $rental->save();
+        }
         Log::info("Payment status updated to '$mappedStatus' for paymentId: $paymentId");
 
         return response()->json(['message' => 'Trigger processed successfully'], 200);

@@ -10,9 +10,7 @@ class UserFilter extends QueryFilter {
 
     public function status($value)
     {
-        return $this->builder->whereHas('owner', function ($query) use ($value) {
-            $query->where('status', $value);
-        });
+        return $this->builder->whereRelation('owner', 'status', $value);
     }
 
 

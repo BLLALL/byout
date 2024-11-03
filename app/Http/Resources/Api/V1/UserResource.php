@@ -25,6 +25,7 @@ class UserResource extends JsonResource
             'current_job' => $this->current_job,
             'profile_image' => $this->profile_image,
             'preferred_currency' => $this->preferred_currency,
+            'timezone' => $this->timezone,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'token' => $this->token,
@@ -71,7 +72,7 @@ class UserResource extends JsonResource
                     if (!$documents) {
                         return null;
                     }
-                    return $documents->where('document_type', 'property_ownership')->values();                }),
+                    return $documents->where('document_type', 'property_ownership')->values();}),
                 'affiliation_certificate' => $this->owner->affiliation_certificate,
                 'commercial_register' => $this->owner->commercial_register,
                 'transportation_company' => $this->owner->transportation_company,

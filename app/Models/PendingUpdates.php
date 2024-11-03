@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\filters\QueryFilter;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +13,11 @@ class PendingUpdates extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function scopeFilter(Builder $builder, QueryFilter $filter)
+    {
+        return $filter->apply($builder);
+    }
 
     protected $casts = [
         'changes' => 'array'

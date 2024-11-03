@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\filters\PendingUpdatesFilter;
 use App\Http\Resources\Api\V1\ChaletResource;
 use App\Http\Resources\Api\V1\HomeResource;
 use App\Http\Resources\Api\V1\HotelResource;
@@ -73,9 +74,9 @@ class AdminController extends Controller
         return new ChaletResource($chalet);
     }
 
-    public function getPendingUpdates()
+    public function getPendingUpdates(PendingUpdatesFilter $filter)
     {
-        $pendingUpdates = PendingUpdates::with(['updatable', 'owner'])->get();
+        $pendingUpdates = PendingUpdates::with(['updatable', 'owner'])->filter($filter)->get();
         return PendingUpdateResource::collection($pendingUpdates);
     }
 

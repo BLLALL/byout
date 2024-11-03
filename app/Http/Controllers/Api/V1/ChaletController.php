@@ -67,20 +67,20 @@ class ChaletController extends Controller
         return new ChaletResource($chalet);
     }
 
-    public function rent(RentEntityRequest $request, Chalet $chalet)
-    {
-        try {
-            $this->rentalService->createRental($chalet, $request);
-            return response()->json([
-                "message" => "Chalet rented successfully"
-            ], 201);
-        } catch (\Exception $e) {
-            return response()->json([
-                "message" => "Failed to rent chalet",
-                "error" => $e->getMessage(),
-            ], 500);
-        }
-    }
+//    public function rent(RentEntityRequest $request, Chalet $chalet)
+//    {
+//        try {
+//            $this->rentalService->createRental($chalet, $request);
+//            return response()->json([
+//                "message" => "Chalet rented successfully"
+//            ], 201);
+//        } catch (\Exception $e) {
+//            return response()->json([
+//                "message" => "Failed to rent chalet",
+//                "error" => $e->getMessage(),
+//            ], 500);
+//        }
+//    }
 
     public function store(StoreChaletRequest $request)
     {
@@ -96,7 +96,7 @@ class ChaletController extends Controller
     {
         if (Auth::user()->id === $chalet->owner->user_id) {
             $pendingUpdate = $this->chaletService->updateChalet($chalet, $request);
-            
+
             return response()->json([
                 'message' => 'Update request submitted for approval',
                 'pending_update' => new PendingUpdateResource($pendingUpdate)

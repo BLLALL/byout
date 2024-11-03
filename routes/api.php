@@ -105,6 +105,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/payment-status/{paymentId}', [FatoraController::class, 'getPaymentStatus']);
         Route::post('/cancel-payment', [FatoraController::class, 'cancelPayment']);
         Route::get('callback', [FatoraController::class, 'handleCallback'])->name('fatora.callback');
+        Route::get('trigger', [FatoraController::class, 'handleTrigger'])->name('fatora.trigger');
+
     });
 
     Route::post('/approve-owner/{user}', [AdminController::class, 'approveOwner']);
@@ -142,7 +144,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('owners/{id}', [AdminController::class, 'getOwner']);
         Route::get('owners', [AdminController::class, 'getOwners']);
     });
-    
+
 
 
 });

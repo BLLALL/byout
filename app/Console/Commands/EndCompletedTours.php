@@ -35,7 +35,6 @@ class EndCompletedTours extends Command
             $tourService->endTour($tour);
             $this->info("Started tour ID: {$tour->id}");
         }
-        $this->info("I'm HERE!!!");
 
     }
 

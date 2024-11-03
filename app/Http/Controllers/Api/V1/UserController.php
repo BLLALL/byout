@@ -17,7 +17,12 @@ class UserController extends Controller
 {
     use apiResponses;
     public function index(UserFilter $filter){
-        return UserResource::collection(User::filter($filter)->get());
+        $hotelOwnersWithNoHotels = User::whereHas('owner', function($query) {
+            $query->whereDoesntHave('hotel');
+        })->pluck('id');
+       
+        $filteredUsers = User::filter($filter)->whereNotIn('id', $hotelOwnersWithNoHotels)->get();
+        return UserResource::collection($filteredUsers);
     }
     public function show(User $user) {
         return new UserResource($user->load(['roles', 'roles.permissions']));

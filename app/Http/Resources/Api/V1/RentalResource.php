@@ -16,7 +16,7 @@ class RentalResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        
+
         return [
             "id" => $this->id,
             "rentable_id" => $this->rentable_id,
@@ -26,6 +26,7 @@ class RentalResource extends JsonResource
             "check_out" => $this->check_out->format('Y-m-d'),
             "owner_id" => $this->owner->user_id,
             "customer_id" => $this->user_id,
+            "rent_status" => $this->status,
             $this->mergeWhen(!empty($this->payment) && isset($this->payment?->amount, $this->payment?->currency), function () {
                 $money = Money::ofMinor($this->payment?->amount, $this->payment?->currency, roundingMode: RoundingMode::HALF_UP);
                 return [

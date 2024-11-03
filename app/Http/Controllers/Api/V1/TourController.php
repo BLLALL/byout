@@ -14,6 +14,7 @@ use App\Services\TourService;
 use App\traits\apiResponses;
 use Illuminate\Support\Facades\Auth;
 use App\Services\CurrencyRateExchangeService;
+use Carbon\Carbon;
 
 class TourController extends Controller
 {
@@ -63,6 +64,11 @@ class TourController extends Controller
             'driver_id'
         ]);
 
+        $userTimeZone = Auth::user()->timezone;
+
+        $tourData['departure_time'] = Carbon::parse($request->departure_time, $userTimeZone)->utc();
+        $tourData['arrival_time'] = Carbon::parse($request->arrival_time, $userTimeZone)->utc();
+
         $vehicle = Vehicle::findOrFail($tourData['vehicle_id']);
         $ownerId = Auth::user()->owner->id;
         $userId = $vehicle->owner->user_id;
@@ -108,19 +114,24 @@ class TourController extends Controller
      */
     public function index(TourFilter $filter)
     {
+
+        $userTimezone = Auth::user()->timezone;
+
         $tours = Tour::filter($filter)->get();
 
         $userCurrency = Auth::user()->preferred_currency;
 
         $currencyRateExchangeService = $this->currencyRateExchangeService;
 
-        $tours = $tours->map(function ($tour) use ($userCurrency, $currencyRateExchangeService) {
+        $tours = $tours->map(function ($tour) use ($userCurrency, $currencyRateExchangeService, $userTimezone) {
             if ($tour->currency != $userCurrency) {
                 $money = $currencyRateExchangeService->convertPrice($tour->currency, $userCurrency, $tour->price);
-            $tour->price = $money->getAmount()->toFloat();
+                $tour->price = $money->getAmount()->toFloat();
                 $tour->currency = $money->getCurrency();
             }
-            return $tour;
+            // $tour->departure_time = $tour->departure_time->setTimezone($userTimezone);
+            // $tour->arrival_time = $tour->arrival_time->setTimezone($userTimezone);
+            return $tour;   
         });
 
         return TourResource::collection($tours);
@@ -135,6 +146,10 @@ class TourController extends Controller
      */
     public function show(Tour $tour)
     {
+        $userTimezone = Auth::user()->timezone;
+    
+        $tour->departure_time = Carbon::parse($tour->departure_time)->timezone($userTimezone);
+        $tour->arrival_time = Carbon::parse($tour->arrival_time)->timezone($userTimezone);
         return new TourResource($tour);
     }
 

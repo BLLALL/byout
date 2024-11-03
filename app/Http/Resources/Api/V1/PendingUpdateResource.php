@@ -19,7 +19,7 @@ class PendingUpdateResource extends JsonResource
         if($updatable == 'HotelRooms') $updatable = 'Hotel Room';
         return [
             'id' => $this->id,
-            'updatable_type' => $this->updatable_type,
+            'updatable_type' => class_basename($this->updatable_type),
             'updatable_id' => $this->updatable_id,
             'changes' => $this->changes,
             'owner' => new OwnerResource($this->owner),

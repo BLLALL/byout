@@ -37,4 +37,6 @@ class HotelRooms extends Model
         return $this->morphMany(PendingUpdates::class, 'updatable');
     }
 
+    
+
 }

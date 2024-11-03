@@ -14,7 +14,6 @@ class PendingUpdateService extends UpdateEntityService
         $changes = [];
 
         foreach ($data as $key => $value) {
-            if ($key == 'new_images' || $key == 'remove_images') continue;
             if ($entity->$key != $value) {
                 $changes[$key] = $value;
             }
@@ -39,11 +38,15 @@ class PendingUpdateService extends UpdateEntityService
         $pendingUpdates = $entity->pendingUpdates->first(); 
 
         if ($pendingUpdates) {
-            $pendingUpdates->replace_existing($changes);
+            $pendingUpdates->update([
+                'changes' => $changes,
+                'owner_id' => $entity->owner_id ?? $entity->hotel->owner_id,
+            ]);
+            $pendingUpdates->save();
         } else {
             $pendingUpdates = $entity->pendingUpdates()->create([
                 'changes' => $changes,
-                'owner_id' => $entity->owner_id,
+                'owner_id' => $entity->owner_id ?? $entity->hotel->owner_id,
             ]);
         }
 

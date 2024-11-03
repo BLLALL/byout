@@ -19,7 +19,8 @@
         "laravel/tinker": "^2.9",
         "php-http/cache-plugin": "^2.0",
         "spatie/laravel-permission": "^6.9",
-        "worksome/exchange": "^2.1"
+        "worksome/exchange": "^2.1",
+        "ext-cassandra": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

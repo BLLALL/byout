@@ -46,7 +46,7 @@ class AuthController extends Controller
         
         $userData = $request->only([
             "name", "email", "password", "phone_number", "age",
-            "marital_status", "current_job"
+            "marital_status", "current_job", "timezone"
         ]);
 
         $user = User::create($userData);
@@ -78,7 +78,7 @@ class AuthController extends Controller
         DB::beginTransaction();
 
         try {
-            $userData = $request->only(['name', 'email', 'password', 'phone_number']);
+            $userData = $request->only(['name', 'email', 'password', 'phone_number', 'timezone']);
 
             $user = User::create($userData);
 
@@ -102,6 +102,7 @@ class AuthController extends Controller
                 now()->addDays(30))->plainTextToken;
 
             $role = $request->input('role');
+            
             $user->assignRole($role);
             $owner['role'] = $owner->user->role = $request->input('role');
             $owner['token'] = $token;

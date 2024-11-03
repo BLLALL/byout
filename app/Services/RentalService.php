@@ -2,11 +2,17 @@
 
 namespace App\Services;
 
+use App\DTOs\RentalDTO;
+use App\Models\Chalet;
+use App\Models\Home;
+use App\Models\HotelRooms;
 use App\Models\Owner;
 use App\Models\Rental;
 use App\Models\User;
+use Cassandra\Exception\UnavailableException;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -26,45 +32,54 @@ class RentalService
         $this->paymentService = $paymentService;
     }
 
-    public function createRental(Model $rentable, Request $request)
+    /**
+     * @throws Exception
+     */
+    public function initiateRental(RentalDTO $rentalDTO): Rental
     {
-        $data = $request->input();
+        $rentable = $this->getRentableModel($rentalDTO->rentable_type, $rentalDTO->rentable_id);
+        if (!$rentable) {
+            throw new ModelNotFoundException("Invalid rentable type or ID");
+        }
 
-        $checkIn = Carbon::parse($data["check_in"]);
-        $checkOut = Carbon::parse($data["check_out"]);
-        return DB::transaction(function () use ($data, $rentable, $checkIn, $checkOut) {
-            if ($this->isAvailable($rentable, $checkIn, $checkOut)) {
-                $rental = Rental::create([
-                    "rentable_id" => $rentable->id,
-                    "rentable_type" => get_class($rentable),
-                    'user_id' => $data['user_id'],
-                    'check_in' => $checkIn,
-                    'check_out' => $checkOut,
-                    'owner_id' => $rentable->owner_id ?? $rentable->hotel->owner_id,
-                ]);
-                 if ($data['payment_method'] == "paypal") 
-                   {
-                        return $rental;
-                   }
-                $paymentData = [
-                    'amount' => $data['amount'],
-                    'currency' => $data['currency'],
-                    'payment_method' => $data['payment_method'],
-                    'payment_status' => 'pending',
-                ];
-                
-                $money = Money::of($paymentData['amount'], $paymentData['currency']);
-                $paymentData['amount'] = $money->getMinorAmount()->toFloat();
-                $paymentData['currency'] = $money->getCurrency()->getCurrencyCode();
+        if (!$this->isAvailable($rentable, $rentalDTO->check_in, $rentalDTO->check_out)) {
+            throw new Exception("The rentable is not available for the specified dates.");
+        }
+        return DB::transaction(function () use ($rentable, $rentalDTO) {
 
-                $payment = $this->paymentService->processPayment($rental, $paymentData);
-                
-                return $rental->load('payment');
+            $rental = Rental::create([
+                "rentable_id" => $rentable->id,
+                "rentable_type" => get_class($rentable),
+                'user_id' => $rentalDTO->user_id,
+                'check_in' => $rentalDTO->check_in,
+                'check_out' => $rentalDTO->check_out,
+                'owner_id' => $rentable->owner_id ?? $rentable->hotel->owner_id,
+                'status' => 'pending',
+            ]);
+            if ($rentalDTO->payment_method == "paypal") {
+                return $rental;
             }
-            throw new Exception("This " . class_basename($rentable) . " is not available for selected dates");
+            $paymentData = [
+                'payment_method' => $rentalDTO->payment_method,
+                'payment_status' => 'pending',
+            ];
+            $amount = $rentalDTO->check_in->diffInDays($rentalDTO->check_out) * $rentable->price + 1;
+            $money = Money::of($amount, $rentalDTO->currency);
+            $paymentData['amount'] = $money->getMinorAmount()->toFloat();
+            $paymentData['currency'] = $money->getCurrency()->getCurrencyCode();
+
+            $payment = $this->paymentService->processPayment($rental, $paymentData);
+
+            return $rental->load('payment');
         });
     }
 
+    public function confirmRental(Rental $rental): void
+    {
+        if ($rental->payment->status === 'completed') {
+            $rental->update(['status' => 'confirmed']);
+        }
+    }
     private function isAvailable($rentable, Carbon $checkIn, Carbon $checkOut)
     {
         if (!$this->isWithinAvailableDates($rentable, $checkIn, $checkOut)) {
@@ -73,8 +88,9 @@ class RentalService
 
         return !$this->hasOverlappingRentals($rentable, $checkIn, $checkOut);
     }
-    
-    private function isWithinAvailableDates($rentable, Carbon $checkIn, Carbon $checkOut)
+
+    private
+    function isWithinAvailableDates($rentable, Carbon $checkIn, Carbon $checkOut)
     {
         return $checkIn->gte($rentable->available_from) && $checkOut->lte($rentable->available_until);
     }
@@ -221,5 +237,19 @@ class RentalService
                 $subQuery->where('user_id', $ownerId);
             });
         })->get();
+    }
+
+    /**
+     * @throws Exception
+     */
+    public
+    function getRentableModel(string $type, int $id)
+    {
+        return match ($type) {
+            'Home' => (new \App\Models\Home)->find($id),
+            'Chalet' => (new \App\Models\Chalet)->find($id),
+            'Hotel Room' => (new \App\Models\HotelRooms)->find($id),
+            default => throw new Exception('Invalid rentable type ' . $type),
+        };
     }
 }
