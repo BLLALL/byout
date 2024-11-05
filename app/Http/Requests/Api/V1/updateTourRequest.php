@@ -28,7 +28,7 @@ class updateTourRequest extends FormRequest
             'destination' => ['sometimes', 'string', 'max:255'],
             'recurrence' => ['nullable', 'sometimes', 'integer', 'required_if:tour_type,fixed'],
             'transportation_company' => ['sometimes', 'integer', 'exists:tour_companies,id'],
-            "departure_time" => ["sometimes", "date"],
+            "departure_time" => ["sometimes", "date", "after_or_equal:now"],
             'arrival_time' => ["sometimes", "date", "after:departure_time"],
             'vehicle_id' => ['sometimes', 'integer', 'exists:vehicles,id'],
             'driver_id' => [ 'sometimes', 'exists:drivers,id'],

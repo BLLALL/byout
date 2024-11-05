@@ -30,15 +30,24 @@ class HotelResource extends JsonResource
             'rooms' => $this->when($this->hotelRooms, function () {
                 return HotelRoomsResource::collection($this->hotelRooms);
             }),
-            'documents' => $this->documents->map(function ($document) {
-                return [
-                    'id' => $document->id,
-                    'type' => $document->document_type,
-                    'file_path' => $document->file_path,
-                    'uploaded_at' => $document->uploaded_at,
-                ];
-            }),
+        
             'pending' => $this->pending,
+            'property_ownership' => $this->when(
+                $this->documents,
+                fn() => optional($this->documents->firstWhere('document_type', 'property_ownership'))->file_path
+            ),
+            'agreement_contract' => $this->when(
+                $this->documents,
+                fn() => optional($this->documents->firstWhere('document_type', 'agreement_contract'))->file_path
+            ),
+            'signatory_authorization' => $this->when(
+                $this->documents,
+                fn() => optional($this->documents->firstWhere('document_type', 'signatory_authorization'))->file_path
+            ),
+            'hotel_license' => $this->when(
+                $this->documents,
+                fn() => optional($this->documents->firstWhere('document_type', 'hotel_license'))->file_path
+            ),
         ];
     }
 }

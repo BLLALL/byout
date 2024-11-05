@@ -4,10 +4,12 @@ namespace App\Services;
 
 use App\Models\Home;
 use Illuminate\Http\Request;
+use App\traits\HandlesDiscount;
 use Illuminate\Support\Facades\Storage;
 
 class UpdateHomeService extends UpdateEntityService
 {
+    use HandlesDiscount;
     protected PendingUpdateService $pendingUpdateService;
     public function __construct(PendingUpdateService $pendingUpdateService)
     {
@@ -19,6 +21,7 @@ class UpdateHomeService extends UpdateEntityService
             'title',
             'description',
             'price',
+            'discount_price',
             'area',
             'bathrooms_no',
             'bedrooms_no',
@@ -29,7 +32,10 @@ class UpdateHomeService extends UpdateEntityService
             'living_room_no',
             'kitchen_no',
         ];
+        $data = $request->only($fillableAttributes);
+        $this->handlePriceUpdate($home, $data);
+        $this->setCurrency($data, $home->owner);
 
-       return  $this->pendingUpdateService->createPendingUpdate($home, $request, $fillableAttributes, 'home_images');
+        return  $this->pendingUpdateService->createPendingUpdate($home, $data, 'home_images');
     }
 }

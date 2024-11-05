@@ -46,7 +46,7 @@ class TourService
 
     public function endTour(Tour $tour)
     {
-    
+        Log::info('KK');
         if ($tour->tour_type == 'fixed') {
             $tour->status = "scheduled";
             $this->createRecurringTour($tour, $tour->recurrence);

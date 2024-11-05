@@ -30,52 +30,11 @@ class UserResource extends JsonResource
             'updated_at' => $this->updated_at,
             'token' => $this->token,
             'role' => $this->roles->pluck('name')->first(),
-            'hotel' => ($this?->owner?->hotel)->count() ? ($this->owner->hotel)->first() : null,
-        ], (array) $this->when($this->hasAnyRole(['Home Owner', 'Hotel Owner', 'Chalet Owner', 'Tour Company Owner']), function () {
+            'hotel' => ($this->owner?->hotel->count() ?? 0) > 0 ? new HotelResource($this->owner->hotel->first()) : null,
+        ], (array) $this->when($this->hasAnyRole(['Home Owner', 'Hotel Owner', 'Chalet Owner', 'Tour Company Owner']),
+        function () {
             return [
-                'owner_id' => $this->owner->id,
                 'organization' => $this->owner->organization,
-                'identification_card' => $this->owner->identification_card,
-                'licensing' => $this->owner->licensing,
-                'hotel_license' => $this->when($this->hasRole('Hotel Owner'), function () {
-
-                    if (!$this->owner) {
-                        return null;
-                    }
-                    $hotel = $this->owner->hotel;
-                    if (!$hotel) {
-                        return null;
-                    }
-                    $firstHotel = $hotel->first();
-                    if (!$firstHotel) {
-                        return null;
-                    }
-                    $documents = $firstHotel->documents;
-                    if (!$documents) {
-                        return null;
-                    }
-                    return $documents->where('document_type', 'hotel_license')->values();
-                }),
-                'property_ownership' => $this->when($this->hasRole('Hotel Owner'), function () {
-                    if (!$this->owner) {
-                        return null;
-                    }
-                    $hotel = $this->owner->hotel;
-                    if (!$hotel) {
-                        return null;
-                    }
-                    $firstHotel = $hotel->first();
-                    if (!$firstHotel) {
-                        return null;
-                    }
-                    $documents = $firstHotel->documents;
-                    if (!$documents) {
-                        return null;
-                    }
-                    return $documents->where('document_type', 'property_ownership')->values();}),
-                'affiliation_certificate' => $this->owner->affiliation_certificate,
-                'commercial_register' => $this->owner->commercial_register,
-                'transportation_company' => $this->owner->transportation_company,
                 'status' => $this->owner->status,
             ];
         }));

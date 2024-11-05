@@ -116,7 +116,7 @@ class HomeController extends Controller
      */
     public function update(UpdateHomeRequest $request, Home $home)
     {
-        if (Auth::user()->can('Update Home')) {
+        if (Auth::user()->can('Post Homes')) {
             $pendingUpdate = $this->updateHomeService->updateHome($home, $request);
 
             return response()->json([

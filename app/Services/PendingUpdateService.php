@@ -7,22 +7,23 @@ use Illuminate\Http\Request;
 
 class PendingUpdateService extends UpdateEntityService
 {
-    public function createPendingUpdate($entity, Request $request, array $fillableAttributes, String $imageColumn)
+    public function createPendingUpdate($entity, array $data, String $imageColumn)
     {
-        $data = $request->only($fillableAttributes);
 
         $changes = [];
 
         foreach ($data as $key => $value) {
-            if ($entity->$key != $value) {
+            $originalValue = $entity->getOriginal($key);
+            if ($originalValue != $value) {
                 $changes[$key] = $value;
             }
         }
 
-        if ($request->hasFile('new_images')) {
+
+        if (request()->hasFile('new_images')) {
             $newImages = [];
 
-            foreach ($request->file('new_images') as $image) {
+            foreach (request()->file('new_images') as $image) {
                 $imagePath = 'https://travelersres.com/' . $image->store($imageColumn, 'public');
                 $newImages[] = $imagePath;
             }
@@ -30,9 +31,9 @@ class PendingUpdateService extends UpdateEntityService
             $changes[$imageColumn] = array_merge($entity->$imageColumn ?? [], $newImages);
         }
 
-        if ($request->has('remove_images')) {
+        if (request()->has('remove_images')) {
             $existingImages = $entity->$imageColumn ?? [];
-            $changes[$imageColumn] = array_values(array_diff($existingImages, $request->input('remove_images')));
+            $changes[$imageColumn] = array_values(array_diff($existingImages, request()->input('remove_images')));
         }
 
         $pendingUpdates = $entity->pendingUpdates->first(); 

@@ -4,9 +4,12 @@ namespace App\Services;
 
 use App\Models\Chalet;
 use Illuminate\Http\Request;
+use App\traits\HandlesDiscount;
+use Log;
 
 class UpdateChaletService extends UpdateEntityService
 {
+    use HandlesDiscount;
     protected PendingUpdateService $pendingUpdateService;
 
     public function __construct(PendingUpdateService $pendingUpdateService)
@@ -17,7 +20,7 @@ class UpdateChaletService extends UpdateEntityService
     public function updateChalet(Chalet $chalet, Request $request)
     {
         $fillableAttributes = [
-            'title', 'price', 'area',
+            'title', 'price','discount_price', 'area',
             'location', 'wifi', 'coordinates',
             'air_conditioning', 'sea_view', 'distance_to_beach',
             'max_occupancy', 'rent_period', 'bathrooms_no', 
@@ -25,6 +28,10 @@ class UpdateChaletService extends UpdateEntityService
             'description', 'is_reserved', 'available_from', 'available_until', 'is_available'
         ];
 
-        return $this->pendingUpdateService->createPendingUpdate($chalet, $request, $fillableAttributes, 'chalet_images');
+        $data = $request->only($fillableAttributes);
+        $this->handlePriceUpdate($chalet, $data);  
+        $this->setCurrency($data, $chalet->owner);
+
+        return $this->pendingUpdateService->createPendingUpdate($chalet, $data, 'chalet_images');
     }
 }

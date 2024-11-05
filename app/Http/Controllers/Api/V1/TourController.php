@@ -74,7 +74,7 @@ class TourController extends Controller
         $userId = $vehicle->owner->user_id;
         $user = $vehicle->owner->user;
 
-        if (Auth::user()->id != $userId || !($user->hasRole('Tour Company Owner'))) {
+        if (!($user->hasRole('Tour Company Owner'))) {
             return response()->json([
                 "message" => "you are not authorized to schedule this tours"
             ], 400);

@@ -24,7 +24,8 @@ class UpdateHomeRequest extends FormRequest
         return [
             'title' => 'sometimes|string',
             'description' => 'sometimes|string',
-            'price' => 'sometimes|integer',
+            'price' => 'sometimes|numeric',
+            'discount_price' => 'sometimes|numeric',
             'area' => 'sometimes|integer',
             'bathrooms_no' => 'sometimes|integer',
             'bedrooms_no' => 'sometimes|integer',

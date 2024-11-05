@@ -13,6 +13,6 @@ class UserFilter extends QueryFilter {
         return $this->builder->whereRelation('owner', 'status', $value);
     }
 
-
+    
 
 }

@@ -24,7 +24,8 @@ class UpdateChaletRequest extends FormRequest
         return [
             'title' => ['sometimes', 'string', 'max:128'],
             'description' => ['sometimes', 'string', 'max:1024'],
-            'price' => ['sometimes', 'integer',],
+            'price' => ['sometimes', 'numeric',],
+            'discount_price' =>[ 'sometimes' ,'numeric'],
             'area' => ['sometimes', 'integer'],
             'bathrooms_no' => ['sometimes', 'integer'],
             'bedrooms_no' => ['sometimes', 'integer'],

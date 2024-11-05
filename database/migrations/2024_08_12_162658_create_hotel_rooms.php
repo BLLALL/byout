@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->integer('price');
+            $table->integer('discount_price')->nullable();
             $table->string('currency')->default('SYP');
             $table->integer('area');
             $table->integer('bathrooms_no');

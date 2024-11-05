@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Http\filters\QueryFilter;
+use Brick\Math\RoundingMode;
+use Brick\Money\Money;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -20,6 +22,10 @@ class Home extends Model
     protected $guarded = ['avg_rating', 'rating_count', 'popularity_score'];
 
 
+    protected $attributes = [
+        'currency' => 'SYP'
+    ];
+    
 
     public function owner()
     {
@@ -54,6 +60,18 @@ class Home extends Model
     public function scopeFilter(Builder $builder, QueryFilter $filter)
     {
         return $filter->apply($builder);
+    }
+
+
+    public function getPriceAttribute($value)
+    {
+        return Money::ofMinor($value, $this->currency, roundingMode: RoundingMode::UP)->getAmount()->toFloat();
+    }    
+
+
+    public function getDiscountPriceAttribute($value)
+    {
+        return $value ? Money::ofMinor($value, $this->currency,  roundingMode: RoundingMode::UP)->getAmount()->toFloat() : null;
     }
 
     public function updateReviewStatistics()

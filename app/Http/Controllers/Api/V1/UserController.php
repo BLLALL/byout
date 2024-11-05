@@ -17,11 +17,20 @@ class UserController extends Controller
 {
     use apiResponses;
     public function index(UserFilter $filter){
-        $hotelOwnersWithNoHotels = User::whereHas('owner', function($query) {
-            $query->whereDoesntHave('hotel');
-        })->pluck('id');
+        // $hotelOwnersWithNoHotels = User::whereHas('owner', function($query) {
+        //     $query->whereDoesntHave('hotel');
+        // })->pluck('id');
        
-        $filteredUsers = User::filter($filter)->whereNotIn('id', $hotelOwnersWithNoHotels)->get();
+        // $filteredUsers = User::filter($filter)->whereNotIn('id', $hotelOwnersWithNoHotels)->get();
+
+        $users = User::role('Hotel Owner')->get();
+        $filteredUsers = $users->filter(function($user) {
+            return $user->owner && $user->owner->hotel->isEmpty();
+        });
+
+        
+        $excludedUserIds = $filteredUsers->pluck('id')->toArray();
+        $filteredUsers = User::filter($filter)->whereNotIn('id', $excludedUserIds)->get();
         return UserResource::collection($filteredUsers);
     }
     public function show(User $user) {

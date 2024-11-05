@@ -33,7 +33,6 @@ class EndCompletedTours extends Command
             ->get();
         foreach ($toursToEnd as $tour) {
             $tourService->endTour($tour);
-            $this->info("Started tour ID: {$tour->id}");
         }
 
     }

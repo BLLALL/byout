@@ -18,7 +18,7 @@ class HomeResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $money = Money::ofMinor($this->price, $this->currency, roundingMode: RoundingMode::HALF_UP);
+      
 
         return [
             'type' => 'Home',
@@ -27,8 +27,9 @@ class HomeResource extends JsonResource
             'description' => $this->description,
             'bathrooms_no' => $this->bathrooms_no,
             'bedrooms_no' => $this->bedrooms_no,
-            'price' => $money->getAmount()->toFloat(),
-            'currency' => $money->getCurrency()->getCurrencyCode(),
+            'price' => $this->price,
+            'discount_price' => $this->discount_price,
+            'currency' => $this->currency,
             'location' => $this->location,
             'area' => $this->area,
             'avg_rating' => $this->avg_rating,
@@ -45,18 +46,22 @@ class HomeResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'popularity_score' => $this->popularity_score,
-            'documents' => $this->documents->map(function ($document) {
-                return [
-                    'id' => $document->id,
-                    'type' => $document->document_type,
-                    'file_path' => $document->file_path,
-                    'uploaded_at' => $document->uploaded_at,
-                ];
-            }),
             'pending' => $this->pending,
             'available_from' => ($this->available_from),
             'available_until' => $this->available_until,
             'is_available' => $this->is_available,
+            'property_ownership' => $this->when(
+                $this->documents,
+                fn() => optional($this->documents->firstWhere('document_type', 'property_ownership'))->file_path
+            ),
+            'agreement_contract' => $this->when(
+                $this->documents,
+                fn() => optional($this->documents->firstWhere('document_type', 'agreement_contract'))->file_path
+            ),
+            'signatory_authorization' => $this->when(
+                $this->documents,
+                fn() => optional($this->documents->firstWhere('document_type', 'signatory_authorization'))->file_path
+            ),
         ];
     }
 }
