@@ -18,8 +18,7 @@ class HotelRoomsFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->word(),
-            'price' => fake()->numberBetween(100, 500),
+            'price' => fake()->numberBetween(10000, 50000),
             'area' => fake()->numberBetween(40, 100),
             'bathrooms_no' => fake()->numberBetween(1, 3),
             'bedrooms_no' => fake()->numberBetween(1, 3),
@@ -29,8 +28,7 @@ class HotelRoomsFactory extends Factory
                 "https://loremflickr.com/640/480",
             ],
             'hotel_id' => Hotel::factory(),
-            'is_reserved' => fake()->randomElement([false, true]),
-            'available_from' => fake()->dateTimeBetween('now', '+2 month')->format('Y-m-d'),
+            'available_from' => fake()->dateTimeBetween('now', '+1 day')->format('Y-m-d'),
             'available_until' => fake()->dateTimeBetween('+2 month', '+3 month')->format('Y-m-d'),
         ];
     }

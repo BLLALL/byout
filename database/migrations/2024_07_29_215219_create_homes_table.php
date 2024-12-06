@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('bedrooms_no');
             $table->integer('living_room_no')->default(1);
             $table->integer('kitchen_no')->default(1);
-            $table->json('home_images');
+            $table->json('home_images')->nullable();
             $table->string('license')->nullable();
             $table->string('location');
             $table->integer('avg_rating')->default(0);

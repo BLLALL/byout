@@ -6,15 +6,14 @@ use App\Models\HotelRooms;
 
 class CreateHotelRoomService extends CreateEntityService
 {
-    public function getModel()
+    public function getModel(): HotelRooms
     {
         return new HotelRooms();
     }
 
-    protected function getFillableAttributes()
+    protected function getFillableAttributes(): array
     {
         return [
-            'title',
             'price',
             'area',
             'bathrooms_no',
@@ -27,12 +26,12 @@ class CreateHotelRoomService extends CreateEntityService
         ];
     }
 
-    protected function getImageColumn()
+    protected function getImageColumn(): string
     {
         return 'room_images';
     }
 
-    protected function getImagePath()
+    protected function getImagePath(): string
     {
         return 'hotel_rooms';
     }

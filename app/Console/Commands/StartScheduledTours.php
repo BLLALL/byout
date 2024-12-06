@@ -37,6 +37,7 @@ class StartScheduledTours extends Command
 
         foreach ($toursToStart as $tour) {
             $tourService->startTour($tour);
+            $this->info("Started tour ID: {$tour->id}");
         }
     }
 }

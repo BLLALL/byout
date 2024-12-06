@@ -8,38 +8,50 @@ use App\Http\Requests\Api\V1\StoreHotelRoomRequest;
 use App\Http\Requests\Api\V1\UpdateHotelRoomRequest;
 use App\Http\Resources\Api\V1\HotelRoomsResource;
 use App\Http\Resources\Api\V1\PendingUpdateResource;
-use App\Models\Hotel;
 use App\Models\HotelRooms;
-use App\Models\Owner;
 use App\Models\User;
 use App\Services\CreateHotelRoomService;
-use App\traits\apiResponses;
-use Illuminate\Support\Facades\Auth;
+use App\Services\CurrencyRateExchangeService;
 use App\Services\HotelRoomService;
+use App\traits\apiResponses;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
+
+
 class HotelRoomsController extends Controller
 {
     use apiResponses;
 
 
     protected CreateHotelRoomService $createHotelRoomService;
-
     protected HotelRoomService $updateHotelRoomService;
-    public function __construct(CreateHotelRoomService $createHotelRoomService, HotelRoomService $updateHotelRoomService)
+    protected CurrencyRateExchangeService $currencyRateExchangeService;
+
+    public function __construct(CreateHotelRoomService $createHotelRoomService, HotelRoomService $updateHotelRoomService, CurrencyRateExchangeService $currencyRateExchangeService)
     {
         $this->createHotelRoomService = $createHotelRoomService;
         $this->updateHotelRoomService = $updateHotelRoomService;
+        $this->currencyRateExchangeService = $currencyRateExchangeService;
     }
 
-    public function index(HotelRoomsFilter $filter)
+    public function index(HotelRoomsFilter $filter): JsonResource
     {
-        return HotelRoomsResource::collection(HotelRooms::filter($filter)->get());
+        $rooms = HotelRooms::filter($filter)->get();
+
+        $userCurrency = Auth::user()->preferred_currency;
+        $rooms = $this->currencyRateExchangeService->convertEntityPrice($rooms, $userCurrency);
+        $rooms = $rooms->filter(function($room) {
+            return $this->filterByPrice($room);
+        });
+        return HotelRoomsResource::collection($rooms);
     }
 
-    public function show($roomId)
+    public function show($roomId): JsonResource
     {
         $room = HotelRooms::findOrFail($roomId);
-
-
         return new HotelRoomsResource($room);
     }
 
@@ -57,7 +69,7 @@ class HotelRoomsController extends Controller
         $room = HotelRooms::findOrFail($roomId);
         if (Auth::user()->id === $room->hotel->owner->user_id) {
             $pendingUpdate = $this->updateHotelRoomService->updateHotelRoom($room, $request);
-            
+
             return response()->json([
                 'message' => 'Update request submitted for approval',
                 'pending_update' => new PendingUpdateResource($pendingUpdate)
@@ -69,7 +81,7 @@ class HotelRoomsController extends Controller
         }
     }
 
-    public function getOwnerRooms($userId, HotelRoomsFilter $hotelRoomsFilter)
+    public function getOwnerRooms($userId, HotelRoomsFilter $hotelRoomsFilter): JsonResponse|AnonymousResourceCollection
     {
         $user = User::findOrFail($userId);
         if (!$user->hasRole('Hotel Owner')) {
@@ -99,7 +111,7 @@ class HotelRoomsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($hotelRoomId)
+    public function destroy($hotelRoomId): JsonResponse
     {
         $hotelRoom = HotelRooms::findOrFail($hotelRoomId);
 
@@ -116,8 +128,22 @@ class HotelRoomsController extends Controller
             }
         } else {
             return response()->json([
-                "message" => 'You are not authorized to delete the room. ',
+                "message" => 'You are not authorized to delete the room.',
             ], 500);
         }
     }
+
+    private function filterByPrice(HotelRooms $room): bool
+    {
+        $priceFilter = request('price');
+
+        if (!$priceFilter) return true;
+
+        $prices = explode(',', $priceFilter);
+
+        if (count($prices) > 1)
+            return $room->price >= $prices[0] && $room->price <= $prices[1];
+        return $room->price <= $prices[0];
+    }
+
 }

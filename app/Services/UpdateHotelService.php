@@ -16,7 +16,7 @@ class UpdateHotelService extends UpdateEntityService
 
     public function updateHotel(Hotel $hotel, Request $request)
     {
-        $fillableAttributes = [
+        $fillableAttributes =[
             'name', 'wifi', 'location',
             'wifi', 'coordinates', 'pending',
         ];

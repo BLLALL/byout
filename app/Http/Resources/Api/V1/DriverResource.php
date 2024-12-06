@@ -23,7 +23,6 @@ class DriverResource extends JsonResource
             'user' => [
                 'id' => $this->user->id,
                 'name' => $this->user->name,
-                'email' => $this->user->email,
                 'phone_number' => $this->user->phone_number,
                 'profile_image' => $this->user->profile_image,
             ],

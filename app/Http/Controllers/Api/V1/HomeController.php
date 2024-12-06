@@ -4,23 +4,19 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\filters\HomeFilter;
-use App\Http\Requests\Api\V1\RentEntityRequest;
 use App\Http\Requests\Api\V1\storeHomeRequest;
 use App\Http\Requests\Api\V1\UpdateHomeRequest;
 use App\Http\Resources\Api\V1\HomeResource;
-use App\Http\Resources\Api\V1\RentalResource;
 use App\Http\Resources\Api\V1\PendingUpdateResource;
 use App\Models\Home;
-use App\Models\Owner;
 use App\Services\CreateHomeService;
-use App\Services\UpdateHomeService;
-use App\traits\apiResponses;
-use Illuminate\Support\Facades\Auth;
-use function Laravel\Prompts\error;
 use App\Services\CurrencyRateExchangeService;
 use App\Services\RentalService;
-use Brick\Money\Money;
-use Carbon\Carbon;
+use App\Services\UpdateHomeService;
+use App\traits\apiResponses;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -30,6 +26,7 @@ class HomeController extends Controller
     protected CreateHomeService $createHomeService;
     protected CurrencyRateExchangeService $currencyRateExchangeService;
     protected RentalService $rentalService;
+
     public function __construct(UpdateHomeService $updateHomeService, CreateHomeService $createHomeService, CurrencyRateExchangeService $currencyRateExchangeService, RentalService $rentalService)
     {
         $this->updateHomeService = $updateHomeService;
@@ -53,18 +50,10 @@ class HomeController extends Controller
     public function index(HomeFilter $filter)
     {
         $homes = Home::filter($filter)->get();
-
         $userCurrency = Auth::user()->preferred_currency;
-
-        $currencyRateExchangeService = $this->currencyRateExchangeService;
-
-        $homes = $homes->map(function ($home) use ($userCurrency, $currencyRateExchangeService) {
-            if ($home->currency != $userCurrency) {
-                $money = $currencyRateExchangeService->convertPrice($home->currency, $userCurrency, $home->price);
-                $home->price = $money->getAmount()->toFloat();
-                $home->currency = $money->getCurrency();
-            }
-            return $home;
+        $homes = $this->currencyRateExchangeService->convertEntityPrice($homes, $userCurrency);
+        $homes = $homes->filter(function ($home) {
+            return $this->filterByPrice($home);
         });
         return HomeResource::collection($homes);
     }
@@ -154,4 +143,33 @@ class HomeController extends Controller
             ], 500);
         }
     }
+
+    private function filterAndConvertRooms(Collection $homes, string $userCurrency)
+    {
+        return $homes->map(fn($home) => $this->convertRoomPrice($home, $userCurrency))
+            ->filter(fn($home) => $this->filterByPrice($home));
+    }
+
+    private function convertRoomPrice(Home $home, string $userCurrency): Home
+    {
+        if ($home->currency != $userCurrency) {
+            $money = $this->currencyRateExchangeService->convertPrice($home->currency, $userCurrency, $home->price);
+            $home->price = $money->getAmount()->toFloat();
+            $home->currency = $money->getCurrency();
+        }
+        return $home;
+    }
+
+    private function filterByPrice(Home $home): bool
+    {
+        $priceFilter = request('price');
+        if (!$priceFilter) return true;
+
+        $prices = explode(',', $priceFilter);
+        if (count($prices) > 1)
+            return $home->price >= $prices[0] && $home->price <= $prices[1];
+
+        return $home->price <= $prices[0];
+    }
+
 }

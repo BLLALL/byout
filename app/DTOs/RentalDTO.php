@@ -18,14 +18,15 @@ readonly class RentalDTO
         public string $payment_method,
         public string $currency,
     )
-    {}
+    {
+    }
 
     public static function create(RentEntityRequest $request): self
     {
         return new self(
             rentable_type: $request->input('rentable_type'),
             rentable_id: $request->input('rentable_id'),
-            room_ids: $request->input('room_id'),
+            room_ids: $request->input('room_ids'),
             user_id: $request->input('user_id'),
             check_in: Carbon::parse($request->input('check_in')),
             check_out: Carbon::parse($request->input('check_out')),

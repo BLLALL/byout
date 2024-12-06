@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Http\filters\ChaletFilter;
+use App\Http\Requests\Api\V1\RentEntityRequest;
 use App\Http\Requests\Api\V1\StoreChaletRequest;
 use App\Http\Requests\Api\V1\UpdateChaletRequest;
 use App\Http\Resources\Api\V1\ChaletResource;
-use App\Models\Chalet;
-use App\Services\UpdateChaletService;
-use App\Services\CreateChaletService;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\V1\RentEntityRequest;
 use App\Http\Resources\Api\V1\PendingUpdateResource;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Chalet;
+use App\Services\CreateChaletService;
 use App\Services\CurrencyRateExchangeService;
 use App\Services\RentalService;
+use App\Services\UpdateChaletService;
+use Illuminate\Support\Facades\Auth;
+
+
 class ChaletController extends Controller
 {
 
@@ -26,6 +27,7 @@ class ChaletController extends Controller
     protected CurrencyRateExchangeService $currencyRateExchangeService;
 
     protected RentalService $rentalService;
+
     public function __construct(UpdateChaletService $chaletService, CreateChaletService $createChaletService, CurrencyRateExchangeService $currencyRateExchangeService, RentalService $rentalService)
     {
         $this->chaletService = $chaletService;
@@ -37,18 +39,10 @@ class ChaletController extends Controller
     public function index(ChaletFilter $filter)
     {
         $chalets = Chalet::filter($filter)->get();
-
         $userCurrency = Auth::user()->preferred_currency;
-
-        $currencyRateExchangeService = $this->currencyRateExchangeService;
-
-        $chalets = $chalets->map(function ($chalet) use ($userCurrency, $currencyRateExchangeService) {
-            if ($chalet->currency != $userCurrency) {
-                $money = $currencyRateExchangeService->convertPrice($chalet->currency, $userCurrency, $chalet->price);
-                $chalet->price =  $money->getAmount()->toFloat();
-                $chalet->currency = $money->getCurrency();
-            }
-            return $chalet;
+        $chalets = $this->currencyRateExchangeService->convertEntityPrice($chalets, $userCurrency);
+        $chalets = $chalets->filter(function ($chalet) {
+            return $this->filterByPrice($chalet);
         });
         return ChaletResource::collection($chalets);
     }
@@ -67,20 +61,20 @@ class ChaletController extends Controller
         return new ChaletResource($chalet);
     }
 
-//    public function rent(RentEntityRequest $request, Chalet $chalet)
-//    {
-//        try {
-//            $this->rentalService->createRental($chalet, $request);
-//            return response()->json([
-//                "message" => "Chalet rented successfully"
-//            ], 201);
-//        } catch (\Exception $e) {
-//            return response()->json([
-//                "message" => "Failed to rent chalet",
-//                "error" => $e->getMessage(),
-//            ], 500);
-//        }
-//    }
+    public function rent(RentEntityRequest $request, Chalet $chalet)
+    {
+        try {
+            $this->rentalService->createRental($chalet, $request);
+            return response()->json([
+                "message" => "Chalet rented successfully"
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                "message" => "Failed to rent chalet",
+                "error" => $e->getMessage(),
+            ], 500);
+        }
+    }
 
     public function store(StoreChaletRequest $request)
     {
@@ -126,5 +120,17 @@ class ChaletController extends Controller
                 "message" => 'You are not authorized to delete the chalet. ',
             ], 500);
         }
+    }
+
+    private function filterByPrice(Chalet $chalet): bool
+    {
+        $priceFilter = request('price');
+        if (!$priceFilter) return true;
+
+        $prices = explode(',', $priceFilter);
+        if (count($prices) > 1)
+            return $chalet->price >= $prices[0] && $chalet->price <= $prices[1];
+
+        return $chalet->price <= $prices[0];
     }
 }

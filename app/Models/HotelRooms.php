@@ -8,11 +8,13 @@ use Brick\Money\Money;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class HotelRooms extends Model
 {
     use HasFactory, SoftDeletes;
-    
+
     protected $casts = [
         'room_images' => 'array',
         'available_from' => 'date',
@@ -22,15 +24,14 @@ class HotelRooms extends Model
     protected $attributes = [
         'currency' => 'SYP'
     ];
-    
-    
+
     protected $guarded = [];
 
-    public function scopeFilter(Builder $builder, QueryFilter $filter)
+    public function scopeFilter(Builder $builder, QueryFilter $filter): Builder
     {
         return $filter->apply($builder);
     }
-    
+
     public function scopeAvailableBetween($query, $fromDate, $toDate)
     {
         return $query->where('available_until', '>=',  $toDate)
@@ -40,25 +41,25 @@ class HotelRooms extends Model
             ->where('check_in', '<', $toDate);
         });
     }
-    public function hotel() {
+    public function hotel(): BelongsTo
+    {
         return $this->belongsTo(Hotel::class);
     }
-    
-    public function rentals()
+
+    public function rentals(): MorphMany
     {
         return $this->morphMany(Rental::class, 'rentable');
     }
 
-    public function pendingUpdates() 
+    public function pendingUpdates(): MorphMany
     {
         return $this->morphMany(PendingUpdates::class, 'updatable');
     }
 
-    public function getPriceAttribute($value)
+    public function getPriceAttribute($value): float
     {
         return Money::ofMinor($value, $this->currency, roundingMode: RoundingMode::UP)->getAmount()->toFloat();
-    }    
-
+    }
 
     public function getDiscountPriceAttribute($value)
     {

@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Brick\Money\Money;
 use Illuminate\Support\Facades\Log;
+
 abstract class CreateEntityService
 {
-    protected $model;
+    protected Model $model;
     protected $fillableAttributes;
     protected $imageColumn;
     protected $imagePath;
@@ -45,7 +46,7 @@ abstract class CreateEntityService
         });
     }
 
-    protected function initializeAttributes()
+    protected function initializeAttributes(): void
     {
         $this->model = $this->getModel();
         $this->fillableAttributes = $this->getFillableAttributes();
@@ -72,7 +73,7 @@ abstract class CreateEntityService
         }
     }
 
-    public function setCurrency($entity, Request $request, $owner)
+    public function setCurrency($entity, Request $request, $owner): void
     {
         if ($entity->price) {
             $money = Money::of($request->price, $owner->user->preferred_currency);
@@ -81,7 +82,7 @@ abstract class CreateEntityService
         }
     }
 
-    protected function setOwnerAndCurrency($entity, Request $request)
+    protected function setOwnerAndCurrency($entity, Request $request): void
     {
         
         $owner = $this->setOwner($entity, $request);
@@ -99,11 +100,11 @@ abstract class CreateEntityService
             }
         }
 
-        $entity->{$this->imageColumn} = $images;
+        $entity->{$this->imageColumn} = $images ?? null;
         return $entity;
     }
 
-    public function handleDocuments($entity, Request $request)
+    public function handleDocuments($entity, Request $request): void
     {
         if($request->has('documents')) {
             foreach ($request->documents as $document) {

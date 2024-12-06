@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -26,13 +25,5 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasRole('Super Admin') ? true : null;
         });
         Auth::shouldUse('api');
-
-        // DB::listen(
-        //     function($query) {
-        //         dump($query->sql);
-        //         dump($query->bindings);
-        //         dump($query->time);
-        //     }
-        // );
     }
 }

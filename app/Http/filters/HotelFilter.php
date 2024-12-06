@@ -19,8 +19,4 @@ class HotelFilter extends QueryFilter
             $query->where('user_id', $value);
         }));
     }
-
-    public function pending($value) {
-        return $this->builder->where('pending',  $value );
-    }
 }

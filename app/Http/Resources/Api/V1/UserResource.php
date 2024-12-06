@@ -31,8 +31,7 @@ class UserResource extends JsonResource
             'token' => $this->token,
             'role' => $this->roles->pluck('name')->first(),
             'hotel' => ($this->owner?->hotel->count() ?? 0) > 0 ? new HotelResource($this->owner->hotel->first()) : null,
-        ], (array) $this->when($this->hasAnyRole(['Home Owner', 'Hotel Owner', 'Chalet Owner', 'Tour Company Owner']),
-        function () {
+        ], (array) $this->when($this->hasAnyRole(['Home Owner', 'Hotel Owner', 'Chalet Owner', 'Tour Company Owner']), function () {
             return [
                 'organization' => $this->owner->organization,
                 'status' => $this->owner->status,

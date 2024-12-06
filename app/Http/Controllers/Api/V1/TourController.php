@@ -7,14 +7,14 @@ use App\Http\filters\TourFilter;
 use App\Http\Requests\Api\V1\ScheduleTourRequest;
 use App\Http\Requests\Api\V1\updateTourRequest;
 use App\Http\Resources\Api\V1\TourResource;
-use App\Models\Vehicle;
 use App\Models\Tour;
+use App\Models\Vehicle;
 use App\Services\CreateTourService;
+use App\Services\CurrencyRateExchangeService;
 use App\Services\TourService;
 use App\traits\apiResponses;
-use Illuminate\Support\Facades\Auth;
-use App\Services\CurrencyRateExchangeService;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TourController extends Controller
 {
@@ -99,10 +99,7 @@ class TourController extends Controller
         }
     }
 
-    public function getAvailableSeats()
-    {
-        // return $this
-    }
+
     /**
      * Get Tours
      * Show all Tours`
@@ -118,22 +115,14 @@ class TourController extends Controller
         $userTimezone = Auth::user()->timezone;
 
         $tours = Tour::filter($filter)->get();
-
         $userCurrency = Auth::user()->preferred_currency;
 
         $currencyRateExchangeService = $this->currencyRateExchangeService;
 
-        $tours = $tours->map(function ($tour) use ($userCurrency, $currencyRateExchangeService, $userTimezone) {
-            if ($tour->currency != $userCurrency) {
-                $money = $currencyRateExchangeService->convertPrice($tour->currency, $userCurrency, $tour->price);
-                $tour->price = $money->getAmount()->toFloat();
-                $tour->currency = $money->getCurrency();
-            }
-            // $tour->departure_time = $tour->departure_time->setTimezone($userTimezone);
-            // $tour->arrival_time = $tour->arrival_time->setTimezone($userTimezone);
-            return $tour;   
+        $tours = $this->currencyRateExchangeService->convertEntityPrice($tours, $userCurrency);
+        $tours = $tours->filter(function ($tour) {
+            return $this->filterByPrice($tour);
         });
-
         return TourResource::collection($tours);
     }
 
@@ -147,7 +136,7 @@ class TourController extends Controller
     public function show(Tour $tour)
     {
         $userTimezone = Auth::user()->timezone;
-    
+
         $tour->departure_time = Carbon::parse($tour->departure_time)->timezone($userTimezone);
         $tour->arrival_time = Carbon::parse($tour->arrival_time)->timezone($userTimezone);
         return new TourResource($tour);
@@ -194,5 +183,18 @@ class TourController extends Controller
         return response()->json([
             "message" => "tour deleted successfully"
         ]);
+    }
+
+
+    private function filterByPrice(Tour $tour): bool
+    {
+        $priceFilter = request('price');
+        if (!$priceFilter) return true;
+
+        $prices = explode(',', $priceFilter);
+        if (count($prices) > 1)
+            return $tour->price >= $prices[0] && $tour->price <= $prices[1];
+
+        return $tour->price <= $prices[0];
     }
 }

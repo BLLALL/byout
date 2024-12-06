@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Http\filters\QueryFilter;
+use Brick\Math\RoundingMode;
+use Brick\Money\Money;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -49,7 +51,8 @@ class Tour extends Model
         return $this->morphMany(Document::class, 'documentable');
     }
 
-    public function tourReservations() {
+    public function tourReservations()
+    {
         return $this->hasMany(TourReservation::class)->chaperone();
     }
 
@@ -64,7 +67,16 @@ class Tour extends Model
         });
     }
 
-    // Marking the method as static
+    public function getPriceAttribute($value): float
+    {
+        return Money::ofMinor($value, $this->currency, roundingMode: RoundingMode::UP)->getAmount()->toFloat();
+    }
+
+//    public function getDiscountPriceAttribute($value)
+//    {
+//        return $value ? Money::ofMinor($value, $this->currency, roundingMode: RoundingMode::UP)->getAmount()->toFloat() : null;
+//    }
+
     protected static function calculateTimeDifference($departureTime, $arrivalTime)
     {
         $departure = Carbon::parse($departureTime);

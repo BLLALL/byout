@@ -9,13 +9,11 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-
-
+    
     public function up(): void
     {
         Schema::create('hotel_rooms', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->integer('price');
             $table->integer('discount_price')->nullable();
             $table->string('currency')->default('SYP');

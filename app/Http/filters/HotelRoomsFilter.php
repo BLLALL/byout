@@ -6,15 +6,6 @@ use App\Models\Hotel;
 
 class HotelRoomsFilter extends QueryFilter
 {
-    public function price($value)
-    {
-        $prices = explode(',', $value);
-
-        if (count($prices) > 1) {
-            return $this->builder->whereBetween('price', $prices);
-        }
-        return $this->builder->where('price', $prices);
-    }
 
     public function date_range($value)
     {
@@ -24,5 +15,6 @@ class HotelRoomsFilter extends QueryFilter
         if ($fromDate && $toDate) {
             return $this->builder->availableBetween($fromDate, $toDate);
         }
+        
     }
 }

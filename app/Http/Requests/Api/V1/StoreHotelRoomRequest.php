@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Api\V1;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreHotelRoomRequest extends BaseHotelRoomRequest
@@ -17,19 +18,17 @@ class StoreHotelRoomRequest extends BaseHotelRoomRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
             'price' => ['required', 'numeric', 'min:0'],
             'area' => ['required', 'integer'],
             'bathrooms_no' => ['required', 'integer'],
             'bedrooms_no' => ['required', 'integer'],
-            'room_images' => ['required', 'array'],
+//            'room_images' => ['required', 'array'],
             'room_images.*' => ['required_with:room_images', 'image', 'mimes:jpg,png,jpeg'],
-            'is_reserved' => ['required', 'boolean'],
             'hotel_id' => ['required', 'integer', 'exists:hotels,id'],
             'available_from' => ['required', 'date'],
             'available_until' => ['required', 'date'],

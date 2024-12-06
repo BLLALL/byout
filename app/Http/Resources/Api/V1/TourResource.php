@@ -17,19 +17,17 @@ class TourResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $money = Money::ofMinor($this->price, $this->currency, roundingMode: RoundingMode::HALF_UP);
-        // $money = Money::ofMinor($money->getAmount()->toFloat(), $money->getCurrency()->getCurrencyCode());
-        $userTimezone = $request->user()->timezone;
+
         return [
             'type' => 'Tour',
             'id' => $this->id,
-            'price' => $money->getAmount()->toFloat(),
-            'currency' => $money->getCurrency()->getCurrencyCode(),
+            'price' => $this->price,
+            'currency' => $this->currency,
             'tour_type' => $this->tour_type,
             'source' => $this->source,
             'destination' => $this->destination,
-            'departure_time' => $this->departure_time->setTimezone($userTimezone)->toDateTimeString(),
-            'arrival_time' => $this->arrival_time->setTimezone($userTimezone)->toDateTimeString(),
+            'departure_time' => $this->departure_time,
+            'arrival_time' => $this->arrival_time,
             'time_difference' => $this->time_difference,
             'recurrence' => $this->recurrence,
             'status' => $this->status,

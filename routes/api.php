@@ -40,6 +40,7 @@ use Illuminate\Support\Facades\Storage;
 // homes...
 // users
 
+//Route::prefix('/login',)
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('login/google', [AuthController::class, 'google']);
@@ -157,8 +158,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 Route::get('rates', [ExchangeRateController::class, 'getRates']);
-
-
 
 Route::post('terms-and-condition', function (Request $request) {
     // Validate that both language and content are provided
