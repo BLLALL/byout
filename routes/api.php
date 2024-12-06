@@ -21,6 +21,8 @@ use App\Http\Controllers\Api\V1\VehicleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\RentController;
 use App\Http\Controllers\Api\V1\PaymentController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,17 +108,18 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/cancel-payment', [FatoraController::class, 'cancelPayment']);
         Route::get('callback', [FatoraController::class, 'handleCallback'])->name('fatora.callback');
         Route::get('trigger', [FatoraController::class, 'handleTrigger'])->name('fatora.trigger');
-
     });
 
-    Route::post('/approve-owner/{user}', [AdminController::class, 'approveOwner']);
-    Route::post('/reject-owner/{user}', [AdminController::class, 'rejectOwner']);
-
-    Route::post('/approve-home/{home}', [AdminController::class, 'approveHome']);
-    Route::post('/approve-hotel/{hotel}', [AdminController::class, 'approveHotel']);
-    Route::post('/approve-chalet/{chalet}', [AdminController::class, 'approveChalet']);
-
     Route::middleware('role:Super Admin')->group(function () {
+
+
+        Route::post('/approve-owner/{user}', [AdminController::class, 'approveOwner']);
+        Route::post('/reject-owner/{user}', [AdminController::class, 'rejectOwner']);
+
+        Route::post('/approve-home/{home}', [AdminController::class, 'approveHome']);
+        Route::post('/approve-hotel/{hotel}', [AdminController::class, 'approveHotel']);
+        Route::post('/approve-chalet/{chalet}', [AdminController::class, 'approveChalet']);
+
         Route::post('/approve-owner/{user}', [AdminController::class, 'approveOwner']);
         Route::post('/reject-owner/{user}', [AdminController::class, 'rejectOwner']);
 
@@ -143,10 +146,90 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('app-data', [AdminController::class, 'appData']);
         Route::get('owners/{id}', [AdminController::class, 'getOwner']);
         Route::get('owners', [AdminController::class, 'getOwners']);
+
+
     });
 
-
-
+    Route::get('terms-and-condition', function () {
+        $settings = json_decode(Storage::get('settings.json'), true);
+        return response()->json($settings);
+    });
 });
 
 Route::get('rates', [ExchangeRateController::class, 'getRates']);
+
+
+
+Route::post('terms-and-condition', function (Request $request) {
+    // Validate that both language and content are provided
+    $request->validate([
+        'lang' => 'required|string',
+        'content' => 'required|string'
+    ]);
+
+    // Load the existing settings.json file
+    $settings = json_decode(Storage::get('settings.json'), true);
+
+    // Check if settings already have the new structure, otherwise migrate it
+    if (!isset($settings['terms_and_conditions']) || !is_array($settings['terms_and_conditions'])) {
+        // Migrate old structure to new language-specific structure
+        $settings['terms_and_conditions'] = [
+            'en' => $settings['terms_and_conditions'] ?? 'New Terms',
+            'ar' => $settings['الشروط_و_الأحكام'] ?? 'شروط جديدة'
+        ];
+
+    }
+
+    $language = $request->input('lang');
+    $settings['terms_and_conditions'][$language] = $request->input('content');
+
+    Storage::put('settings.json', json_encode($settings, JSON_UNESCAPED_UNICODE));
+
+    return response()->json(['message' => 'Terms and Conditions updated successfully'], 200);
+});
+Route::post('terms-and-condition', function (Request $request) {
+    $request->validate([
+        'terms_and_conditions' => 'required|array',
+        'terms_and_conditions.ar' => 'required|string',
+        'terms_and_conditions.en' => 'required|string'
+    ]);
+
+    $settings = json_decode(Storage::get('settings.json'), true);
+
+    if (!isset($settings['terms_and_conditions']) || !is_array($settings['terms_and_conditions'])) {
+        $settings['terms_and_conditions'] = [
+            'en' => $settings['terms_and_conditions'] ?? 'New Terms',
+            'ar' => $settings['الشروط_و_الأحكام'] ?? 'شروط جديدة'
+        ];
+
+        unset($settings['الشروط_و_الأحكام']);
+    }
+
+    $settings['terms_and_conditions']['ar'] = $request->input('terms_and_conditions.ar');
+    $settings['terms_and_conditions']['en'] = $request->input('terms_and_conditions.en');
+
+    Storage::put('settings.json', json_encode($settings, JSON_UNESCAPED_UNICODE));
+
+    return response()->json(['message' => 'Terms and Conditions updated successfully'], 200);
+});
+
+Route::get('terms-and-condition', function (Request $request) {
+    $language = $request->query('lang', 'en');
+
+    $settings = json_decode(Storage::get('settings.json'), true);
+
+    if (!isset($settings['terms_and_conditions']) || !is_array($settings['terms_and_conditions'])) {
+        $settings['terms_and_conditions'] = [
+            'en' => $settings['terms_and_conditions'] ?? 'New Terms',
+            'ar' => $settings['الشروط_و_الأحكام'] ?? 'شروط جديدة'
+        ];
+
+        unset($settings['الشروط_و_الأحكام']);
+        Storage::put('settings.json', json_encode($settings, JSON_UNESCAPED_UNICODE));
+    }
+
+    $content = $settings['terms_and_conditions'][$language] ?? $settings['terms_and_conditions']['en'];
+
+    return response()->json(['content' => $content]);
+});
+

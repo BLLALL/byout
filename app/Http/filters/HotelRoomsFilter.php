@@ -16,12 +16,13 @@ class HotelRoomsFilter extends QueryFilter
         return $this->builder->where('price', $prices);
     }
 
-    public function location($value)
+    public function date_range($value)
     {
-
-        return $this->hotel::where('location', $value);
+        $dates = explode(',', $value);
+        $fromDate = $dates[0];
+        $toDate = $dates[1];
+        if ($fromDate && $toDate) {
+            return $this->builder->availableBetween($fromDate, $toDate);
+        }
     }
-
-    
-
 }

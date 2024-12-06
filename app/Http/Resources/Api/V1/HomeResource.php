@@ -42,6 +42,7 @@ class HomeResource extends JsonResource
             'coordinates' => $this->coordinates,
             'rent_period' => $this->rent_period,
             'owner_id' => $this->owner->user_id,
+            'owner_phone_number' => $this->owner->user?->phone_number,
             'owner_name' => $this->owner->user->name,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

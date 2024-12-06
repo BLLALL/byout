@@ -10,21 +10,22 @@ readonly class RentalDTO
 {
     public function __construct(
         public string $rentable_type,
-        public string $rentable_id,
-        public int    $user_id,
+        public ?int $rentable_id,
+        public ?array $room_ids,
+        public int $user_id,
         public Carbon $check_in,
         public Carbon $check_out,
         public string $payment_method,
         public string $currency,
     )
-    {
-    }
+    {}
 
     public static function create(RentEntityRequest $request): self
     {
         return new self(
             rentable_type: $request->input('rentable_type'),
             rentable_id: $request->input('rentable_id'),
+            room_ids: $request->input('room_id'),
             user_id: $request->input('user_id'),
             check_in: Carbon::parse($request->input('check_in')),
             check_out: Carbon::parse($request->input('check_out')),

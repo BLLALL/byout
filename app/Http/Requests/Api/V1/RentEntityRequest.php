@@ -23,7 +23,9 @@ class RentEntityRequest extends FormRequest
     {
         return [
             "rentable_type" => ["required", "string", "in:Home,Hotel Room,Chalet"],
-            "rentable_id" => ["required", "integer"],
+            "rentable_id" => ["required_without:room_ids", "integer"],
+            "room_ids" => ["required_if:rentable_type,Hotel Room", "array"],
+            "room_ids.*" => ["integer", "exists:hotel_rooms,id"],
             "user_id" => ["required", "integer", "exists:users,id"],
             "check_in" => ["required", "date"],
             "check_out" => ["required", "date", "after_or_equal:check_in"],

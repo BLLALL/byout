@@ -58,6 +58,7 @@ class RentController extends Controller
                 'check_out' => $rental->check_out->format('Y-m-d')
             ];
         });
+        
         return response()->json([
             'reserved_dates' => $reservedDates
         ]);

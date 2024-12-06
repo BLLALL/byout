@@ -63,7 +63,8 @@ class PendingUpdateService extends UpdateEntityService
             $entity->{$key} = $value;
         }
         $entity->save();
-
+        $pendingUpdates->delete();
+        $pendingUpdates->save();
         return $entity;
     }
 }

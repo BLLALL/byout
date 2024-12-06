@@ -27,6 +27,7 @@ class HotelResource extends JsonResource
             'rating_count' => $this->rating_count,
             'popularity_score' => $this->popularity_score,
             'owner_id' => $this->owner->user_id,
+            'owner_phone_number' => $this->owner->user?->phone_number,
             'rooms' => $this->when($this->hotelRooms, function () {
                 return HotelRoomsResource::collection($this->hotelRooms);
             }),

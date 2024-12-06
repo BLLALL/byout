@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Owner;
+
 class Rental extends Model
 {
     use HasFactory;
@@ -20,10 +21,7 @@ class Rental extends Model
     const PAYMENT_ACCEPTED = 'accepted';
     const PAYMENT_FAILED = 'failed';
     const PAYMENT_CANCELLED = 'cancelled';
-    public function rentable()
-    {
-        return $this->morphTo();
-    }
+
 
     public function payment()
     {
@@ -38,5 +36,18 @@ class Rental extends Model
     public function owner()
     {
         return $this->belongsTo(Owner::class);
+    }
+
+    public function hotelRooms()
+    {
+        return $this->belongsToMany(HotelRooms::class, 'rental_hotel_rooms', 'rental_id', 'hotel_room_id');
+    }
+
+    public function rentable()
+    {
+        if ($this->rentable_type == 'App\Models\HotelRooms') {
+            return $this->hotelRooms();
+        }
+        return $this->morphTo();
     }
 }

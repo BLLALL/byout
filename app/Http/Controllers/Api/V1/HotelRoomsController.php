@@ -69,7 +69,7 @@ class HotelRoomsController extends Controller
         }
     }
 
-    public function getOwnerRooms($userId)
+    public function getOwnerRooms($userId, HotelRoomsFilter $hotelRoomsFilter)
     {
         $user = User::findOrFail($userId);
         if (!$user->hasRole('Hotel Owner')) {
@@ -78,7 +78,8 @@ class HotelRoomsController extends Controller
             ], 403);
         }
         $hotels = $user->owner->hotel;
-        $rooms = $hotels?->flatMap->hotelRooms;
+        $rooms = HotelRooms::whereIn('hotel_id', $hotels->pluck('id'))->filter($hotelRoomsFilter)->get();
+
 
         if (!$hotels || !$rooms) {
             return response()->json([
