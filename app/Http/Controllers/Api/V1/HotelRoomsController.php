@@ -55,16 +55,15 @@ class HotelRoomsController extends Controller
         return new HotelRoomsResource($room);
     }
 
-    public function store(StoreHotelRoomRequest $request)
+    public function store(StoreHotelRoomRequest $request): JsonResponse|HotelRoomsResource
     {
         if (Auth::user()->can('Post Rooms')) {
             $room = $this->createHotelRoomService->createEntity($request);
-            return new HotelRoomsResource($room);
-
+            return new HotelRoomsResource($room->load(['roomBeds', 'AccommodationAmenities']));
         } else return $this->error(["You're not authorized to store rooms to this hotel"], 403);
     }
 
-    public function update(UpdateHotelRoomRequest $request, $roomId)
+    public function update(UpdateHotelRoomRequest $request, $roomId): JsonResponse
     {
         $room = HotelRooms::findOrFail($roomId);
         if (Auth::user()->id === $room->hotel->owner->user_id) {

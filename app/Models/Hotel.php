@@ -1,12 +1,15 @@
 <?php
+
 namespace App\Models;
 
 use App\Http\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Hotel extends Model
 {
@@ -19,28 +22,28 @@ class Hotel extends Model
 
     protected $guarded = ['avg_rating', 'rating_count', 'popularity_score'];
 
-    public function scopeFilter(Builder $builder, QueryFilter $filter)
+    public function scopeFilter(Builder $builder, QueryFilter $filter): Builder
     {
         return $filter->apply($builder);
     }
 
-    public function owner()
+    public function owner(): BelongsTo
     {
         return $this->belongsTo(Owner::class);
     }
 
-    public function reviews()
+    public function reviews(): MorphMany
     {
         return $this->morphMany(Review::class, 'reviewable');
     }
 
 
-    public function users()
+    public function users(): MorphToMany
     {
         return $this->morphToMany(User::class, 'favorable', 'favourites');
     }
 
-    public function documents()
+    public function documents(): MorphMany
     {
         return $this->morphMany(Document::class, 'documentable');
     }
@@ -51,23 +54,27 @@ class Hotel extends Model
         return $this->hasMany(HotelRooms::class);
     }
 
-    public function pendingUpdates() 
+    public function pendingUpdates(): MorphMany
     {
         return $this->morphMany(PendingUpdates::class, 'updatable');
     }
-    
+
+    public function prunable(): Builder
+    {
+        return static::where('created_at', '<=', now()->subMonth(6));
+    }
 
     public function getAvgRatingAttribute($value)
     {
         return round($value / 100, 2);
     }
 
-    public function setAvgRatingAttribute($value)
+    public function setAvgRatingAttribute($value): void
     {
         $this->attributes['avg_rating'] = $value * 100;
     }
 
-    public function updateReviewStatistics()
+    public function updateReviewStatistics(): void
     {
         $avgRating = Review::where('reviewable_type', get_class($this))
             ->where('reviewable_id', $this->id)
@@ -84,7 +91,7 @@ class Hotel extends Model
         $this->saveQuietly();
     }
 
-    public function getPopularityScore()
+    public function getPopularityScore(): float|int
     {
         if ($this->rating_count > 0) {
             return $this->avg_rating / sqrt($this->rating_count);

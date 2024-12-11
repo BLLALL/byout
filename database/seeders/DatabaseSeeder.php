@@ -2,15 +2,17 @@
 
 namespace Database\Seeders;
 
+use App\Models\AccommodationAmenities;
 use App\Models\Chalet;
 use App\Models\Home;
 use App\Models\Hotel;
 use App\Models\HotelRooms;
 use App\Models\Owner;
+use App\Models\RoomBed;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -47,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'TourCompanyOwner@owner.com',
             'name' => 'Tour Company Owner',
             'password' => Hash::make('password'),
-        ]); 
+        ]);
 
         $admin = User::factory()->create([
             'email' => 'admin@owner.com',
@@ -125,24 +127,20 @@ class DatabaseSeeder extends Seeder
             $home->owner->user->assignRole('Home Owner');
         });
 
+        $accommodations = $homes->concat($chalets)->concat(HotelRooms::all());
 
-        // Document::factory(10)->create();
+        $accommodations->each(function ($accommodation) {
+            RoomBed::factory(rand(1, 3))
+                ->create([
+                    'bedable_type' => get_class($accommodation),
+                    'bedable_id' => $accommodation->id,
+                ]);
+            AccommodationAmenities::factory(rand(1, 3))
+                ->create([
+                    'servable_type' => get_class($accommodation),
+                    'servable_id' => $accommodation->id,
+                ]);
+        });
 
-
-        // Favourite::factory(10)->create();
-        //// Create reviews for homes
-        //$homes->each(function ($home) use ($regularUsers) {
-        //Review::factory()->count(3)->for($home, 'reviewable')->recycle($regularUsers)->create();
-        //});
-        //
-        //// Create reviews for hotels
-        //$hotels->each(function ($hotel) use ($regularUsers) {
-        //Review::factory()->count(3)->for($hotel, 'reviewable')->recycle($regularUsers)->create();
-        //});
-        //
-        //// Create reviews for chalets
-        //$chalets->each(function ($chalet) use ($regularUsers) {
-        //Review::factory()->count(3)->for($chalet, 'reviewable')->recycle($regularUsers)->create();
-        //});
     }
 }

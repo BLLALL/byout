@@ -17,10 +17,11 @@ class CreateHotelRoomService extends CreateEntityService
             'price',
             'area',
             'bathrooms_no',
-            'bedrooms_no',
             'room_images',
-            'is_reserved',
+            'capacity',
+            'room_type',
             'hotel_id',
+            'bedrooms_no',
             'available_from',
             'available_until',
         ];
@@ -36,17 +37,4 @@ class CreateHotelRoomService extends CreateEntityService
         return 'hotel_rooms';
     }
 
-    // protected function handleImages($entity, $request)
-    // {
-    //     $roomImages = $request->input('room_images');
-    //     if (!empty($roomImages)) {
-    //         $images = [];
-    //         foreach ($roomImages as $image) {
-    //             $imagePath = $image->store($this->imagePath, 'public');
-    //             $images[] = 'https://fayroz97.com/real-estate/' . $imagePath;
-    //         }
-    //         $entity->room_images = $images;
-    //     }
-    //     return $entity;
-    // }
 }

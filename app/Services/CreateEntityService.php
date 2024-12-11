@@ -2,12 +2,13 @@
 
 namespace App\Services;
 
+use App\Models\HotelRooms;
 use App\Models\Owner;
+use Brick\Money\Money;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Brick\Money\Money;
-use Illuminate\Support\Facades\Log;
 
 abstract class CreateEntityService
 {
@@ -20,15 +21,17 @@ abstract class CreateEntityService
 
     abstract protected function getFillableAttributes();
 
-    protected function getImageColumn() {
+    protected function getImageColumn()
+    {
         return null;
     }
 
-    protected function getImagePath() {
+    protected function getImagePath()
+    {
         return null;
     }
 
-    public function createEntity(Request $request)
+    public function createEntity(Request $request): Model
     {
         $this->initializeAttributes();
 
@@ -38,7 +41,8 @@ abstract class CreateEntityService
             $this->handleImages($entity, $request);
             $entity->save();
             $this->handleDocuments($entity, $request);
-
+            $this->handleBeds($entity, $request);
+            $this->handleAmenities($entity, $request);
             if (method_exists($this, 'handleAdditionalData')) {
                 $this->handleAdditionalData($entity, $request->validated());
             }
@@ -54,11 +58,15 @@ abstract class CreateEntityService
         $this->imagePath = $this->getImagePath();
     }
 
-    protected function fillEntityAttributes(Request $request)
+    protected function fillEntityAttributes(Request $request): Model
     {
         return $this->model->fill($request->only($this->fillableAttributes));
     }
 
+
+    /**
+     * @throws Exception
+     */
     public function setOwner($entity, Request $request)
     {
         if (method_exists($entity, 'owner')) {
@@ -69,7 +77,7 @@ abstract class CreateEntityService
         } elseif (method_exists($entity, 'hotel')) {
             return $entity->hotel->owner;
         } else {
-            throw new \Exception('Entity does not have an owner or hotel relation');
+            throw new Exception('Entity does not have an owner or hotel relation');
         }
     }
 
@@ -84,7 +92,7 @@ abstract class CreateEntityService
 
     protected function setOwnerAndCurrency($entity, Request $request): void
     {
-        
+
         $owner = $this->setOwner($entity, $request);
 
         $this->setCurrency($entity, $request, $owner);
@@ -106,16 +114,37 @@ abstract class CreateEntityService
 
     public function handleDocuments($entity, Request $request): void
     {
-        if($request->has('documents')) {
+        if ($request->has('documents')) {
             foreach ($request->documents as $document) {
-                $path =  'https://travelersres.com/' . $document['file']->store('documents/' . class_basename($entity), 'public');
-                $entity->documents()->create([
-                    'document_type' => $document['type'],
-                    'file_path' => $path,
-                    'owner_id' => $entity->owner_id,
+                $path = 'https://travelersres.com/' . $document['file']->store('documents/' . class_basename($entity), 'public',
+                        $entity->documents()->create([
+                            'document_type' => $document['type'],
+                            'file_path' => $path,
+                            'owner_id' => $entity->owner_id,
+                        ]));
+            }
+        }
+    }
+
+    public function handleBeds($entity, Request $request): void
+    {
+        if ($request->has('beds')) {
+            foreach ($request->beds as $bed) {
+                $entity->roomBeds()->create([
+                    'bed_type' => $bed['bed_type'],
+                    'bedable_type' => HotelRooms::class,
+                    'bedable_id' => $entity->id,
                 ]);
             }
         }
     }
 
+
+    public function handleAmenities($entity, Request $request): void
+    {
+        if ($request->has('amenities')) {
+            $amenities = array_fill_keys($request['amenities'], true);
+            $entity->AccommodationAmenities()->create($amenities);
+        }
+    }
 }

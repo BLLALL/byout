@@ -4,6 +4,7 @@
 
     use App\Models\Hotel;
     use Brick\Money\Money;
+    use Illuminate\Http\Request;
 
     class CreateHotelService extends CreateEntityService
     {
@@ -42,8 +43,8 @@
                 $createHotelRoomService = new CreateHotelRoomService();
                 foreach ($data['rooms'] as $roomData) {
                     $roomData['hotel_id'] = $hotel->id;
-                    $request = new \Illuminate\Http\Request($roomData);
-                    $room = $createHotelRoomService->createEntity($request);
+                    $request = new Request($roomData);
+                    $createHotelRoomService->createEntity($request);
                 }
             }
         }

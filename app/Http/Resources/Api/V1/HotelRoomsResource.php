@@ -16,10 +16,10 @@ class HotelRoomsResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-    
+
         return [
+            'type' => 'Hotel Room',
             'id' => $this->id,
-            'title' => $this->title,
             'price' => $this->price,
             'discount_price' => $this->discount_price,
             'currency' => $this->currency,
@@ -27,11 +27,13 @@ class HotelRoomsResource extends JsonResource
             'bathrooms_no' => $this->bathrooms_no,
             'bedrooms_no' => $this->bedrooms_no,
             'room_images' => $this->room_images,
-            'is_reserved' => $this->is_reserved,
             'hotel_id' => $this->hotel_id,
             'available_from' => $this->available_from,
             'available_until' => $this->available_until,
             'is_available' => $this->is_available,
+            'capacity' => $this->capacity,
+            'beds' => $this->roomBeds,
+            'amenities' => $this->AccommodationAmenities,
         ];
     }
 }

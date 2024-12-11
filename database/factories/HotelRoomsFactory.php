@@ -30,6 +30,7 @@ class HotelRoomsFactory extends Factory
             'hotel_id' => Hotel::factory(),
             'available_from' => fake()->dateTimeBetween('now', '+1 day')->format('Y-m-d'),
             'available_until' => fake()->dateTimeBetween('+2 month', '+3 month')->format('Y-m-d'),
+            'capacity' => fake()->randomDigitNotNull(),
         ];
     }
 }

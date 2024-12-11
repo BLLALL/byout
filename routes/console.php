@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Schedule;
 
 
 Schedule::command(DeleteExpiredChalets::class)->daily();
-Schedule::command('model:prune', ['--model' => Chalet::class])->daily();
-
+Schedule::command('model:prune')->daily();
 Schedule::command('tour:start')->everyFiveMinutes()->withoutOverlapping();
 Schedule::command('tour:end')->everyFiveMinutes()->withoutOverlapping();
